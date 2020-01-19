@@ -1,0 +1,15 @@
+defaults:
+  - scope:
+      path: "README.md"
+    values:
+      permalink: ""
+      lang: "en"
+      title: "Priceless"
+      description: "Experience the world. Free of charge."
+  - scope:
+      path: "de/README.md"
+    values:
+      permalink: "de"
+      lang: "de"
+      title: "Unbezahlbar"
+      description: "Erlebe die Welt. Gratis."
