@@ -45,6 +45,6 @@
     "url-loader": "2.1.0",
     "webpack": "4.5.0",
     "webpack-cli": "3.0.8",
-    "webpack-dev-server": "3.1.7"
+    "webpack-dev-server": "3.1.11"
   }
 }
