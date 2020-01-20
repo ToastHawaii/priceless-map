@@ -491,9 +491,15 @@ node["amenity"="water_point"];`,
     ${nw(`["amenity"="givebox"]`)}
     
     // Give-away shop
-    ${nw(`["shop"]["payment:none"="yes"]`)}
-
-    ${nwFee(`["shop"]`)}`,
+    ${nw(`["shop"="charity"]["payment:none"="yes"]`)}
+    ${nw(`["shop"]["charity"="yes"]["payment:none"="yes"]`)}
+    ${nw(`["shop"="second_hand"]["payment:none"="yes"]`)}
+    ${nw(`["shop"]["second_hand"="yes"]["payment:none"="yes"]`)}
+    
+    ${nw(`["shop"="charity"]["fee"="no"]`)}
+    ${nw(`["shop"]["charity"="yes"]["fee"="no"]`)}
+    ${nw(`["shop"="second_hand"]["fee"="no"]`)}
+    ${nw(`["shop"]["second_hand"="yes"]["fee"="no"]`)}`,
     color: "#8A2BE2",
     tags: ["amenity=reuse"],
     edit: ["amenity"]
