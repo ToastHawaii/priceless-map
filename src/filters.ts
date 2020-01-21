@@ -499,10 +499,18 @@ node["amenity"="water_point"];`,
     ${nw(`["shop"="charity"]["fee"="no"]`)}
     ${nw(`["shop"]["charity"="yes"]["fee"="no"]`)}
     ${nw(`["shop"="second_hand"]["fee"="no"]`)}
-    ${nw(`["shop"]["second_hand"="yes"]["fee"="no"]`)}`,
+    ${nw(`["shop"]["second_hand"="yes"]["fee"="no"]`)}
+    
+    // Toy library free of charge
+    ${nwFee(`["amenity"="toy_library"]`)}`,
     color: "#8A2BE2",
-    tags: ["amenity=reuse"],
-    edit: ["amenity"]
+    tags: [
+      "amenity=reuse",
+      "shop=charity",
+      "shop=second_hand",
+      "amenity=toy_library"
+    ],
+    edit: ["amenity", "shop=charity", "shop=second_hand", "amenity=toy_library"]
   },
   {
     group: "community",
