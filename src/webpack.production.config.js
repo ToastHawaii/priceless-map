@@ -1,6 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const UglifyJSPlugin = require("uglify-es-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({
+      compress: {
+        drop_console: true
+      }
+    }),
     new CopyWebpackPlugin([
       { from: "src/www" },
       {
