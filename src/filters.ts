@@ -337,17 +337,21 @@ nwr["bbq"="yes"];`,
     value: "baking-oven",
     icon: "/lib/maki-icons/bakery-15.svg",
     query: `
-    ${nw(`["amenity"="baking_oven"][!"historic"]`)}`,
+    ${nw(`["amenity"="baking_oven"][!"historic"]`)}
+    
+    ${nw(
+      `["building"="bakehouse"]["disused:amenity"!="baking_oven"]["disused:amenity"!="oven"][!"disused:oven"]["abandoned:amenity"!="baking_oven"]["abandoned:amenity"!="oven"][!"abandoned:oven"][!"shop"][!"historic"]`
+    )}`,
     color: "#D2B48C",
-    tags: ["amenity=baking_oven"],
-    edit: ["amenity"]
+    tags: ["amenity=baking_oven", "building=bakehouse"],
+    edit: ["amenity", "building"]
   },
   {
     group: "object_of_utility",
     value: "bicycle-rental",
     icon: "https://wiki.openstreetmap.org/w/images/d/d5/Rental-bicycle-16.svg",
     query: `
-${nwFee(`["amenity"="bicycle_rental"]`)}`,
+    ${nwFee(`["amenity"="bicycle_rental"]`)}`,
     color: "#2E8B57",
     tags: ["amenity=bicycle_rental"],
     edit: ["amenity=bicycle_rental"]
@@ -473,7 +477,8 @@ node["amenity"="water_point"];`,
 
     ${nw(`["amenity"="fridge"]`)}
 
-    ${nw(`["social_facility"="food_sharing"]`)}`,
+    ${nw(`["social_facility"="food_sharing"]`)}
+    ${nw(`["amenity"="food_sharing"]`)}`,
     color: "#FFD700",
     tags: ["social_facility=food_bank", "social_facility=soup_kitchen"],
     edit: ["amenity=social_facility"]
