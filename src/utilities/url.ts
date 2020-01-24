@@ -3,7 +3,7 @@ export const httpRegex = /^https?:\/\//i;
 export function toUrl(url: string | undefined) {
   if (!url) return undefined;
 
-  if (!httpRegex.test(url)) return  `http://${url}`;
+  if (!httpRegex.test(url)) return `http://${url}`;
 
   return url;
 }

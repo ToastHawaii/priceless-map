@@ -895,8 +895,8 @@ node["musical_instrument:piano"=yes][!"shop"];`,
     value: "advertising",
     icon: "https://wiki.openstreetmap.org/w/images/2/20/Column-14.svg",
     query: `
-    nwr["advertising"]["access"="yes"];
-    nwr["man_made"="advertising"]["access"="yes"];`,
+    nwr["advertising"]["access"];
+    nwr["man_made"="advertising"]["access"];`,
     color: "#e6007a",
     tags: ["man_made=advertising"],
     edit: [
