@@ -975,10 +975,11 @@ nwr["leisure"="nature_reserve"];`,
     value: "park",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
-nwr["leisure"="park"];`,
+nwr["leisure"="park"];
+nwr["landuse"="recreation_ground"];`,
     color: "#90EE90",
-    tags: ["leisure=park"],
-    edit: ["leisure=park"]
+    tags: ["leisure=park", "landuse=recreation_ground"],
+    edit: ["leisure=park", "landuse=recreation_ground"]
   },
   {
     group: "trip",
@@ -987,10 +988,11 @@ nwr["leisure"="park"];`,
     icon: "/lib/maki-icons/park-15.svg",
     button: "far fa-minus-square",
     query: `
-nwr["leisure"="park"]["name"];`,
+nwr["leisure"="park"]["name"];
+nwr["landuse"="recreation_ground"]["name"];`,
     color: "#90EE90",
-    tags: ["leisure=park"],
-    edit: ["leisure=park"]
+    tags: ["leisure=park", "landuse=recreation_ground"],
+    edit: ["leisure=park", "landuse=recreation_ground"]
   },
   {
     group: "trip",
