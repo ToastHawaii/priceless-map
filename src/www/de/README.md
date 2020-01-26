@@ -56,6 +56,7 @@ Oder erweitere die Unterstützung für die Tags und Keys in den Tools der OpenSt
 
 - Du hast eine Idee wie die Karte erweitert werden kann? Sende mir eine [Issue über GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io/issues/new) oder eine Nachricht über meine [Kontakt Seite](https://it.zottelig.ch/kontakt).
 - Rede darüber und teile die Karte mit deinen Freunden und Bekannten.
+- Unterstütze [mich](https://it.zottelig.ch/kontakt) mit Kaffee und Kuchen.
 - Geniesse das Leben. ;)
 
 ### Bekannte öffentliche und kostenlose Einrichtungen und Angebote
@@ -81,6 +82,12 @@ Wie öffentliche Bücherschränke dokumentiert werden sollen ist auf dieser [Wik
 Besuche Repair Cafés und andere Reparatur Initiativen und trage diese ein. [Repair Café Schweiz](https://repair-cafe.ch/de/events), [Repair Café Weltweit](https://repaircafe.org/de/besuchen/), [Reparatur-Initiativen](https://www.reparatur-initiativen.de/orte), [Zero Waste Map](https://zerowastemap.org/de/)
 
 Wie Angebote für begleitete Reparatur dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service) beschrieben.
+
+#### Unterstützung
+
+Besuche Nachbarschaftshilfen und trage diese ein. [Nachbarschaftshilfe](https://www.nachbarschaftshilfe.ch/standorte)
+
+Wie Angebote für Nachbarschaftshilfe dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Doutreach) beschrieben.
 
 #### Offene Werkstatt
 

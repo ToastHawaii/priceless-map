@@ -56,6 +56,7 @@ Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser
 
 - You have an idea how the map can be extended? Send me an [issue via GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io/issues/new) or a message via my [contact page](https://it.zottelig.ch/kontakt).
 - Share this map with your friends.
+- Support [me](https://it.zottelig.ch/kontakt) with coffee and cake.
 - Enjoy your life. ;)
 
 ### Known public and free facilitie or offer
@@ -82,11 +83,17 @@ Visit Repair Café's and other Repair Initiatives and register them. [Repair Caf
 
 How a place for assisted repair should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service).
 
+#### Assistance
+
+Visit communal work and register them. [Nachbarschaftshilfe](https://www.nachbarschaftshilfe.ch/standorte)
+
+How a place for communal work should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Doutreach).
+
 #### Hackerspace
 
 Visit hackerspaces and register them. [Verbund Offener Werkstätten](https://www.offene-werkstaetten.org/werkstatt-suche), [hackerspaces](https://wiki.hackerspaces.org/List_of_hackerspaces)
 
-How a hackerspace should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace) beschrieben.
+How a hackerspace should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace).
 
 #### Bicycle repair
 
