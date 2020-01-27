@@ -5,6 +5,7 @@ export const local = {
   aboutThisSite: "About this site",
   capacity: "Capacity",
   playground: "For children",
+  bottle: "Refilling is possible",
   pump: "Pump",
   tools: "Tools",
   chainTool: "Chain tool",

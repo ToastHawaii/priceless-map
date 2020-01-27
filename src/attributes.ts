@@ -16,6 +16,10 @@ export const attributes: Attribute<{}>[] = [
       )
   },
   {
+    check: tags => tags["bottle"] === "yes",
+    template: local => template(local.bottle, "fas fa-wine-bottle")
+  },
+  {
     check: (tags, value) => !!tags.capacity && value === "book-exchange",
     template: (local, tags) =>
       template(local.capacity, "fas fa-book", tags.capacity)

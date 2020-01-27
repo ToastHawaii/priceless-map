@@ -5,6 +5,7 @@ export const local = {
   aboutThisSite: "Über diese Seite",
   capacity: "Kapazität",
   playground: "Für Kinder",
+  bottle: "Nachfüllen ist möglich",
   pump: "Pumpe",
   tools: "Werkzeuge",
   chainTool: "Kettennietdrücker",
@@ -98,7 +99,11 @@ export const local = {
     "charging-station": { name: "Ladestation", description: "" },
     clock: { name: "Uhr", description: "" },
     piano: { name: "Klavier", description: "" },
-    advertising: { name: "Werbefläche", description: "Hier kannst du Plakate anbringen um für deine Sache zu werben." },
+    advertising: {
+      name: "Werbefläche",
+      description:
+        "Hier kannst du Plakate anbringen um für deine Sache zu werben."
+    },
     "community-centre": { name: "Gemeinschaftscenter", description: "" },
     "community-garden": {
       name: "Gemeinschaftsgarten",
