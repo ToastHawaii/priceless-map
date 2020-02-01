@@ -484,6 +484,16 @@ node["amenity"="water_point"];`,
     edit: ["amenity=social_facility"]
   },
   {
+    group: "health",
+    value: "counselling",
+    icon: "https://wiki.openstreetmap.org/w/images/7/71/Doctors-14.svg",
+    query: `
+    ${nwFee(`["healthcare"="counselling"]`)}`,
+    color: "#BF0000",
+    tags: ["healthcare=counselling"],
+    edit: ["healthcare=counselling"]
+  },
+  {
     group: "object_of_utility",
     value: "goods-exchange",
     icon: "/lib/maki-icons/gift-15.svg",

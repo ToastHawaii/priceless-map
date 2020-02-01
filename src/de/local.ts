@@ -117,6 +117,10 @@ export const local = {
       description:
         "An diesem Ort kannst du Lebensmittel abgeben und holen. Die Bedienungen für das abgeben und holen sind sehr unterschiedlich, über die Webseite des Betreibers oder vor Ort kannst du dich darüber informieren."
     },
+    counselling: {
+      name: "Beratung",
+      description: ""
+    },
     "goods-exchange": {
       name: "Waren Tausch",
       description:

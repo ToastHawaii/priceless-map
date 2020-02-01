@@ -116,6 +116,10 @@ export const local = {
       description:
         "At this place you can bring and take food. The conditions for bring and take food are very different, you can inform yourself about it on the website of the operator or on site."
     },
+    counselling: {
+      name: "Counselling",
+      description: ""
+    },
     "goods-exchange": {
       name: "Goods exchange",
       description:
