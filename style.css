@@ -328,7 +328,8 @@ summary:focus {
   display: block;
 }
 
-.edit {
+.edit,
+.note {
   right: 10px;
   bottom: 25px;
   -webkit-border-radius: 50%;
@@ -342,6 +343,12 @@ summary:focus {
   font-size: 10pt;
   position: fixed;
   z-index: 1000;
+}
+.edit {
+  bottom: 25px;
+}
+.note {
+  bottom: 60px;
 }
 
 button {

@@ -46,6 +46,13 @@ export function initMap<M>(
     return false;
   });
 
+  getHtmlElement(".note").addEventListener("click", () => {
+    const latlng = map.getCenter();
+    const zoom = map.getZoom();
+
+    window.location.href = `https://www.openstreetmap.org/note/new#map=${zoom}/${latlng.lat}/${latlng.lng}`;
+  });
+
   getHtmlElement(".edit").addEventListener("click", () => {
     const latlng = map.getCenter();
     const zoom = map.getZoom();
