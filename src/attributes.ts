@@ -25,7 +25,10 @@ export const attributes: Attribute<{}>[] = [
       template(local.capacity, "fas fa-book", tags.capacity)
   },
   {
-    check: tags => tags["service:bicycle:pump"] === "yes",
+    check: tags =>
+      tags["service:bicycle:pump"] === "yes" ||
+      tags["amenity"] === "compressed_air" ||
+      tags["compressed_air"] === "yes",
     template: local => template(local.pump, "fas fa-tachometer-alt")
   },
   {
@@ -42,7 +45,8 @@ export const attributes: Attribute<{}>[] = [
       tags["service:bicycle:repair"] === "yes" ||
       tags["bicycle:repair"] === "yes" ||
       tags["service:bicycle:tools"] === "yes" ||
-      tags["service:bicycle:diy"] === "yes",
+      tags["service:bicycle:diy"] === "yes" ||
+      hasPropThatEndsWith(tags, ":repair", "yes"),
     template: local => template(local.tools, "fas fa-tools")
   },
   {
@@ -127,18 +131,35 @@ export const attributes: Attribute<{}>[] = [
     template: local => template(local.toy, "fas fa-horse")
   },
   {
+    check: tags => hasPropThatStartsWith(tags, "recycling:", "yes"),
+    template: local => template(local.freeToGive, "fas fa-long-arrow-alt-right")
+  },
+  {
     check: tags => tags["reuse:policy"] === "free_to_take",
     template: local => template(local.freeToTake, "fas fa-long-arrow-alt-left")
   },
   {
-    check: tags => tags["reuse:policy"] === "free_to_take_or_give",
+    check: tags =>
+      tags["reuse:policy"] === "free_to_take_or_give" ||
+      (!tags["reuse:policy"] &&
+        (tags["amenity"] === "reuse" ||
+          hasPropThatStartsWith(tags, "reuse:", "yes"))),
     template: local => template(local.freeToTakeOrGive, "fas fa-exchange-alt")
   },
   {
     check: tags =>
       (tags.amenity === "library" && tags.library !== "booksharing") ||
-      tags.amenity === "toy_library",
+      tags.amenity === "toy_library" ||
+      tags.amenity === "bicycle_rental",
     template: local => template(local.borrow, "fas fa-redo-alt")
+  },
+  {
+    check: tags => tags.sport === "bmx" || tags.sport === "cycling",
+    template: local => template(local.park, "fas fa-infinity")
+  },
+  {
+    check: tags => tags.amenity === "charging_station",
+    template: local => template(local.charging, "fas fa-charging-station")
   },
   {
     check: tags => !!tags.hoops,
@@ -194,4 +215,30 @@ function wheelchairAccesIcon(tags: { wheelchair: string }) {
       // do not display icon for others values or undefined
       return undefined;
   }
+}
+
+function hasPropThatStartsWith(tags: any, name: string, value: string) {
+  for (const tag in tags) {
+    if (
+      tags.hasOwnProperty(tag) &&
+      tag.toUpperCase().startsWith(name.toUpperCase()) &&
+      tags[tag] === value
+    ) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function hasPropThatEndsWith(tags: any, name: string, value: string) {
+  for (const tag in tags) {
+    if (
+      tags.hasOwnProperty(tag) &&
+      tag.toUpperCase().endsWith(name.toUpperCase()) &&
+      tags[tag] === value
+    ) {
+      return true;
+    }
+  }
+  return false;
 }
