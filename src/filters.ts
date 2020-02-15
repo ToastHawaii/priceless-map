@@ -444,7 +444,9 @@ nwr["amenity"="clock"];`,
     icon:
       "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
     query: `
-nwr["amenity"="community_centre"];`,
+nwr["amenity"="community_centre"];
+
+`,
     color: "#da532c",
     tags: ["amenity=community_centre"],
     edit: ["amenity=community_centre"]
@@ -454,9 +456,11 @@ nwr["amenity"="community_centre"];`,
     value: "community-garden",
     icon: "/lib/maki-icons/garden-centre-15.svg",
     query: `
-nwr["garden:type"="community"];`,
+nwr["garden:type"="community"];  
+
+${nw(`["landuse"="community_food_growing"]`)}`,
     color: "#228B22",
-    tags: ["garden:type=community"],
+    tags: ["garden:type=community", "landuse=community_food_growing"],
     edit: ["leisure=garden"]
   },
   {
@@ -501,7 +505,7 @@ node["amenity"="water_point"];`,
     icon: "https://wiki.openstreetmap.org/w/images/3/3c/Foodbank.svg",
     query: `
     ${nw(`["social_facility"="food_bank"]`)}
-
+  
     ${nw(`["social_facility"="soup_kitchen"]`)}
 
     ${nw(`["recycling:food"="yes"]`)}
