@@ -74,6 +74,7 @@ export const local = {
     fountain: { name: "Springbrunnen", description: "" },
     "tourist-attraction": { name: "Sehenswürdigkeit", description: "" },
     "archaeological-site": { name: "Archäologische Stätte", description: "" },
+    trail: { name: "Lehrpfad", description: "" },
     "book-exchange": { name: "Bücher Tausch", description: "" },
     castle: { name: "Burg", description: "" },
     mill: { name: "Mühle", description: "" },

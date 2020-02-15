@@ -83,6 +83,12 @@ Visit Repair Café's and other Repair Initiatives and register them. [Repair Caf
 
 How a place for assisted repair should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service).
 
+#### Donation
+
+Visit in-kind donation places and register them. [Velafrica](http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen), [Swisscom Mobile Aid](https://www.swisscom.ch/de/about/unternehmen/nachhaltigkeit/mobile-aid.html)
+
+How a in-kind donation place should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Drecycling).
+
 #### Assistance
 
 Visit communal work and register them. [Nachbarschaftshilfe](https://www.nachbarschaftshilfe.ch/standorte)

@@ -72,6 +72,37 @@ nwr["historic"="archaeological_site"];`,
   },
   {
     group: "education",
+    value: "trail",
+    icon: "https://wiki.openstreetmap.org/w/images/7/77/Board-14.svg",
+    query: `
+    ${nw(
+      `["information"="board"]["board_type"~"wildlife|plants|geology|nature|planet_walk|astronomy|forestry|botany|biology|birds|tree|panorama|science|technology"]`
+    )}
+    relation["type"="route"]["educational"="yes"];
+    relation["route"="educational_trail"];`,
+    color: "#222222",
+    tags: [
+      "educational=yes",
+      "route=educational_trail",
+      "board_type=wildlife",
+      "board_type=plants",
+      "board_type=geology",
+      "board_type=nature",
+      "board_type=planet_walk",
+      "board_type=astronomy",
+      "board_type=forestry",
+      "board_type=botany",
+      "board_type=biology",
+      "board_type=birds",
+      "board_type=tree",
+      "board_type=panorama",
+      "board_type=science",
+      "board_type=technology"
+    ],
+    edit: ["tourism=information", "type=route"]
+  },
+  {
+    group: "education",
     value: "book-exchange",
     icon: "https://wiki.openstreetmap.org/w/images/b/b2/Public_bookcase-14.svg",
     query: `
@@ -142,10 +173,12 @@ nwr["man_made"="windmill"]["ruins"="no"];`,
     value: "history",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Acheological.png",
     query: `
-nwr["historic"]["historic"!="castle"]["historic"!="tower"]["historic"!="fort"]["historic"!="ruins"]["historic"!="memorial"]["historic"!="monument"]["historic"!="archaeological_site"]["building"!="bunker"]["military"!="bunker"];`,
+nwr["historic"]["historic"!="castle"]["historic"!="tower"]["historic"!="fort"]["historic"!="ruins"]["historic"!="memorial"]["historic"!="monument"]["historic"!="archaeological_site"]["building"!="bunker"]["military"!="bunker"];
+
+${nw(`["board_type"="history"]`)}`,
     color: "#e0e094",
-    tags: ["historic=*"],
-    edit: ["historic"]
+    tags: ["historic=*", "board_type=history"],
+    edit: ["historic", "tourism=information"]
   },
   {
     group: "culture",
@@ -558,7 +591,9 @@ node["amenity"="water_point"];`,
 
     ${nw(`["office"="foundation"]`)}
 
-    ${nw(`["office"="association"]`)}`,
+    ${nw(`["office"="association"]`)}
+    
+    nwr["healthcare"="blood_donation"];`,
     color: "#FF69B4",
     tags: [
       "office=charity",
@@ -640,9 +675,7 @@ nwr["toilets"="yes"];`,
     query: `
 nwr["sport"="basketball"];
 
-nwr["leisure"="pitch"](if:lrs_in("basketball",t["sport"]));
-
-nwr["leisure"="pitch"]["sport"="multi"];`,
+nwr["leisure"="pitch"]["sport"~"basketball|multi"];`,
     color: "#FF4500",
     tags: ["leisure=pitch", "sport=basketball", "sport=multi"],
     edit: ["leisure=pitch"]
@@ -807,9 +840,7 @@ nwr["leisure"="track"]["sport"="athletics"];`,
     query: `
 nwr["sport"="soccer"];
 
-nwr["leisure"="pitch"](if:lrs_in("soccer",t["sport"]));
-
-nwr["leisure"="pitch"]["sport"="multi"];`,
+nwr["leisure"="pitch"]["sport"~"soccer|multi"];`,
     color: "#ADFF2F",
     tags: ["leisure=pitch", "sport=soccer", "sport=multi"],
     edit: ["leisure=pitch"]
@@ -844,12 +875,9 @@ ${nw(`["leisure"="table_tennis_table"]`)}`,
     icon: "/lib/maki-icons/volleyball-15.svg",
     query: `
 nwr["sport"="volleyball"];
-
-nwr["leisure"="pitch"](if:lrs_in("volleyball",t["sport"]));
-
 nwr["sport"="beachvolleyball"];
 
-nwr["leisure"="pitch"](if:lrs_in("beachvolleyball",t["sport"]));`,
+nwr["leisure"="pitch"]["sport"~"volleyball"];`,
     color: "#F4A460",
     tags: ["leisure=pitch", "sport=volleyball", "sport=beachvolleyball"],
     edit: ["leisure=pitch"]
@@ -914,14 +942,17 @@ node["musical_instrument:piano"=yes][!"shop"];`,
     nwr["man_made"="advertising"]["access"];
     
     node["advertising"][!"access"]["operator:type"="community"];
-    node["advertising"][!"access"]["operator:type"="public"];`,
+    node["advertising"][!"access"]["operator:type"="public"];
+    
+    ${nw(`["board_type"="notice"]["access"]`)}`,
     color: "#e6007a",
-    tags: ["man_made=advertising"],
+    tags: ["man_made=advertising", "board_type=notice"],
     edit: [
       "advertising=board",
       "advertising=column",
       "advertising=poster_box",
-      "advertising=billboard"
+      "advertising=billboard",
+      "tourism=information"
     ]
   },
   {

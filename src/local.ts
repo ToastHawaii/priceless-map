@@ -74,6 +74,7 @@ export const local = {
     fountain: { name: "Fountain", description: "" },
     "tourist-attraction": { name: "Tourist attraction", description: "" },
     "archaeological-site": { name: "Archaeological site", description: "" },
+    trail: { name: "Educational trail", description: "" },
     "book-exchange": { name: "Book exchange", description: "" },
     castle: { name: "Castle", description: "" },
     mill: { name: "Mill", description: "" },
