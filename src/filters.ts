@@ -601,9 +601,23 @@ node["amenity"="water_point"];`,
       "charity=yes",
       "operator:type=private_non_profit",
       "operator:type=charitable",
-      "operator:type=community"
+      "operator:type=community",
+      "office=ngo",
+      "operator:type=ngo",
+      "office=foundation",
+      "office=association",
+      "healthcare=blood_donation"
     ],
-    edit: ["office=charity", "shop=charity", "shop", "amenity"]
+    edit: [
+      "office=charity",
+      "shop=charity",
+      "office=ngo",
+      "office=foundation",
+      "office=association",
+      "healthcare=blood_donation",
+      "shop",
+      "amenity"
+    ]
   },
   {
     group: "community",
