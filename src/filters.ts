@@ -710,7 +710,6 @@ ${nwrFee(`["amenity"="public_bath"]`)}
 ${nwrFee(`["leisure"="water_park"]`)}
 
 nwr["leisure"="swimming_pool"];
-nwr["swimming_pool"]["swimming_pool"!="no"]["swimming_pool"!="personal"];
 
 nwr["leisure"="swimming_area"];`,
     color: "#0000CD",
@@ -719,7 +718,6 @@ nwr["leisure"="swimming_area"];`,
       "amenity=public_bath",
       "leisure=water_park",
       "leisure=swimming_pool",
-      "swimming_pool=*",
       "leisure=swimming_area"
     ],
     edit: [
