@@ -11,6 +11,7 @@ import { getJson } from "./utilities/jsonRequest";
 import { getHtmlElement } from "./utilities/html";
 import { parseOpeningHours } from "./map";
 import * as L from "leaflet";
+import { attributeDescriptions } from "./attributeDescriptions";
 
 export function createPricelessOverPassLayer<M>(
   value: string,
@@ -133,14 +134,13 @@ export function createPricelessOverPassLayer<M>(
           toUrl(e.tags["webcam:url"]) ||
           toUrl(e.tags["url:webcam"]) ||
           "";
-        model.description = [
-          e.tags["description:" + (local.code || "en")] || e.tags.description,
-          e.tags["wheelchair:description"]
-        ]
-          .filter(el => el)
-          .join(" ");
+        model.description =
+          e.tags["description:" + (local.code || "en")] || e.tags.description;
         const attributesGenerator = new Generator<M>(attributes);
         const linksGenerator = new Generator(links);
+        const attributDescriptionGenerator = new Generator(
+          attributeDescriptions
+        );
         let isLoaded = false;
         const contentElement = document.createElement("div");
         contentElement.innerHTML = `<div id="hcard-Name" class="vcard">
@@ -181,24 +181,49 @@ export function createPricelessOverPassLayer<M>(
         </div>
         <div class="img-container">
         ${
-          model.img ? `<br /><img class="img" dynamic-src="${model.img}"/>` : ``
-        }
-        </div>
-        <div class="description">
-        ${
-          model.description
-            ? `${!model.img ? `<br />` : ``}<small>${model.description}</small>`
-            : ``
-        }
-        </div>
-        <div class="contact">
-        ${
-          !linksGenerator.empty(e.tags, value, {})
+          model.img
             ? `
           <br />
-          ${linksGenerator.render(local, e.tags, value, {})}`
+          <img class="img" dynamic-src="${model.img}"/>`
             : ``
-        }
+        }   
+        </div>
+        <div class="description">    
+        ${
+          model.description
+            ? `
+          ${!model.img ? `<br />` : ``}
+          <small>
+            ${model.description}
+          </small>`
+            : ``
+        }    
+        </div>
+        <div> 
+          ${
+            !attributDescriptionGenerator.empty(e.tags, value, {}, local)
+              ? `
+          <br />
+          <small>
+            ${attributDescriptionGenerator.render(
+              local,
+              e.tags,
+              value,
+              {},
+              `<br />`
+            )}
+          </small>`
+              : ``
+          }   
+        </div>
+        <div class="contact">
+          ${
+            !linksGenerator.empty(e.tags, value, {}, local)
+              ? `
+          <br />
+          ${linksGenerator.render(local, e.tags, value, {})}`
+              : ``
+          }     
         </div>
         </div>`;
         const popup = L.popup({
@@ -382,9 +407,14 @@ export function createPricelessOverPassLayer<M>(
                   getHtmlElement(
                     ".contact",
                     contentElement
-                  ).innerHTML = !linksGenerator.empty(e.tags, value, {
-                    website: result.wiki ? result.wiki.url : undefined
-                  })
+                  ).innerHTML = !linksGenerator.empty(
+                    e.tags,
+                    value,
+                    {
+                      website: result.wiki ? result.wiki.url : undefined
+                    },
+                    local
+                  )
                     ? `
     <br />
     ${linksGenerator.render(local, e.tags, value, {

@@ -7,6 +7,15 @@ const template = (title: string, icon: string, value?: string) =>
 
 export const attributes: Attribute<{}>[] = [
   {
+    check: tags =>
+      (!!tags.internet_access &&
+        tags.internet_access !== "no" &&
+        tags["internet_access:fee"] !== "customers" &&
+        tags["internet_access:fee"] !== "yes") ||
+      (!!tags.wifi && tags.wifi !== "no"),
+    template: local => template(local.internet, "fas fa-wifi")
+  },
+  {
     check: tags => !!tags["piste:difficulty"],
     template: (local, tags) =>
       template(
@@ -23,6 +32,13 @@ export const attributes: Attribute<{}>[] = [
     check: (tags, value) => !!tags.capacity && value === "book-exchange",
     template: (local, tags) =>
       template(local.capacity, "fas fa-book", tags.capacity)
+  },
+  {
+    check: tags =>
+      tags["amenity"] === "drinking_water" ||
+      tags["amenity"] === "water_point" ||
+      tags["drinking_water"] === "yes",
+    template: local => template(local.water, "fas fa-tint")
   },
   {
     check: tags =>
@@ -194,13 +210,44 @@ export const attributes: Attribute<{}>[] = [
   {
     check: tags => !!wheelchairAccesIcon(tags),
     template: (local, tags) =>
-      `<span title="${
-        local.wheelchair
-      }" class="attribut"><i class="fab fa-accessible-icon"></i> <i class="fas fa-${wheelchairAccesIcon(
+      `<span title="${wheelchairAccesText(
+        tags,
+        local
+      )}" class="attribut"><i class="fab fa-accessible-icon"></i> <i class="fas fa-${wheelchairAccesIcon(
         tags
-      )}"></i></span>`
+      )}" style="color: ${wheelchairAccesColor(tags)};"></i></span>`
   }
 ];
+
+function wheelchairAccesText(tags: { wheelchair: string }, local: any) {
+  switch (tags.wheelchair) {
+    case "yes":
+    case "designated":
+      return local.wheelchairYes;
+    case "limited":
+      return local.wheelchairLimited;
+    case "no":
+      return local.wheelchairNo;
+    default:
+      // do not display for others values or undefined
+      return "";
+  }
+}
+
+function wheelchairAccesColor(tags: { wheelchair: string }) {
+  switch (tags.wheelchair) {
+    case "yes":
+    case "designated":
+      return "green";
+    case "limited":
+      return "orange";
+    case "no":
+      return "red";
+    default:
+      // do not display for others values or undefined
+      return "black";
+  }
+}
 
 function wheelchairAccesIcon(tags: { wheelchair: string }) {
   switch (tags.wheelchair) {

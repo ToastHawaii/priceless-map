@@ -78,6 +78,9 @@ nwr["historic"="archaeological_site"];`,
     ${nw(
       `["information"="board"]["board_type"~"wildlife|plants|geology|nature|planet_walk|astronomy|forestry|botany|biology|birds|tree|panorama|science|technology"]`
     )}
+    ${nw(`["information"="nature"]`)}
+    ${nw(`["information"="wild_life"]`)}
+    ${nw(`["information"="wildlife"]`)}
     relation["type"="route"]["educational"="yes"];
     relation["route"="educational_trail"];`,
     color: "#222222",
@@ -175,7 +178,8 @@ nwr["man_made"="windmill"]["ruins"="no"];`,
     query: `
 nwr["historic"]["historic"!="castle"]["historic"!="tower"]["historic"!="fort"]["historic"!="ruins"]["historic"!="memorial"]["historic"!="monument"]["historic"!="archaeological_site"]["building"!="bunker"]["military"!="bunker"];
 
-${nw(`["board_type"="history"]`)}`,
+${nw(`["board_type"="history"]`)}
+${nw(`["information"="history"]`)}`,
     color: "#e0e094",
     tags: ["historic=*", "board_type=history"],
     edit: ["historic", "tourism=information"]
