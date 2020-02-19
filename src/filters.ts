@@ -261,9 +261,10 @@ ${nw(`["natural"="cave_entrance"]`)}`,
     value: "natural_monument",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
-node["denotation"="natural_monument"];`,
+    nwr["denotation"="natural_monument"];
+    nwr["denotation"="landmark "];`,
     color: "#228B22",
-    tags: ["denotation=natural_monument"],
+    tags: ["denotation=natural_monument", "denotation=landmark"],
     edit: ["natural=tree", "natural=tree_row", "natural"]
   },
   {
