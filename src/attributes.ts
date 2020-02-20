@@ -25,7 +25,8 @@ export const attributes: Attribute<{}>[] = [
       )
   },
   {
-    check: tags => tags["bottle"] === "yes",
+    check: tags =>
+      tags["bottle"] === "yes" || tags["drinking_water:refill"] === "yes",
     template: local => template(local.bottle, "fas fa-wine-bottle")
   },
   {
@@ -37,7 +38,8 @@ export const attributes: Attribute<{}>[] = [
     check: tags =>
       tags["amenity"] === "drinking_water" ||
       tags["amenity"] === "water_point" ||
-      tags["drinking_water"] === "yes",
+      tags["drinking_water"] === "yes" ||
+      tags["drinking_water:refill"] === "yes",
     template: local => template(local.water, "fas fa-tint")
   },
   {

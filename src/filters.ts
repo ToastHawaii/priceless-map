@@ -489,9 +489,16 @@ nwr["drinking_water"="yes"];
 
 nwr["amenity"="drinking_water"];
 
-node["amenity"="water_point"];`,
+node["amenity"="water_point"];
+
+${nw(`["drinking_water:refill"="yes"]`)}`,
     color: "#4169E1",
-    tags: ["amenity=drinking_water", "drinking_water=*", "amenity=water_point"],
+    tags: [
+      "amenity=drinking_water",
+      "drinking_water=*",
+      "amenity=water_point",
+      "drinking_water:refill=*"
+    ],
     edit: [
       "amenity=drinking_water",
       "amenity=water_point",
@@ -501,7 +508,8 @@ node["amenity"="water_point"];`,
       "highway=rest_area",
       "man_made=water_well",
       "amenity=fountain",
-      "natural=spring"
+      "natural=spring",
+      "amenity"
     ]
   },
   {

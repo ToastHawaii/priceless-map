@@ -100,7 +100,10 @@ export function createPricelessOverPassLayer<M>(
             local.man_made[e.tags["man_made"]] ||
             local.type[value].name,
           operator:
-            e.tags.operator || e.tags["heritage:operator"] || e.tags.brand,
+            e.tags.operator ||
+            e.tags["heritage:operator"] ||
+            e.tags.brand ||
+            e.tags.network,
           address: {
             name: "",
             postcode: e.tags["addr:postcode"] || "",
