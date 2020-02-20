@@ -5,6 +5,7 @@ export const local = {
   aboutThisSite: "Über diese Seite",
   capacity: "Kapazität",
   playground: "Für Kinder",
+  changing_table: "Hat einen Wickeltisch",
   bottle: "Nachfüllen ist möglich",
   pump: "Pumpe",
   tools: "Werkzeuge",

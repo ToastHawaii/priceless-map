@@ -48,6 +48,31 @@ export const attributeDescriptions: Attribute<{ website?: string }>[] = [
   },
   {
     check: (tags, _value, _model, local) =>
+      (!!tags.changing_table &&
+        tags.changing_table !== "no" &&
+        tags["changing_table:fee"] !== "yes" &&
+        !!(
+          tags["changing_table:description:" + (local.code || "en")] ||
+          tags["changing_table:description"]
+        )) ||
+      (!!tags.diaper &&
+        tags.diaper !== "no" &&
+        tags["diaper:fee"] !== "yes" &&
+        !!(
+          tags["diaper:description:" + (local.code || "en")] ||
+          tags["diaper:description"]
+        )),
+    template: (local, tags) =>
+      template(
+        "fas fa-baby",
+        tags["changing_table:description:" + (local.code || "en")] ||
+          tags["diaper:description:" + (local.code || "en")] ||
+          tags["changing_table:description"] ||
+          tags["diaper:description"]
+      )
+  },
+  {
+    check: (tags, _value, _model, local) =>
       !!tags.wheelchair &&
       !!(
         tags["wheelchair:description:" + (local.code || "en")] ||

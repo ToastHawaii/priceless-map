@@ -53,8 +53,17 @@ export const attributes: Attribute<{}>[] = [
       !!tags.playground ||
       tags.swimming_pool === "wading" ||
       tags.swimming_pool === "kids" ||
-      tags.swimming_pool === "plunge",
+      tags.swimming_pool === "plunge" ||
+      (tags.kids_area === "yes" && tags["kids_area:fee"] !== "yes"),
     template: local => template(local.playground, "fas fa-child")
+  },
+  {
+    check: tags =>
+      (!!tags.changing_table &&
+        tags.changing_table !== "no" &&
+        tags["changing_table:fee"] !== "yes") ||
+      (!!tags.diaper && tags.diaper !== "no" && tags["diaper:fee"] !== "yes"),
+    template: local => template(local.changing_table, "fas fa-baby")
   },
   {
     check: tags =>
