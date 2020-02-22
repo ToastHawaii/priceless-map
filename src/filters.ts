@@ -920,10 +920,28 @@ nwr["tourism"="zoo"];
 
 nwr["attraction"="animal"];
 
-nwr["tourism"="aquarium"];`,
+nwr["tourism"="aquarium"];
+
+nwr["landuse"="animal_keeping"];`,
     color: "#DAA520",
-    tags: ["tourism=zoo", "attraction=animal", "tourism=aquarium"],
-    edit: ["tourism=zoo", "attraction=animal", "tourism=aquarium"]
+    tags: [
+      "tourism=zoo",
+      "attraction=animal",
+      "tourism=aquarium",
+      "landuse=animal_keeping"
+    ],
+    edit: ["tourism=zoo", "attraction=animal", "tourism=aquarium", "landuse"]
+  },
+  {
+    group: "trip",
+    value: "maze",
+    icon: "/lib/temaki-icons/compass.svg",
+    query: `
+    nwr["attraction"="maze"];
+    nwr["leisure"="maze"];`,
+    color: "#197419",
+    tags: ["attraction=maze"],
+    edit: ["attraction=maze"]
   },
   {
     group: "trip",

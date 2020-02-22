@@ -156,6 +156,7 @@ export const local = {
     "table-soccer": { name: "Table soccer", description: "" },
     volleyball: { name: "Volleyball", description: "" },
     animal: { name: "Animal enclosure", description: "" },
+    maze: { name: "Maze", description: "" },
     webcam: { name: "Webcam", description: "" },
     fireplace: { name: "Fireplace", description: "" },
     garden: { name: "Garden", description: "" },
