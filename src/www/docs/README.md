@@ -177,4 +177,4 @@ OpenStreetMap project for circular economy: [WikiProject CircularEconomy](https:
 
 ---
 
-[Deutsch](/docs/de)
+[Deutsch](/de/docs)
