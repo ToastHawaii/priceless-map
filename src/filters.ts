@@ -922,7 +922,14 @@ nwr["attraction"="animal"];
 
 nwr["tourism"="aquarium"];
 
-nwr["landuse"="animal_keeping"];`,
+nwr["landuse"="animal_keeping"];
+
+nwr["landuse"="meadow"][animal];
+nwr["landuse"="farmyard"][animal];
+nwr["landuse"="meadow"][livestock];
+nwr["landuse"="farmyard"][livestock];
+nwr["landuse"="meadow"][species];
+nwr["landuse"="farmyard"][species];`,
     color: "#DAA520",
     tags: [
       "tourism=zoo",
