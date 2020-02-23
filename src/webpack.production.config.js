@@ -12,13 +12,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // Load a custom template
-      template: "src/map.html",
-      filename: "map.html"
+      template: "src/index.html",
+      filename: "index.html"
     }),
     new HtmlWebpackPlugin({
       // Load a custom template
-      template: "src/de/map.html",
-      filename: "de/map.html"
+      template: "src/de/index.html",
+      filename: "de/index.html"
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({

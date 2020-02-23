@@ -2,7 +2,7 @@
 
 Experience the world. Free of charge.
 
-[Click here for the map](https://priceless.zottelig.ch/map.html)
+[Click here for the map](https://priceless.zottelig.ch)
 
 This is a simple map showing public and free facilities and offers near you. The information is loaded from [OpenStreetMap](https://www.openstreetmap.org).
 
@@ -40,7 +40,7 @@ Visit already registered facilities and photograph them and link the picture in 
 
 ### Do you want to translate the map into your language?
 
-The texts are located in the src folder in the files local.ts, map.html and README.md. Send me a pull request via [GitHub](https://github.com/ToastHawaii/priceless-map) or [contact](https://it.zottelig.ch/kontakt) me directly.
+The texts are located in the src folder in the files local.ts, index.html and README.md. Send me a pull request via [GitHub](https://github.com/ToastHawaii/priceless-map) or [contact](https://it.zottelig.ch/kontakt) me directly.
 
 ### Do you like to write?
 
@@ -177,4 +177,4 @@ OpenStreetMap project for circular economy: [WikiProject CircularEconomy](https:
 
 ---
 
-[Deutsch](/de)
+[Deutsch](/docs/de)

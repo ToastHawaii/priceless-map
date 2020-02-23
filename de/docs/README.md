@@ -2,7 +2,7 @@
 
 Erlebe die Welt. Gratis.
 
-[Hier geht es zur Karte](https://priceless.zottelig.ch/de/map.html)
+[Hier geht es zur Karte](https://priceless.zottelig.ch/de)
 
 Dies ist eine einfache Karte, welche öffentliche und kostenlose Einrichtungen und Angebote in deiner Nähe anzeigt. Die Informationen werden von [OpenStreetMap](https://www.openstreetmap.org) geladen.
 
@@ -40,7 +40,7 @@ Besuche bereits eingetragene Einrichtungen und fotografiere sie und verlinke das
 
 ### Möchtest du die Karte in deine Sprache übersetzen?
 
-Die Texte befinden sich im src Ordner in den Dateien local.ts, map.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/ToastHawaii/priceless-map) oder nimm direkt mit mir [kontakt](https://it.zottelig.ch/kontakt) auf.
+Die Texte befinden sich im src Ordner in den Dateien local.ts, index.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/ToastHawaii/priceless-map) oder nimm direkt mit mir [kontakt](https://it.zottelig.ch/kontakt) auf.
 
 ### Schreibs du gerne?
 
@@ -177,4 +177,4 @@ OpenStreetMap Projekt für Kreislaufwirtschaft: [WikiProject CircularEconomy](ht
 
 ---
 
-[English](/)
+[English](/docs)
