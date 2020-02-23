@@ -1,5 +1,5 @@
 {
-  "name": "unbezahlbar.github.io",
+  "name": "priceless-map",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/unbezahlbar/unbezahlbar.github.io"
+    "url": "git+https://github.com/ToastHawaii/priceless-map"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/unbezahlbar/unbezahlbar.github.io/issues"
+    "url": "https://github.com/ToastHawaii/priceless-map/issues"
   },
-  "homepage": "https://github.com/unbezahlbar/unbezahlbar.github.io#readme",
+  "homepage": "https://github.com/ToastHawaii/priceless-map#readme",
   "dependencies": {
     "@types/leaflet": "1.5.5",
     "@types/md5": "2.1.33",

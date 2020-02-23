@@ -40,7 +40,7 @@ Visit already registered facilities and photograph them and link the picture in 
 
 ### Do you want to translate the map into your language?
 
-The texts are located in the src folder in the files local.ts, map.html and README.md. Send me a pull request via [GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io) or [contact](https://it.zottelig.ch/kontakt) me directly.
+The texts are located in the src folder in the files local.ts, map.html and README.md. Send me a pull request via [GitHub](https://github.com/ToastHawaii/priceless-map) or [contact](https://it.zottelig.ch/kontakt) me directly.
 
 ### Do you like to write?
 
@@ -48,13 +48,13 @@ Complete the description of the facilities in the [OpenStreetMap Wiki](https://w
 
 ### Can you program?
 
-Then improve this map and send me a Pull Requests. [Click here to go to the project website of unbezahlbar](https://github.com/unbezahlbar/unbezahlbar.github.io)
+Then improve this map and send me a Pull Requests. [Click here to go to the project website of unbezahlbar](https://github.com/ToastHawaii/priceless-map)
 
 Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser)](https://wiki.openstreetmap.org/wiki/ID), [JOSM (PC)](https://wiki.openstreetmap.org/wiki/JOSM), [Vespucci (Android)](https://wiki.openstreetmap.org/wiki/Vespucci), [Go Map!!! (iOS)](https://wiki.openstreetmap.org/wiki/Go_Map!!)
 
 ### Miscellaneous
 
-- You have an idea how the map can be extended? Send me an [issue via GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io/issues/new) or a message via my [contact page](https://it.zottelig.ch/kontakt).
+- You have an idea how the map can be extended? Send me an [issue via GitHub](https://github.com/ToastHawaii/priceless-map/issues/new) or a message via my [contact page](https://it.zottelig.ch/kontakt).
 - Share this map with your friends.
 - Support [me](https://it.zottelig.ch/kontakt) with coffee and cake.
 - Enjoy your life. ;)
@@ -167,7 +167,7 @@ Yes, the code is free for use, copying and modification.
 
 The code can also be used as a basis for your own theme map.
 
-[View source code of this map on GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io)
+[View source code of this map on GitHub](https://github.com/ToastHawaii/priceless-map)
 
 ## More
 

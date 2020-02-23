@@ -40,7 +40,7 @@ Besuche bereits eingetragene Einrichtungen und fotografiere sie und verlinke das
 
 ### Möchtest du die Karte in deine Sprache übersetzen?
 
-Die Texte befinden sich im src Ordner in den Dateien local.ts, map.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io) oder nimm direkt mit mir [kontakt](https://it.zottelig.ch/kontakt) auf.
+Die Texte befinden sich im src Ordner in den Dateien local.ts, map.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/ToastHawaii/priceless-map) oder nimm direkt mit mir [kontakt](https://it.zottelig.ch/kontakt) auf.
 
 ### Schreibs du gerne?
 
@@ -48,13 +48,13 @@ Ergänze die Beschreibung der Einrichtungen im [OpenStreetMap Wiki](https://wiki
 
 ### Kannst du Programmieren?
 
-Dann erweitere diese Karte und sende mir Pull Requests. [Hier geht es zur Projekt Webseite von unbezahlbar](https://github.com/unbezahlbar/unbezahlbar.github.io)
+Dann erweitere diese Karte und sende mir Pull Requests. [Hier geht es zur Projekt Webseite von unbezahlbar](https://github.com/ToastHawaii/priceless-map)
 
 Oder erweitere die Unterstützung für die Tags und Keys in den Tools der OpenStreetMap. [iD (Browser)](https://wiki.openstreetmap.org/wiki/ID), [JOSM (PC)](https://wiki.openstreetmap.org/wiki/JOSM), [Vespucci (Android)](https://wiki.openstreetmap.org/wiki/Vespucci), [Go Map!! (iOS)](https://wiki.openstreetmap.org/wiki/Go_Map!!)
 
 ### Sonstiges
 
-- Du hast eine Idee wie die Karte erweitert werden kann? Sende mir eine [Issue über GitHub](https://github.com/unbezahlbar/unbezahlbar.github.io/issues/new) oder eine Nachricht über meine [Kontakt Seite](https://it.zottelig.ch/kontakt).
+- Du hast eine Idee wie die Karte erweitert werden kann? Sende mir eine [Issue über GitHub](https://github.com/ToastHawaii/priceless-map/issues/new) oder eine Nachricht über meine [Kontakt Seite](https://it.zottelig.ch/kontakt).
 - Rede darüber und teile die Karte mit deinen Freunden und Bekannten.
 - Unterstütze [mich](https://it.zottelig.ch/kontakt) mit Kaffee und Kuchen.
 - Geniesse das Leben. ;)
@@ -167,7 +167,7 @@ Ja, der Code steht frei zur Verwendung, Kopierung und Modifizierung.
 
 Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 
-[Quellcode dieser Karte auf GitHub anzeigen](https://github.com/unbezahlbar/unbezahlbar.github.io)
+[Quellcode dieser Karte auf GitHub anzeigen](https://github.com/ToastHawaii/priceless-map)
 
 ## Weiteres
 
