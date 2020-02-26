@@ -112,20 +112,10 @@ nwr["historic"="archaeological_site"];`,
 // Public bookcases
 ${nw(`["amenity"="public_bookcase"]`)}
 
-// Reuse facility for books
-${nw(`["reuse:books"="yes"]`)}
-${nw(`["reuse:books"="only"]`)}
-
-// Library for booksharing
-${nw(`["library"="booksharing"]`)}
-
 // Library free of charge
-${nwFee(`["amenity"="library"]`)}
-
-// Vending machine with free books 
-${nwFee(`["amenity"="vending_machine"]["vending"="books"]`)}`,
+${nwFee(`["amenity"="library"]`)}`,
     color: "#A0522D",
-    tags: ["amenity=public_bookcase", "amenity=reuse", "amenity=library"],
+    tags: ["amenity=public_bookcase", "amenity=library"],
     edit: ["amenity=public_bookcase", "amenity=library"]
   },
   {
