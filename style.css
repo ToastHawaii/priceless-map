@@ -451,3 +451,8 @@ h1 a {
   color: #333;
   text-decoration: none;
 }
+
+/* Fix details-element-polyfill */
+details:not([open]) > *:not(summary) {
+  display: none !important;
+}

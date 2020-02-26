@@ -22,3 +22,6 @@ else
       ? mergeDeep(deLocal, issuesDeLocal)
       : mergeDeep(local, issuesLocal)
   );
+
+
+import "details-element-polyfill";
