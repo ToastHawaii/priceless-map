@@ -137,6 +137,8 @@ export const local = {
     hackerspace: { name: "Hackerspace", description: "" },
     coworking: { name: "Coworking", description: "" },
     contribute: { name: "Contribute", description: "" },
+    "map": { name: "Map", description: "" },
+    "openstreetmap": { name: "OpenStreetMap", description: "" },
     internet: { name: "Internet", description: "" },
     "public-shower": { name: "Public shower", description: "" },
     pump: { name: "Pump", description: "" },

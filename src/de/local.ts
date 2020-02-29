@@ -138,6 +138,8 @@ export const local = {
     hackerspace: { name: "Offene Werkstatt", description: "" },
     coworking: { name: "Zusammenarbeit", description: "" },
     contribute: { name: "Beitragen", description: "" },
+    map: { name: "Karte", description: "" },
+    openstreetmap: { name: "OpenStreetMap", description: "" },
     internet: { name: "Internet", description: "" },
     "public-shower": { name: "Öffentliche Dusche", description: "" },
     pump: { name: "Pumpe", description: "" },

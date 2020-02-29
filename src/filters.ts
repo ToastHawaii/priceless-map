@@ -1028,6 +1028,30 @@ nwr["bbq"="yes"];`,
   },
   {
     group: "trip",
+    value: "map",
+    icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
+    query: `
+    node["information"="map"];`,
+    color: "#FFE4C4",
+    tags: ["information=map"],
+    edit: ["tourism=information"]
+  },
+  {
+    group: "trip",
+    subgroup: "map",
+    value: "openstreetmap",
+    icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
+    button: "fas fa-heart",
+    query: `
+    node["information"="map"]["map_source"~"^(OSM|OpenStreetMap)$",i];  
+  
+    node["information"="map"]["mapsource"~"^(OSM|OpenStreetMap)$",i];`,
+    color: "#9fd485",
+    tags: ["information=map"],
+    edit: ["tourism=information"]
+  },
+  {
+    group: "trip",
     value: "garden",
     icon: "/lib/maki-icons/garden-15.svg",
     query: `
