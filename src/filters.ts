@@ -1043,8 +1043,8 @@ nwr["bbq"="yes"];`,
     icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
     button: "fas fa-heart",
     query: `
-    node["information"="map"]["map_source"~"^(OSM|OpenStreetMap)$",i];  
-  
+    node["information"="map"]["map:source"~"^(OSM|OpenStreetMap)$",i];  
+    node["information"="map"]["map_source"~"^(OSM|OpenStreetMap)$",i];    
     node["information"="map"]["mapsource"~"^(OSM|OpenStreetMap)$",i];`,
     color: "#9fd485",
     tags: ["information=map"],
