@@ -913,6 +913,7 @@ nwr["attraction"="animal"];
 nwr["tourism"="aquarium"];
 
 nwr["landuse"="animal_keeping"];
+nwr["animal_keeping"];
 
 nwr["landuse"="meadow"][animal];
 nwr["landuse"="farmyard"][animal];
