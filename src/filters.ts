@@ -65,9 +65,10 @@ nwr["heritage"];`,
     icon:
       "https://wiki.openstreetmap.org/w/images/7/7d/Archaeological-site-16.svg",
     query: `
-nwr["historic"="archaeological_site"];`,
+    nwr["historic"="archaeological_site"];
+    nwr["geological"="palaeontological_site"];`,
     color: "#F4A460",
-    tags: ["historic=archaeological_site"],
+    tags: ["historic=archaeological_site", "geological=palaeontological_site"],
     edit: ["historic=archaeological_site"]
   },
   {
