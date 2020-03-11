@@ -12,6 +12,7 @@ import { getHtmlElement } from "./utilities/html";
 import { parseOpeningHours } from "./map";
 import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
+import { equalsIgnoreCase } from "./utilities/string";
 
 export function createPricelessOverPassLayer<M>(
   value: string,
@@ -48,22 +49,26 @@ export function createPricelessOverPassLayer<M>(
         if (e.id in this._ids) continue;
         if (
           e.tags.fee &&
-          e.tags.fee !== "no" &&
+          !equalsIgnoreCase(e.tags.fee, "no") &&
+          !equalsIgnoreCase(e.tags.fee, "donation") &&
+          !equalsIgnoreCase(e.tags.fee, "interval") &&
+          !equalsIgnoreCase(e.tags.fee, "free") &&
+          !equalsIgnoreCase(e.tags.fee, "none") &&
           !parseOpeningHours(e.tags.fee, local.code || "en") &&
           !e.tags["fee:conditional"]
         )
           continue;
         if (
           e.tags.access &&
-          e.tags.access !== "yes" &&
-          e.tags.access !== "permissive"
+          !equalsIgnoreCase(e.tags.access, "yes") &&
+          !equalsIgnoreCase(e.tags.access, "permissive")
         )
           continue;
         if (
-          value === "toilets" &&
+          equalsIgnoreCase(value, "toilets") &&
           e.tags["toilets:access"] &&
-          e.tags["toilets:access"] !== "yes" &&
-          e.tags["toilets:access"] !== "permissive"
+          !equalsIgnoreCase(e.tags["toilets:access"], "yes") &&
+          !equalsIgnoreCase(e.tags["toilets:access"], "permissive")
         )
           this._ids[e.id] = true;
         if (e.type === "node") {
