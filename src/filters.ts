@@ -40,10 +40,11 @@ export const filters: {
     value: "fountain",
     icon: "https://wiki.openstreetmap.org/w/images/a/a1/Fountain-14.svg",
     query: `
-nwr["amenity"="fountain"];`,
+    nwr["amenity"="fountain"];
+    nwr["playground"="splash_pad"];`,
     color: "#00FFFF",
-    tags: ["amenity=fountain"],
-    edit: ["amenity=fountain"]
+    tags: ["amenity=fountain", "playground=splash_pad"],
+    edit: ["amenity=fountain", "playground"]
   },
   {
     group: "culture",
@@ -786,8 +787,8 @@ nwr["sport"="rock_climbing"]["leisure"="sports_centre"]["fee:conditional"];
 
 nwr["playground"="climbingwall"];`,
     color: "#696969",
-    tags: ["sport=climbing", "playground=*"],
-    edit: ["natural", "landuse=recreation_ground", "leisure=playground"]
+    tags: ["sport=climbing", "playground=climbingwall"],
+    edit: ["natural", "landuse=recreation_ground", "playground"]
   },
   {
     group: "sport",
