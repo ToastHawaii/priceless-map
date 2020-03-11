@@ -812,7 +812,9 @@ nwr["playground"="horizontal_bar"];
 
 nwr["playground"="exercise"];
 
-nwr["playground"="balancebeam"];`,
+nwr["playground"="balancebeam"];
+
+nwr["playground"="slackline"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]
