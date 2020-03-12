@@ -86,10 +86,7 @@ export function createPricelessOverPassLayer<M>(
           });
         }
         const model = {
-          name:
-            e.tags["name:" + (local.code || "en")] ||
-            e.tags.name ||
-            e.tags["piste:name"],
+          name: extractName(e.tags, local.code || "en") || e.tags["piste:name"],
           type:
             local["public_bookcase:type"][e.tags["public_bookcase:type"]] ||
             local["garden:type"][e.tags["garden:type"]] ||
@@ -257,8 +254,10 @@ export function createPricelessOverPassLayer<M>(
                   lon: pos.lng
                 },
                 result => {
-                  model.address.name =
-                    result.namedetails.name || result.namedetails.official_name;
+                  model.address.name = extractName(
+                    result.namedetails,
+                    local.code || "en"
+                  );
                   model.address.postcode =
                     model.address.postcode || result.address.postcode || "";
                   model.address.locality =
@@ -280,10 +279,8 @@ export function createPricelessOverPassLayer<M>(
                       result.address.pedestrian ||
                       result.address.farmyard ||
                       result.address.construction ||
-                      result.namedetails.name ||
-                      result.namedetails.official_name ||
-                      result.address.neighbourhood ||
-                      "";
+                      extractName(result.namedetails, local.code || "en");
+                    result.address.neighbourhood || "";
                     model.address.houseNumber =
                       model.address.houseNumber ||
                       result.address.house_number ||
@@ -462,4 +459,27 @@ export function createPricelessOverPassLayer<M>(
       }
     }
   });
+
+  function extractName(tags: any, langCode: string) {
+    return (
+      tags["name:" + langCode] ||
+      tags["short_name:" + langCode] ||
+      tags["official_name:" + langCode] ||
+      tags["int_name:" + langCode] ||
+      tags["nat_name:" + langCode] ||
+      tags["reg_name:" + langCode] ||
+      tags["loc_name:" + langCode] ||
+      tags["old_name:" + langCode] ||
+      tags["alt_name:" + langCode] ||
+      tags.name ||
+      tags.short_name ||
+      tags.official_name ||
+      tags.int_name ||
+      tags.nat_name ||
+      tags.reg_name ||
+      tags.loc_name ||
+      tags.old_name ||
+      tags.alt_name
+    );
+  }
 }
