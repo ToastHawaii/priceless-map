@@ -140,7 +140,7 @@ export function createPricelessOverPassLayer<M>(
           toUrl(e.tags["url:webcam"]) ||
           "";
         model.description =
-          e.tags["description:" + (local.code || "en")] || e.tags.description;
+          e.tags[`description:${local.code || "en"}`] || e.tags.description;
         const attributesGenerator = new Generator<M>(attributes);
         const linksGenerator = new Generator(links);
         const attributDescriptionGenerator = new Generator(
@@ -462,15 +462,15 @@ export function createPricelessOverPassLayer<M>(
 
   function extractName(tags: any, langCode: string) {
     return (
-      tags["name:" + langCode] ||
-      tags["short_name:" + langCode] ||
-      tags["official_name:" + langCode] ||
-      tags["int_name:" + langCode] ||
-      tags["nat_name:" + langCode] ||
-      tags["reg_name:" + langCode] ||
-      tags["loc_name:" + langCode] ||
-      tags["old_name:" + langCode] ||
-      tags["alt_name:" + langCode] ||
+      tags[`name:${langCode}`] ||
+      tags[`short_name:${langCode}`] ||
+      tags[`official_name:${langCode}`] ||
+      tags[`int_name:${langCode}`] ||
+      tags[`nat_name:${langCode}`] ||
+      tags[`reg_name:${langCode}`] ||
+      tags[`loc_name:${langCode}`] ||
+      tags[`old_name:${langCode}`] ||
+      tags[`alt_name:${langCode}`] ||
       tags.name ||
       tags.short_name ||
       tags.official_name ||

@@ -37,7 +37,7 @@ export const links: Attribute<{ website?: string }>[] = [
     check: tags => !!(tags.email || tags["contact:email"]),
     template: (_local, tags) =>
       template(
-        "mailto:" + (tags.email || tags["contact:email"]),
+        `mailto:${tags.email || tags["contact:email"]}`,
         "far fa-envelope"
       )
   },
@@ -46,8 +46,7 @@ export const links: Attribute<{ website?: string }>[] = [
       !!(tags.phone || tags["contact:phone"] || tags["contact:mobile"]),
     template: (_local, tags) =>
       template(
-        "tel:" +
-          (tags.phone || tags["contact:phone"] || tags["contact:mobile"]),
+        `tel:${tags.phone || tags["contact:phone"] || tags["contact:mobile"]}`,
         "fas fa-mobile-alt"
       )
   }
