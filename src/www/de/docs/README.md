@@ -171,6 +171,8 @@ Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 
 ## Weiteres
 
+Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst: [SolidaryCityMap](https://solidary.city/)
+
 Haushaltsgegenstände in der Nachbarschaft teilen: [Pumpipumpe](https://www.pumpipumpe.ch/)
 
 OpenStreetMap Projekt für Kreislaufwirtschaft: [WikiProject CircularEconomy](https://wiki.openstreetmap.org/wiki/DE:WikiProject_CircularEconomy)

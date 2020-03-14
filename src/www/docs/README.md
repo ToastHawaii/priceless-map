@@ -171,6 +171,8 @@ The code can also be used as a basis for your own theme map.
 
 ## More
 
+Places where you can participate in city life without papers and / or money: [SolidaryCityMap](https://solidary.city/)
+
 Share household items in the neighborhood: [Pumpipumpe](https://www.pumpipumpe.ch/)
 
 OpenStreetMap project for circular economy: [WikiProject CircularEconomy](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy)
