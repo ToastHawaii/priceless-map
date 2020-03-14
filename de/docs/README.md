@@ -18,7 +18,7 @@ Wie Einrichtungen und Angebote dokumentiert werden sollen ist in diesem [Wiki](h
 
 ### Geht das auch ohne Registrierung?
 
-Ja klar. Auf [OpenStreetMap](https://www.openstreetmap.org) gibt es auch einen Knopf, über welchen ein Hinweis hinterlegt werden kann.
+Ja klar. Verwende den <i class="fas fa-comment-alt"></i> Notiz/Hinweis Knopf in der Ecke der Karte.
 
 ## Gibt es sonst was zu tun?
 

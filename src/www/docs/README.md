@@ -18,7 +18,7 @@ How to document a facilitie or offer is described in this [wiki](https://wiki.op
 
 ### Can I do this without registering?
 
-Yes. Use the note button in [OpenStreetMap](https://www.openstreetmap.org).
+Yes. Use the <i class="fas fa-comment-alt"></i> note button in the map corner.
 
 ## Is there anything else to do?
 
