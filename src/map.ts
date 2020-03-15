@@ -46,6 +46,12 @@ export function initMap<M>(
     return false;
   });
 
+  getHtmlElement(".about").addEventListener("click", () => {
+    window.location.href = `https://priceless.zottelig.ch${
+      local.code ? `/${local.code}` : ""
+    }/docs`;
+  });
+
   getHtmlElement(".note").addEventListener("click", () => {
     const latlng = map.getCenter();
     const zoom = map.getZoom();
@@ -80,10 +86,7 @@ export function initMap<M>(
 
   const attribution = [
     'Map data &copy; <a href="https://openstreetmap.org/">OpenStreetMap</a> contributors',
-    'POI via <a href="https://www.overpass-api.de/">Overpass API</a>',
-    `<a href="https://priceless.zottelig.ch${
-      local.code ? `/${local.code}` : ""
-    }/docs">${local.aboutThisSite}</a>`
+    'POI via <a href="https://www.overpass-api.de/">Overpass API</a>'
   ];
 
   const osm = new L.TileLayer(

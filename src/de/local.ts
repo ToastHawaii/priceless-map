@@ -2,7 +2,6 @@ export const local = {
   code: "de",
   minZoomMessageNoLayer: "Keine Ebene zugewiesen",
   minZoomMessage: "Vergrössern, um Standorte zu laden",
-  aboutThisSite: "Über diese Seite",
   capacity: "Kapazität",
   playground: "Für Kinder",
   changing_table: "Hat einen Wickeltisch",

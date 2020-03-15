@@ -2,7 +2,6 @@ export const local = {
   code: "",
   minZoomMessageNoLayer: "No layer assigned",
   minZoomMessage: "Zoom in to load locations",
-  aboutThisSite: "About this site",
   capacity: "Capacity",
   playground: "For children",
   changing_table: "Has a changing table",
