@@ -66,12 +66,20 @@ export const local = {
     trip: "Ausflug",
     goods: "Gegenstände"
   },
+  amenity: {
+    hunting_stand: "Hochsitz für Jäger"
+  },
+  leisure: {
+    bird_hide: "Versteck um Vögel zu beobachten",
+    wildlife_hide: "Versteck um Wildtiere zu beobachten"
+  },
   man_made: {
     water_well: "Brunnen",
     watermill: "Wassermühle",
     windmill: "Windmühle",
     mineshaft: "Schacht",
-    drinking_fountain: "Trinkbrunnen"
+    drinking_fountain: "Trinkbrunnen",
+    tower: "Turm"
   },
   type: {
     artwork: { name: "Strassenkunst", description: "" },
@@ -158,6 +166,7 @@ export const local = {
     "table-soccer": { name: "Tischfussball", description: "" },
     volleyball: { name: "Volleyball", description: "" },
     animal: { name: "Tiere", description: "" },
+    observation: { name: "Tiere beobachten", description: "" },
     maze: { name: "Irrgarten", description: "" },
     webcam: { name: "Webcam", description: "" },
     fireplace: { name: "Feuerstelle", description: "" },

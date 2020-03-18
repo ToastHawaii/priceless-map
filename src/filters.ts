@@ -307,10 +307,12 @@ nwr["natural"="stone"];`,
     query: `
 nwr["tourism"="viewpoint"];
 
-${nw(`["viewpoint"="yes"]`)}`,
+${nw(`["viewpoint"="yes"]`)}
+
+nwr["tower:type"="observation"]`,
     color: "#98FB98",
-    tags: ["tourism=viewpoint", "viewpoint=*"],
-    edit: ["tourism=viewpoint", "man_made", "natural"]
+    tags: ["tourism=viewpoint", "viewpoint=*", "tower:type=observation"],
+    edit: ["tourism=viewpoint", "man_made=tower", "man_made", "natural"]
   },
   {
     group: "natural",
@@ -940,6 +942,31 @@ nwr["landuse"="farmyard"][species];`,
       "landuse=animal_keeping"
     ],
     edit: ["tourism=zoo", "attraction=animal", "tourism=aquarium", "landuse"]
+  },
+  {
+    group: "trip",
+    subgroup: "animal",
+    value: "observation",
+    icon: "/lib/maki-icons/zoo-15.svg",
+    button: "fas fa-binoculars",
+    query: `
+${nw(`["amenity"="hunting_stand"]`)}
+${nw(`["leisure"="bird_hide"]`)}
+${nw(`["leisure"="wildlife_hide"]`)}
+${nw(`["observation"="wild_animal"]`)}`,
+    color: "#DAA520",
+    tags: [
+      "amenity=hunting_stand",
+      "leisure=bird_hide",
+      "leisure=wildlife_hide",
+      "observation=wild_animal"
+    ],
+    edit: [
+      "amenity=hunting_stand",
+      "leisure=bird_hide",
+      "man_made=tower",
+      "leisure"
+    ]
   },
   {
     group: "trip",

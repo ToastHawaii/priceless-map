@@ -66,12 +66,20 @@ export const local = {
     trip: "Trip",
     goods: "Goods"
   },
+  amenity: {
+    hunting_stand: "Hunting stand"
+  },
+  leisure: {
+    bird_hide: "Place to observe birds",
+    wildlife_hide: "Place to observe wildlife"
+  },
   man_made: {
     water_well: "Water well",
     watermill: "Watermill",
     windmill: "Windmill",
     mineshaft: "Mineshaft",
-    drinking_fountain: "Drinking fountain"
+    drinking_fountain: "Drinking fountain",
+    tower: "Tower"
   },
   type: {
     artwork: { name: "Artwork", description: "" },
@@ -136,8 +144,8 @@ export const local = {
     hackerspace: { name: "Hackerspace", description: "" },
     coworking: { name: "Coworking", description: "" },
     contribute: { name: "Contribute", description: "" },
-    "map": { name: "Map", description: "" },
-    "openstreetmap": { name: "OpenStreetMap", description: "" },
+    map: { name: "Map", description: "" },
+    openstreetmap: { name: "OpenStreetMap", description: "" },
     internet: { name: "Internet", description: "" },
     "public-shower": { name: "Public shower", description: "" },
     pump: { name: "Pump", description: "" },
@@ -157,6 +165,7 @@ export const local = {
     "table-soccer": { name: "Table soccer", description: "" },
     volleyball: { name: "Volleyball", description: "" },
     animal: { name: "Animal enclosure", description: "" },
+    observation: { name: "Animal observation", description: "" },
     maze: { name: "Maze", description: "" },
     webcam: { name: "Webcam", description: "" },
     fireplace: { name: "Fireplace", description: "" },
