@@ -99,6 +99,7 @@ export function createPricelessOverPassLayer<M>(
             e.tags.species ||
             e.tags["genus:" + (local.code || "en")] ||
             e.tags.genus ||
+            e.tags.protection_title ||
             local.man_made[e.tags["man_made"]] ||
             local.type[value].name,
           operator:

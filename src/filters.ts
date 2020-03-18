@@ -58,7 +58,14 @@ nwr["tourism"="yes"];
 nwr["heritage"];`,
     color: "#FFD700",
     tags: ["tourism=attraction", "tourism=*", "heritage=*"],
-    edit: ["tourism=attraction", "tourism", "historic"]
+    edit: [
+      "tourism=attraction",
+      "tourism",
+      "building",
+      "leisure=park",
+      "leisure=garden",
+      "man_made"
+    ]
   },
   {
     group: "culture",
@@ -1082,10 +1089,16 @@ nwr["leisure"="garden"]["name"];`,
     value: "nature-park",
     icon: "/lib/maki-icons/natural-15.svg",
     query: `
-nwr["leisure"="nature_reserve"];`,
+    nwr["leisure"="nature_reserve"];
+    nwr["boundary"="national_park"];
+    nwr["boundary"="protected_area"];`,
     color: "#006400",
-    tags: ["leisure=nature_reserve"],
-    edit: ["leisure=nature_reserve"]
+    tags: [
+      "leisure=nature_reserve",
+      "boundary=national_park",
+      "boundary=protected_area"
+    ],
+    edit: ["leisure=nature_reserve", "boundary"]
   },
   {
     group: "trip",
