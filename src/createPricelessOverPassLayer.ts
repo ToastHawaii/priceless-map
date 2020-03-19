@@ -38,6 +38,7 @@ export function createPricelessOverPassLayer<M>(
     },
     minZoom: 14,
     query: `(${query});out center;`,
+    timeout: 30, // Seconds
     onSuccess(data: { elements: any[] }) {
       for (let i = 0; i < data.elements.length; i++) {
         let pos: {

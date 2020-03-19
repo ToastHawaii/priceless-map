@@ -274,7 +274,7 @@ export function initMap<M>(
           (getHtmlElement(
             ".info-container .info .link"
           ) as HTMLAnchorElement).href = `http://overpass-turbo.eu/?Q=${encodeURI(
-            `[out:json][timeout:25][bbox:{{bbox}}];
+            `[out:json][timeout:30][bbox:{{bbox}}];
 (
   ${f.query.trim()}
 );

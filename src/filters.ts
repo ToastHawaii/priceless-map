@@ -717,15 +717,31 @@ nwr["leisure"="pitch"]["sport"~"basketball|multi"];`,
     value: "bath",
     icon: "https://wiki.openstreetmap.org/w/images/0/01/Public_bath.svg",
     query: `
-    nwr["sport"="swimming"][leisure!=sports_centre];
-    ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
-
 ${nwrFee(`["amenity"="public_bath"]`)}
 ${nwrFee(`["leisure"="water_park"]`)}
 
-nwr["leisure"="swimming_pool"];
+nwr["sport"="swimming"][leisure!=sports_centre];
+${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
 
-nwr["leisure"="swimming_area"];`,
+// Show only swimming pools that are not inside a bath
+(
+  (
+    nwr["leisure"="swimming_pool"];  
+    nwr["leisure"="swimming_area"];
+  );
+  -(
+    (
+      wr["amenity"="public_bath"];
+      wr["leisure"="water_park"];
+      wr["leisure"="sports_centre"];
+    );
+    map_to_area -> .b;
+    (
+      nwr(area.b)["leisure"="swimming_pool"];
+      nwr(area.b)["leisure"="swimming_area"];
+    );
+  );
+);`,
     color: "#0000CD",
     tags: [
       "sport=swimming",
@@ -922,7 +938,17 @@ nwr["leisure"="pitch"]["sport"~"volleyball"];`,
 nwr["tourism"="zoo"];
 nwr["zoo"];
 
-nwr["attraction"="animal"];
+// Show only animals that are not inside a zoo
+(
+  nwr["attraction"="animal"];
+  -(
+    wr["tourism"="zoo"];
+    map_to_area -> .z;
+    (
+      nwr(area.z)["attraction"="animal"];
+    );
+  );
+);
 
 nwr["tourism"="aquarium"];
 
