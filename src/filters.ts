@@ -920,6 +920,7 @@ nwr["leisure"="pitch"]["sport"~"volleyball"];`,
     icon: "/lib/maki-icons/zoo-15.svg",
     query: `
 nwr["tourism"="zoo"];
+nwr["zoo"];
 
 nwr["attraction"="animal"];
 
@@ -939,7 +940,8 @@ nwr["landuse"="farmyard"][species];`,
       "tourism=zoo",
       "attraction=animal",
       "tourism=aquarium",
-      "landuse=animal_keeping"
+      "landuse=animal_keeping",
+      "landuse=meadow"
     ],
     edit: ["tourism=zoo", "attraction=animal", "tourism=aquarium", "landuse"]
   },
@@ -950,23 +952,16 @@ nwr["landuse"="farmyard"][species];`,
     icon: "/lib/maki-icons/zoo-15.svg",
     button: "fas fa-binoculars",
     query: `
-${nw(`["amenity"="hunting_stand"]`)}
 ${nw(`["leisure"="bird_hide"]`)}
 ${nw(`["leisure"="wildlife_hide"]`)}
 ${nw(`["observation"="wild_animal"]`)}`,
     color: "#DAA520",
     tags: [
-      "amenity=hunting_stand",
       "leisure=bird_hide",
       "leisure=wildlife_hide",
       "observation=wild_animal"
     ],
-    edit: [
-      "amenity=hunting_stand",
-      "leisure=bird_hide",
-      "man_made=tower",
-      "leisure"
-    ]
+    edit: ["leisure=bird_hide", "man_made=tower", "leisure"]
   },
   {
     group: "trip",
