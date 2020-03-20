@@ -1,6 +1,6 @@
 function nwFee(tag: string) {
-  return `nw${tag}["fee"]
-nw${tag}["fee:conditional"]`;
+  return `nw${tag}["fee"];
+nw${tag}["fee:conditional"];`;
 }
 
 function nwrFee(tag: string) {
@@ -125,7 +125,7 @@ ${nwFee(`["amenity"="library"]`)}`,
     value: "internet",
     icon: "https://wiki.openstreetmap.org/w/images/8/89/Internet_cafe-14.svg",
     query: `
-nwr["internet_access"]["internet_access"!="no"]["internet_access:fee"!="customers"]["internet_access:fee"!="yes"];
+nwr["internet_access"]["internet_access"!="no"]["internet_access:fee"!~"^(customers|yes)$"];
 
 nwr["wifi"]["wifi"!="no"];`,
     color: "#FF1493",
@@ -168,7 +168,7 @@ nwr["man_made"="windmill"]["ruins"="no"];`,
     value: "history",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Acheological.png",
     query: `
-nwr["historic"]["historic"!="castle"]["historic"!="tower"]["historic"!="fort"]["historic"!="ruins"]["historic"!="memorial"]["historic"!="monument"]["historic"!="archaeological_site"]["building"!="bunker"]["military"!="bunker"];
+nwr["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
 
 nw["board_type"="history"];
 nw["information"="history"];`,
@@ -264,13 +264,7 @@ nw["natural"="cave_entrance"];`,
     value: "pond",
     icon: "/lib/maki-icons/water-15.svg",
     query: `
-nwr["natural"="water"]["water"="pond"];
-
-nwr["natural"="water"]["water"="lake"];
-
-nwr["natural"="water"]["water"="reservoir"];
-
-nwr["natural"="water"]["water"="reflecting_pool"];`,
+nwr["natural"="water"]["water"~"^(pond|lake|reservoir|reflecting_pool)$"];`,
     color: "#5F9EA0",
     tags: [
       "natural=water",
@@ -414,13 +408,9 @@ nwr["bbq"="yes"];`,
     icon:
       "https://wiki.openstreetmap.org/w/images/a/af/Charging_station.16.svg",
     query: `
-    (node["amenity"="charging_station"]["fee"="no"]; 
-      - node["amenity"="charging_station"]["fee"="no"][~"^authentication:.*$"~"^yes$"];);
-    node["amenity"="charging_station"]["fee"="no"]["authentication:none"="yes"];
-
-    (way["amenity"="charging_station"]["fee"="no"]; 
-      - way["amenity"="charging_station"]["fee"="no"][~"^authentication:.*$"~"^yes$"];);
-    way["amenity"="charging_station"]["fee"="no"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]; 
+      - nw["amenity"="charging_station"]["fee"="no"][~"^authentication:.*$"~"^yes$"];);
+      nw["amenity"="charging_station"]["fee"="no"]["authentication:none"="yes"];`,
     color: "#0092da",
     tags: ["amenity=charging_station"],
     edit: ["amenity=charging_station"]
@@ -813,17 +803,7 @@ nwr["playground"="climbingwall"];`,
     query: `
 nwr["leisure"="fitness_station"];
 
-nwr["leisure"="pitch"]["sport"="fitness"];
-
-nwr["leisure"="pitch"]["sport"="crossfit"];
-
-nwr["leisure"="pitch"]["sport"="exercise"];
-
-nwr["leisure"="pitch"]["sport"="gymnastics"];
-
-nwr["leisure"="pitch"]["sport"="yoga"];
-
-nwr["leisure"="pitch"]["sport"="bodybuilding"];
+nwr["leisure"="pitch"]["sport"~"fitness|crossfit|exercise|gymnastics|yoga|bodybuilding"];
 
 nwr["playground"="horizontal_bar"];
 
@@ -1673,12 +1653,9 @@ nw["amenity"="hammock"];`,
     nwr["sport"="cycling"]["leisure"="sports_centre"]["fee:conditional"];
     
     // Charge
-    (node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-    - node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];
-    (way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-      - way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
+    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
+    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=recycling",
@@ -1746,9 +1723,7 @@ nw["amenity"="hammock"];`,
     node["repair"="assisted_self_service"]["service:bicycle:repair"="yes"];
     node["repair"="assisted_self_service"]["bicycle:repair"="yes"];
 
-    nw["service:bicycle:diy"="yes"];
-    
-    `,
+    nw["service:bicycle:diy"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=bicycle_repair_station",
@@ -1809,13 +1784,9 @@ nw["amenity"="hammock"];`,
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-charging-station",
     query: `
-    (node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-    - node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    node["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];
-
-    (way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-      - way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    way["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
+    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
+    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: ["amenity=charging_station"],
     edit: ["amenity=charging_station"]
