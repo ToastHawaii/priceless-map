@@ -79,7 +79,13 @@ export const local = {
     windmill: "Windmill",
     mineshaft: "Mineshaft",
     drinking_fountain: "Drinking fountain",
-    tower: "Tower"
+    tower: "Tower",
+    beehive: "Beehive",
+    insect_hotel: "Insect hotel",
+    nesting_site: "Nesting aid"
+  },
+  landuse: {
+    apiary: "Beehive"
   },
   type: {
     artwork: { name: "Artwork", description: "" },

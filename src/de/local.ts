@@ -79,7 +79,13 @@ export const local = {
     windmill: "Windmühle",
     mineshaft: "Schacht",
     drinking_fountain: "Trinkbrunnen",
-    tower: "Turm"
+    tower: "Turm",
+    beehive: "Bienenstock",
+    insect_hotel: "Insektenhotel",
+    nesting_site: "Nisthilfe"
+  },
+  landuse: {
+    apiary: "Bienenstock"
   },
   type: {
     artwork: { name: "Strassenkunst", description: "" },

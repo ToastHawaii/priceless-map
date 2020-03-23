@@ -104,6 +104,7 @@ export function createPricelessOverPassLayer<M>(
             local.amenity[e.tags.amenity] ||
             local.leisure[e.tags.leisure] ||
             local.man_made[e.tags.man_made] ||
+            local.landuse[e.tags.landuse] ||
             local.type[value].name,
           operator:
             e.tags.operator ||

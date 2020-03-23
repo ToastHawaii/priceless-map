@@ -923,6 +923,10 @@ nwr["zoo"];
 
 nwr["tourism"="aquarium"];
 
+nw["man_made"="beehive"];
+nwr["landuse"="apiary"];
+nw["man_made"="insect_hotel"];
+
 nwr["landuse"="animal_keeping"];
 nwr["animal_keeping"];
 
@@ -937,10 +941,20 @@ nwr["landuse"="farmyard"][species];`,
       "tourism=zoo",
       "attraction=animal",
       "tourism=aquarium",
+      "man_made=beehive",
+      "landuse=apiary",
+      "man_made=insect_hotel",
       "landuse=animal_keeping",
       "landuse=meadow"
     ],
-    edit: ["tourism=zoo", "attraction=animal", "tourism=aquarium", "landuse"]
+    edit: [
+      "tourism=zoo",
+      "attraction=animal",
+      "tourism=aquarium",
+      "man_made=beehive",
+      "man_made",
+      "landuse"
+    ]
   },
   {
     group: "trip",
@@ -951,14 +965,16 @@ nwr["landuse"="farmyard"][species];`,
     query: `
 nw["leisure"="bird_hide"];
 nw["leisure"="wildlife_hide"];
-nw["observation"="wild_animal"];`,
+nw["observation"="wild_animal"];
+nw["man_made"="nesting_site"];`,
     color: "#DAA520",
     tags: [
       "leisure=bird_hide",
       "leisure=wildlife_hide",
-      "observation=wild_animal"
+      "observation=wild_animal",
+      "man_made=nesting_site"
     ],
-    edit: ["leisure=bird_hide", "man_made=tower", "leisure"]
+    edit: ["leisure=bird_hide", "man_made=tower", "leisure", "man_made"]
   },
   {
     group: "trip",
