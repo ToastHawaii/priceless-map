@@ -253,8 +253,16 @@ nw["natural"="cave_entrance"];`,
     value: "natural_monument",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
-    nwr["denotation"="natural_monument"];
-    nwr["denotation"="landmark "];`,
+    nw["denotation"="natural_monument"];
+    nw["denotation"="landmark"];
+    
+    node["natural"="tree"][religion];
+    way["natural"="tree_row"][religion];   
+    nw["denotation"="religious"];
+    
+    node["natural"="tree"]["historic"];
+    way["natural"="tree_row"]["historic"];
+    nw["denotation"="memorial"];`,
     color: "#228B22",
     tags: ["denotation=natural_monument", "denotation=landmark"],
     edit: ["natural=tree", "natural=tree_row", "natural"]
@@ -578,6 +586,7 @@ nw["drinking_water:refill"="yes"];`,
     query: `
     nw["shop"="charity"];
     nw["office"="charity"];
+    nw["club"="charity"];
     nw["charity"]["charity"!="no"];
     nw["operator:type"="charitable"];
     
