@@ -79,7 +79,7 @@ nwr["heritage"];`,
     value: "trail",
     icon: "https://wiki.openstreetmap.org/w/images/7/77/Board-14.svg",
     query: `
-    nw["information"="board"]["board_type"~"wildlife|plants|geology|nature|planet_walk|astronomy|forestry|botany|biology|birds|tree|panorama|science|technology"];
+    nw["information"="board"]["board_type"~"wildlife|plants|geology|nature|planet_walk|astronomy|forestry|botany|biology|birds|tree|panorama|agriculture|science|technology"];
     nw["information"="nature"];
     nw["information"="wild_life"];
     nw["information"="wildlife"];
@@ -1217,10 +1217,12 @@ way["highway"="pedestrian"]["area"="yes"]["name"];`,
     value: "playground",
     icon: "https://wiki.openstreetmap.org/w/images/3/31/Playground-16.svg",
     query: `
-nwr["leisure"="playground"];`,
+    nwr["leisure"="playground"];
+    nw["playground"];
+    nw[~"^playground:.*$"~".*"];`,
     color: "#32CD32",
-    tags: ["leisure=playground"],
-    edit: ["leisure=playground"]
+    tags: ["leisure=playground", "playground=*"],
+    edit: ["leisure=playground", "playground"]
   },
   {
     group: "trip",
