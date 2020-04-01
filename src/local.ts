@@ -87,6 +87,10 @@ export const local = {
   landuse: {
     apiary: "Beehive"
   },
+  natural: {
+    anthill: "Anthill",
+    termite_mound: "Termite mound"
+  },
   type: {
     artwork: { name: "Artwork", description: "" },
     fountain: { name: "Fountain", description: "" },

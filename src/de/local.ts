@@ -87,6 +87,10 @@ export const local = {
   landuse: {
     apiary: "Bienenstock"
   },
+  natural: {
+    anthill: "Ameisenhügel",
+    termite_mound: "Termitenhügel"
+  },
   type: {
     artwork: { name: "Strassenkunst", description: "" },
     fountain: { name: "Springbrunnen", description: "" },
