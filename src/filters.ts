@@ -955,26 +955,21 @@ wr["meadow"="paddock"];`,
     color: "#DAA520",
     tags: [
       "tourism=zoo",
-      "zoo=*",
       "attraction=animal",
       "tourism=aquarium",
       "man_made=beehive",
       "landuse=apiary",
       "landuse=animal_keeping",
-      "animal_keeping=*",
-      "landuse=animal_enclosure",
       "landuse=meadow",
-      "landuse=farmyard",
-      "landuse=livestock",
-      "meadow=pasture",
-      "landuse=paddock",
-      "meadow=paddock"
+      "landuse=farmyard"
     ],
     edit: [
       "tourism=zoo",
       "attraction=animal",
       "tourism=aquarium",
       "man_made=beehive",
+      "landuse=meadow",
+      "landuse=farmyard",
       "landuse"
     ]
   },
@@ -1002,7 +997,13 @@ node["natural"="termite_mound"];`,
       "natural=anthill",
       "natural=termite_mound"
     ],
-    edit: ["leisure=bird_hide", "man_made=tower", "leisure", "man_made", "natural"]
+    edit: [
+      "leisure=bird_hide",
+      "man_made=tower",
+      "leisure",
+      "man_made",
+      "natural"
+    ]
   },
   {
     group: "trip",
