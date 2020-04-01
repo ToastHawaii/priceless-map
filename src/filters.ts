@@ -977,7 +977,7 @@ wr["meadow"="paddock"];`,
     group: "trip",
     subgroup: "animal",
     value: "observation",
-    icon: "/lib/maki-icons/zoo-15.svg",
+    icon: "/lib/temaki-icons/binoculars.svg",
     button: "fas fa-binoculars",
     query: `
 nw["leisure"="bird_hide"];
