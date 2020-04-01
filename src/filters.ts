@@ -934,34 +934,47 @@ nwr["tourism"="aquarium"];
 
 nw["man_made"="beehive"];
 nwr["landuse"="apiary"];
-nw["man_made"="insect_hotel"];
 
 nwr["landuse"="animal_keeping"];
 nwr["animal_keeping"];
+way["landuse"="animal_enclosure"];
 
-nwr["landuse"="meadow"][animal];
-nwr["landuse"="farmyard"][animal];
-nwr["landuse"="meadow"][livestock];
-nwr["landuse"="farmyard"][livestock];
-nwr["landuse"="meadow"][species];
-nwr["landuse"="farmyard"][species];`,
+way["landuse"="meadow"]["animal"];
+way["landuse"="farmyard"]["animal"];
+
+way["landuse"="meadow"]["livestock"];
+way["landuse"="farmyard"]["livestock"];
+nw["landuse"="livestock"];
+wr["meadow"="pasture"];
+
+way["landuse"="meadow"]["species"];
+way["landuse"="farmyard"]["species"];
+
+way["landuse"="paddock"];
+wr["meadow"="paddock"];`,
     color: "#DAA520",
     tags: [
       "tourism=zoo",
+      "zoo=*",
       "attraction=animal",
       "tourism=aquarium",
       "man_made=beehive",
       "landuse=apiary",
-      "man_made=insect_hotel",
       "landuse=animal_keeping",
-      "landuse=meadow"
+      "animal_keeping=*",
+      "landuse=animal_enclosure",
+      "landuse=meadow",
+      "landuse=farmyard",
+      "landuse=livestock",
+      "meadow=pasture",
+      "landuse=paddock",
+      "meadow=paddock"
     ],
     edit: [
       "tourism=zoo",
       "attraction=animal",
       "tourism=aquarium",
       "man_made=beehive",
-      "man_made",
       "landuse"
     ]
   },
@@ -975,15 +988,21 @@ nwr["landuse"="farmyard"][species];`,
 nw["leisure"="bird_hide"];
 nw["leisure"="wildlife_hide"];
 nw["observation"="wild_animal"];
-nw["man_made"="nesting_site"];`,
+nw["man_made"="nesting_site"];
+nw["man_made"="insect_hotel"];
+node["natural"="anthill"];
+node["natural"="termite_mound"];`,
     color: "#DAA520",
     tags: [
       "leisure=bird_hide",
       "leisure=wildlife_hide",
       "observation=wild_animal",
-      "man_made=nesting_site"
+      "man_made=nesting_site",
+      "man_made=insect_hotel",
+      "natural=anthill",
+      "natural=termite_mound"
     ],
-    edit: ["leisure=bird_hide", "man_made=tower", "leisure", "man_made"]
+    edit: ["leisure=bird_hide", "man_made=tower", "leisure", "man_made", "natural"]
   },
   {
     group: "trip",
