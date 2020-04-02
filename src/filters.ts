@@ -812,7 +812,7 @@ nwr["playground"="climbingwall"];`,
     query: `
     nw["leisure"="pitch"]["sport"="boules"];
     nw["leisure"="pitch"]["sport"="bowls"];`,
-    color: "#FAEBD7",
+    color: "#f1c68e",
     tags: ["sport=boules", "sport=bowls"],
     edit: ["leisure=pitch"]
   },
