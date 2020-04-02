@@ -101,6 +101,8 @@ export function createPricelessOverPassLayer<M>(
             e.tags["genus:" + (local.code || "en")] ||
             e.tags.genus ||
             e.tags.protection_title ||
+            local.boules[e.tags.boules] ||
+            local.sport[e.tags.sport] ||
             local.amenity[e.tags.amenity] ||
             local.leisure[e.tags.leisure] ||
             local.man_made[e.tags.man_made] ||

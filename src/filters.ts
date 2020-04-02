@@ -807,6 +807,17 @@ nwr["playground"="climbingwall"];`,
   },
   {
     group: "sport",
+    value: "boules",
+    icon: "/lib/maki-icons/pitch-15.svg",
+    query: `
+    nw["leisure"="pitch"]["sport"="boules"];
+    nw["leisure"="pitch"]["sport"="bowls"];`,
+    color: "#FAEBD7",
+    tags: ["sport=boules", "sport=bowls"],
+    edit: ["leisure=pitch"]
+  },
+  {
+    group: "sport",
     value: "fitness",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     query: `

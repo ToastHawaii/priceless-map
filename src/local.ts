@@ -91,6 +91,14 @@ export const local = {
     anthill: "Anthill",
     termite_mound: "Termite mound"
   },
+  sport: { bowls: "Bowls", boules: "Boules" },
+  boules: {
+    petanque: "Pétanque",
+    lyonnaise: "Jeu provençal",
+    boule_de_fort: "Boule de fort",
+    pétanque: "Pétanque",
+    bocce: "Bocce"
+  },
   type: {
     artwork: { name: "Artwork", description: "" },
     fountain: { name: "Fountain", description: "" },
@@ -173,6 +181,7 @@ export const local = {
     soccer: { name: "Soccer", description: "" },
     "table-tennis": { name: "Table tennis", description: "" },
     "table-soccer": { name: "Table soccer", description: "" },
+    boules: { name: "Boules", description: "" },
     volleyball: { name: "Volleyball", description: "" },
     animal: { name: "Animal enclosure", description: "" },
     observation: { name: "Animal observation", description: "" },

@@ -91,6 +91,14 @@ export const local = {
     anthill: "Ameisenhügel",
     termite_mound: "Termitenhügel"
   },
+  sport: { bowls: "Bowls", boules: "Boule" },
+  boules: {
+    petanque: "Pétanque",
+    lyonnaise: "Jeu Provençal",
+    boule_de_fort: "Boule de fort",
+    pétanque: "Pétanque",
+    bocce: "Boccia"
+  },
   type: {
     artwork: { name: "Strassenkunst", description: "" },
     fountain: { name: "Springbrunnen", description: "" },
@@ -174,6 +182,7 @@ export const local = {
     soccer: { name: "Fussball", description: "" },
     "table-tennis": { name: "Tischtennis", description: "" },
     "table-soccer": { name: "Tischfussball", description: "" },
+    boules: { name: "Boule", description: "" },
     volleyball: { name: "Volleyball", description: "" },
     animal: { name: "Tiere", description: "" },
     observation: { name: "Tiere beobachten", description: "" },
