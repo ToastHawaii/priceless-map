@@ -709,8 +709,8 @@ nwr["leisure"="pitch"]["sport"~"basketball|multi"];`,
     query: `
 ${nwrFee(`["amenity"="public_bath"]`)}
 ${nwrFee(`["leisure"="water_park"]`)}
+nwr["leisure"="bathing_place"];
 
-nwr["sport"="swimming"][leisure!=sports_centre];
 ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
 
 // Show only swimming pools that are not inside a bath
@@ -718,6 +718,7 @@ ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
   (
     nwr["leisure"="swimming_pool"];  
     nwr["leisure"="swimming_area"];
+    nwr["sport"="swimming"][leisure!=sports_centre];
   );
   -(
     (
@@ -729,6 +730,7 @@ ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
     (
       nwr(area.b)["leisure"="swimming_pool"];
       nwr(area.b)["leisure"="swimming_area"];
+      nwr(area.b)["sport"="swimming"][leisure!=sports_centre];
     );
   );
 );`,
