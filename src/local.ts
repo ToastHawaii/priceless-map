@@ -46,13 +46,13 @@ export const local = {
   conditionalFee: "Only free at certain times.",
   route: "Route",
   difficulty: "Difficulty",
-  floor: function(level: number) {
+  floor: function (level: number) {
     return `(${level}F)`;
   },
-  groundFloor: function(_level: number) {
+  groundFloor: function (_level: number) {
     return `(GF)`;
   },
-  basement: function(level: number) {
+  basement: function (level: number) {
     return `(B${Math.abs(level)}F)`;
   },
   group: {
@@ -131,7 +131,6 @@ export const local = {
     "bicycle-rental": { name: "Bicycle rental", description: "" },
     "bicycle-self-repair": { name: "Bicycle self repair", description: "" },
     "charging-station": { name: "Charging station", description: "" },
-    clock: { name: "Clock", description: "" },
     piano: { name: "Piano", description: "" },
     advertising: {
       name: "Advertising space",
@@ -149,10 +148,6 @@ export const local = {
       name: "Food sharing",
       description:
         "At this place you can bring and take food. The conditions for bring and take food are very different, you can inform yourself about it on the website of the operator or on site."
-    },
-    counselling: {
-      name: "Counselling",
-      description: ""
     },
     "goods-exchange": {
       name: "Goods exchange",

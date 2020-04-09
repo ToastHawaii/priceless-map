@@ -46,13 +46,13 @@ export const local = {
   conditionalFee: "Nur zu bestimmten Zeiten kostenlos.",
   route: "Routen",
   difficulty: "Schwierigkeitsgrad",
-  floor: function(level: number) {
+  floor: function (level: number) {
     return `(${level}. OG)`;
   },
-  groundFloor: function(_level: number) {
+  groundFloor: function (_level: number) {
     return `(EG)`;
   },
-  basement: function(level: number) {
+  basement: function (level: number) {
     return `(${Math.abs(level)}. UG)`;
   },
   group: {
@@ -131,7 +131,6 @@ export const local = {
     "bicycle-rental": { name: "Velo Verleih", description: "" },
     "bicycle-self-repair": { name: "Velo Selbstreparatur", description: "" },
     "charging-station": { name: "Ladestation", description: "" },
-    clock: { name: "Uhr", description: "" },
     piano: { name: "Klavier", description: "" },
     advertising: {
       name: "Werbefläche",
@@ -150,10 +149,6 @@ export const local = {
       name: "Lebensmittel teilen",
       description:
         "An diesem Ort kannst du Lebensmittel abgeben und holen. Die Bedienungen für das abgeben und holen sind sehr unterschiedlich, über die Webseite des Betreibers oder vor Ort kannst du dich darüber informieren."
-    },
-    counselling: {
-      name: "Beratung",
-      description: ""
     },
     "goods-exchange": {
       name: "Waren Tausch",

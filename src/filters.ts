@@ -46,7 +46,7 @@ export const filters: {
     value: "tourist-attraction",
     icon: "/lib/maki-icons/attraction-15.svg",
     query: `
-nwr["tourism"="attraction"]["attraction"!="animal"];
+nwr["tourism"="attraction"]["attraction"!="animal"]["attraction"!="maze"];
 
 nwr["tourism"="yes"];
 
@@ -331,10 +331,20 @@ nwr["waterway"="weir"];`,
     query: `
     nwr["social_facility"="outreach"];
 
-    nwr["amenity"="social_centre"];`,
+    nwr["amenity"="social_centre"];
+
+    ${nwFee(`["healthcare"="counselling"]`)}`,
     color: "#DC143C",
-    tags: ["social_facility=outreach", "amenity=social_centre"],
-    edit: ["amenity=social_facility", "amenity=social_centre"]
+    tags: [
+      "social_facility=outreach",
+      "amenity=social_centre",
+      "healthcare=counselling"
+    ],
+    edit: [
+      "amenity=social_facility",
+      "amenity=social_centre",
+      "healthcare=counselling"
+    ]
   },
   {
     group: "community",
@@ -424,24 +434,12 @@ nwr["bbq"="yes"];`,
     edit: ["amenity=charging_station"]
   },
   {
-    group: "object_of_utility",
-    value: "clock",
-    icon: "/lib/temaki-icons/clock.svg",
-    query: `
-nwr["amenity"="clock"];`,
-    color: "#FF0000",
-    tags: ["amenity=clock"],
-    edit: ["amenity=clock"]
-  },
-  {
     group: "community",
     value: "community-centre",
     icon:
       "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
     query: `
-nwr["amenity"="community_centre"];
-
-`,
+nwr["amenity"="community_centre"];`,
     color: "#da532c",
     tags: ["amenity=community_centre"],
     edit: ["amenity=community_centre"]
@@ -524,26 +522,17 @@ nw["drinking_water:refill"="yes"];`,
     edit: ["amenity=social_facility"]
   },
   {
-    group: "health",
-    value: "counselling",
-    icon: "https://wiki.openstreetmap.org/w/images/7/71/Doctors-14.svg",
-    query: `
-    ${nwFee(`["healthcare"="counselling"]`)}`,
-    color: "#BF0000",
-    tags: ["healthcare=counselling"],
-    edit: ["healthcare=counselling"]
-  },
-  {
     group: "object_of_utility",
     value: "goods-exchange",
     icon: "/lib/maki-icons/gift-15.svg",
-    query: `
-    // Reuse (Preferred tag)
-    nw["amenity"="reuse"]["reuse:books"!="only"];
-    
-    // Givebox
+    query: `    
+    // Givebox (Preferred tag)
     nw["amenity"="give_box"];
+
     nw["amenity"="givebox"];
+
+    // Reuse
+    nw["amenity"="reuse"]["reuse:books"!="only"];
     
     // Give-away shop
     nw["shop"="charity"]["payment:none"="yes"];
