@@ -385,6 +385,10 @@ button i {
   display: none;
 }
 
+.external {
+  display: block;
+}
+
 #filters.right-collapsed a {
   display: none;
 }

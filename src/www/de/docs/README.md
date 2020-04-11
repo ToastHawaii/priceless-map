@@ -89,18 +89,6 @@ Besuche Orte, welche Sachspenden entgegennehmen und trage diese ein. [Velafrica]
 
 Wie Orte, welche Sachspenden entgegennehmen dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Drecycling) beschrieben.
 
-#### Unterstützung
-
-Besuche Nachbarschaftshilfen und trage diese ein. [Nachbarschaftshilfe](https://www.nachbarschaftshilfe.ch/standorte)
-
-Wie Angebote für Nachbarschaftshilfe dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Doutreach) beschrieben.
-
-#### Offene Werkstatt
-
-Besuche Offene Werkstätten und trage diese ein. [Verbund Offener Werkstätten](https://www.offene-werkstaetten.org/werkstatt-suche), [hackerspaces](https://wiki.hackerspaces.org/List_of_hackerspaces)
-
-Wie eine offene Werkstatt dokumentiert werden soll ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace) beschrieben.
-
 #### Velo Reparatur
 
 Besuche Fahrradselbsthilfewerkstätten und trage diese ein. [Bikekitchen](http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en), [Fahrradselbsthilfewerkstätten in Berlin](https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin)
@@ -132,24 +120,6 @@ Umsonstläden: [Alles Und Umsonst](https://alles-und-umsonst.de/umsonstladen), [
 
 Wie ein Givebox dokumentiert werden kann ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy) beschrieben.
 Wie ein Umsonstladen dokumentiert werden kann ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Proposed_features/TransforMap) beschrieben.
-
-#### Klettern
-
-Besuche Kletter Standorte und trage diese ein. [the crag](https://www.thecrag.com/climbing/world/maps)
-
-Wie ein Kletter Standort dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:sport%3Dclimbing) beschrieben.
-
-#### Fitness
-
-Besuche Fitnessstationen und trage diese ein. [Street Workout](https://www.street-workout.com/), [Playparc](https://www.playparc.de/marken/4fcircle/)
-
-Wie eine Fitnessstation dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:leisure%3Dfitness_station) beschrieben.
-
-#### Vitaparcours
-
-Besuche Vitaparcours und trage diese ein. [Zurich vitaparcours](https://www.zurichvitaparcours.ch/de/Finder), [Trimm-Dich-Pfade](https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe)
-
-Wie ein Vitaparcour dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:route%3Dfitness_trail) beschrieben.
 
 #### Diverse
 

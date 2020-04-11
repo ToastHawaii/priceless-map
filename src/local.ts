@@ -46,6 +46,7 @@ export const local = {
   conditionalFee: "Only free at certain times.",
   route: "Route",
   difficulty: "Difficulty",
+  externalResources: "External",
   floor: function (level: number) {
     return `(${level}F)`;
   },
@@ -120,7 +121,16 @@ export const local = {
     rock: { name: "Rock", description: "" },
     viewpoint: { name: "Viewpoint", description: "" },
     waterfall: { name: "Waterfall", description: "" },
-    assistance: { name: "Assistance", description: "" },
+    assistance: {
+      name: "Assistance",
+      description: "",
+      externalResources: [
+        {
+          name: "Nachbarschaftshilfe",
+          url: "https://www.nachbarschaftshilfe.ch/standorte"
+        }
+      ]
+    },
     "assisted-repair": {
       name: "Assisted repair",
       description:
@@ -154,7 +164,20 @@ export const local = {
       description:
         "Here you will find a table, a shelf or a shop to bring and take items. Well-known facilities are give-away shops and giveboxes."
     },
-    hackerspace: { name: "Hackerspace", description: "" },
+    hackerspace: {
+      name: "Hackerspace",
+      description: "",
+      externalResources: [
+        {
+          name: "Verbund Offener Werkstätten",
+          url: "https://www.offene-werkstaetten.org/werkstatt-suche"
+        },
+        {
+          name: "hackerspaces",
+          url: "https://wiki.hackerspaces.org/List_of_hackerspaces"
+        }
+      ]
+    },
     coworking: { name: "Coworking", description: "" },
     contribute: { name: "Contribute", description: "" },
     map: { name: "Map", description: "" },
@@ -168,9 +191,45 @@ export const local = {
     bikepark: { name: "Bikepark", description: "" },
     skatepark: { name: "Skatepark", description: "" },
     chess: { name: "Street chess", description: "" },
-    climbing: { name: "Climbing", description: "" },
-    fitness: { name: "Fitness", description: "" },
-    "fitness-trail": { name: "Fitness trail", description: "" },
+    climbing: {
+      name: "Climbing",
+      description: "",
+      externalResources: [
+        {
+          name: "the crag",
+          url: "https://www.thecrag.com/climbing/world/maps"
+        }
+      ]
+    },
+    fitness: {
+      name: "Fitness",
+      description: "",
+      externalResources: [
+        {
+          name: "Street Workout",
+          url: "https://www.street-workout.com/"
+        },
+        {
+          name: "Playparc",
+          url: "https://www.playparc.de/marken/4fcircle/"
+        }
+      ]
+    },
+    "fitness-trail": {
+      name: "Fitness trail",
+      description: "",
+      externalResources: [
+        {
+          name: "Zurich vitaparcours",
+          url: "https://www.zurichvitaparcours.ch/de/Finder"
+        },
+        {
+          name: "Trimm-Dich-Pfade",
+          url:
+            "https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe"
+        }
+      ]
+    },
     sledding: { name: "Sledding", description: "" },
     running: { name: "Running", description: "" },
     soccer: { name: "Soccer", description: "" },

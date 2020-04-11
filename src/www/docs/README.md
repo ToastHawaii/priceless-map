@@ -89,18 +89,6 @@ Visit in-kind donation places and register them. [Velafrica](http://velafrica.ch
 
 How a in-kind donation place should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Drecycling).
 
-#### Assistance
-
-Visit communal work and register them. [Nachbarschaftshilfe](https://www.nachbarschaftshilfe.ch/standorte)
-
-How a place for communal work should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Doutreach).
-
-#### Hackerspace
-
-Visit hackerspaces and register them. [Verbund Offener Werkstätten](https://www.offene-werkstaetten.org/werkstatt-suche), [hackerspaces](https://wiki.hackerspaces.org/List_of_hackerspaces)
-
-How a hackerspace should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace).
-
 #### Bicycle repair
 
 Visit Bicycle self service workshops and register them. [Bikekitchen](http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en), [Fahrradselbsthilfewerkstätten in Berlin](https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin)
@@ -132,24 +120,6 @@ Free shops: [Alles Und Umsonst](https://alles-und-umsonst.de/umsonstladen), [rad
 
 How a givebox can be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy).
 How a give-away shop can be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Proposed_features/TransforMap).
-
-#### Climbing
-
-Visit places for climbing and register them. [the crag](https://www.thecrag.com/climbing/world/maps)
-
-How a place for climbing should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:sport%3Dclimbing).
-
-#### Fitness
-
-Visit fitness stations and register them. [Street Workout](https://www.street-workout.com/), [Playparc](https://www.playparc.de/marken/4fcircle/)
-
-How a fitness station should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dfitness_station).
-
-#### Fitness trail
-
-Visit fitness trails and register them. [Zurich vitaparcours](https://www.zurichvitaparcours.ch/de/Finder), [Trimm-Dich-Pfade](https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe)
-
-How a fitness trail should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:route%3Dfitness_trail).
 
 #### Diverse
 

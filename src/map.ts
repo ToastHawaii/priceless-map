@@ -33,7 +33,7 @@ export function initMap<M>(
   attributes: Attribute<M>[],
   local: any
 ) {
-  getHtmlElement(".search").addEventListener("submit", ev => {
+  getHtmlElement(".search").addEventListener("submit", (ev) => {
     ev.preventDefault();
     search();
     return false;
@@ -64,14 +64,14 @@ export function initMap<M>(
     const zoom = map.getZoom();
 
     let presets = "";
-    document.querySelectorAll(`#filters input`).forEach(e => {
+    document.querySelectorAll(`#filters input`).forEach((e) => {
       if ((e as HTMLInputElement).checked) {
         const p = filterOptions
           .filter(
-            o => `${o.group}/${o.value}` === (e as HTMLInputElement).value
+            (o) => `${o.group}/${o.value}` === (e as HTMLInputElement).value
           )
-          .map(o => o.edit.map(t => t.replace(/=/gi, "/")).join(","))
-          .filter(o => o)
+          .map((o) => o.edit.map((t) => t.replace(/=/gi, "/")).join(","))
+          .filter((o) => o)
           .join(",");
         presets += (presets && p ? "," : "") + p;
       }
@@ -154,7 +154,7 @@ export function initMap<M>(
         q: value,
         limit: 1
       },
-      r => {
+      (r) => {
         const result = r[0];
         if (!result) return;
         map.flyToBounds([
@@ -211,7 +211,7 @@ export function initMap<M>(
     map.locate({ setView: false, maxZoom: 16 });
   } else map.locate({ setView: true, maxZoom: 16 });
 
-  map.on("popupopen", function(e) {
+  map.on("popupopen", function (e) {
     const marker = (e as L.PopupEvent & { popup: { _source: L.Marker } }).popup
       ._source;
     const latLng = marker.getLatLng();
@@ -331,10 +331,10 @@ out center;`
                   origin: "*",
                   sites: "wiki",
                   titles: [tags.join("|"), keys.join("|")]
-                    .filter(t => t)
+                    .filter((t) => t)
                     .join("|")
                 },
-                r => {
+                (r) => {
                   if (r && r.error) return;
 
                   let description = "";
@@ -361,6 +361,25 @@ out center;`
               );
             }
           }
+
+          getHtmlElement(".info-container .info .external").innerText = "";
+
+          if (
+            local.type[f.value].externalResources &&
+            local.type[f.value].externalResources.length > 0
+          ) {
+            const links = [];
+            for (const external of local.type[f.value].externalResources) {
+              links.push(
+                `<a href="${external.url}" target="_blank">${external.name}</a>`
+              );
+            }
+
+            getHtmlElement(".info-container .info .external").innerHTML = `${
+              local.externalResources
+            }: ${links.join(", ")}`;
+          }
+
           return false;
         });
         detailsElement.appendChild(aElement);
@@ -392,7 +411,7 @@ out center;`
       }
       getHtmlElement("input", contentElement).addEventListener(
         "change",
-        function() {
+        function () {
           if (this.checked) {
             offers.push(k + "/" + f.value);
             init(f.value, f.icon, f.query, attributes, local, f.color);
