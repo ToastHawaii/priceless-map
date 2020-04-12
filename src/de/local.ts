@@ -369,6 +369,7 @@ export const local = {
     },
     "toys-give": { name: "Spielzeug (Geben)", description: "" },
     "toys-take": { name: "Spielzeug (Bekommen)", description: "" },
+    "toys-rent": { name: "Spielzeug (Ausleihen)", description: "" },
     "toys-repair": { name: "Spielzeug (Reparieren)", description: "" },
     electronics: {
       name: "Elektrogerät",

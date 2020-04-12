@@ -546,7 +546,7 @@ nw["drinking_water:refill"="yes"];`,
     nw["shop"]["second_hand"="yes"]["fee"="no"];
     
     // Toy library free of charge
-    ["amenity"="toy_library"]["fee"="no"];`,
+    nw["amenity"="toy_library"]["fee"="no"];`,
     color: "#8A2BE2",
     tags: [
       "amenity=give_box",
@@ -1302,7 +1302,7 @@ nw["amenity"="hammock"];`,
       "social_facility=clothing_bank",
       "amenity=give_box"
     ],
-    edit: ["amenity=recycling", "amenity=social_facility","amenity"]
+    edit: ["amenity=recycling", "amenity=social_facility", "amenity"]
   },
   {
     group: "goods",
@@ -1467,6 +1467,9 @@ nw["amenity"="hammock"];`,
 
     // Give & take
     nw["amenity"="give_box"];
+
+    // Rent
+    nw["amenity"="toy_library"]["fee"="no"];
     
     // Repair
     node["repair"="assisted_self_service"]["service:toy:repair"="yes"];
@@ -1475,10 +1478,11 @@ nw["amenity"="hammock"];`,
     tags: [
       "amenity=recycling",
       "amenity=give_box",
+      "amenity=toy_library",
       "repair=assisted_self_service",
       "repair=*"
     ],
-    edit: ["amenity=recycling", "amenity"]
+    edit: ["amenity=recycling", "amenity=toy_library", "amenity"]
   },
   {
     group: "goods",
@@ -1505,6 +1509,18 @@ nw["amenity"="hammock"];`,
     color: "#800000",
     tags: ["amenity=give_box"],
     edit: ["amenity"]
+  },
+  {
+    group: "goods",
+    subgroup: "toys",
+    value: "toys-rent",
+    icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
+    button: "fas fa-redo-alt",
+    query: `
+    nw["amenity"="toy_library"]["fee"="no"];`,
+    color: "#800000",
+    tags: ["amenity=toy_library"],
+    edit: ["amenity=toy_library"]
   },
   {
     group: "goods",
