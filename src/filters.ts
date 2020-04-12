@@ -1266,7 +1266,7 @@ nw["amenity"="hammock"];`,
     // Give
     nw["recycling:clothes"="yes"];
 
-    // Give & take
+    // Give and take
     nw["social_facility"="clothing_bank"];
     nw["amenity"="give_box"]["clothes"!="no"];
 
@@ -1341,7 +1341,7 @@ nw["amenity"="hammock"];`,
     // Give
     nw["recycling:mobile_phones"="yes"];
 
-    // Give & take
+    // Give and take
     nw["amenity"="give_box"]["electronics"!="no"];
     
     // Repair
@@ -1403,7 +1403,7 @@ nw["amenity"="hammock"];`,
     // Give
     nw["recycling:computers"="yes"];
 
-    // Give & take
+    // Give and take
     nw["amenity"="give_box"]["electronics"!="no"];
     
     // Repair
@@ -1465,7 +1465,7 @@ nw["amenity"="hammock"];`,
     // Give
     nw["recycling:toys"="yes"];
 
-    // Give & take
+    // Give and take
     nw["amenity"="give_box"];
 
     // Rent
@@ -1510,18 +1510,18 @@ nw["amenity"="hammock"];`,
     tags: ["amenity=give_box"],
     edit: ["amenity"]
   },
-  {
-    group: "goods",
-    subgroup: "toys",
-    value: "toys-rent",
-    icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
-    button: "fas fa-redo-alt",
-    query: `
-    nw["amenity"="toy_library"]["fee"="no"];`,
-    color: "#800000",
-    tags: ["amenity=toy_library"],
-    edit: ["amenity=toy_library"]
-  },
+  // {
+  //   group: "goods",
+  //   subgroup: "toys",
+  //   value: "toys-rent",
+  //   icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
+  //   button: "fas fa-redo-alt",
+  //   query: `
+  //   nw["amenity"="toy_library"]["fee"="no"];`,
+  //   color: "#800000",
+  //   tags: ["amenity=toy_library"],
+  //   edit: ["amenity=toy_library"]
+  // },
   {
     group: "goods",
     subgroup: "toys",
@@ -1548,7 +1548,7 @@ nw["amenity"="hammock"];`,
     nw["recycling:electronic"="yes"];
     nw["recycling:electronics"="yes"];
 
-    // Give & take
+    // Give and take
     nw["amenity"="give_box"]["electronics"!="no"];
   
     // Repair
@@ -1619,7 +1619,7 @@ nw["amenity"="hammock"];`,
     // Give
     nw["recycling:furniture"="yes"];
 
-    // Give & take
+    // Give and take
     nw["amenity"="give_box"];
     
     // Repair
