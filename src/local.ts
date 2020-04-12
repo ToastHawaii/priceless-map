@@ -129,9 +129,9 @@ export const local = {
           url: "https://littlefreelibrary.org/ourmap/"
         },
         {
-          name: "Liste öffentlicher Bücherschränke in der Schweiz",
+          name: "Liste öffentlicher Bücherschränke",
           url:
-            "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz"
+            "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke"
         },
         {
           name: "Tauschgnom",
@@ -434,7 +434,29 @@ export const local = {
     },
     observation: { name: "Animal observation", description: "" },
     maze: { name: "Maze", description: "" },
-    webcam: { name: "Webcam", description: "" },
+    webcam: {
+      name: "Webcam",
+      description: "",
+      externalResources: [
+        {
+          name: "roundshot",
+          url:
+            "https://www.roundshot.com/xml_1/internet/en/application/d170/f172.cfm"
+        },
+        {
+          name: "Windy",
+          url: "https://www.windy.com/en/-Webcams/webcams"
+        },
+        {
+          name: "Skyline Webcams",
+          url: "https://www.skylinewebcams.com/en/webcam.html"
+        },
+        {
+          name: "Wetter.com",
+          url: "https://www.wetter.com/hd-live-webcams/"
+        }
+      ]
+    },
     fireplace: { name: "Fireplace", description: "" },
     garden: { name: "Garden", description: "" },
     "garden-with-name": { name: "Garden (With name)", description: "" },
