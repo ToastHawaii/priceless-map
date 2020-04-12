@@ -63,25 +63,13 @@ Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser
 
 There are many websites for free facilities and offers. Find something you like and worth to support and add them to [OpenStreetMap](https://www.openstreetmap.org).
 
-#### Animals
-
-Visit zoos, aviary or wildlife park and register them. [Zoo-Infos.org](http://ch.zoo-infos.org/set.html?karte.php)
-
-How a zoos, aviary or wildlife should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/DE:Key:zoo).
-
 #### Book exchange
 
 Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
-Other Sources: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke), [Zero Waste Map](https://zerowastemap.org/)
+Other Sources: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke)
 
 How a public bookcases should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpublic_bookcase).
-
-#### Assisted repair
-
-Visit Repair Café's and other Repair Initiatives and register them. [Repair Café Schweiz](https://repair-cafe.ch/de/events), [Repair Café Weltweit](https://repaircafe.org/de/besuchen/), [Reparatur-Initiativen](https://www.reparatur-initiativen.de/orte), [Zero Waste Map](https://zerowastemap.org/)
-
-How a place for assisted repair should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service).
 
 #### Bicycle repair
 
@@ -91,29 +79,13 @@ Depending on how the self-help workshop is organized, it can be documented as a 
 
 #### Food sharing
 
-Visit places for food sharing and register them. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/en/towns/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/), [Zero Waste Map](https://zerowastemap.org/de/)
+Visit places for food sharing and register them. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/en/towns/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/)
 
 How a placs for food sharing should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Dfood_bank).
 
 The websites [Café Surprise](https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/), [Suspended Coffee Germany](https://suspendedcoffee.de/shops/karte/) and [Suspended Coffee](https://suspendedcoffees.com/cafes/) show restaurants and coffees where coffee can be bought or consumed for free.
 
 These could be documented as [public food distribution](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Dsoup_kitchen).
-
-#### Eatable fruits, berries and herbs (Not displayed at the moment)
-
-The website [mundraub](https://mundraub.org/map) shows eatable fruits, berries and herbs to pick by yourself.
-
-These could be documented as [trees](https://wiki.openstreetmap.org/wiki/Tag:natural%3Dtree) and [shrubs](https://wiki.openstreetmap.org/wiki/Tag:natural%3Dshrub) with access=public in OpenStreetMap. Using the [Genus-](https://wiki.openstreetmap.org/wiki/Key:genus) or [Species](https://wiki.openstreetmap.org/wiki/Key:species), eatable fruits, berries and herbs could be displayed on the priceless map.
-
-In OSM at the moment there are few eatable fruits, berries or herbs registered, why this offer is not shown in the priceless map.
-
-#### Goods exchange
-
-Visit giveboxes and give-away shop and register them. [List of Giveboxes from different sources](https://umap.openstreetmap.fr/de/map/give_box_406244),
-Free shops: [Alles Und Umsonst](https://alles-und-umsonst.de/umsonstladen), [radar.squat.net](https://radar.squat.net/en/groups/category/free-shop-market)
-
-How a givebox can be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy).
-How a give-away shop can be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Proposed_features/TransforMap).
 
 #### Diverse
 
@@ -123,7 +95,6 @@ Facilities, events and offers: [Zürich unbezahlbar](https://www.zuerichunbezahl
 
 Various equipment e.g. pumps, sports fields, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
 
-Bookcases, giveboxes, foodsharing, repair cafés and give away shops: [Zero Waste Map](https://zerowastemap.org/)
 
 ## I have a website, can I use this map?
 
@@ -136,8 +107,6 @@ The code can also be used as a basis for your own theme map.
 ## More
 
 Places where you can participate in city life without papers and / or money: [SolidaryCityMap](https://solidary.city/)
-
-OpenStreetMap project for circular economy: [WikiProject CircularEconomy](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy)
 
 ---
 

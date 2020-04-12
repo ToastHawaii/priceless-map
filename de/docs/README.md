@@ -63,25 +63,13 @@ Oder erweitere die Unterstützung für die Tags und Keys in den Tools der OpenSt
 
 Es gibt viele Webseiten für kostenlose Einrichtungen und Angebote. Finde etwas was du magst und unterstützenswert findest und trage die Standorte dazu in [OpenStreetMap](https://www.openstreetmap.org) ein.
 
-#### Tiere
-
-Besuche Zoos, Volièren oder Wildparks und trage diese ein. [Zoo-Infos.org](http://ch.zoo-infos.org/set.html?karte.php)
-
-Wie Zoos, Volièren oder Wildparks dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Key:zoo) beschrieben.
-
 #### Bücher Tausch
 
 Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
-Andere Quellen: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke), [Zero Waste Map](https://zerowastemap.org/de/)
+Andere Quellen: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke)
 
 Wie öffentliche Bücherschränke dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Dpublic_bookcase) beschrieben.
-
-#### Begleitete Reparatur
-
-Besuche Repair Cafés und andere Reparatur Initiativen und trage diese ein. [Repair Café Schweiz](https://repair-cafe.ch/de/events), [Repair Café Weltweit](https://repaircafe.org/de/besuchen/), [Reparatur-Initiativen](https://www.reparatur-initiativen.de/orte), [Zero Waste Map](https://zerowastemap.org/de/)
-
-Wie Angebote für begleitete Reparatur dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service) beschrieben.
 
 #### Velo Reparatur
 
@@ -91,29 +79,13 @@ Je nachdem wie die Selbshilfewerkstätte organisiert ist kann sie als [Fahrradre
 
 #### Lebensmittel teilen
 
-Besuche öffentliche Kühlschränke und trage diese ein. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/de/standorte/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/), [Zero Waste Map](https://zerowastemap.org/de/)
+Besuche öffentliche Kühlschränke und trage diese ein. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/de/standorte/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/)
 
 Wie Angebote zum Lebensmittel teilen dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:social_facility%3Dfood_bank) beschrieben.
 
 Die Webseiten [Café Surprise](https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/), [Suspended Coffee Germany](https://suspendedcoffee.de/shops/karte/) und [Suspended Coffee](https://suspendedcoffees.com/cafes/) zeigen Restaurant und Kaffees, bei welchen ein Kaffee für jemanden spendiert oder kostenlos konsumiert werden kann.
 
 Diese könnten als [öffentliche Essensausgabe](https://wiki.openstreetmap.org/wiki/DE:Tag:social_facility%3Dsoup_kitchen) dokumentiert werden.
-
-#### Essbare Früchte, Beeren und Kräuter (Wird im Moment nicht angezeigt)
-
-Die Webseite [mundraub](https://mundraub.org/map) zeigt Orte, an welchen essbare Früchte, Beeren und Kräuter zum selber pflücken wachsen.
-
-Diese könnten als [Bäume](https://wiki.openstreetmap.org/wiki/DE:Tag:natural%3Dtree) und [Sträucher](https://wiki.openstreetmap.org/wiki/DE:Tag:natural%3Dshrub) mit access=public in OpenStreetMap dokumentiert werden. Über die [Gattung-](https://wiki.openstreetmap.org/wiki/DE:Key:genus) oder [Artenbezeichnung](https://wiki.openstreetmap.org/wiki/DE:Key:species) könnten essbare Früchte, Beeren und Kräuter in der Unbezahlbar Karte angezeigt werden.
-
-In OSM sind in Moment wenige essbaren Früchte, Beeren oder Kräuter eingetragen, weshalb in der Unbezahlbar Karte dieses Angebot nicht angezeigt wird.
-
-#### Waren Tausch
-
-Besuche Giveboxen und Umsonstläden und trage diese ein. [Liste von Givebox-Standorten aus verschiedenen Quellen](https://umap.openstreetmap.fr/de/map/give_box_406244)
-Umsonstläden: [Alles Und Umsonst](https://alles-und-umsonst.de/umsonstladen), [radar.squat.net](https://radar.squat.net/en/groups/category/free-shop-market)
-
-Wie ein Givebox dokumentiert werden kann ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/WikiProject_CircularEconomy) beschrieben.
-Wie ein Umsonstladen dokumentiert werden kann ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Proposed_features/TransforMap) beschrieben.
 
 #### Diverse
 
@@ -122,8 +94,6 @@ Die Webseite wurde inspiriert von [Zürich unbezahlbar](https://www.zuerichunbez
 Einrichtungen, Events und Angebote: [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/)
 
 Diverse Einrichtungen z.B. Pumpen, Sportplätze, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
-
-Bücherschränke, Giveboxe, Fairteiler, Repair Cafés und Umsonstläden: [Zero Waste Map](https://zerowastemap.org/de/)
 
 ## Ich habe eine Webseite, kann ich diese Karte einbauen?
 
@@ -136,8 +106,6 @@ Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 ## Weiteres
 
 Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst: [SolidaryCityMap](https://solidary.city/)
-
-OpenStreetMap Projekt für Kreislaufwirtschaft: [WikiProject CircularEconomy](https://wiki.openstreetmap.org/wiki/DE:WikiProject_CircularEconomy)
 
 ---
 

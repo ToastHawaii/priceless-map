@@ -113,6 +113,10 @@ export const local = {
         {
           name: "Pumpipumpe",
           url: "https://map.pumpipumpe.ch/"
+        },
+        {
+          name: "Zero Waste Map",
+          url: "https://zerowastemap.org/"
         }
       ]
     },
@@ -143,7 +147,25 @@ export const local = {
     "assisted-repair": {
       name: "Assisted repair",
       description:
-        "Here you can repair broken things together with professionals. You'll meet new people and usually you'll also get coffee and cake. Well-known events are repair cafés."
+        "Here you can repair broken things together with professionals. You'll meet new people and usually you'll also get coffee and cake. Well-known events are repair cafés.",
+      externalResources: [
+        {
+          name: "Repair Café Worldwide",
+          url: "https://repaircafe.org/en/visit/"
+        },
+        {
+          name: "Repair Café Switzerland",
+          url: "https://repair-cafe.ch/de/events"
+        },
+        {
+          name: "Reparatur-Initiativen",
+          url: "https://www.reparatur-initiativen.de/orte"
+        },
+        {
+          name: "Zero Waste Map",
+          url: "https://zerowastemap.org/"
+        }
+      ]
     },
     barbecue: {
       name: "Barbecue",
@@ -193,7 +215,17 @@ export const local = {
     "food-sharing": {
       name: "Food sharing",
       description:
-        "At this place you can bring and take food. The conditions for bring and take food are very different, you can inform yourself about it on the website of the operator or on site."
+        "At this place you can bring and take food. The conditions for bring and take food are very different, you can inform yourself about it on the website of the operator or on site.",
+      externalResources: [
+        {
+          name: "mundraub",
+          url: "https://mundraub.org/map"
+        },
+        {
+          name: "Zero Waste Map",
+          url: "https://zerowastemap.org/"
+        }
+      ]
     },
     "goods-exchange": {
       name: "Goods exchange",
@@ -203,6 +235,22 @@ export const local = {
         {
           name: "Pumpipumpe",
           url: "https://map.pumpipumpe.ch/"
+        },
+        {
+          name: "umap - Give box",
+          url: "https://umap.openstreetmap.fr/en/map/give_box_406244"
+        },
+        {
+          name: "radar.squat.net",
+          url: "https://radar.squat.net/en/groups/category/free-shop-market"
+        },
+        {
+          name: "Alles Und Umsonst",
+          url: "https://alles-und-umsonst.de/umsonstladen"
+        },
+        {
+          name: "Zero Waste Map",
+          url: "https://zerowastemap.org/"
         }
       ]
     },
@@ -297,7 +345,28 @@ export const local = {
     "table-soccer": { name: "Table soccer", description: "" },
     boules: { name: "Boules", description: "" },
     volleyball: { name: "Volleyball", description: "" },
-    animal: { name: "Animal enclosure", description: "" },
+    animal: {
+      name: "Animal enclosure",
+      description: "",
+      externalResources: [
+        {
+          name: "Zoo-Infos.org - Switzerland",
+          url: "http://ch.zoo-infos.org/set.html?karte.php"
+        },
+        {
+          name: "Zoo-Infos.de - Germany",
+          url: "http://www.zoo-infos.de/set-en.html?karte-en.php"
+        },
+        {
+          name: "Zoo-Infos.org - Austria",
+          url: "http://at.zoo-infos.org/set-en.html?karte-en.php"
+        },
+        {
+          name: "Zoo-Infos.org - France",
+          url: "http://fr.zoo-infos.org/set.html?karte.php"
+        }
+      ]
+    },
     observation: { name: "Animal observation", description: "" },
     maze: { name: "Maze", description: "" },
     webcam: { name: "Webcam", description: "" },
