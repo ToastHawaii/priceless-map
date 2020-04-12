@@ -83,12 +83,6 @@ Besuche Repair Cafés und andere Reparatur Initiativen und trage diese ein. [Rep
 
 Wie Angebote für begleitete Reparatur dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service) beschrieben.
 
-#### Spenden
-
-Besuche Orte, welche Sachspenden entgegennehmen und trage diese ein. [Velafrica](http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen), [Swisscom Mobile Aid](https://www.swisscom.ch/de/about/unternehmen/nachhaltigkeit/mobile-aid.html)
-
-Wie Orte, welche Sachspenden entgegennehmen dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Drecycling) beschrieben.
-
 #### Velo Reparatur
 
 Besuche Fahrradselbsthilfewerkstätten und trage diese ein. [Bikekitchen](http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en), [Fahrradselbsthilfewerkstätten in Berlin](https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin)

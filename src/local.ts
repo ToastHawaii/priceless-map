@@ -325,11 +325,34 @@ export const local = {
     "clothes-give": { name: "Clothes (Give)", description: "" },
     "clothes-take": { name: "Clothes (Take)", description: "" },
     "clothes-repair": { name: "Clothes (Repair)", description: "" },
-    "mobile-phones": { name: "Phone", description: "" },
+    "mobile-phones": {
+      name: "Phone",
+      description: "",
+      externalResources: [
+        {
+          name: "Swisscom Mobile Aid",
+          url:
+            "https://www.swisscom.ch/de/about/unternehmen/nachhaltigkeit/mobile-aid.html"
+        },
+        {
+          name: "Labdoo",
+          url: "https://www.labdoo.org/content/dootronics-dashboard"
+        }
+      ]
+    },
     "mobile-phones-give": { name: "Phone (Give)", description: "" },
     "mobile-phones-take": { name: "Phone (Take)", description: "" },
     "mobile-phones-repair": { name: "Phone (Repair)", description: "" },
-    computers: { name: "Computer", description: "" },
+    computers: {
+      name: "Computer",
+      description: "",
+      externalResources: [
+        {
+          name: "Labdoo",
+          url: "https://www.labdoo.org/content/dootronics-dashboard"
+        }
+      ]
+    },
     "computers-give": { name: "Computer (Give)", description: "" },
     "computers-take": { name: "Computer (Take)", description: "" },
     "computers-repair": { name: "Computer (Repair)", description: "" },
@@ -376,6 +399,10 @@ export const local = {
       name: "Bicycle",
       description: "",
       externalResources: [
+        {
+          name: "Velafrica",
+          url: "http://velafrica.ch/en/Play-your-part/donate-bicycles"
+        },
         {
           name: "Pumpipumpe",
           url: "https://map.pumpipumpe.ch/"
