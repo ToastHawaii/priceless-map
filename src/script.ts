@@ -23,5 +23,4 @@ else
       : mergeDeep(local, issuesLocal)
   );
 
-
 import "details-element-polyfill";

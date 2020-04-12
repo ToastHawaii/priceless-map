@@ -33,7 +33,7 @@ export function initMap<M>(
   attributes: Attribute<M>[],
   local: any
 ) {
-  getHtmlElement(".search").addEventListener("submit", (ev) => {
+  getHtmlElement(".search").addEventListener("submit", ev => {
     ev.preventDefault();
     search();
     return false;
@@ -64,14 +64,14 @@ export function initMap<M>(
     const zoom = map.getZoom();
 
     let presets = "";
-    document.querySelectorAll(`#filters input`).forEach((e) => {
+    document.querySelectorAll(`#filters input`).forEach(e => {
       if ((e as HTMLInputElement).checked) {
         const p = filterOptions
           .filter(
-            (o) => `${o.group}/${o.value}` === (e as HTMLInputElement).value
+            o => `${o.group}/${o.value}` === (e as HTMLInputElement).value
           )
-          .map((o) => o.edit.map((t) => t.replace(/=/gi, "/")).join(","))
-          .filter((o) => o)
+          .map(o => o.edit.map(t => t.replace(/=/gi, "/")).join(","))
+          .filter(o => o)
           .join(",");
         presets += (presets && p ? "," : "") + p;
       }
@@ -154,7 +154,7 @@ export function initMap<M>(
         q: value,
         limit: 1
       },
-      (r) => {
+      r => {
         const result = r[0];
         if (!result) return;
         map.flyToBounds([
@@ -331,10 +331,10 @@ out center;`
                   origin: "*",
                   sites: "wiki",
                   titles: [tags.join("|"), keys.join("|")]
-                    .filter((t) => t)
+                    .filter(t => t)
                     .join("|")
                 },
-                (r) => {
+                r => {
                   if (r && r.error) return;
 
                   let description = "";

@@ -1,1 +1,1 @@
-declare module 'opening_hours';
+declare module "opening_hours";

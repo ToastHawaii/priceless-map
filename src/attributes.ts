@@ -64,7 +64,8 @@ export const attributes: Attribute<{}>[] = [
       (!!tags.changing_table &&
         tags.changing_table !== "no" &&
         tags["changing_table:fee"] !== "yes") ||
-      (!!tags.diaper && tags.diaper !== "no" && tags["diaper:fee"] !== "yes"),
+      (!!tags.diaper && tags.diaper !== "no" && tags["diaper:fee"] !== "yes") ||
+      (!!tags.baby_feeding && tags.baby_feeding !== "no"),
     template: local => template(local.changing_table, "fas fa-baby")
   },
   {

@@ -13,7 +13,7 @@ export const attributeDescriptions: Attribute<{ website?: string }>[] = [
       ) &&
       !!(
         tags[`drinking_water:description:${local.code || "en"}`] ||
-          tags["drinking_water:description"]
+        tags["drinking_water:description"]
       ),
     template: (local, tags) =>
       template(

@@ -25,8 +25,9 @@ export function createPricelessOverPassLayer<M>(
   return new (L as any).OverPassLayer({
     markerIcon: L.divIcon({
       className: "custom-div-icon",
-      html: `<div style="background-color:${color ||
-        "#000000"};" class="marker-pin"></div><img class="${value}-icon" src="${icon}">`,
+      html: `<div style="background-color:${
+        color || "#000000"
+      };" class="marker-pin"></div><img class="${value}-icon" src="${icon}">`,
       iconSize: [36, 48],
       iconAnchor: [18, 48]
     }),
@@ -386,8 +387,9 @@ export function createPricelessOverPassLayer<M>(
                       const title = entity.sitelinks[w].title;
                       result.wiki = {
                         title: title,
-                        url: `https://${local.code ||
-                          "en"}.wikipedia.org/wiki/${title.replace(/ /g, "_")}`
+                        url: `https://${
+                          local.code || "en"
+                        }.wikipedia.org/wiki/${title.replace(/ /g, "_")}`
                       };
                     }
                   }
