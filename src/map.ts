@@ -375,9 +375,11 @@ out center;`
               );
             }
 
-            getHtmlElement(".info-container .info .external").innerHTML = `${
-              local.externalResources
-            }: ${links.join(", ")}`;
+            getHtmlElement(
+              ".info-container .info .external"
+            ).innerHTML = `<br/>${local.externalResources}: ${links.join(
+              ", "
+            )}`;
           }
 
           return false;

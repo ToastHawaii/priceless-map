@@ -46,7 +46,7 @@ export const local = {
   conditionalFee: "Nur zu bestimmten Zeiten kostenlos.",
   route: "Routen",
   difficulty: "Schwierigkeitsgrad",
-  externalResources: "Externe",
+  externalResources: "Andere",
   floor: function (level: number) {
     return `(${level}. OG)`;
   },
@@ -106,7 +106,16 @@ export const local = {
     "tourist-attraction": { name: "Sehenswürdigkeit", description: "" },
     "archaeological-site": { name: "Archäologische Stätte", description: "" },
     trail: { name: "Lehrpfad", description: "" },
-    "book-exchange": { name: "Bücher Tausch", description: "" },
+    "book-exchange": {
+      name: "Bücher Tausch",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     castle: { name: "Burg", description: "" },
     mill: { name: "Mühle", description: "" },
     history: { name: "Geschichte", description: "" },
@@ -136,10 +145,37 @@ export const local = {
       description:
         "Hier kannst du defekte Gegenstände gemeinsam mit Profis reparieren. Du triffts neue Leute und meistens gibt es auch Kaffee und Kuchen. Bekannte Veranstaltungen sind Repair Cafés."
     },
-    barbecue: { name: "Grill", description: "" },
+    barbecue: {
+      name: "Grill",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "baking-oven": { name: "Backofen", description: "" },
-    "bicycle-rental": { name: "Velo Verleih", description: "" },
-    "bicycle-self-repair": { name: "Velo Selbstreparatur", description: "" },
+    "bicycle-rental": {
+      name: "Velo Verleih",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
+    "bicycle-self-repair": {
+      name: "Velo Selbstreparatur",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "charging-station": { name: "Ladestation", description: "" },
     piano: { name: "Klavier", description: "" },
     advertising: {
@@ -163,7 +199,13 @@ export const local = {
     "goods-exchange": {
       name: "Waren Tausch",
       description:
-        "Hier findest du einen Tisch, ein Regal oder ein Laden um Gegenstände zu bringen und zu holen. Bekannte Einrichtungen sind Umsonstläden und Giveboxen."
+        "Hier findest du einen Tisch, ein Regal oder ein Laden um Gegenstände zu bringen und zu holen. Bekannte Einrichtungen sind Umsonstläden und Giveboxen.",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
     },
     hackerspace: {
       name: "Offene Werkstatt",
@@ -183,9 +225,27 @@ export const local = {
     contribute: { name: "Beitragen", description: "" },
     map: { name: "Karte", description: "" },
     openstreetmap: { name: "OpenStreetMap", description: "" },
-    internet: { name: "Internet", description: "" },
+    internet: {
+      name: "Internet",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "public-shower": { name: "Öffentliche Dusche", description: "" },
-    pump: { name: "Pumpe", description: "" },
+    pump: {
+      name: "Pumpe",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     toilet: { name: "Öffentliche Toilette", description: "" },
     basketball: { name: "Basketball", description: "" },
     bath: { name: "Bad", description: "" },
@@ -253,7 +313,16 @@ export const local = {
     "square-with-name": { name: "Platz (Mit Name)", description: "" },
     playground: { name: "Spielplatz", description: "" },
     lounger: { name: "Liege", description: "" },
-    clothes: { name: "Kleider", description: "" },
+    clothes: {
+      name: "Kleider",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "clothes-give": { name: "Kleider (Geben)", description: "" },
     "clothes-take": { name: "Kleider (Bekommen)", description: "" },
     "clothes-repair": { name: "Kleider (Reparieren)", description: "" },
@@ -265,22 +334,58 @@ export const local = {
     "computers-give": { name: "Computer (Geben)", description: "" },
     "computers-take": { name: "Computer (Bekommen)", description: "" },
     "computers-repair": { name: "Computer (Reparieren)", description: "" },
-    toys: { name: "Spielzeug", description: "" },
+    toys: {
+      name: "Spielzeug",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "toys-give": { name: "Spielzeug (Geben)", description: "" },
     "toys-take": { name: "Spielzeug (Bekommen)", description: "" },
     "toys-repair": { name: "Spielzeug (Reparieren)", description: "" },
-    electronics: { name: "Elektrogerät", description: "" },
+    electronics: {
+      name: "Elektrogerät",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "electronics-give": { name: "Elektrogerät (Geben)", description: "" },
     "electronics-take": { name: "Elektrogerät (Bekommen)", description: "" },
     "electronics-repair": {
       name: "Elektrogerät (Reparieren)",
       description: ""
     },
-    furniture: { name: "Möbel", description: "" },
+    furniture: {
+      name: "Möbel",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "furniture-give": { name: "Möbel (Geben)", description: "" },
     "furniture-take": { name: "Möbel (Bekommen)", description: "" },
     "furniture-repair": { name: "Möbel (Reparieren)", description: "" },
-    bicycle: { name: "Velo", description: "" },
+    bicycle: {
+      name: "Velo",
+      description: "",
+      externalResources: [
+        {
+          name: "Pumpipumpe",
+          url: "https://map.pumpipumpe.ch/"
+        }
+      ]
+    },
     "bicycle-give": { name: "Velo (Geben)", description: "" },
     "bicycle-rent": { name: "Velo (Ausleihen)", description: "" },
     "bicycle-repair": { name: "Velo (Reparieren)", description: "" },
