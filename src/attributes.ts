@@ -190,6 +190,10 @@ export const attributes: Attribute<{}>[] = [
     template: local => template(local.charging, "fas fa-charging-station")
   },
   {
+    check: tags => tags.amenity === "device_charging_station",
+    template: local => template(local.mobileCharging, "fas fa-battery-full")
+  },
+  {
     check: tags => !!tags.hoops,
     template: (local, tags) =>
       `<span title="${local.hoops}" class="attribut"><img style="height: 13px;vertical-align: text-top;" src="/lib/maki-icons/basketball-15.svg"> ${tags.hoops}</span>`

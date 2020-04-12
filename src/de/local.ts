@@ -14,6 +14,7 @@ export const local = {
   bicycle: "Velo",
   park: "Park",
   charging: "Aufladen",
+  mobileCharging: "Aufladen",
   car: "Auto",
   mobile: "Smartphone",
   smallElectronics: "Kleine Elektrongeräte",
@@ -111,6 +112,32 @@ export const local = {
       description: "",
       externalResources: [
         {
+          name: "Bôite À Lire",
+          url: "https://www.boite-a-lire.com/"
+        },
+        {
+          name: "OpenBookCase",
+          url: "https://openbookcase.org/map"
+        },
+        {
+          name: "Karte öffentlicher Bücherschränke",
+          url:
+            "https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/"
+        },
+        {
+          name: "Little Free Library World Map",
+          url: "https://littlefreelibrary.org/ourmap/"
+        },
+        {
+          name: "Liste öffentlicher Bücherschränke in der Schweiz",
+          url:
+            "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz"
+        },
+        {
+          name: "Tauschgnom",
+          url: "https://www.tauschgnom.de/offene-buecherschraenke"
+        },
+        {
           name: "Pumpipumpe",
           url: "https://map.pumpipumpe.ch/"
         },
@@ -193,6 +220,16 @@ export const local = {
       description: "",
       externalResources: [
         {
+          name: "Bikekitchen",
+          url:
+            "http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en"
+        },
+        {
+          name: "Fahrradselbsthilfewerkstätten in Berlin",
+          url:
+            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin"
+        },
+        {
           name: "Pumpipumpe",
           url: "https://map.pumpipumpe.ch/"
         }
@@ -218,6 +255,34 @@ export const local = {
       description:
         "An diesem Ort kannst du Lebensmittel abgeben und holen. Die Bedienungen für das abgeben und holen sind sehr unterschiedlich, über die Webseite des Betreibers oder vor Ort kannst du dich darüber informieren.",
       externalResources: [
+        {
+          name: "Foodsharing",
+          url: "https://foodsharing.de/karte"
+        },
+        {
+          name: "RestEssBar",
+          url: "http://restessbar.ch/de"
+        },
+        {
+          name: "Madame Frigos",
+          url: "https://www.madamefrigo.ch/de/standorte/"
+        },
+        {
+          name: "foodwaste.ch",
+          url: "https://foodwaste.ch/lokale-initiativen/"
+        },
+        {
+          name: "Suspended Coffee",
+          url: "https://suspendedcoffees.com/cafes/"
+        },
+        {
+          name: "Suspended Coffee Germany",
+          url: "https://suspendedcoffee.de/shops/karte/"
+        },
+        {
+          name: "Café Surprise",
+          url: "https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/"
+        },
         {
           name: "mundraub",
           url: "https://mundraub.org/map"
@@ -252,7 +317,7 @@ export const local = {
         {
           name: "Zero Waste Map",
           url: "https://zerowastemap.org/de/"
-        }      
+        }
       ]
     },
     hackerspace: {
@@ -476,6 +541,16 @@ export const local = {
         {
           name: "Velafrica",
           url: "http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen"
+        },
+        {
+          name: "Bikekitchen",
+          url:
+            "http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en"
+        },
+        {
+          name: "Fahrradselbsthilfewerkstätten in Berlin",
+          url:
+            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin"
         },
         {
           name: "Pumpipumpe",

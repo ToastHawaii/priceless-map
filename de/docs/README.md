@@ -63,37 +63,7 @@ Oder erweitere die Unterstützung für die Tags und Keys in den Tools der OpenSt
 
 Es gibt viele Webseiten für kostenlose Einrichtungen und Angebote. Finde etwas was du magst und unterstützenswert findest und trage die Standorte dazu in [OpenStreetMap](https://www.openstreetmap.org) ein.
 
-#### Bücher Tausch
-
-Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
-
-Andere Quellen: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke)
-
-Wie öffentliche Bücherschränke dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Dpublic_bookcase) beschrieben.
-
-#### Velo Reparatur
-
-Besuche Fahrradselbsthilfewerkstätten und trage diese ein. [Bikekitchen](http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en), [Fahrradselbsthilfewerkstätten in Berlin](https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin)
-
-Je nachdem wie die Selbshilfewerkstätte organisiert ist kann sie als [Fahrradreparaturstation](https://wiki.openstreetmap.org/wiki/DE:Tag:amenity%3Dbicycle_repair_station), [Offene Werkstatt](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace) oder [Begleitete Reparatur](https://wiki.openstreetmap.org/wiki/DE:Tag:repair%3Dassisted_self_service) dokumentiert werden.
-
-#### Lebensmittel teilen
-
-Besuche öffentliche Kühlschränke und trage diese ein. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/de/standorte/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/)
-
-Wie Angebote zum Lebensmittel teilen dokumentiert werden sollen ist auf dieser [Wiki Seite](https://wiki.openstreetmap.org/wiki/DE:Tag:social_facility%3Dfood_bank) beschrieben.
-
-Die Webseiten [Café Surprise](https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/), [Suspended Coffee Germany](https://suspendedcoffee.de/shops/karte/) und [Suspended Coffee](https://suspendedcoffees.com/cafes/) zeigen Restaurant und Kaffees, bei welchen ein Kaffee für jemanden spendiert oder kostenlos konsumiert werden kann.
-
-Diese könnten als [öffentliche Essensausgabe](https://wiki.openstreetmap.org/wiki/DE:Tag:social_facility%3Dsoup_kitchen) dokumentiert werden.
-
-#### Diverse
-
-Die Webseite wurde inspiriert von [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), welche öffentliche und gratis Angebote, Events und Einrichtungen in Zürich anzeigt. Ein Dank an dieser Stelle an die Entwickler, Veröffentlicher und Unterstützer von Zürich unbezahlbar, für die Inspiration und Arbeit.
-
-Einrichtungen, Events und Angebote: [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/)
-
-Diverse Einrichtungen z.B. Pumpen, Sportplätze, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
+Links zu externen Ressourcen findest du auf der Karte neben der Auswahl der Einrichtung über den Info Knopf <i class="fas fa-info-circle"></i>.
 
 ## Ich habe eine Webseite, kann ich diese Karte einbauen?
 
@@ -105,7 +75,15 @@ Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 
 ## Weiteres
 
-Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst: [SolidaryCityMap](https://solidary.city/)
+Die Webseite wurde inspiriert von [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), welche öffentliche und gratis Angebote, Events und Einrichtungen in Zürich anzeigt. Ein Dank an dieser Stelle an die Entwickler, Veröffentlicher und Unterstützer von Zürich unbezahlbar, für die Inspiration und Arbeit.
+
+Diverse Einrichtungen z.B. Pumpen, Sportplätze, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
+
+Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst. [SolidaryCityMap](https://solidary.city/)
+
+Berlin, gratis und ganz einfach für alle erlebbar. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
+
+Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
 ---
 

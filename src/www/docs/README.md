@@ -63,38 +63,7 @@ Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser
 
 There are many websites for free facilities and offers. Find something you like and worth to support and add them to [OpenStreetMap](https://www.openstreetmap.org).
 
-#### Book exchange
-
-Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
-
-Other Sources: [OpenBookCase](https://openbookcase.org/map), [Karte öffentlicher Bücherschränke](https://www.lesestunden.de/karte-oeffentlicher-buecherschraenke/), [Little Free Library World Map](https://littlefreelibrary.org/ourmap/), [Liste öffentlicher Bücherschränke in der Schweiz](https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke_in_der_Schweiz), [Tauschgnom](https://www.tauschgnom.de/offene-buecherschraenke)
-
-How a public bookcases should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dpublic_bookcase).
-
-#### Bicycle repair
-
-Visit Bicycle self service workshops and register them. [Bikekitchen](http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en), [Fahrradselbsthilfewerkstätten in Berlin](https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin)
-
-Depending on how the self-help workshop is organized, it can be documented as a [bicycle repair station](https://wiki.openstreetmap.org/wiki/Tag:amenity%3Dbicycle_repair_station), [hackerspace](https://wiki.openstreetmap.org/wiki/Tag:leisure%3Dhackerspace) or [assisted self repair](https://wiki.openstreetmap.org/wiki/Tag:repair%3Dassisted_self_service).
-
-#### Food sharing
-
-Visit places for food sharing and register them. [Foodsharing Schweiz](https://foodsharingschweiz.ch/karte), [RestEssBar](http://restessbar.ch/de), [Madame Frigos](https://www.madamefrigo.ch/en/towns/), [foodwaste.ch](https://foodwaste.ch/lokale-initiativen/)
-
-How a placs for food sharing should be documented is described on this [wiki page](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Dfood_bank).
-
-The websites [Café Surprise](https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/), [Suspended Coffee Germany](https://suspendedcoffee.de/shops/karte/) and [Suspended Coffee](https://suspendedcoffees.com/cafes/) show restaurants and coffees where coffee can be bought or consumed for free.
-
-These could be documented as [public food distribution](https://wiki.openstreetmap.org/wiki/Tag:social_facility%3Dsoup_kitchen).
-
-#### Diverse
-
-The website was inspired by [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), which displays public and free offers, events and facilities in Zürich. Thanks to the developers, publishers and supporters of Zürich unbezahlbar for their inspiration and work.
-
-Facilities, events and offers: [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/)
-
-Various equipment e.g. pumps, sports fields, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
-
+You can find links to external resources on the map next to the selection of the facilities via the info button <i class="fas fa-info-circle"></i>.
 
 ## I have a website, can I use this map?
 
@@ -106,7 +75,15 @@ The code can also be used as a basis for your own theme map.
 
 ## More
 
-Places where you can participate in city life without papers and / or money: [SolidaryCityMap](https://solidary.city/)
+The website was inspired by [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), which displays public and free offers, events and facilities in Zürich. Thanks to the developers, publishers and supporters of Zürich unbezahlbar for their inspiration and work.
+
+Various equipment e.g. pumps, sports fields, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
+
+Places where you can participate in city life without papers and / or money. [SolidaryCityMap](https://solidary.city/)
+
+Berlin, free of charge and easy for everyone to experience. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
+
+Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
 ---
 

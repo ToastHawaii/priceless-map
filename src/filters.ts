@@ -1346,13 +1346,17 @@ nw["amenity"="hammock"];`,
     
     // Repair
     node["repair"="assisted_self_service"]["service:mobile_phone:repair"="yes"];
-    node["repair"="assisted_self_service"]["mobile_phone:repair"="yes"];`,
+    node["repair"="assisted_self_service"]["mobile_phone:repair"="yes"];
+    
+    // Charge
+    node["amenity"="device_charging_station"]["fee"!="yes"];`,
     color: "#191970",
     tags: [
       "amenity=recycling",
       "amenity=give_box",
       "repair=assisted_self_service",
-      "repair=*"
+      "repair=*",
+      "amenity=device_charging_station"
     ],
     edit: ["amenity=recycling", "amenity"]
   },
