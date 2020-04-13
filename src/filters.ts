@@ -426,9 +426,9 @@ nwr["bbq"="yes"];`,
     icon:
       "https://wiki.openstreetmap.org/w/images/a/af/Charging_station.16.svg",
     query: `
-    (nw["amenity"="charging_station"]["fee"="no"]; 
-      - nw["amenity"="charging_station"]["fee"="no"][~"^authentication:.*$"~"^yes$"];);
-      nw["amenity"="charging_station"]["fee"="no"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"]; 
+      - nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
+      nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#0092da",
     tags: ["amenity=charging_station"],
     edit: ["amenity=charging_station"]
@@ -1709,9 +1709,9 @@ nw["amenity"="hammock"];`,
     nwr["sport"="cycling"]["leisure"="sports_centre"]["fee:conditional"];
     
     // Charge
-    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]; 
+    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
+    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=recycling",
@@ -1837,9 +1837,9 @@ nw["amenity"="hammock"];`,
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-charging-station",
     query: `
-    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]; 
-    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"][~"^authentication:.*$"~"^yes$"];);
-    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["authentication:none"="yes"];`,
+    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]; 
+    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
+    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: ["amenity=charging_station"],
     edit: ["amenity=charging_station"]
