@@ -235,7 +235,16 @@ export const local = {
         }
       ]
     },
-    "charging-station": { name: "Charging station", description: "" },
+    "charging-station": {
+      name: "Charging station",
+      description: "",
+      externalResources: [
+        {
+          name: "Open Charge Map",
+          url: "https://map.openchargemap.io/"
+        }
+      ]
+    },
     piano: { name: "Piano", description: "" },
     advertising: {
       name: "Advertising space",
