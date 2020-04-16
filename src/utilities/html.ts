@@ -16,3 +16,19 @@ export function getHtmlElement(
 
   return element as HTMLElement;
 }
+
+export function getHtmlElements(
+  selectors: string,
+  contentElement?: ParentNode
+): HTMLElement[];
+export function getHtmlElements(
+  selectors: string,
+  contentElement: ParentNode = document
+): HTMLElement[] {
+  const elements: HTMLElement[] = [];
+  contentElement.querySelectorAll(selectors).forEach(v => {
+    elements.push(v as HTMLElement);
+  });
+
+  return elements;
+}

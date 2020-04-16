@@ -9,7 +9,7 @@ import { Attribute } from "./Generator";
 import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
 import { groupBy } from "./utilities/data";
-import { getHtmlElement } from "./utilities/html";
+import { getHtmlElement, getHtmlElements } from "./utilities/html";
 import { createPricelessOverPassLayer } from "./createPricelessOverPassLayer";
 
 declare var taginfo_taglist: any;
@@ -371,7 +371,7 @@ out center;`
             const links = [];
             for (const external of local.type[f.value].externalResources) {
               links.push(
-                `<a href="${external.url}" target="_blank">${external.name}</a>`
+                `<a class="external-link" href="${external.url}" target="_blank">${external.name}</a>`
               );
             }
 
@@ -380,6 +380,22 @@ out center;`
             ).innerHTML = `<br/>${local.externalResources}: ${links.join(
               ", "
             )}`;
+          }
+
+          for (const a of getHtmlElements(".external-link")) {
+            a.addEventListener("click", () => {
+              const latlng = map.getCenter();
+              const zoom = map.getZoom();
+
+              window.open(
+                (a as HTMLAnchorElement).href
+                  .replace(/\{lat\}/i, latlng.lat + "")
+                  .replace(/\{lng\}/i, latlng.lng + "")
+                  .replace(/\{zoom\}/i, zoom + ""),
+                "_blank"
+              );
+              return false;
+            });
           }
 
           return false;

@@ -294,7 +294,7 @@ export const local = {
         },
         {
           name: "mundraub",
-          url: "https://mundraub.org/map"
+          url: "https://mundraub.org/map#z={zoom}&lat={lat}&lng={lng}"
         },
         {
           name: "Zero Waste Map",
@@ -313,7 +313,7 @@ export const local = {
         },
         {
           name: "umap - Give box",
-          url: "https://umap.openstreetmap.fr/de/map/give_box_406244"
+          url: "https://umap.openstreetmap.fr/de/map/give_box_406244#{zoom}/{lat}/{lng}"
         },
         {
           name: "radar.squat.net",
@@ -380,7 +380,7 @@ export const local = {
       externalResources: [
         {
           name: "the crag",
-          url: "https://www.thecrag.com/climbing/world/maps"
+          url: "https://www.thecrag.com/climbing/world/maps#{lat},{lng},{zoom},,auto"
         }
       ]
     },
@@ -409,7 +409,7 @@ export const local = {
         {
           name: "Trimm-Dich-Pfade",
           url:
-            "https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe"
+            "https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe#{lat}/{lng}/{zoom}"
         }
       ]
     },
@@ -455,7 +455,7 @@ export const local = {
         },
         {
           name: "Windy",
-          url: "https://www.windy.com/de/-Webcams/webcams"
+          url: "https://www.windy.com/de/-Webcams/webcams?{lat},{lng},{zoom}"
         },
         {
           name: "Skyline Webcams",
