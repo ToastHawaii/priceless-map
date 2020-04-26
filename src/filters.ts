@@ -1172,7 +1172,8 @@ nwr["leisure"="garden"]["name"];`,
     icon: "/lib/maki-icons/park-15.svg",
     query: `
 nwr["leisure"="park"];
-nwr["landuse"="recreation_ground"];`,
+nwr["landuse"="recreation_ground"];
+nwr["leisure"="recreation_ground"];`,
     color: "#90EE90",
     tags: ["leisure=park", "landuse=recreation_ground"],
     edit: ["leisure=park", "landuse=recreation_ground"]
@@ -1185,7 +1186,8 @@ nwr["landuse"="recreation_ground"];`,
     button: "far fa-minus-square",
     query: `
 nwr["leisure"="park"]["name"];
-nwr["landuse"="recreation_ground"]["name"];`,
+nwr["landuse"="recreation_ground"]["name"];
+nwr["leisure"="recreation_ground"]["name"];`,
     color: "#90EE90",
     tags: ["leisure=park", "landuse=recreation_ground"],
     edit: ["leisure=park", "landuse=recreation_ground"]

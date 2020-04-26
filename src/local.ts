@@ -311,6 +311,10 @@ export const local = {
           url: "https://map.pumpipumpe.ch/"
         },
         {
+          name: "PING!-Station",
+          url: "https://pingstation.de/finden/"
+        },
+        {
           name: "umap - Give box",
           url:
             "https://umap.openstreetmap.fr/en/map/give_box_406244#{zoom}/{lat}/{lng}"

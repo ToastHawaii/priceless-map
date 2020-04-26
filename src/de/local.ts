@@ -312,8 +312,13 @@ export const local = {
           url: "https://map.pumpipumpe.ch/"
         },
         {
+          name: "PING!-Station",
+          url: "https://pingstation.de/finden/"
+        },
+        {
           name: "umap - Give box",
-          url: "https://umap.openstreetmap.fr/de/map/give_box_406244#{zoom}/{lat}/{lng}"
+          url:
+            "https://umap.openstreetmap.fr/de/map/give_box_406244#{zoom}/{lat}/{lng}"
         },
         {
           name: "radar.squat.net",
@@ -380,7 +385,8 @@ export const local = {
       externalResources: [
         {
           name: "the crag",
-          url: "https://www.thecrag.com/climbing/world/maps#{lat},{lng},{zoom},,auto"
+          url:
+            "https://www.thecrag.com/climbing/world/maps#{lat},{lng},{zoom},,auto"
         }
       ]
     },
