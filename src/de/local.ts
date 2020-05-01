@@ -623,12 +623,12 @@ export const local = {
     sign: "Übungsanleitungstafel",
     "sit-up": "Sit-Up-Station",
     stairs: "Übungsstiege",
-    log_hop: "Hüpfbalken",
-    stepping_blocks: "Stepper Blöcke",
+    beam_jump: "Beam jump",
+    stepping_stone: "Stepping stone",
     bench: "Bank",
     body_raise: "Körper heben",
     slalom: "Slalom",
-    post: "Pfosten"
+    stretch_bars: "Dehnen"
   },
   historic: {
     aircraft: "Flugzeug",

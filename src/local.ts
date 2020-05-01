@@ -619,12 +619,12 @@ export const local = {
     sign: "Exercise Instruction Sign",
     "sit-up": "Sit-Up Station",
     stairs: "Exercise Stairs",
-    log_hop: "Log hop",
-    stepping_blocks: "Stepping blocks",
+    beam_jump: "Beam jump",
+    stepping_stone: "Stepping stone",
     bench: "Bench",
     body_raise: "Body raise",
     slalom: "Slalom",
-    post: "Post"
+    stretch_bars: "Stretch bars"
   },
   historic: {
     aircraft: "Aircraft",
