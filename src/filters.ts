@@ -816,18 +816,12 @@ nwr["leisure"="fitness_station"];
 
 nwr["leisure"="pitch"]["sport"~"fitness|crossfit|exercise|gymnastics|yoga|bodybuilding"];
 
-nw["playground"="horizontal_bar"];
+nw["playground"~"horizontal_bar|exercise|balance(_)?beam|slackline"];
+
 nw["playground:horizontal_bar"="yes"];
-
-nw["playground"="exercise"];
 nw["playground:exercise"="yes"];
-
-nw["playground"="balancebeam"];
 nw["playground:balancebeam"="yes"];
-nw["playground"="balance_beam"];
 nw["playground:balance_beam"="yes"];
-
-nw["playground"="slackline"];
 nw["playground:slackline"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
@@ -840,10 +834,10 @@ nw["playground:slackline"="yes"];`,
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-minus",
     query: `
-nwr["fitness_station"="horizontal_bar"];
+nwr["fitness_station"~"horizontal_bar"];
 nwr["fitness_station:horizontal_bar"="yes"];
 
-nw["playground"="horizontal_bar"];
+nw["playground"~"horizontal_bar"];
 nw["playground:horizontal_bar"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
@@ -856,7 +850,7 @@ nw["playground:horizontal_bar"="yes"];`,
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-grip-lines-vertical",
     query: `
-nwr["fitness_station"="parallel_bars"];
+nwr["fitness_station"~"parallel_bars"];
 nwr["fitness_station:parallel_bars"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
@@ -869,7 +863,7 @@ nwr["fitness_station:parallel_bars"="yes"];`,
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "far fa-circle",
     query: `
-nwr["fitness_station"="rings"];
+nwr["fitness_station"~"rings"];
 nwr["fitness_station:rings"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
@@ -882,19 +876,14 @@ nwr["fitness_station:rings"="yes"];`,
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-biking",
     query: `
-nwr["fitness_station"="elliptical_trainer"];
+nwr["fitness_station"~"elliptical_trainer|air_walker|exercise_bike|rower"];
+
 nwr["fitness_station:elliptical_trainer"="yes"];
-    
-nwr["fitness_station"="air_walker"];
 nwr["fitness_station:air_walker"="yes"];
-
-nwr["fitness_station"="exercise_bike"];
 nwr["fitness_station:exercise_bike"="yes"];
-
-nwr["fitness_station"="rower"];
 nwr["fitness_station:rower"="yes"];
 
-nw["playground"="exercise"];
+nw["playground"~"exercise"];
 nw["playground:exercise"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
@@ -907,20 +896,16 @@ nw["playground:exercise"="yes"];`,
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-street-view",
     query: `
-nwr["fitness_station"="slackline"];
+nwr["fitness_station"~"slackline|balance(_)?beam"];
+
 nwr["fitness_station:slackline"="yes"];
-    
-nwr["fitness_station"="balance_beam"];
 nwr["fitness_station:balance_beam"="yes"];
-nwr["fitness_station"="balancebeam"];
 nwr["fitness_station:balancebeam"="yes"];
 
-nw["playground"="slackline"];
-nw["playground:slackline"="yes"];
+nw["playground"~"slackline|balance(_)?beam"];
 
-nw["playground"="balance_beam"];
+nw["playground:slackline"="yes"];
 nw["playground:balance_beam"="yes"];
-nw["playground"="balancebeam"];
 nw["playground:balancebeam"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
