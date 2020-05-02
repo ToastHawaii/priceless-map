@@ -816,13 +816,112 @@ nwr["leisure"="fitness_station"];
 
 nwr["leisure"="pitch"]["sport"~"fitness|crossfit|exercise|gymnastics|yoga|bodybuilding"];
 
-nwr["playground"="horizontal_bar"];
+nw["playground"="horizontal_bar"];
+nw["playground:horizontal_bar"="yes"];
 
-nwr["playground"="exercise"];
+nw["playground"="exercise"];
+nw["playground:exercise"="yes"];
 
-nwr["playground"="balancebeam"];
+nw["playground"="balancebeam"];
+nw["playground:balancebeam"="yes"];
+nw["playground"="balance_beam"];
+nw["playground:balance_beam"="yes"];
 
-nwr["playground"="slackline"];`,
+nw["playground"="slackline"];
+nw["playground:slackline"="yes"];`,
+    color: "#0000FF",
+    tags: ["leisure=fitness_station", "sport=*", "playground=*"],
+    edit: ["leisure=fitness_station", "playground"]
+  },
+  {
+    group: "sport",
+    subgroup: "fitness",
+    value: "horizontal_bar",
+    icon: "/lib/maki-icons/fitness-centre-15.svg",
+    button: "fas fa-minus",
+    query: `
+nwr["fitness_station"="horizontal_bar"];
+nwr["fitness_station:horizontal_bar"="yes"];
+
+nw["playground"="horizontal_bar"];
+nw["playground:horizontal_bar"="yes"];`,
+    color: "#0000FF",
+    tags: ["leisure=fitness_station", "sport=*", "playground=*"],
+    edit: ["leisure=fitness_station", "playground"]
+  },
+  {
+    group: "sport",
+    subgroup: "fitness",
+    value: "parallel_bars",
+    icon: "/lib/maki-icons/fitness-centre-15.svg",
+    button: "fas fa-grip-lines-vertical",
+    query: `
+nwr["fitness_station"="parallel_bars"];
+nwr["fitness_station:parallel_bars"="yes"];`,
+    color: "#0000FF",
+    tags: ["leisure=fitness_station", "sport=*", "playground=*"],
+    edit: ["leisure=fitness_station", "playground"]
+  },
+  {
+    group: "sport",
+    subgroup: "fitness",
+    value: "rings",
+    icon: "/lib/maki-icons/fitness-centre-15.svg",
+    button: "far fa-circle",
+    query: `
+nwr["fitness_station"="rings"];
+nwr["fitness_station:rings"="yes"];`,
+    color: "#0000FF",
+    tags: ["leisure=fitness_station", "sport=*", "playground=*"],
+    edit: ["leisure=fitness_station", "playground"]
+  },
+  {
+    group: "sport",
+    subgroup: "fitness",
+    value: "exercise-machine",
+    icon: "/lib/maki-icons/fitness-centre-15.svg",
+    button: "fas fa-biking",
+    query: `
+nwr["fitness_station"="elliptical_trainer"];
+nwr["fitness_station:elliptical_trainer"="yes"];
+    
+nwr["fitness_station"="air_walker"];
+nwr["fitness_station:air_walker"="yes"];
+
+nwr["fitness_station"="exercise_bike"];
+nwr["fitness_station:exercise_bike"="yes"];
+
+nwr["fitness_station"="rower"];
+nwr["fitness_station:rower"="yes"];
+
+nw["playground"="exercise"];
+nw["playground:exercise"="yes"];`,
+    color: "#0000FF",
+    tags: ["leisure=fitness_station", "sport=*", "playground=*"],
+    edit: ["leisure=fitness_station", "playground"]
+  },
+  {
+    group: "sport",
+    subgroup: "fitness",
+    value: "balance",
+    icon: "/lib/maki-icons/fitness-centre-15.svg",
+    button: "fas fa-street-view",
+    query: `
+nwr["fitness_station"="slackline"];
+nwr["fitness_station:slackline"="yes"];
+    
+nwr["fitness_station"="balance_beam"];
+nwr["fitness_station:balance_beam"="yes"];
+nwr["fitness_station"="balancebeam"];
+nwr["fitness_station:balancebeam"="yes"];
+
+nw["playground"="slackline"];
+nw["playground:slackline"="yes"];
+
+nw["playground"="balance_beam"];
+nw["playground:balance_beam"="yes"];
+nw["playground"="balancebeam"];
+nw["playground:balancebeam"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]

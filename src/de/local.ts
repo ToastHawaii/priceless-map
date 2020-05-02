@@ -45,6 +45,11 @@ export const local = {
   closes: "Schliesst",
   thatDependsOn: "Das hängt ab von",
   conditionalFee: "Nur zu bestimmten Zeiten kostenlos.",
+  horizontalBar: "Reck",
+  parallelBars: "Parallelbarren",
+  rings: "Ringe",
+  exerciseMachine: "Übungsgerät",
+  balance: "Gleichgewicht",
   route: "Routen",
   difficulty: "Schwierigkeitsgrad",
   externalResources: "Andere",
@@ -403,6 +408,26 @@ export const local = {
           url: "https://www.playparc.de/marken/4fcircle/"
         }
       ]
+    },
+    horizontal_bar: {
+      name: "Reck",
+      description: ""
+    },
+    parallel_bars: {
+      name: "Parallelbarren",
+      description: ""
+    },
+    rings: {
+      name: "Ringe",
+      description: ""
+    },
+    "exercise-machine": {
+      name: "Übungsgerät",
+      description: ""
+    },
+    balance: {
+      name: "Gleichgewicht",
+      description: ""
     },
     "fitness-trail": {
       name: "Vitaparcours",

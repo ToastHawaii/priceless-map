@@ -224,6 +224,57 @@ export const attributes: Attribute<{}>[] = [
     template: local => template(local.light, "far fa-lightbulb")
   },
   {
+    check: tags =>
+      tags["fitness_station"] === "horizontal_bar" ||
+      tags["fitness_station:horizontal_bar"] === "yes" ||
+      tags["playground"] === "horizontal_bar" ||
+      tags["playground:horizontal_bar"] === "yes",
+    template: local => template(local.horizontalBar, "fas fa-minus")
+  },
+  {
+    check: tags =>
+      tags["fitness_station"] === "parallel_bars" ||
+      tags["fitness_station:parallel_bars"] === "yes",
+    template: local =>
+      template(local.parallelBars, "fas fa-grip-lines-vertical")
+  },
+  {
+    check: tags =>
+      tags["fitness_station"] === "rings" ||
+      tags["fitness_station:rings"] === "yes",
+    template: local => template(local.rings, "far fa-circle")
+  },
+  {
+    check: tags =>
+      tags["fitness_station"] === "elliptical_trainer" ||
+      tags["fitness_station:elliptical_trainer"] === "yes" ||
+      tags["fitness_station"] === "air_walker" ||
+      tags["fitness_station:air_walker"] === "yes" ||
+      tags["fitness_station"] === "exercise_bike" ||
+      tags["fitness_station:exercise_bike"] === "yes" ||
+      tags["fitness_station"] === "rower" ||
+      tags["fitness_station:rower"] === "yes" ||
+      tags["playground"] === "exercise" ||
+      tags["playground:exercise"] === "yes",
+    template: local => template(local.exerciseMachine, "fas fa-biking")
+  },
+  {
+    check: tags =>
+      tags["fitness_station"] === "slackline" ||
+      tags["fitness_station:slackline"] === "yes" ||
+      tags["fitness_station"] === "balance_beam" ||
+      tags["fitness_station:balance_beam"] === "yes" ||
+      tags["fitness_station"] === "balancebeam" ||
+      tags["fitness_station:balancebeam"] === "yes" ||
+      tags["playground"] === "slackline" ||
+      tags["playground:slackline"] === "yes" ||
+      tags["playground"] === "balance_beam" ||
+      tags["playground:balance_beam"] === "yes" ||
+      tags["playground"] === "balancebeam" ||
+      tags["playground:balancebeam"] === "yes",
+    template: local => template(local.balance, "fas fa-street-view")
+  },
+  {
     check: tags => !!wheelchairAccesIcon(tags),
     template: (local, tags) =>
       `<span title="${wheelchairAccesText(

@@ -226,7 +226,8 @@ export function initMap<M>(
       .sort((a, b) =>
         local.type[a.value].name.localeCompare(local.type[b.value].name)
       )
-      .sort((a, b) => local.group[a.group].localeCompare(local.group[b.group])),
+      .sort((a, b) => local.group[a.group].localeCompare(local.group[b.group]))
+      .sort((a, b) => (a.subgroup || "").localeCompare(b.subgroup || "")),
     "group"
   );
   let iconColors = "";
