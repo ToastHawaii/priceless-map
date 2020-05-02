@@ -680,7 +680,7 @@ nwr["toilets"="yes"];`,
     edit: ["amenity=toilets", "building", "amenity"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "basketball",
     icon: "/lib/maki-icons/basketball-15.svg",
     query: `
@@ -768,7 +768,7 @@ ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
     edit: ["leisure=pitch"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "chess",
     icon:
       "https://upload.wikimedia.org/wikipedia/commons/d/d4/Chess_pictogram.svg",
@@ -797,7 +797,7 @@ nwr["playground"="climbingwall"];`,
     edit: ["natural", "landuse=recreation_ground", "playground"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "boules",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
@@ -948,7 +948,7 @@ nwr["leisure"="track"]["sport"="athletics"];`,
     edit: ["sport=running", "sport=athletics"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "soccer",
     icon: "/lib/maki-icons/soccer-15.svg",
     query: `
@@ -960,7 +960,7 @@ nwr["leisure"="pitch"]["sport"~"soccer|multi"];`,
     edit: ["leisure=pitch"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "table-tennis",
     icon: "/lib/maki-icons/table-tennis-15.svg",
     query: `
@@ -974,7 +974,7 @@ nw["leisure"="table_tennis_table"];`,
     edit: ["leisure=pitch"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "table-soccer",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Kicker02.png",
     query: `
@@ -984,7 +984,7 @@ nw["leisure"="table_tennis_table"];`,
     edit: ["leisure=pitch"]
   },
   {
-    group: "sport",
+    group: "play",
     value: "volleyball",
     icon: "/lib/maki-icons/volleyball-15.svg",
     query: `
