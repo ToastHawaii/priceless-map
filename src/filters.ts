@@ -470,6 +470,16 @@ nwr["diaper"]["diaper"!="no"]["diaper:fee"!="yes"]["fee"!="yes"];`,
   },
   {
     group: "health",
+    value: "kneipp_water_cure",
+    icon: "https://wiki.openstreetmap.org/w/images/c/c1/Kneipp_water_cure.svg",
+    query: `
+nwr["amenity"="kneipp_water_cure"];`,
+    color: "#33CCCC",
+    tags: ["amenity=kneipp_water_cure"],
+    edit: ["amenity=kneipp_water_cure"]
+  },
+  {
+    group: "health",
     value: "drinking-water",
     icon: "https://wiki.openstreetmap.org/w/images/0/08/Drinking-water-16.svg",
     query: `

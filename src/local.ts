@@ -153,6 +153,7 @@ export const local = {
         }
       ]
     },
+    kneipp_water_cure: { name: "Kneipp facility", description: "" },
     castle: { name: "Castle", description: "" },
     mill: { name: "Mill", description: "" },
     history: { name: "History", description: "" },

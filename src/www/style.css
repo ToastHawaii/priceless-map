@@ -290,13 +290,18 @@ summary:focus {
   border-radius: 50%;
 }
 
-.custom-div-icon img {
-  position: absolute;
+.custom-div-icon .marker-icon {
+  height: 22px;
   width: 22px;
-  left: 0;
-  right: 0;
-  margin: 10px auto;
-  text-align: center;
+  left: auto;
+  right: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 9.5px;
 }
 
 .leaflet-control-zoom {
