@@ -393,6 +393,9 @@ button i {
 .external {
   display: block;
 }
+.part-area-hidden {
+  display: none;
+}
 
 #filters.right-collapsed a {
   display: none;

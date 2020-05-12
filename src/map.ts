@@ -10,7 +10,7 @@ import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
 import { groupBy } from "./utilities/data";
 import { getHtmlElement, getHtmlElements } from "./utilities/html";
-import { createPricelessOverPassLayer } from "./createPricelessOverPassLayer";
+import { createPricelessOverPassLayer } from "./createOverPassLayer";
 
 declare var taginfo_taglist: any;
 
@@ -114,6 +114,50 @@ export function initMap<M>(
     const state = { lat: center.lat, lng: center.lng, zoom: map.getZoom() };
     set<State>("position", state);
   });
+
+  function partAreaVisible() {
+    const visibles = getHtmlElements(`.part-area-visible`);
+    let hasPrev = false;
+    for (const e of visibles) {
+      const c = (e.getAttribute("part-area-visible") || "")
+        .split(",")
+        .map(n => parseFloat(n));
+
+      (e.previousElementSibling as HTMLElement).style.display = "none";
+
+      if (e.nextElementSibling as HTMLElement)
+        (e.nextElementSibling as HTMLElement).style.display = "none";
+
+      if (
+        map
+          .getBounds()
+          .intersects(
+            L.latLngBounds(L.latLng(c[0], c[1]), L.latLng(c[2], c[3]))
+          )
+      ) {
+        if (
+          e.previousElementSibling?.className === "external-separator" &&
+          hasPrev
+        )
+          (e.previousElementSibling as HTMLElement).style.display = "";
+
+        e.classList.remove("part-area-hidden");
+        hasPrev = true;
+      } else {
+        e.classList.add("part-area-hidden");
+        hasPrev = false;
+      }
+    }
+    const hiddens = getHtmlElements(`.part-area-hidden`);
+    if (visibles.length === hiddens.length) {
+      getHtmlElement(".external-label").style.display = "none";
+    } else {
+      getHtmlElement(".external-label").style.display = "";
+    }
+  }
+
+  map.on("moveend", partAreaVisible);
+  map.on("zoomend", partAreaVisible);
 
   map.on(
     "locationfound",
@@ -372,14 +416,22 @@ out center;`
             const links = [];
             for (const external of local.type[f.value].externalResources) {
               links.push(
-                `<a class="external-link" href="${external.url}" target="_blank">${external.name}</a>`
+                `<a class="external-link${
+                  external.bounds ? " part-area-visible" : ""
+                }" href="${external.url}" target="_blank"${
+                  external.bounds
+                    ? ` part-area-visible="${external.bounds.join(",")}"`
+                    : ""
+                } href="${external.url}">${external.name}</a>`
               );
             }
 
             getHtmlElement(
               ".info-container .info .external"
-            ).innerHTML = `<br/>${local.externalResources}: ${links.join(
-              ", "
+            ).innerHTML = `<br/><span class="external-label">${
+              local.externalResources
+            }: </span>${links.join(
+              `<span class="external-separator">, </span>`
             )}`;
           }
 

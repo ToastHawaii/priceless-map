@@ -137,11 +137,13 @@ export const local = {
         {
           name: "Liste öffentlicher Bücherschränke",
           url:
-            "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke"
+            "https://de.wikipedia.org/wiki/Liste_%C3%B6ffentlicher_B%C3%BCcherschr%C3%A4nke",
+          bounds: [35.81, -10.15, 55.25, 24.22]
         },
         {
           name: "Tauschgnom",
-          url: "https://www.tauschgnom.de/offene-buecherschraenke"
+          url: "https://www.tauschgnom.de/offene-buecherschraenke",
+          bounds: [45.54, 5.32, 57.91, 17.45]
         },
         {
           name: "Pumpipumpe",
@@ -153,7 +155,7 @@ export const local = {
         }
       ]
     },
-    kneipp_water_cure : { name: "Kneippanlage", description: "" },
+    kneipp_water_cure: { name: "Kneippanlage", description: "" },
     castle: { name: "Burg", description: "" },
     mill: { name: "Mühle", description: "" },
     history: { name: "Geschichte", description: "" },
@@ -174,7 +176,8 @@ export const local = {
       externalResources: [
         {
           name: "Nachbarschaftshilfe",
-          url: "https://www.nachbarschaftshilfe.ch/standorte"
+          url: "https://www.nachbarschaftshilfe.ch/standorte",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         }
       ]
     },
@@ -189,11 +192,13 @@ export const local = {
         },
         {
           name: "Repair Café Schweiz",
-          url: "https://repair-cafe.ch/de/events"
+          url: "https://repair-cafe.ch/de/events",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Reparatur-Initiativen",
-          url: "https://www.reparatur-initiativen.de/orte"
+          url: "https://www.reparatur-initiativen.de/orte",
+          bounds: [45.82, 5.8, 55.26, 17.31]
         },
         {
           name: "Zero Waste Map",
@@ -234,7 +239,8 @@ export const local = {
         {
           name: "Fahrradselbsthilfewerkstätten in Berlin",
           url:
-            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin"
+            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin",
+          bounds: [52.33826, 13.08835, 52.67551, 13.76116]
         },
         {
           name: "Pumpipumpe",
@@ -273,19 +279,23 @@ export const local = {
       externalResources: [
         {
           name: "Foodsharing",
-          url: "https://foodsharing.de/karte"
+          url: "https://foodsharing.de/karte",
+          bounds: [44.57, 2.63, 55.26, 19.55]
         },
         {
           name: "RestEssBar",
-          url: "http://restessbar.ch/de"
+          url: "http://restessbar.ch/de",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Madame Frigos",
-          url: "https://www.madamefrigo.ch/de/standorte/"
+          url: "https://www.madamefrigo.ch/de/standorte/",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "foodwaste.ch",
-          url: "https://foodwaste.ch/lokale-initiativen/"
+          url: "https://foodwaste.ch/lokale-initiativen/",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Suspended Coffee",
@@ -293,11 +303,14 @@ export const local = {
         },
         {
           name: "Suspended Coffee Germany",
-          url: "https://suspendedcoffee.de/shops/karte/"
+          url: "https://suspendedcoffee.de/shops/karte/",
+          bounds: [44.57, 2.63, 55.26, 19.55]
         },
         {
           name: "Café Surprise",
-          url: "https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/"
+          url:
+            "https://surprise.ngo/angebote/cafesurprise/ueber-cafe-surprise/",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "mundraub",
@@ -320,7 +333,8 @@ export const local = {
         },
         {
           name: "PING!-Station",
-          url: "https://pingstation.de/finden/"
+          url: "https://pingstation.de/finden/",
+          bounds: [45.71, 5.44, 55.26, 15.29]
         },
         {
           name: "umap - Give box",
@@ -333,7 +347,8 @@ export const local = {
         },
         {
           name: "Alles Und Umsonst",
-          url: "https://alles-und-umsonst.de/umsonstladen"
+          url: "https://alles-und-umsonst.de/umsonstladen",
+          bounds: [35.4, -10.2, 55.5, 19.1]
         },
         {
           name: "Zero Waste Map",
@@ -347,7 +362,8 @@ export const local = {
       externalResources: [
         {
           name: "Verbund Offener Werkstätten",
-          url: "https://www.offene-werkstaetten.org/werkstatt-suche"
+          url: "https://www.offene-werkstaetten.org/werkstatt-suche",
+          bounds: [35.99, 5.06, 55.5, 24.66]
         },
         {
           name: "hackerspaces",
@@ -403,11 +419,13 @@ export const local = {
       externalResources: [
         {
           name: "Street Workout",
-          url: "https://www.street-workout.com/"
+          url: "https://www.street-workout.com/",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Playparc",
-          url: "https://www.playparc.de/marken/4fcircle/"
+          url: "https://www.playparc.de/marken/4fcircle/",
+          bounds: [35.13, 2.16, 62.53, 32.75]
         }
       ]
     },
@@ -437,12 +455,14 @@ export const local = {
       externalResources: [
         {
           name: "Zurich vitaparcours",
-          url: "https://www.zurichvitaparcours.ch/de/Finder"
+          url: "https://www.zurichvitaparcours.ch/de/Finder",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Trimm-Dich-Pfade",
           url:
-            "https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe#{lat}/{lng}/{zoom}"
+            "https://www.trimm-dich-pfad.com/standorte/trimm-dich-pfad-in-meiner-naehe#{lat}/{lng}/{zoom}",
+          bounds: [45.11, 2.16, 55.2, 24.4]
         }
       ]
     },
@@ -459,19 +479,23 @@ export const local = {
       externalResources: [
         {
           name: "Zoo-Infos.org - Schweiz",
-          url: "http://ch.zoo-infos.org/set.html?karte.php"
+          url: "http://ch.zoo-infos.org/set.html?karte.php",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Zoo-Infos.de - Deutschland",
-          url: "http://www.zoo-infos.de/set.html?karte.php"
+          url: "http://www.zoo-infos.de/set.html?karte.php",
+          bounds: [47.27, 5.87, 55.1, 15.04]
         },
         {
           name: "Zoo-Infos.org - Österreich",
-          url: "http://at.zoo-infos.org/set.html?karte.php"
+          url: "http://at.zoo-infos.org/set.html?karte.php",
+          bounds: [46.3723, 9.5307, 49.0205, 17.1608]
         },
         {
           name: "Zoo-Infos.org - Frankreich",
-          url: "http://fr.zoo-infos.org/set.html?karte.php"
+          url: "http://fr.zoo-infos.org/set.html?karte.php",
+          bounds: [42.13, -5.02, 51.27, 8.43]
         }
       ]
     },
@@ -531,7 +555,8 @@ export const local = {
         {
           name: "Swisscom Mobile Aid",
           url:
-            "https://www.swisscom.ch/de/about/unternehmen/nachhaltigkeit/mobile-aid.html"
+            "https://www.swisscom.ch/de/about/unternehmen/nachhaltigkeit/mobile-aid.html",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Labdoo",
@@ -604,7 +629,8 @@ export const local = {
       externalResources: [
         {
           name: "Velafrica",
-          url: "http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen"
+          url: "http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen",
+          bounds: [45.818, 5.9559, 47.8085, 10.4923]
         },
         {
           name: "Bikekitchen",
@@ -614,7 +640,8 @@ export const local = {
         {
           name: "Fahrradselbsthilfewerkstätten in Berlin",
           url:
-            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin"
+            "https://fahrrad.fandom.com/de/wiki/Fahrradselbsthilfewerkst%C3%A4tten_in_Berlin",
+          bounds: [52.33826, 13.08835, 52.67551, 13.76116]
         },
         {
           name: "Pumpipumpe",
