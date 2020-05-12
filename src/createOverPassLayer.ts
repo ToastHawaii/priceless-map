@@ -14,7 +14,7 @@ import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
 import { equalsIgnoreCase } from "./utilities/string";
 
-export function createPricelessOverPassLayer<M>(
+export function createOverPassLayer<M>(
   value: string,
   icon: string,
   query: string,

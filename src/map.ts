@@ -10,7 +10,7 @@ import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
 import { groupBy } from "./utilities/data";
 import { getHtmlElement, getHtmlElements } from "./utilities/html";
-import { createPricelessOverPassLayer } from "./createOverPassLayer";
+import { createOverPassLayer } from "./createOverPassLayer";
 
 declare var taginfo_taglist: any;
 
@@ -515,7 +515,7 @@ function init<M>(
   local: any,
   color: string
 ) {
-  layers[value] = createPricelessOverPassLayer(
+  layers[value] = createOverPassLayer(
     value,
     icon,
     query,
