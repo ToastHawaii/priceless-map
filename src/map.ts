@@ -145,7 +145,6 @@ export function initMap<M>(
         hasPrev = true;
       } else {
         e.classList.add("part-area-hidden");
-        hasPrev = false;
       }
     }
     const hiddens = getHtmlElements(`.part-area-hidden`);
@@ -450,6 +449,8 @@ out center;`
               return false;
             });
           }
+
+          partAreaVisible();
 
           return false;
         });
