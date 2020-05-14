@@ -304,7 +304,7 @@ nwr["tourism"="viewpoint"];
 
 nw["viewpoint"="yes"];
 
-nwr["tower:type"="observation"]`,
+nwr["tower:type"="observation"];`,
     color: "#98FB98",
     tags: ["tourism=viewpoint", "viewpoint=*", "tower:type=observation"],
     edit: ["tourism=viewpoint", "man_made=tower", "man_made", "natural"]
