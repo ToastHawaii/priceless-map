@@ -149,9 +149,11 @@ export function initMap<M>(
     }
     const hiddens = getHtmlElements(`.part-area-hidden`);
     if (visibles.length === hiddens.length) {
-      getHtmlElement(".external-label").style.display = "none";
+      getHtmlElements(".external-label").forEach(
+        l => (l.style.display = "none")
+      );
     } else {
-      getHtmlElement(".external-label").style.display = "";
+      getHtmlElements(".external-label").forEach(l => (l.style.display = ""));
     }
   }
 
