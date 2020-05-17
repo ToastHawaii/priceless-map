@@ -640,8 +640,7 @@ nw["drinking_water:refill"="yes"];`,
       -(
         (
           wr["amenity"="public_bath"]["fee"!="no"];
-          wr["leisure"="water_park"]["fee"!="no"];
-          wr["leisure"="sports_centre"]["fee"!="no"];
+          wr["leisure"~"water_park|sports_centre|stadium"]["fee"!="no"];
         );
         map_to_area -> .b;
         (
@@ -699,9 +698,10 @@ nwr["toilets"="yes"];`,
     value: "basketball",
     icon: "/lib/maki-icons/basketball-15.svg",
     query: `
-nwr["sport"="basketball"];
-
-nwr["leisure"="pitch"]["sport"~"basketball|multi"];`,
+    nwr["sport"~"basketball|multi"]["leisure"!~"sports_centre|stadium"]["surface"!="grass"];
+    ${nwrFee(
+      `["sport"~"basketball|multi"]["leisure"~"sports_centre|stadium"]`
+    )}`,
     color: "#FF4500",
     tags: ["leisure=pitch", "sport=basketball", "sport=multi"],
     edit: ["leisure=pitch"]
@@ -715,26 +715,25 @@ ${nwrFee(`["amenity"="public_bath"]`)}
 ${nwrFee(`["leisure"="water_park"]`)}
 nwr["leisure"="bathing_place"];
 
-${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
+${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
 
 // Show only swimming pools that are not inside a bath
 (
   (
     nwr["leisure"="swimming_pool"];  
     nwr["leisure"="swimming_area"];
-    nwr["sport"="swimming"][leisure!=sports_centre];
+    nwr["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
   );
   -(
     (
       wr["amenity"="public_bath"];
-      wr["leisure"="water_park"];
-      wr["leisure"="sports_centre"];
+      wr["leisure"~"water_park|sports_centre|stadium"];
     );
     map_to_area -> .b;
     (
       nwr(area.b)["leisure"="swimming_pool"];
       nwr(area.b)["leisure"="swimming_area"];
-      nwr(area.b)["sport"="swimming"][leisure!=sports_centre];
+      nwr(area.b)["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
     );
   );
 );`,
@@ -759,13 +758,8 @@ ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
     value: "bikepark",
     icon: "/lib/maki-icons/bicycle-15.svg",
     query: `
-    nwr["sport"="bmx"]["leisure"!="sports_centre"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee:conditional"];
-    
-    nwr["sport"="cycling"]["leisure"!="sports_centre"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee:conditional"];`,
+    nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#A52A2A",
     tags: ["sport=bmx", "sport=cycling"],
     edit: ["leisure=track", "landuse=recreation_ground", "leisure=pitch"]
@@ -775,9 +769,8 @@ ${nwrFee(`["sport"="swimming"][leisure=sports_centre]`)}
     value: "skatepark",
     icon: "/lib/temaki-icons/skateboarding.svg",
     query: `
-    nwr["sport"="skateboard"]["leisure"!="sports_centre"];
-    nwr["sport"="skateboard"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="skateboard"]["leisure"="sports_centre"]["fee:conditional"];`,
+    nwr["sport"="skateboard"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"="skateboard"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#E9967A",
     tags: ["sport=skateboard"],
     edit: ["leisure=pitch"]
@@ -798,13 +791,9 @@ nw["sport"="chess"];`,
     value: "climbing",
     icon: "/lib/temaki-icons/abseiling.svg",
     query: `
-nwr["sport"="climbing"]["leisure"!="sports_centre"];
-nwr["sport"="climbing"]["leisure"="sports_centre"]["fee"];
-nwr["sport"="climbing"]["leisure"="sports_centre"]["fee:conditional"];
-
-nwr["sport"="rock_climbing"]["leisure"!="sports_centre"];
-nwr["sport"="rock_climbing"]["leisure"="sports_centre"]["fee"];
-nwr["sport"="rock_climbing"]["leisure"="sports_centre"]["fee:conditional"];
+    // climbing and rock_climbing
+nwr["sport"~"climbing"]["leisure"!~"sports_centre|stadium"];
+${nwrFee(`["sport"~"climbing"]["leisure"~"sports_centre|stadium"]`)}
 
 nwr["playground"="climbingwall"];`,
     color: "#696969",
@@ -816,8 +805,8 @@ nwr["playground"="climbingwall"];`,
     value: "boules",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
-    nw["leisure"="pitch"]["sport"="boules"];
-    nw["leisure"="pitch"]["sport"="bowls"];`,
+    nwr["sport"~"boules|bowls"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"~"boules|bowls"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#f1c68e",
     tags: ["sport=boules", "sport=bowls"],
     edit: ["leisure=pitch"]
@@ -955,7 +944,8 @@ nwr["route"="fitness_trail"];`,
     value: "running",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
-nwr["sport"="running"];
+nwr["sport"="running"]["leisure"!~"sports_centre|stadium"];
+${nwrFee(`["sport"="running"]["leisure"~"sports_centre|stadium"]`)}
 
 nwr["leisure"="track"]["sport"="athletics"];`,
     color: "#8B0000",
@@ -967,9 +957,11 @@ nwr["leisure"="track"]["sport"="athletics"];`,
     value: "soccer",
     icon: "/lib/maki-icons/soccer-15.svg",
     query: `
-nwr["sport"="soccer"];
-
-nwr["leisure"="pitch"]["sport"~"soccer|multi"];`,
+    // exclude table_soccer
+nwr["sport"~"(^soccer)|;soccer|multi"]["leisure"!~"sports_centre|stadium"];
+${nwrFee(
+  `["sport"~"(^soccer)|;soccer|multi"]["leisure"~"sports_centre|stadium"]`
+)}`,
     color: "#ADFF2F",
     tags: ["leisure=pitch", "sport=soccer", "sport=multi"],
     edit: ["leisure=pitch"]
@@ -1003,10 +995,9 @@ nw["leisure"="table_tennis_table"];`,
     value: "volleyball",
     icon: "/lib/maki-icons/volleyball-15.svg",
     query: `
-nwr["sport"="volleyball"];
-nwr["sport"="beachvolleyball"];
-
-nwr["leisure"="pitch"]["sport"~"volleyball"];`,
+    // volleyball and beachvolleyball
+    nwr["sport"~"volleyball"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"~"volleyball"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#F4A460",
     tags: ["leisure=pitch", "sport=volleyball", "sport=beachvolleyball"],
     edit: ["leisure=pitch"]
@@ -1802,12 +1793,8 @@ nw["amenity"="hammock"];`,
     nw["service:bicycle:pump"="yes"];
 
     // Park
-    nwr["sport"="bmx"]["leisure"!="sports_centre"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee:conditional"];
-    nwr["sport"="cycling"]["leisure"!="sports_centre"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee:conditional"];
+    nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}
     
     // Charge
     (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]; 
@@ -1920,13 +1907,8 @@ nw["amenity"="hammock"];`,
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-infinity",
     query: `
-    nwr["sport"="bmx"]["leisure"!="sports_centre"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="bmx"]["leisure"="sports_centre"]["fee:conditional"];
-    
-    nwr["sport"="cycling"]["leisure"!="sports_centre"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee"];
-    nwr["sport"="cycling"]["leisure"="sports_centre"]["fee:conditional"];`,
+    nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
+    ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#4682B4",
     tags: ["sport=bmx", "sport=cycling"],
     edit: ["leisure=track", "landuse=recreation_ground", "leisure=pitch"]
