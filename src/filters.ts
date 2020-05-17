@@ -253,16 +253,13 @@ nw["natural"="cave_entrance"];`,
     value: "natural_monument",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
-    nw["denotation"="natural_monument"];
-    nw["denotation"="landmark"];
+    nw["denotation"~"^(natural_monument|landmark|religious|memorial)$"]
     
     node["natural"="tree"][religion];
     way["natural"="tree_row"][religion];   
-    nw["denotation"="religious"];
     
     node["natural"="tree"]["historic"];
-    way["natural"="tree_row"]["historic"];
-    nw["denotation"="memorial"];`,
+    way["natural"="tree_row"]["historic"];`,
     color: "#228B22",
     tags: ["denotation=natural_monument", "denotation=landmark"],
     edit: ["natural=tree", "natural=tree_row", "natural"]
@@ -288,9 +285,7 @@ nwr["natural"="water"]["water"~"^(pond|lake|reservoir|reflecting_pool)$"];`,
     value: "rock",
     icon: "/lib/maki-icons/circle-15.svg",
     query: `
-nwr["natural"="rock"];
-
-nwr["natural"="stone"];`,
+nwr["natural"="^(rock|stone)$"];`,
     color: "#D3D3D3",
     tags: ["natural=rock", "natural=stone"],
     edit: ["natural=rock", "natural=stone"]
@@ -314,11 +309,7 @@ nwr["tower:type"="observation"];`,
     value: "waterfall",
     icon: "https://wiki.openstreetmap.org/w/images/7/72/Waterfall-14.svg",
     query: `
-nwr["waterway"="waterfall"];
-
-nwr["waterway"="dam"];
-
-nwr["waterway"="weir"];`,
+nwr["waterway"="^(waterfall|dam|weir)$"];`,
     color: "#20B2AA",
     tags: ["waterway=waterfall", "waterway=dam", "waterway=weir"],
     edit: ["waterway=waterfall", "waterway=dam", "waterway=weir"]
@@ -368,12 +359,10 @@ node["brand"~"Repair Caf[eé]",i];`,
     icon: "https://wiki.openstreetmap.org/w/images/5/50/Bbq-14.svg",
     query: `
 nwr["amenity"="bbq"];
-
-nwr["barbecue_grill"="yes"];
-
-nwr["bbq"="yes"];`,
+nwr["bbq"="yes"];
+nwr["barbecue_grill"="yes"];`,
     color: "#708090",
-    tags: ["amenity=bbq", "barbecue_grill=*", "bbq=*"],
+    tags: ["amenity=bbq", "bbq=*"],
     edit: ["amenity=bbq", "tourism"]
   },
   {
@@ -643,7 +632,23 @@ nw["drinking_water:refill"="yes"];`,
     value: "public-shower",
     icon: "https://wiki.openstreetmap.org/w/images/5/5a/Shower-14.svg",
     query: `
-nw["amenity"="shower"];`,
+    // Show only showers that are not inside a bath
+    (
+      (
+      nw["amenity"="shower"];
+      );
+      -(
+        (
+          wr["amenity"="public_bath"]["fee"!="no"];
+          wr["leisure"="water_park"]["fee"!="no"];
+          wr["leisure"="sports_centre"]["fee"!="no"];
+        );
+        map_to_area -> .b;
+        (
+          nw(area.b)["amenity"="shower"];
+        );
+      );
+    );`,
     color: "#1E90FF",
     tags: ["amenity=shower"],
     edit: ["amenity=shower"]
