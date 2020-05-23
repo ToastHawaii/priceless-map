@@ -472,3 +472,19 @@ h1 a {
 details:not([open]) > *:not(summary) {
   display: none !important;
 }
+
+.attribut {
+  position: relative;
+}
+
+.attribut .title {
+  position: absolute;
+  top: 20px;
+  background: white;
+  border: 1px solid black;
+  padding: 4px 6px;
+  left: 0;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
