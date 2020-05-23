@@ -368,7 +368,7 @@ nwr["barbecue_grill"="yes"];`,
   {
     group: "object_of_utility",
     value: "baking-oven",
-    icon: "/lib/maki-icons/bakery-15.svg",
+    icon: "https://wiki.openstreetmap.org/w/images/f/fe/Bakery-16.svg",
     query: `
     nw["amenity"="baking_oven"][!"historic"];
     
