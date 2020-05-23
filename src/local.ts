@@ -72,7 +72,7 @@ export const local = {
     health: "Health",
     community: "Community",
     sport: "Sport",
-    play: "Play",
+    communitySport: "Community sport",
     trip: "Trip",
     goods: "Goods"
   },

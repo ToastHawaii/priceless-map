@@ -694,7 +694,7 @@ nwr["toilets"="yes"];`,
     edit: ["amenity=toilets", "building", "amenity"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "basketball",
     icon: "/lib/maki-icons/basketball-15.svg",
     query: `
@@ -776,7 +776,7 @@ ${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
     edit: ["leisure=pitch"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "chess",
     icon:
       "https://upload.wikimedia.org/wikipedia/commons/d/d4/Chess_pictogram.svg",
@@ -801,7 +801,7 @@ nwr["playground"="climbingwall"];`,
     edit: ["natural", "landuse=recreation_ground", "playground"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "boules",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
@@ -953,7 +953,7 @@ nwr["leisure"="track"]["sport"="athletics"];`,
     edit: ["sport=running", "sport=athletics"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "soccer",
     icon: "/lib/maki-icons/soccer-15.svg",
     query: `
@@ -967,7 +967,7 @@ ${nwrFee(
     edit: ["leisure=pitch"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "table-tennis",
     icon: "/lib/maki-icons/table-tennis-15.svg",
     query: `
@@ -981,7 +981,7 @@ nw["leisure"="table_tennis_table"];`,
     edit: ["leisure=pitch"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "table-soccer",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Kicker02.png",
     query: `
@@ -991,7 +991,7 @@ nw["leisure"="table_tennis_table"];`,
     edit: ["leisure=pitch"]
   },
   {
-    group: "play",
+    group: "communitySport",
     value: "volleyball",
     icon: "/lib/maki-icons/volleyball-15.svg",
     query: `
@@ -1173,23 +1173,19 @@ node["musical_instrument:piano"=yes][!"shop"];`,
     icon: "https://wiki.openstreetmap.org/w/images/d/df/Firepit.svg",
     query: `
 nwr["leisure"="firepit"];
-
 nwr["fireplace"="yes"];
 
-nwr["openfire"="yes"];
+nwr["openfire"="yes"]["tourism"!="camp_site"];
 
 nwr["amenity"="bbq"];
-
-nwr["barbecue_grill"="yes"];
-
-nwr["bbq"="yes"];`,
+nwr["bbq"="yes"];
+nwr["barbecue_grill"="yes"];`,
     color: "#B22222",
     tags: [
       "leisure=firepit",
       "fireplace=*",
       "openfire=*",
       "amenity=bbq",
-      "barbecue_grill=*",
       "bbq=*"
     ],
     edit: ["leisure=firepit", "amenity=bbq", "tourism"]
@@ -1199,7 +1195,7 @@ nwr["bbq"="yes"];`,
     value: "map",
     icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
     query: `
-    node["information"="map"];`,
+node["information"="map"];`,
     color: "#FFE4C4",
     tags: ["information=map"],
     edit: ["tourism=information"]
