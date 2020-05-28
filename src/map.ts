@@ -116,9 +116,20 @@ export function initMap<M>(
   });
 
   function partAreaVisible() {
-    const visibles = getHtmlElements(`.part-area-visible`);
+    const visibles = getHtmlElements(`.external-link`);
     let hasPrev = false;
     for (const e of visibles) {
+      if (!e.classList.contains("part-area-visible")) {
+        if (
+          e.previousElementSibling?.className === "external-separator" &&
+          hasPrev
+        )
+          (e.previousElementSibling as HTMLElement).style.display = "";
+
+        hasPrev = true;
+        continue;
+      }
+      
       const c = (e.getAttribute("part-area-visible") || "")
         .split(",")
         .map(n => parseFloat(n));
