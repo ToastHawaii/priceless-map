@@ -85,6 +85,10 @@ Berlin, gratis und ganz einfach für alle erlebbar. [gratis-in-berlin](https://w
 
 Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
+Eine Karte, welche Einrichtungen und Angebote anzeigt, die ökologisch-, sozial- und wirtschaftlich nachhaltig sind. [Nachhaltig](https://sustainable.zottelig.ch/de)
+
+Eine Karte mit öffentlichen Bücherschränken. [Öffentlichen Bücherschränke](https://book-exchange.zottelig.ch/de)
+
 ---
 
 [English](/docs)

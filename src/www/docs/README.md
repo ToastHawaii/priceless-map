@@ -85,6 +85,10 @@ Berlin, free of charge and easy for everyone to experience. [gratis-in-berlin](h
 
 Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
 
+A map that shows facilities and services that are environmentally, socially and economically sustainable. [Sustainable](https://sustainable.zottelig.ch/)
+
+A map with public bookcases. [Public bookcase](https://book-exchange.zottelig.ch/)
+
 ---
 
 [Deutsch](/de/docs)
