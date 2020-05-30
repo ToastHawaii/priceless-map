@@ -1302,11 +1302,18 @@ nw["shelter_type"="picnic_shelter"];`,
     icon: "/lib/temaki-icons/pedestrian.svg",
     query: `
 nw["place"="square"];
+nw["leisure"="common"];
 
-way["highway"="pedestrian"]["area"="yes"];`,
+way["highway"="pedestrian"]["area"="yes"];
+way["highway"="footway"]["area"="yes"];`,
     color: "#666666",
-    tags: ["place=square", "highway=pedestrian"],
-    edit: ["place=square", "pedestrian"]
+    tags: [
+      "place=square",
+      "leisure=common",
+      "highway=pedestrian",
+      "highway=footway"
+    ],
+    edit: ["place=square", "leisure=common", "highway"]
   },
   {
     group: "trip",
@@ -1316,11 +1323,18 @@ way["highway"="pedestrian"]["area"="yes"];`,
     button: "far fa-minus-square",
     query: `
 nw["place"="square"]["name"];
+nw["leisure"="common"]["name"];
 
-way["highway"="pedestrian"]["area"="yes"]["name"];`,
+way["highway"="pedestrian"]["area"="yes"]["name"];
+way["highway"="footway"]["area"="yes"]["name"];`,
     color: "#666666",
-    tags: ["place=square", "highway=pedestrian"],
-    edit: ["place=square", "pedestrian"]
+    tags: [
+      "place=square",
+      "leisure=common",
+      "highway=pedestrian",
+      "highway=footway"
+    ],
+    edit: ["place=square", "leisure=common", "highway"]
   },
   {
     group: "trip",
