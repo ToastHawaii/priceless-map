@@ -44,7 +44,7 @@ The texts are located in the src folder in the files local.ts, index.html and RE
 
 ### Do you like to write?
 
-Complete the description of the facilities in the [OpenStreetMap Wiki](https://wiki.openstreetmap.org/wiki/DE:Map_Features). You can find a direct link to the Wiki page on the map next to the selection of the facilities via the info button <i class="fas fa-info-circle"></i>.
+Complete the description of the facilities in the [OpenStreetMap Wiki](https://wiki.openstreetmap.org/wiki/Map_Features). You can find a direct link to the Wiki page on the map next to the selection of the facilities via the info button <i class="fas fa-info-circle"></i>.
 
 ### Can you program?
 
