@@ -576,7 +576,9 @@ nw["drinking_water:refill"="yes"];`,
       nw["office"~"^(charity|ngo|foundation|association)$"];
       nw["club"="charity"];
       nw["charity"]["charity"!="no"];
-      nw["operator:type"~"^(charitable|community|private_non_profit|ngo|cooperative)$"]["amenity"!="parking"];
+      nw["operator:type"~"^(charitable|community|private_non_profit|ngo|cooperative)$",i]["amenity"!="parking"];
+      nw["operator_type"~"^(charitable|community|private_non_profit|ngo|cooperative)$",i]["amenity"!="parking"];
+      nw["operator"~"^(charitable|community|private_non_profit|ngo|cooperative)$",i]["amenity"!="parking"];
 
       nwr["healthcare"="blood_donation"];`,
     color: "#FF69B4",
