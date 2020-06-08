@@ -335,7 +335,8 @@ summary:focus {
 
 .edit,
 .note,
-.about {
+.about,
+.donate {
   right: 10px;
   bottom: 25px;
   -webkit-border-radius: 50%;
@@ -350,14 +351,17 @@ summary:focus {
   position: fixed;
   z-index: 1000;
 }
-.about {
+.donate {
   bottom: 25px;
 }
-.edit {
+.about {
   bottom: 60px;
 }
-.note {
+.edit {
   bottom: 95px;
+}
+.note {
+  bottom: 130px;
 }
 
 button {
