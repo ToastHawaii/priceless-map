@@ -11,6 +11,7 @@ import { get, set } from "./utilities/storage";
 import { groupBy } from "./utilities/data";
 import { getHtmlElement, getHtmlElements } from "./utilities/html";
 import { createOverPassLayer } from "./createOverPassLayer";
+import { funding } from "./funding";
 
 declare var taginfo_taglist: any;
 
@@ -50,6 +51,10 @@ export function initMap<M>(
     window.location.href = `https://priceless.zottelig.ch${
       local.code ? `/${local.code}` : ""
     }/docs`;
+  });
+
+  getHtmlElement(".donate").addEventListener("click", () => {
+    window.open(funding[local.code] || funding.en);
   });
 
   getHtmlElement(".note").addEventListener("click", () => {
@@ -129,7 +134,7 @@ export function initMap<M>(
         hasPrev = true;
         continue;
       }
-      
+
       const c = (e.getAttribute("part-area-visible") || "")
         .split(",")
         .map(n => parseFloat(n));

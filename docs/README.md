@@ -89,6 +89,7 @@ A map that shows facilities and services that are environmentally, socially and 
 
 A map with public bookcases. [Public bookcase](https://book-exchange.zottelig.ch/)
 
+Support me with coffee and cake:
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />
 <input type="hidden" name="hosted_button_id" value="JFWXTYPKBD2YA" />
