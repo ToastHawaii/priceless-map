@@ -4,6 +4,7 @@ export const local = {
   code: "de",
   minZoomMessageNoLayer: "Keine Ebene zugewiesen",
   minZoomMessage: "Vergrössern, um Standorte zu laden",
+  emptyIndicator: "Keine Orte gefunden",
   capacity: "Kapazität",
   playground: "Für Kinder",
   changing_table: "Hat einen Wickeltisch",

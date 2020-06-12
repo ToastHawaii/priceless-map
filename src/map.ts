@@ -114,7 +114,8 @@ export function initMap<M>(
   let currentPosition: L.Layer | L.Marker<any>;
   let currentAccuracy: L.Layer | L.Circle<any>;
 
-  map.on("moveend", () => {
+  map.on("moveend zoomend", () => {
+    updateCount(local);
     const center = map.getCenter();
     const state = { lat: center.lat, lng: center.lng, zoom: map.getZoom() };
     set<State>("position", state);
@@ -173,8 +174,7 @@ export function initMap<M>(
     }
   }
 
-  map.on("moveend", partAreaVisible);
-  map.on("zoomend", partAreaVisible);
+  map.on("moveend zoomend", partAreaVisible);
 
   map.on(
     "locationfound",
@@ -515,6 +515,8 @@ out center;`
           const params = getHashParams();
           params["offers"] = offers.toString();
           setHashParams(params, hashchange);
+
+          updateCount(local);
         }
       );
     }
@@ -556,4 +558,35 @@ export function parseOpeningHours(openingHours: string, localCode: string) {
     console.warn(e);
     return undefined;
   }
+}
+
+let emptyIndicatorElement: HTMLDivElement | undefined;
+
+export function updateCount(local:any) {
+  const visible =
+    countMarkersInView(map) === 0 && offers.length > 0 && map.getZoom() >= 14;
+  if (visible && !emptyIndicatorElement) {
+    emptyIndicatorElement = document.createElement("div");
+    emptyIndicatorElement.className = "leaflet-bottom leaflet-left";
+    emptyIndicatorElement.innerHTML = `<div class="leaflet-control-emptyIndicator leaflet-control">${local.emptyIndicator}</div>`;
+    getHtmlElement(".leaflet-control-container").appendChild(
+      emptyIndicatorElement
+    );
+  } else if (!visible && emptyIndicatorElement) {
+    emptyIndicatorElement.remove();
+    emptyIndicatorElement = undefined;
+  }
+}
+
+function countMarkersInView(map: L.Map) {
+  let count = 0;
+  const mapBounds = map.getBounds();
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker) {
+      if (mapBounds.contains(layer.getLatLng())) {
+        count++;
+      }
+    }
+  });
+  return count;
 }
