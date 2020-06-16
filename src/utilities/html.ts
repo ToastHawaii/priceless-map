@@ -32,3 +32,14 @@ export function getHtmlElements(
 
   return elements;
 }
+
+export function createElement<K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  innerHTML: string = "",
+  classNames: string[] = []
+) {
+  const element = document.createElement(tag);
+  element.innerHTML = innerHTML;
+  element.classList.add(...classNames);
+  return element;
+}

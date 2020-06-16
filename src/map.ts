@@ -9,7 +9,11 @@ import { Attribute } from "./Generator";
 import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
 import { groupBy } from "./utilities/data";
-import { getHtmlElement, getHtmlElements } from "./utilities/html";
+import {
+  getHtmlElement,
+  getHtmlElements,
+  createElement
+} from "./utilities/html";
 import { createOverPassLayer } from "./createOverPassLayer";
 import { funding } from "./funding";
 
@@ -23,6 +27,7 @@ export function initMap<M>(
   filterOptions: {
     group: string;
     subgroup?: string;
+    order?: number;
     value: string;
     icon: string;
     button?: string;
@@ -208,22 +213,18 @@ export function initMap<M>(
       hashchange
     );
 
-    getJson<{ boundingbox: number[] }[]>(
-      "https://nominatim.openstreetmap.org/search",
-      {
-        format: "json",
-        q: value,
-        limit: 1
-      },
-      r => {
-        const result = r[0];
-        if (!result) return;
-        map.flyToBounds([
-          [result.boundingbox[0], result.boundingbox[2]],
-          [result.boundingbox[1], result.boundingbox[3]]
-        ]);
-      }
-    );
+    getJson("https://nominatim.openstreetmap.org/search", {
+      format: "json",
+      q: value,
+      limit: 1
+    }).then(r => {
+      const result = r[0];
+      if (!result) return;
+      map.flyToBounds([
+        [result.boundingbox[0], result.boundingbox[2]],
+        [result.boundingbox[1], result.boundingbox[3]]
+      ]);
+    });
   }
 
   function hashchange() {
@@ -272,7 +273,7 @@ export function initMap<M>(
     map.locate({ setView: false, maxZoom: 16 });
   } else map.locate({ setView: true, maxZoom: 16 });
 
-  map.on("popupopen", function (e) {
+  map.on("popupopen", e => {
     const marker = (e as L.PopupEvent & { popup: { _source: L.Marker } }).popup
       ._source;
     const latLng = marker.getLatLng();
@@ -288,15 +289,18 @@ export function initMap<M>(
         local.type[a.value].name.localeCompare(local.type[b.value].name)
       )
       .sort((a, b) => local.group[a.group].localeCompare(local.group[b.group]))
-      .sort((a, b) => (a.subgroup || "").localeCompare(b.subgroup || "")),
+      .sort((a, b) => (a.subgroup || "").localeCompare(b.subgroup || ""))
+      .sort((a, b) => (b.order || 1000) - (a.order || 1000)),
     "group"
   );
   let iconColors = "";
   for (const k in groups) {
     const group = groups[k];
-    const detailsElement = document.createElement("details");
-    const summaryElement = document.createElement("summary");
-    summaryElement.innerHTML = `<span>${local.group[k]}</span>`;
+    const detailsElement = createElement("details");
+    const summaryElement = createElement(
+      "summary",
+      `<span>${local.group[k]}</span>`
+    );
     detailsElement.appendChild(summaryElement);
 
     for (const f of group) {
@@ -314,20 +318,23 @@ export function initMap<M>(
       }
 
       if (!f.subgroup) {
-        contentElement = document.createElement("label");
-        contentElement.classList.add("filter");
-        contentElement.classList.add("filter-" + k + "-" + f.value);
-        contentElement.innerHTML = `
-    <input value="${k + "/" + f.value}" type="checkbox" />
-    <div class="filter-label">
-      <img class="${f.value}-icon"
-        src="${f.icon}"
-      />
-      <span>${local.type[f.value].name}</span>
-    </div>`;
+        contentElement = createElement(
+          "label",
+          `
+          <input value="${k + "/" + f.value}" type="checkbox" />
+          <div class="filter-label">
+            <img class="${f.value}-icon"
+              src="${f.icon}"
+            />
+            <span>${local.type[f.value].name}</span>
+          </div>`,
+          ["filter", "filter-" + k + "-" + f.value]
+        );
 
-        const aElement = document.createElement("a");
-        aElement.innerHTML = `<i class="fas fa-info-circle"></i>`;
+        const aElement = createElement(
+          "a",
+          `<i class="fas fa-info-circle"></i>`
+        );
 
         aElement.addEventListener("click", () => {
           getHtmlElement(".info-container").style.display = "block";
@@ -382,45 +389,41 @@ out center;`
                   keys.push(`Key:${t.split(/=/gi)[0]}`);
                 } else keys.push("Key:" + t);
               }
-              getJson<{ error: any; entities: any[] }>(
-                "https://wiki.openstreetmap.org/w/api.php",
-                {
-                  format: "json",
-                  action: "wbgetentities",
-                  languages: local.code || "en",
-                  languagefallback: "0",
-                  props: "descriptions",
-                  origin: "*",
-                  sites: "wiki",
-                  titles: [tags.join("|"), keys.join("|")]
-                    .filter(t => t)
-                    .join("|")
-                },
-                r => {
-                  if (r && r.error) return;
+              getJson("https://wiki.openstreetmap.org/w/api.php", {
+                format: "json",
+                action: "wbgetentities",
+                languages: local.code || "en",
+                languagefallback: "0",
+                props: "descriptions",
+                origin: "*",
+                sites: "wiki",
+                titles: [tags.join("|"), keys.join("|")]
+                  .filter(t => t)
+                  .join("|")
+              }).then(r => {
+                if (r && r.error) return;
 
-                  let description = "";
-                  for (const prop in r.entities) {
-                    if (!r.entities.hasOwnProperty(prop)) continue;
+                let description = "";
+                for (const prop in r.entities) {
+                  if (!r.entities.hasOwnProperty(prop)) continue;
 
-                    const entity = r.entities[prop];
+                  const entity = r.entities[prop];
 
-                    if (
-                      entity.descriptions &&
-                      Object.keys(entity.descriptions).length > 0
-                    ) {
-                      description =
-                        entity.descriptions[Object.keys(entity.descriptions)[0]]
-                          .value;
+                  if (
+                    entity.descriptions &&
+                    Object.keys(entity.descriptions).length > 0
+                  ) {
+                    description =
+                      entity.descriptions[Object.keys(entity.descriptions)[0]]
+                        .value;
 
-                      break;
-                    }
+                    break;
                   }
-                  getHtmlElement(
-                    ".info-container .info .text"
-                  ).innerText = description;
                 }
-              );
+                getHtmlElement(
+                  ".info-container .info .text"
+                ).innerText = description;
+              });
             }
           }
 
@@ -456,12 +459,19 @@ out center;`
             a.addEventListener("click", () => {
               const latlng = map.getCenter();
               const zoom = map.getZoom();
+              const bounds = map.getBounds();
 
               window.open(
                 (a as HTMLAnchorElement).href
                   .replace(/\{lat\}/i, latlng.lat + "")
                   .replace(/\{lng\}/i, latlng.lng + "")
-                  .replace(/\{zoom\}/i, zoom + ""),
+                  .replace(/\{zoom\}/i, zoom + "")
+                  .replace(
+                    /\{bbox\}/i,
+                    `${bounds.getNorthWest().lat},${
+                      bounds.getNorthWest().lng
+                    },${bounds.getSouthEast().lat},${bounds.getSouthEast().lng}`
+                  ),
                 "_blank"
               );
               return false;
@@ -487,15 +497,14 @@ out center;`
           detailsElement
         );
 
-        contentElement = document.createElement("label");
-        contentElement.classList.add("filter");
-        contentElement.classList.add("filter-sub");
-        contentElement.classList.add("filter-" + k + "-" + f.value);
-        contentElement.innerHTML = `
-    <input value="${k + "/" + f.value}" type="checkbox" />
-    <i class="${f.button}" style="color: ${f.color}" title="${
-          local.type[f.value].name
-        }"></i>`;
+        contentElement = createElement(
+          "label",
+          `<input value="${k + "/" + f.value}" type="checkbox" />
+           <i class="${f.button}" style="color: ${f.color}" title="${
+            local.type[f.value].name
+          }"></i>`,
+          ["filter", "filter-sub", "filter-" + k + "-" + f.value]
+        );
 
         detailsElement.insertBefore(contentElement, group);
       }
@@ -523,8 +532,7 @@ out center;`
     getHtmlElement("#filters").appendChild(detailsElement);
   }
 
-  const style = document.createElement("style");
-  style.innerHTML = iconColors;
+  const style = createElement("style", iconColors);
   document.head.appendChild(style);
 }
 
@@ -562,13 +570,16 @@ export function parseOpeningHours(openingHours: string, localCode: string) {
 
 let emptyIndicatorElement: HTMLDivElement | undefined;
 
-export function updateCount(local:any) {
+export function updateCount(local: any) {
   const visible =
     countMarkersInView(map) === 0 && offers.length > 0 && map.getZoom() >= 14;
   if (visible && !emptyIndicatorElement) {
-    emptyIndicatorElement = document.createElement("div");
-    emptyIndicatorElement.className = "leaflet-bottom leaflet-left";
-    emptyIndicatorElement.innerHTML = `<div class="leaflet-control-emptyIndicator leaflet-control">${local.emptyIndicator}</div>`;
+    emptyIndicatorElement = createElement(
+      "div",
+      `<div class="leaflet-control-emptyIndicator leaflet-control">${local.emptyIndicator}</div>`,
+      ["leaflet-bottom", "leaflet-left"]
+    );
+
     getHtmlElement(".leaflet-control-container").appendChild(
       emptyIndicatorElement
     );

@@ -1,21 +1,12 @@
 import { utilQsString } from "./url";
 
-export function getJson<T>(
-  url: string,
-  params: any,
-  handler: (result: T) => void
-) {
-  const request = new XMLHttpRequest();
-
-  request.addEventListener("readystatechange", () => {
-    if (request.readyState === 4 && request.status === 200) {
-      const result = JSON.parse(request.responseText);
-
-      handler(result as T);
+export async function getJson(url: string, params: any) {
+  const response = await fetch(`${url}?${utilQsString(params)}`, {
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json"
     }
   });
 
-  request.open("Get", `${url}?${utilQsString(params)}`);
-
-  request.send();
+  return await response.json();
 }

@@ -1,25 +1,19 @@
 import md5 = require("md5");
 import { httpRegex } from "./url";
+import { startsWithIgnoreCase } from "./string";
 
-export function onImageLoaded(
-  src: string,
-  handler: {
-    (loaded: boolean): void;
-    (loaded: boolean): void;
-    (arg0: boolean): void;
-    (arg0: boolean): void;
-    (arg0: boolean): void;
-  }
-) {
-  const img = new Image();
-  img.addEventListener("load", () => {
-    handler(true);
+export async function isImage(src: string) {
+  return new Promise<boolean>(resolve => {
+    const img = new Image();
+    img.addEventListener("load", () => {
+      resolve(true);
+    });
+    img.addEventListener("error", () => {
+      resolve(false);
+    });
+    img.src = src;
+    if (img.complete) resolve(true);
   });
-  img.addEventListener("error", () => {
-    handler(false);
-  });
-  img.src = src;
-  if (img.complete) handler(true);
 }
 
 export function toWikimediaCommonsUrl(source: string) {
@@ -72,12 +66,4 @@ export function toMapillaryUrl(mapillary: string) {
   if (httpRegex.test(mapillary)) return mapillary;
 
   return `https://d1cuyjsrcm0gby.cloudfront.net/${mapillary}/thumb-320.jpg`;
-}
-
-function startsWithIgnoreCase(
-  s: string,
-  searchString: string,
-  position?: number
-) {
-  return s.toUpperCase().startsWith(searchString.toUpperCase(), position);
 }

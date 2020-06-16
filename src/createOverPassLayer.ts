@@ -1,17 +1,21 @@
-import { toUrl, utilQsString } from "./utilities/url";
+import { utilQsString } from "./utilities/url";
 import { Generator, Attribute } from "./Generator";
 import { links } from "./links";
-import {
-  onImageLoaded,
-  toWikimediaCommonsUrl,
-  toMapillaryUrl
-} from "./utilities/image";
+import { isImage } from "./utilities/image";
 import { toTitle, toLevel, toOpenOrClose } from "./view";
 import { getJson } from "./utilities/jsonRequest";
-import { getHtmlElement } from "./utilities/html";
+import { getHtmlElement, createElement } from "./utilities/html";
 import { parseOpeningHours, updateCount } from "./map";
 import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
+import {
+  extractName,
+  extractType,
+  extractOperator,
+  extractImage,
+  extractLocality,
+  extractStreet
+} from "./data";
 import { equalsIgnoreCase } from "./utilities/string";
 
 export function createOverPassLayer<M>(
@@ -28,6 +32,7 @@ export function createOverPassLayer<M>(
       html: `<div style="background-color:${
         color || "#000000"
       };" class="marker-pin"></div><div class="marker-icon ${value}-icon" style="background-image:url('${icon}');"></div>`,
+
       iconSize: [36, 48],
       iconAnchor: [18, 48]
     }),
@@ -40,6 +45,8 @@ export function createOverPassLayer<M>(
     minZoom: 14,
     query: `(${query});out center;`,
     timeout: 30, // Seconds
+    cacheEnabled: true,
+    cacheTTL: 86400, // 24h
     onSuccess(data: { elements: any[] }) {
       for (let i = 0; i < data.elements.length; i++) {
         const e = data.elements[i];
@@ -92,32 +99,8 @@ export function createOverPassLayer<M>(
         }
         const model = {
           name: extractName(e.tags, local.code || "en") || e.tags["piste:name"],
-          type:
-            local["public_bookcase:type"][e.tags["public_bookcase:type"]] ||
-            local["garden:type"][e.tags["garden:type"]] ||
-            local["garden:style"][e.tags["garden:style"]] ||
-            local["castle_type"][e.tags["castle_type"]] ||
-            local["historic"][e.tags["historic"]] ||
-            local["fitness_station"][e.tags["fitness_station"]] ||
-            local["site_type"][e.tags["site_type"]] ||
-            e.tags["species:" + (local.code || "en")] ||
-            e.tags.species ||
-            e.tags["genus:" + (local.code || "en")] ||
-            e.tags.genus ||
-            e.tags.protection_title ||
-            local.boules[e.tags.boules] ||
-            local.sport[e.tags.sport] ||
-            local.amenity[e.tags.amenity] ||
-            local.leisure[e.tags.leisure] ||
-            local.man_made[e.tags.man_made] ||
-            local.landuse[e.tags.landuse] ||
-            local.natural[e.tags.natural] ||
-            local.type[value].name,
-          operator:
-            e.tags.operator ||
-            e.tags["heritage:operator"] ||
-            e.tags.brand ||
-            e.tags.network,
+          type: extractType(local, e.tags, value),
+          operator: extractOperator(e.tags),
           address: {
             name: "",
             postcode: e.tags["addr:postcode"] || "",
@@ -140,19 +123,7 @@ export function createOverPassLayer<M>(
           wikimediaDescription: "",
           wikipediaDescription: ""
         };
-        model.img =
-          model.img ||
-          toWikimediaCommonsUrl(e.tags.wikimedia_commons) ||
-          toMapillaryUrl(e.tags.mapillary) ||
-          toUrl(e.tags.flickr) ||
-          toWikimediaCommonsUrl(e.tags.image) ||
-          toUrl(e.tags.picture) ||
-          toUrl(e.tags["website:webcam"]) ||
-          toUrl(e.tags["webcam"]) ||
-          toUrl(e.tags["contact:webcam"]) ||
-          toUrl(e.tags["webcam:url"]) ||
-          toUrl(e.tags["url:webcam"]) ||
-          "";
+        model.img = model.img || extractImage(e.tags) || "";
         model.description =
           e.tags[`description:${local.code || "en"}`] || e.tags.description;
         const attributesGenerator = new Generator<M>(attributes);
@@ -161,22 +132,23 @@ export function createOverPassLayer<M>(
           attributeDescriptions
         );
         let isLoaded = false;
-        const contentElement = document.createElement("div");
-        contentElement.innerHTML = `<div id="hcard-Name" class="vcard">
-          <a style="float:right;" href="https://www.openstreetmap.org/edit?${
+        const contentElement = createElement(
+          "div",
+          `<div id="hcard-Name" class="vcard">
+          <a style="float:right;margin-left: 5px;" href="https://www.openstreetmap.org/edit?${
             e.type
-          }=${
-          e.id
-        }"><i class="fas fa-pencil-alt"></i></a><strong class="name" title="${toTitle(
-          model
-        )}">${toTitle(model)}</strong>
+          }=${e.id}"><i class="fas fa-pencil-alt"></i></a>
+          <a style="float:right;" href="#" class="share"><i class="fas fa-share-alt"></i></a>
+          <strong class="name" title="${toTitle(model)}">${toTitle(
+            model
+          )}</strong>
         <div class="adr">
 
         ${attributesGenerator.render(local, e.tags, value, {} as M)}
 
          <div class="street-address">${model.address.street} ${
-          model.address.houseNumber
-        } ${toLevel(parseFloat(model.address.level), local)}</div>
+            model.address.houseNumber
+          } ${toLevel(parseFloat(model.address.level), local)}</div>
             <span class="postal-code">${model.address.postcode}</span>
          <span class="region">${model.address.locality}</span>
         </div>
@@ -250,7 +222,50 @@ export function createOverPassLayer<M>(
               : ``
           }
         </div>
-        </div>`;
+        </div>`
+        );
+        const share = contentElement.querySelector(".share") as HTMLLinkElement;
+        share.addEventListener("click", function (e) {
+          e.preventDefault();
+          const data = {
+            url: window.location.href,
+            title: toTitle(model),
+            text:
+              model.description ||
+              model.wikipediaDescription ||
+              model.wikimediaDescription
+          };
+          if (
+            (navigator as any).share &&
+            (((navigator as any).canShare &&
+              (navigator as any).canShare(data)) ||
+              !(navigator as any).canShare)
+          ) {
+            (navigator as any)
+              .share(data)
+              .then(() => console.log("Share was successful."))
+              .catch((error: any) => console.log("Sharing failed", error));
+          } else {
+            console.log(
+              `Your system doesn't support sharing files. Use copy to clipboard.`
+            );
+            copyTextToClipboard(window.location.href);
+
+            const target = (e.target as HTMLElement).parentElement;
+
+            if (target) {
+              const titleElement = createElement("span", local.linkCopied, [
+                "title"
+              ]);
+
+              target.append(titleElement);
+
+              setTimeout(() => {
+                titleElement.remove();
+              }, 2000);
+            }
+          }
+        });
         const popup = L.popup({
           minWidth: 200,
           autoPanPaddingTopLeft: [10, 85],
@@ -264,238 +279,206 @@ export function createOverPassLayer<M>(
             if (img) img.src = img.getAttribute("dynamic-src") || img.src;
             {
               // Enrich Address
-              getJson<any>(
-                "https://nominatim.openstreetmap.org/reverse",
-                {
-                  format: "json",
-                  addressdetails: "1",
-                  namedetails: "1",
-                  lat: pos.lat,
-                  lon: pos.lng
-                },
-                result => {
-                  model.address.name = extractName(
-                    result.namedetails,
-                    local.code || "en"
-                  );
-                  model.address.postcode =
-                    model.address.postcode || result.address.postcode || "";
-                  model.address.locality =
-                    model.address.locality ||
-                    result.address.city ||
-                    result.address.town ||
-                    result.address.village ||
-                    result.address.suburb ||
-                    result.address.neighbourhood ||
-                    result.address.state ||
-                    result.address.county ||
+              getJson("https://nominatim.openstreetmap.org/reverse", {
+                format: "json",
+                addressdetails: "1",
+                namedetails: "1",
+                lat: pos.lat,
+                lon: pos.lng
+              }).then(result => {
+                model.address.name = extractName(
+                  result.namedetails,
+                  local.code || "en"
+                );
+                model.address.postcode =
+                  model.address.postcode || result.address.postcode || "";
+                model.address.locality =
+                  model.address.locality ||
+                  extractLocality(result.address) ||
+                  "";
+                if (!model.address.street) {
+                  model.address.street = extractStreet(result, local) || "";
+                  model.address.houseNumber =
+                    model.address.houseNumber ||
+                    result.address.house_number ||
                     "";
-                  if (!model.address.street) {
-                    model.address.street =
-                      result.address.path ||
-                      result.address.footway ||
-                      result.address.road ||
-                      result.address.cycleway ||
-                      result.address.pedestrian ||
-                      result.address.farmyard ||
-                      result.address.construction ||
-                      extractName(result.namedetails, local.code || "en");
-                    result.address.neighbourhood || "";
-                    model.address.houseNumber =
-                      model.address.houseNumber ||
-                      result.address.house_number ||
-                      "";
-                  }
-                  const name = getHtmlElement(".name", contentElement);
-                  name.innerHTML = toTitle(model);
-                  name.title = toTitle(model);
-                  getHtmlElement(
-                    ".street-address",
-                    contentElement
-                  ).innerHTML = `${model.address.street} ${
-                    model.address.houseNumber
-                  } ${toLevel(parseFloat(model.address.level), local)}`;
-                  getHtmlElement(".postal-code", contentElement).innerHTML =
-                    model.address.postcode;
-                  getHtmlElement(".region", contentElement).innerHTML =
-                    model.address.locality;
-                  popup.update();
                 }
-              );
+                const name = getHtmlElement(".name", contentElement);
+                name.innerHTML = toTitle(model);
+                name.title = toTitle(model);
+                getHtmlElement(
+                  ".street-address",
+                  contentElement
+                ).innerHTML = `${model.address.street} ${
+                  model.address.houseNumber
+                } ${toLevel(parseFloat(model.address.level), local)}`;
+                getHtmlElement(".postal-code", contentElement).innerHTML =
+                  model.address.postcode;
+                getHtmlElement(".region", contentElement).innerHTML =
+                  model.address.locality;
+                popup.update();
+              });
             }
             {
               // Enrich Data
               const qid = e.tags.wikidata || e.tags["species:wikidata"];
 
               if (qid)
-                getJson<any>(
-                  "https://www.wikidata.org/w/api.php",
-                  {
-                    format: "json",
-                    action: "wbgetentities",
-                    formatversion: "2",
-                    ids: qid,
-                    props: "labels|descriptions|claims|sitelinks",
-                    sitefilter: (local.code || "en") + "wiki",
-                    languages: local.code || "en",
-                    languagefallback: "0",
-                    origin: "*"
-                  },
-                  r => {
-                    if (r && r.error) return;
-                    if (!r.entities[qid]) return;
-                    const entity = r.entities[qid];
-                    let i;
-                    let description;
-                    if (
-                      entity.descriptions &&
-                      Object.keys(entity.descriptions).length > 0
-                    ) {
-                      description =
-                        entity.descriptions[Object.keys(entity.descriptions)[0]]
-                          .value;
-                    }
-                    let label;
-                    if (
-                      entity.labels &&
-                      Object.keys(entity.labels).length > 0
-                    ) {
-                      label =
-                        entity.labels[Object.keys(entity.labels)[0]].value;
-                    }
-                    const result: {
+                getJson("https://www.wikidata.org/w/api.php", {
+                  format: "json",
+                  action: "wbgetentities",
+                  formatversion: "2",
+                  ids: qid,
+                  props: "labels|descriptions|claims|sitelinks",
+                  sitefilter: (local.code || "en") + "wiki",
+                  languages: local.code || "en",
+                  languagefallback: "0",
+                  origin: "*"
+                }).then(async r => {
+                  if (r && r.error) return;
+                  if (!r.entities[qid]) return;
+                  const entity = r.entities[qid];
+                  let i;
+                  let description;
+                  if (
+                    entity.descriptions &&
+                    Object.keys(entity.descriptions).length > 0
+                  ) {
+                    description =
+                      entity.descriptions[Object.keys(entity.descriptions)[0]]
+                        .value;
+                  }
+                  let label;
+                  if (entity.labels && Object.keys(entity.labels).length > 0) {
+                    label = entity.labels[Object.keys(entity.labels)[0]].value;
+                  }
+                  const result: {
+                    title: string;
+                    description: string;
+                    imageURL?: string;
+                    wiki?: {
                       title: string;
-                      description: string;
-                      imageURL?: string;
-                      wiki?: {
-                        title: string;
-                        url: string;
-                      };
-                    } = {
-                      title: label,
-                      description: description
+                      url: string;
                     };
-                    // add image
-                    if (entity.claims) {
-                      const imageroot =
-                        "https://commons.wikimedia.org/w/index.php";
-                      const props = ["P154", "P18"]; // logo image, image
-                      let prop;
-                      let image;
-                      for (i = 0; i < props.length; i++) {
-                        prop = entity.claims[props[i]];
-                        if (prop && Object.keys(prop).length > 0) {
-                          image =
-                            prop[Object.keys(prop)[0]].mainsnak.datavalue.value;
-                          if (image) {
-                            result.imageURL = `${imageroot}?${utilQsString({
-                              title: "Special:Redirect/file/" + image,
-                              width: 300
-                            })}`;
-                          }
-                          break;
+                  } = {
+                    title: label,
+                    description: description
+                  };
+                  // add image
+                  if (entity.claims) {
+                    const imageroot =
+                      "https://commons.wikimedia.org/w/index.php";
+                    const props = ["P154", "P18"]; // logo image, image
+                    let prop;
+                    let image;
+                    for (i = 0; i < props.length; i++) {
+                      prop = entity.claims[props[i]];
+                      if (prop && Object.keys(prop).length > 0) {
+                        image =
+                          prop[Object.keys(prop)[0]].mainsnak.datavalue.value;
+                        if (image) {
+                          result.imageURL = `${imageroot}?${utilQsString({
+                            title: "Special:Redirect/file/" + image,
+                            width: 300
+                          })}`;
                         }
+                        break;
                       }
                     }
-                    if (entity.sitelinks) {
-                      // check each, in order of preference
-                      const w = (local.code || "en") + "wiki";
-                      if (entity.sitelinks[w]) {
-                        const title = entity.sitelinks[w].title;
-                        result.wiki = {
-                          title: title,
-                          url: `https://${
-                            local.code || "en"
-                          }.wikipedia.org/wiki/${title.replace(/ /g, "_")}`
-                        };
-                        loadWikipediaSummary(
-                          title,
-                          local.code || "en",
-                          summary => {
-                            model.wikipediaDescription = summary;
+                  }
+                  if (entity.sitelinks) {
+                    // check each, in order of preference
+                    const w = (local.code || "en") + "wiki";
+                    if (entity.sitelinks[w]) {
+                      const title = entity.sitelinks[w].title;
+                      result.wiki = {
+                        title: title,
+                        url: `https://${
+                          local.code || "en"
+                        }.wikipedia.org/wiki/${title.replace(/ /g, "_")}`
+                      };
+                      loadWikipediaSummary(title, local.code || "en").then(
+                        summary => {
+                          model.wikipediaDescription = summary;
 
-                            getHtmlElement(
-                              ".description",
-                              contentElement
-                            ).innerHTML =
-                              model.description ||
-                              model.wikipediaDescription ||
-                              model.wikimediaDescription
-                                ? `${!model.img ? `<br />` : ``}<small>${
-                                    model.description ||
-                                    model.wikipediaDescription ||
-                                    model.wikimediaDescription
-                                  }</small>`
-                                : ``;
-                            popup.update();
-                          }
-                        );
-                      }
-                    }
-                    model.name =
-                      model.name ||
-                      result.title ||
-                      (result.wiki && result.wiki.title);
-                    model.wikimediaDescription = result.description;
-                    model.img = model.img || result.imageURL || "";
-                    getHtmlElement(".name", contentElement).innerHTML = toTitle(
-                      model
-                    );
-                    getHtmlElement(".name", contentElement).title = toTitle(
-                      model
-                    );
-                    getHtmlElement(".description", contentElement).innerHTML =
-                      model.description ||
-                      model.wikipediaDescription ||
-                      model.wikimediaDescription
-                        ? `${!model.img ? `<br />` : ``}<small>${
+                          getHtmlElement(
+                            ".description",
+                            contentElement
+                          ).innerHTML =
                             model.description ||
                             model.wikipediaDescription ||
                             model.wikimediaDescription
-                          }</small>`
-                        : ``;
-                    getHtmlElement(
-                      ".img-container",
-                      contentElement
-                    ).innerHTML = model.img
-                      ? `<br /><img class="img" src="${model.img}"/>`
+                              ? `${!model.img ? `<br />` : ``}<small>${
+                                  model.description ||
+                                  model.wikipediaDescription ||
+                                  model.wikimediaDescription
+                                }</small>`
+                              : ``;
+                          popup.update();
+                        }
+                      );
+                    }
+                  }
+                  model.name =
+                    model.name ||
+                    result.title ||
+                    (result.wiki && result.wiki.title);
+                  model.wikimediaDescription = result.description;
+                  model.img = model.img || result.imageURL || "";
+                  getHtmlElement(".name", contentElement).innerHTML = toTitle(
+                    model
+                  );
+                  getHtmlElement(".name", contentElement).title = toTitle(
+                    model
+                  );
+                  getHtmlElement(".description", contentElement).innerHTML =
+                    model.description ||
+                    model.wikipediaDescription ||
+                    model.wikimediaDescription
+                      ? `${!model.img ? `<br />` : ``}<small>${
+                          model.description ||
+                          model.wikipediaDescription ||
+                          model.wikimediaDescription
+                        }</small>`
                       : ``;
-                    getHtmlElement(
-                      ".contact",
-                      contentElement
-                    ).innerHTML = !linksGenerator.empty(
-                      e.tags,
-                      value,
-                      {
-                        website: result.wiki ? result.wiki.url : undefined
-                      },
-                      local
-                    )
-                      ? `
+                  getHtmlElement(
+                    ".img-container",
+                    contentElement
+                  ).innerHTML = model.img
+                    ? `<br /><img class="img" src="${model.img}"/>`
+                    : ``;
+                  getHtmlElement(
+                    ".contact",
+                    contentElement
+                  ).innerHTML = !linksGenerator.empty(
+                    e.tags,
+                    value,
+                    {
+                      website: result.wiki ? result.wiki.url : undefined
+                    },
+                    local
+                  )
+                    ? `
     <br />
     ${linksGenerator.render(local, e.tags, value, {
       website: result.wiki ? result.wiki.url : undefined
     })}`
-                      : ``;
-                    if (model.img) {
-                      onImageLoaded(model.img, (loaded: boolean) => {
-                        if (!loaded) {
-                          getHtmlElement(
-                            ".img",
-                            contentElement
-                          ).outerHTML = `<a class="img" href="${model.img}" target="_blank"><i class="far fa-image fa-2x"></i></a>`;
-                        }
-                        popup.update();
-                      });
+                    : ``;
+
+                  popup.update();
+                  if (model.img) {
+                    if (!(await isImage(model.img))) {
+                      getHtmlElement(
+                        ".img",
+                        contentElement
+                      ).outerHTML = `<a class="img" href="${model.img}" target="_blank"><i class="far fa-image fa-2x"></i></a>`;
                     }
                     popup.update();
                   }
-                );
+                });
 
               if (e.tags.wikipedia)
-                loadWikipediaSummary(
-                  e.tags.wikipedia,
-                  local.code || "en",
+                loadWikipediaSummary(e.tags.wikipedia, local.code || "en").then(
                   summary => {
                     model.wikipediaDescription = summary;
 
@@ -514,7 +497,7 @@ export function createOverPassLayer<M>(
                 );
             }
             if (model.img) {
-              onImageLoaded(model.img, (loaded: boolean) => {
+              isImage(model.img).then((loaded: boolean) => {
                 if (!loaded)
                   getHtmlElement(
                     ".img",
@@ -529,39 +512,12 @@ export function createOverPassLayer<M>(
         marker.bindPopup(popup);
         this._markers.addLayer(marker);
       }
-
       updateCount(local);
     }
   });
-
-  function extractName(tags: any, langCode: string) {
-    return (
-      tags[`name:${langCode}`] ||
-      tags[`short_name:${langCode}`] ||
-      tags[`official_name:${langCode}`] ||
-      tags[`int_name:${langCode}`] ||
-      tags[`nat_name:${langCode}`] ||
-      tags[`reg_name:${langCode}`] ||
-      tags[`loc_name:${langCode}`] ||
-      tags[`old_name:${langCode}`] ||
-      tags[`alt_name:${langCode}`] ||
-      tags.name ||
-      tags.short_name ||
-      tags.official_name ||
-      tags.int_name ||
-      tags.nat_name ||
-      tags.reg_name ||
-      tags.loc_name ||
-      tags.old_name ||
-      tags.alt_name
-    );
-  }
 }
-function loadWikipediaSummary(
-  siteTitle: string,
-  language: string,
-  handler: (summary: string) => void
-) {
+
+async function loadWikipediaSummary(siteTitle: string, language: string) {
   const splittedSiteTitle = siteTitle.split(":");
 
   if (splittedSiteTitle.length >= 2) {
@@ -569,29 +525,81 @@ function loadWikipediaSummary(
     language = splittedSiteTitle[0];
   }
 
-  const cleanSiteTitle = siteTitle.replace(new RegExp(" ", "g"), "_");
+  const cleanSiteTitle = siteTitle.replace(/ /g, "_");
 
-  getJson<any>(
-    `https://${language}.wikipedia.org/w/api.php`,
-    {
-      format: "json",
-      action: "query",
-      prop: "extracts",
-      exintro: "",
-      explaintext: "",
-      redirects: "1",
-      titles: cleanSiteTitle,
-      origin: "*"
-    },
-    data => {
-      const pages = data.query.pages;
-      const keys = Object.keys(pages);
-      if (keys.length > 0) {
-        const firstPage = pages[keys[0]];
-        handler(firstPage.extract);
-      } else {
-        throw new Error("no summary found");
-      }
-    }
-  );
+  const data = await getJson(`https://${language}.wikipedia.org/w/api.php`, {
+    format: "json",
+    action: "query",
+    prop: "extracts",
+    exintro: "",
+    explaintext: "",
+    redirects: "1",
+    titles: cleanSiteTitle,
+    origin: "*"
+  });
+  const pages = data.query.pages;
+  const keys = Object.keys(pages);
+  if (keys.length > 0) {
+    const firstPage = pages[keys[0]];
+    return firstPage.extract;
+  } else {
+    throw new Error("No summary found");
+  }
+}
+
+function copyTextToClipboard(text: string) {
+  const textArea = document.createElement("textarea");
+
+  //
+  // *** This styling is an extra step which is likely not required. ***
+  //
+  // Why is it here? To ensure:
+  // 1. the element is able to have focus and selection.
+  // 2. if element was to flash render it has minimal visual impact.
+  // 3. less flakyness with selection and copying which **might** occur if
+  //    the textarea element is not visible.
+  //
+  // The likelihood is the element won't even render, not even a
+  // flash, so some of these are just precautions. However in
+  // Internet Explorer the element is visible whilst the popup
+  // box asking the user for permission for the web page to
+  // copy to the clipboard.
+  //
+
+  // Place in top-left corner of screen regardless of scroll position.
+  textArea.style.position = "fixed";
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+
+  // Ensure it has a small width and height. Setting to 1px / 1em
+  // doesn't work as this gives a negative w/h on some browsers.
+  textArea.style.width = "2em";
+  textArea.style.height = "2em";
+
+  // We don't need padding, reducing the size if it does flash render.
+  textArea.style.padding = "0";
+
+  // Clean up any borders.
+  textArea.style.border = "none";
+  textArea.style.outline = "none";
+  textArea.style.boxShadow = "none";
+
+  // Avoid flash of white box if rendered for any reason.
+  textArea.style.background = "transparent";
+
+  textArea.value = text;
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    const successful = document.execCommand("copy");
+    const msg = successful ? "successful" : "unsuccessful";
+    console.log("Copying text command was " + msg);
+  } catch (err) {
+    console.log("Oops, unable to copy");
+  }
+
+  document.body.removeChild(textArea);
 }
