@@ -5,6 +5,7 @@ export const local = {
   minZoomMessageNoLayer: "No layer assigned",
   minZoomMessage: "Zoom in to load locations",
   emptyIndicator: "No locations found",
+  linkCopied: "Link copied to the clipboard",
   capacity: "Capacity",
   playground: "For children",
   changing_table: "Has a changing table",
