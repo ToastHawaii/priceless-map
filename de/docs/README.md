@@ -73,23 +73,30 @@ Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 
 [Quellcode dieser Karte auf GitHub anzeigen](https://github.com/ToastHawaii/priceless-map)
 
+### Ich kann nicht Programmieren, wie kann ich eine eigene Themenkarte erstellen?
+
+Probiere einen der folgenden Services aus:
+
+- [MapContrib](https://www.mapcontrib.xyz/) ([Wiki](https://wiki.openstreetmap.org/wiki/MapContrib))
+- [uMap](https://umap.openstreetmap.fr/de/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:UMap))
+- [overpass turbo](https://overpass-turbo.eu/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:Overpass_turbo)) Du kannst den "Wizard" verwenden um eine Abfrage zu erstellen, dieser versteht auch deutsche Wörter wie z.B. "See", "Bäckerei", etc.
+
+[Weitere Karten basierend aus OpenStreetMap](https://wiki.openstreetmap.org/wiki/DE:List_of_OSM-based_services)
+
 ## Weiteres
 
-Die Webseite wurde inspiriert von [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), welche öffentliche und gratis Angebote, Events und Einrichtungen in Zürich anzeigt. Ein Dank an dieser Stelle an die Entwickler, Veröffentlicher und Unterstützer von Zürich unbezahlbar, für die Inspiration und Arbeit.
+Weitere Karten und Verzeichnisse als Inspiration:
 
-Diverse Einrichtungen z.B. Pumpen, Sportplätze, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
-
-Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst. [SolidaryCityMap](https://solidary.city/)
-
-Berlin, gratis und ganz einfach für alle erlebbar. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
-
-Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
-
-Eine Karte, welche Einrichtungen und Angebote anzeigt, die ökologisch-, sozial- und wirtschaftlich nachhaltig sind. [Nachhaltig](https://sustainable.zottelig.ch/de)
-
-Eine Karte mit öffentlichen Bücherschränken. [Öffentlichen Bücherschränke](https://book-exchange.zottelig.ch/de)
+- Die Webseite wurde inspiriert von [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), welche öffentliche und gratis Angebote, Events und Einrichtungen in Zürich anzeigt. Ein Dank an dieser Stelle an die Entwickler, Veröffentlicher und Unterstützer von Zürich unbezahlbar, für die Inspiration und Arbeit.
+- Diverse Einrichtungen z.B. Pumpen, Sportplätze, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
+- Orte, an denen Du auch ohne Papiere und/oder Geld an dem Leben in der Stadt teilhaben kannst. [SolidaryCityMap](https://solidary.city/)
+- Berlin, gratis und ganz einfach für alle erlebbar. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
+- Besuche öffentliche Bücherschränke und trage diese ein. Schau dir dazu [die schöne Karte von Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389) an, welche auf den Daten von [boite-a-lire](https://www.boite-a-lire.com/) basiert. [Hier geht es zur Projekt Webseite von Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
+- Eine Karte, welche Einrichtungen und Angebote anzeigt, die ökologisch-, sozial- und wirtschaftlich nachhaltig sind. [Nachhaltig](https://sustainable.zottelig.ch/de)
+- Eine Karte mit öffentlichen Bücherschränken. [Öffentlichen Bücherschränke](https://book-exchange.zottelig.ch/de)
 
 Unterstütze mich mit Kaffee und Kuchen:
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />
 <input type="hidden" name="hosted_button_id" value="LZB5LRD2MBQUS" />

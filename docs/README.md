@@ -73,23 +73,30 @@ The code can also be used as a basis for your own theme map.
 
 [View source code of this map on GitHub](https://github.com/ToastHawaii/priceless-map)
 
+### I cannot program, how can I create my own theme map?
+
+Try one of the following services:
+
+- [MapContrib](https://www.mapcontrib.xyz/) ([Wiki](https://wiki.openstreetmap.org/wiki/MapContrib))
+- [uMap](https://umap.openstreetmap.fr/en/) ([Wiki](https://wiki.openstreetmap.org/wiki/UMap))
+- [overpass turbo](https://overpass-turbo.eu/) ([Wiki](https://wiki.openstreetmap.org/wiki/Overpass_turbo)) You can use the "Wizard" to create a query, it also understands words like " Lake", " Bakery" and so on
+
+[Other maps based on OpenStreetMap](https://wiki.openstreetmap.org/wiki/List_of_OSM-based_services)
+
 ## More
 
-The website was inspired by [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), which displays public and free offers, events and facilities in Zürich. Thanks to the developers, publishers and supporters of Zürich unbezahlbar for their inspiration and work.
+More maps for inspiration:
 
-Various equipment e.g. pumps, sports fields, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
-
-Places where you can participate in city life without papers and / or money. [SolidaryCityMap](https://solidary.city/)
-
-Berlin, free of charge and easy for everyone to experience. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
-
-Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
-
-A map that shows facilities and services that are environmentally, socially and economically sustainable. [Sustainable](https://sustainable.zottelig.ch/)
-
-A map with public bookcases. [Public bookcase](https://book-exchange.zottelig.ch/)
+- The website was inspired by [Zürich unbezahlbar](https://www.zuerichunbezahlbar.ch/map/), which displays public and free offers, events and facilities in Zürich. Thanks to the developers, publishers and supporters of Zürich unbezahlbar for their inspiration and work.
+- Various equipment e.g. pumps, sports fields, etc. [Züriplan](https://www.maps.stadt-zuerich.ch/zueriplan3/Stadtplan.aspx)
+- Places where you can participate in city life without papers and / or money. [SolidaryCityMap](https://solidary.city/)
+- Berlin, free of charge and easy for everyone to experience. [gratis-in-berlin](https://www.gratis-in-berlin.de/)
+- Visit public bookcases and register them. Look at [the beautiful map from Binnette](https://umap.openstreetmap.fr/fr/map/osm-bookcases-and-boite-a-lire_362287#15/45.2010/5.7389), which is based on the data of [boite-a-lire](https://www.boite-a-lire.com/). [Click here for the project website from Binnette's bookcases-to-check](https://github.com/Binnette/bookcases-to-check).
+- A map that shows facilities and services that are environmentally, socially and economically sustainable. [Sustainable](https://sustainable.zottelig.ch/)
+- A map with public bookcases. [Public bookcase](https://book-exchange.zottelig.ch/)
 
 Support me with coffee and cake:
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />
 <input type="hidden" name="hosted_button_id" value="JFWXTYPKBD2YA" />
