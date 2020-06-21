@@ -5,7 +5,7 @@ import { isImage } from "./utilities/image";
 import { toTitle, toLevel, toOpenOrClose } from "./view";
 import { getJson } from "./utilities/jsonRequest";
 import { getHtmlElement, createElement } from "./utilities/html";
-import { parseOpeningHours, updateCount } from "./map";
+import { parseOpeningHours,  updateCount } from "./map";
 import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
 import {
@@ -227,44 +227,15 @@ export function createOverPassLayer<M>(
         const share = contentElement.querySelector(".share") as HTMLLinkElement;
         share.addEventListener("click", function (e) {
           e.preventDefault();
-          const data = {
-            url: window.location.href,
-            title: toTitle(model),
-            text:
-              model.description ||
+          shareLink(
+            window.location.href,
+            share,
+            local,
+            toTitle(model),
+            model.description ||
               model.wikipediaDescription ||
               model.wikimediaDescription
-          };
-          if (
-            (navigator as any).share &&
-            (((navigator as any).canShare &&
-              (navigator as any).canShare(data)) ||
-              !(navigator as any).canShare)
-          ) {
-            (navigator as any)
-              .share(data)
-              .then(() => console.log("Share was successful."))
-              .catch((error: any) => console.log("Sharing failed", error));
-          } else {
-            console.log(
-              `Your system doesn't support sharing files. Use copy to clipboard.`
-            );
-            copyTextToClipboard(window.location.href);
-
-            const target = (e.target as HTMLElement).parentElement;
-
-            if (target) {
-              const titleElement = createElement("span", local.linkCopied, [
-                "title"
-              ]);
-
-              target.append(titleElement);
-
-              setTimeout(() => {
-                titleElement.remove();
-              }, 2000);
-            }
-          }
+          );
         });
         const popup = L.popup({
           minWidth: 200,
@@ -515,6 +486,45 @@ export function createOverPassLayer<M>(
       updateCount(local);
     }
   });
+}
+
+export function shareLink(
+  url: string,
+  target: HTMLElement,
+  local: { linkCopied: string },
+  title: string,
+  description: string
+) {
+  const data = {
+    url: url,
+    title: title,
+    text: description
+  };
+  if (
+    (navigator as any).share &&
+    (((navigator as any).canShare && (navigator as any).canShare(data)) ||
+      !(navigator as any).canShare)
+  ) {
+    (navigator as any)
+      .share(data)
+      .then(() => console.log("Share was successful."))
+      .catch((error: any) => console.log("Sharing failed", error));
+  } else {
+    console.log(
+      `Your system doesn't support sharing links. Use copy to clipboard.`
+    );
+    copyTextToClipboard(url);
+
+    if (target) {
+      const titleElement = createElement("span", local.linkCopied, ["title"]);
+
+      target.append(titleElement);
+
+      setTimeout(() => {
+        titleElement.remove();
+      }, 2000);
+    }
+  }
 }
 
 async function loadWikipediaSummary(siteTitle: string, language: string) {

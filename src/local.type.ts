@@ -4,6 +4,72 @@ export const type = {
   "tourist-attraction": { name: "Tourist attraction", description: "" },
   "archaeological-site": { name: "Archaeological site", description: "" },
   trail: { name: "Educational trail", description: "" },
+  "battery-recycling": {
+    name: "Battery",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
+  "oil-recycling": {
+    name: "Oil",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
+  "reusable-bottle-reuse": {
+    name: "Reusable bottle",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
+  "rubble-recycling": {
+    name: "Building rubble",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
+  "plastic-recycling": {
+    name: "Plastic",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
+  "hazardous-recycling": {
+    name: "Hazardous waste",
+    description: "",
+    externalResources: [
+      {
+        name: "Recycling Map",
+        url: "https://recycling-map.ch/en/map/?pos/{lat}/{lng}/{zoom}",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      }
+    ]
+  },
   "book-exchange": {
     name: "Book exchange",
     description: "",

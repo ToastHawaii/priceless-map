@@ -2,6 +2,8 @@ import { type } from "./local.type";
 
 export const local = {
   code: "de",
+  title: "Unbezahlbar Karte",
+  description: "Erlebe die Welt. Gratis.",
   minZoomMessageNoLayer: "Keine Ebene zugewiesen",
   minZoomMessage: "Vergrössern, um Standorte zu laden",
   emptyIndicator: "Keine Orte gefunden",
@@ -76,7 +78,8 @@ export const local = {
     sport: "Sport",
     communitySport: "Gemeinschaftssport",
     trip: "Ausflug",
-    goods: "Gegenstände"
+    goods: "Gegenstände",
+    material: "Material weiterverwerten"
   },
   amenity: {
     hunting_stand: "Hochsitz für Jäger"

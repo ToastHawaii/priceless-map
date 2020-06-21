@@ -2,6 +2,8 @@ import { type } from "./local.type";
 
 export const local = {
   code: "",
+  title: "Priceless map",
+  description: "Experience the world. Free of charge.",
   minZoomMessageNoLayer: "No layer assigned",
   minZoomMessage: "Zoom in to load locations",
   emptyIndicator: "No locations found",
@@ -76,7 +78,8 @@ export const local = {
     sport: "Sport",
     communitySport: "Community sport",
     trip: "Trip",
-    goods: "Goods"
+    goods: "Goods",
+    material: "Material recycling"
   },
   amenity: {
     hunting_stand: "Hunting stand"

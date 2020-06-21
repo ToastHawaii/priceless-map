@@ -14,7 +14,8 @@ import {
   getHtmlElements,
   createElement
 } from "./utilities/html";
-import { createOverPassLayer } from "./createOverPassLayer";
+import { createOverPassLayer, shareLink } from "./createOverPassLayer";
+import BigNumber from "bignumber.js";
 import { funding } from "./funding";
 
 declare var taginfo_taglist: any;
@@ -25,6 +26,7 @@ let offers: string[] = [];
 
 export function initMap<M>(
   filterOptions: {
+    id: number;
     group: string;
     subgroup?: string;
     order?: number;
@@ -60,6 +62,26 @@ export function initMap<M>(
 
   getHtmlElement(".donate").addEventListener("click", () => {
     window.open(funding[local.code] || funding.en);
+  });
+
+  const shareButton = getHtmlElement(".share");
+  shareButton.addEventListener("click", e => {
+    e.preventDefault();
+
+    const bbox = map.getBounds();
+    shareLink(
+      `${window.location.origin}${window.location.pathname}#o=${offersToShort(
+        offers,
+        filterOptions
+      )}&b=${toString(bbox.getSouth(), 4)},${toString(
+        bbox.getWest(),
+        4
+      )},${toString(bbox.getNorth(), 4)},${toString(bbox.getEast(), 4)}`,
+      shareButton,
+      local,
+      local.title,
+      local.description
+    );
   });
 
   getHtmlElement(".note").addEventListener("click", () => {
@@ -230,23 +252,32 @@ export function initMap<M>(
   function hashchange() {
     const params = getHashParams();
 
-    if (params["offers"]) {
-      const offersParams = params["offers"].split(",");
+    let offersParams: string[] = [];
 
-      for (const o of offersParams)
-        if (offers.indexOf(o) === -1)
-          for (const f of filterOptions)
-            if (f.group + "/" + f.value === o) {
-              offers.push(f.group + "/" + f.value);
-              init(f.value, f.icon, f.query, attributes, local, f.color);
+    if (params["offers"]) offersParams = params["offers"].split(",");
+    else if (params["o"])
+      offersParams = offersfromShort(params["o"], filterOptions);
 
-              (getHtmlElement(
-                `#filters input[value='${f.group + "/" + f.value}']`
-              ) as HTMLInputElement).checked = true;
-            }
-    }
+    for (const o of offersParams)
+      if (offers.indexOf(o) === -1)
+        for (const f of filterOptions)
+          if (f.group + "/" + f.value === o) {
+            offers.push(f.group + "/" + f.value);
+            init(f.value, f.icon, f.query, attributes, local, f.color);
+
+            (getHtmlElement(
+              `#filters input[value='${f.group + "/" + f.value}']`
+            ) as HTMLInputElement).checked = true;
+          }
 
     if (params["location"]) search(params["location"]);
+    else if (params["b"]) {
+      const bounds = params["b"].split(",").map(b => parseFloat(b));
+      map.fitBounds([
+        [bounds[0], bounds[1]],
+        [bounds[2], bounds[3]]
+      ]);
+    }
   }
 
   window.addEventListener("hashchange", hashchange);
@@ -258,18 +289,26 @@ export function initMap<M>(
 
   const params = getHashParams();
 
-  if (params["offers"]) {
-    const offersParams = params["offers"].split(",");
+  let offersParams: string[] = [];
 
-    for (const o of offersParams)
-      if (offers.indexOf(o) === -1)
-        for (const f of filterOptions)
-          if (f.group + "/" + f.value === o)
-            offers.push(f.group + "/" + f.value);
-  }
+  if (params["offers"]) offersParams = params["offers"].split(",");
+
+  if (params["o"]) offersParams = offersfromShort(params["o"], filterOptions);
+
+  for (const o of offersParams)
+    if (offers.indexOf(o) === -1)
+      for (const f of filterOptions)
+        if (f.group + "/" + f.value === o) offers.push(f.group + "/" + f.value);
 
   if (params["location"]) {
     search(params["location"]);
+    map.locate({ setView: false, maxZoom: 16 });
+  } else if (params["b"]) {
+    const bounds = params["b"].split(",").map(b => parseFloat(b));
+    map.fitBounds([
+      [bounds[0], bounds[1]],
+      [bounds[2], bounds[3]]
+    ]);
     map.locate({ setView: false, maxZoom: 16 });
   } else map.locate({ setView: true, maxZoom: 16 });
 
@@ -278,7 +317,10 @@ export function initMap<M>(
       ._source;
     const latLng = marker.getLatLng();
     setHashParams(
-      { offers: offers.toString(), location: `${latLng.lat},${latLng.lng}` },
+      {
+        offers: offers.toString(),
+        location: `${latLng.lat},${latLng.lng}`
+      },
       hashchange
     );
   });
@@ -600,4 +642,56 @@ function countMarkersInView(map: L.Map) {
     }
   });
   return count;
+}
+
+function offersToShort(
+  value: string[],
+  filters: {
+    id: number;
+    group: string;
+    value: string;
+  }[]
+) {
+  const max = Math.max(...filters.map(f => f.id));
+
+  let result = "0";
+  for (let i = 0; i < max; i++) {
+    result += "0";
+  }
+
+  for (const o of value) {
+    const pos = max - filters.filter(f => o === f.group + "/" + f.value)[0].id;
+    result = result.slice(0, pos) + "1" + result.slice(pos + 1, result.length);
+  }
+
+  return new BigNumber(result, 2).toString(36);
+}
+
+function offersfromShort(
+  value: string,
+  filters: {
+    id: number;
+    group: string;
+    value: string;
+  }[]
+) {
+  const v = new BigNumber(value, 36).toString(2);
+
+  const offers: string[] = [];
+
+  let id = v.length - 1;
+  for (const o of v) {
+    if (o === "1") {
+      const filter = filters.filter(f => f.id === id)[0];
+      offers.push(filter.group + "/" + filter.value);
+    }
+    id--;
+  }
+
+  return offers;
+}
+
+function toString(value: number, precision: number) {
+  const power = Math.pow(10, precision || 0);
+  return (Math.round(value * power) / power).toFixed(precision);
 }

@@ -25,7 +25,8 @@
     "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
     "md5": "2.2.1",
     "moment": "2.24.0",
-    "opening_hours": "3.5.0"
+    "opening_hours": "3.5.0",
+    "bignumber.js": "9.0.0"
   },
   "devDependencies": {
     "@types/clean-webpack-plugin": "0.1.3",

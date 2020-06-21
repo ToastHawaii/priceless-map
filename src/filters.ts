@@ -8,9 +8,26 @@ function nwrFee(tag: string) {
 nwr${tag}["fee:conditional"];`;
 }
 
+function recycling(...items: string[]) {
+  return `nw["recycling_type"!="center"][~"^recycling:${items.join(
+    "|"
+  )}$"~"^yes$"];
+  nw["recycling_type"="center"]["fee"][~"^recycling:${items.join(
+    "|"
+  )}$"~"^yes$"];`;
+}
+
+function assistedRepair(...items: string[]) {
+  return `nw["repair"="assisted_self_service"][~"^(service:){0,1}(${items.join(
+    "|"
+  )}):repair$"~"^yes$"];`;
+}
+
 export const filters: {
+  id: number;
   group: string;
   subgroup?: string;
+  order?: number;
   value: string;
   icon: string;
   button?: string;
@@ -20,6 +37,7 @@ export const filters: {
   tags: string[];
 }[] = [
   {
+    id: 0,
     group: "culture",
     value: "artwork",
     icon: "https://wiki.openstreetmap.org/w/images/1/12/Artwork-14.svg",
@@ -31,6 +49,7 @@ export const filters: {
     edit: ["tourism=artwork"]
   },
   {
+    id: 1,
     group: "culture",
     value: "fountain",
     icon: "https://wiki.openstreetmap.org/w/images/a/a1/Fountain-14.svg",
@@ -42,15 +61,16 @@ export const filters: {
     edit: ["amenity=fountain", "playground"]
   },
   {
+    id: 2,
     group: "culture",
     value: "tourist-attraction",
     icon: "/lib/maki-icons/attraction-15.svg",
     query: `
-nwr["tourism"="attraction"]["attraction"!="animal"]["attraction"!="maze"];
+    nwr["tourism"="attraction"]["attraction"!="animal"]["attraction"!="maze"];
 
-nwr["tourism"="yes"];
+    nwr["tourism"="yes"];
 
-nwr["heritage"];`,
+    nwr["heritage"];`,
     color: "#FFD700",
     tags: ["tourism=attraction", "tourism=*", "heritage=*"],
     edit: [
@@ -63,6 +83,7 @@ nwr["heritage"];`,
     ]
   },
   {
+    id: 3,
     group: "culture",
     value: "archaeological-site",
     icon:
@@ -75,6 +96,7 @@ nwr["heritage"];`,
     edit: ["historic=archaeological_site"]
   },
   {
+    id: 4,
     group: "education",
     value: "trail",
     icon: "https://wiki.openstreetmap.org/w/images/7/77/Board-14.svg",
@@ -107,6 +129,7 @@ nwr["heritage"];`,
     edit: ["tourism=information", "type=route"]
   },
   {
+    id: 5,
     group: "education",
     value: "book-exchange",
     icon: "https://wiki.openstreetmap.org/w/images/b/b2/Public_bookcase-14.svg",
@@ -121,6 +144,7 @@ ${nwFee(`["amenity"="library"]`)}`,
     edit: ["amenity=public_bookcase", "amenity=library"]
   },
   {
+    id: 6,
     group: "education",
     value: "internet",
     icon: "https://wiki.openstreetmap.org/w/images/8/89/Internet_cafe-14.svg",
@@ -133,71 +157,77 @@ nwr["wifi"]["wifi"!="no"];`,
     edit: ["amenity", "shop"]
   },
   {
+    id: 11,
     group: "culture",
     value: "castle",
     icon: "https://wiki.openstreetmap.org/w/images/3/31/Fortress-14.svg",
     query: `
-nwr["historic"="castle"][!"ruins"];
-nwr["historic"="castle"]["ruins"="no"];
+    nwr["historic"="castle"][!"ruins"];
+    nwr["historic"="castle"]["ruins"="no"];
 
-nwr["historic"="tower"][!"ruins"];
-nwr["historic"="tower"]["ruins"="no"];
+    nwr["historic"="tower"][!"ruins"];
+    nwr["historic"="tower"]["ruins"="no"];
 
-nwr["historic"="fort"][!"ruins"];
-nwr["historic"="fort"]["ruins"="no"];`,
+    nwr["historic"="fort"][!"ruins"];
+    nwr["historic"="fort"]["ruins"="no"];`,
     color: "#808080",
     tags: ["historic=castle", "historic=tower", "historic=fort"],
     edit: ["historic=castle", "historic=fort", "historic"]
   },
   {
+    id: 12,
     group: "culture",
     value: "mill",
     icon: "https://wiki.openstreetmap.org/w/images/0/0b/Windmill-16.svg",
     query: `
-nwr["man_made"="watermill"][!"ruins"];
-nwr["man_made"="watermill"]["ruins"="no"];
+    nwr["man_made"="watermill"][!"ruins"];
+    nwr["man_made"="watermill"]["ruins"="no"];
 
-nwr["man_made"="windmill"][!"ruins"];
-nwr["man_made"="windmill"]["ruins"="no"];`,
+    nwr["man_made"="windmill"][!"ruins"];
+    nwr["man_made"="windmill"]["ruins"="no"];`,
     color: "#e63d00",
     tags: ["man_made=watermill", "man_made=windmill"],
     edit: ["man_made=watermill", "man_made=windmill"]
   },
   {
+    id: 13,
     group: "culture",
     value: "history",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Acheological.png",
     query: `
-nwr["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
+    nwr["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
 
-nw["board_type"="history"];
-nw["information"="history"];`,
+    nw["board_type"="history"];
+    nw["information"="history"];`,
     color: "#e0e094",
     tags: ["historic=*", "board_type=history"],
     edit: ["historic", "tourism=information"]
   },
   {
+    id: 14,
     group: "culture",
     value: "memorial",
     icon: "https://wiki.openstreetmap.org/w/images/6/6e/Memorial-16.svg",
     query: `
-nwr["historic"="memorial"];`,
+    nwr["historic"="memorial"];`,
     color: "#B8860B",
     tags: ["historic=memorial"],
     edit: ["historic=memorial"]
   },
   {
+    id: 15,
     group: "culture",
     value: "monument",
     icon: "https://wiki.openstreetmap.org/w/images/9/94/Monument-16.svg",
     query: `
-// Historic Monument
-nwr["historic"="monument"];`,
+    // Historic Monument
+    nwr["historic"="monument"];`,
     color: "#DAA520",
     tags: ["historic=monument"],
     edit: ["historic=monument"]
   },
   {
+    id: 16,
     group: "education",
     value: "museum",
     icon: "https://wiki.openstreetmap.org/w/images/a/a9/Museum-16.svg",
@@ -210,54 +240,58 @@ nwr["historic"="monument"];`,
     edit: ["tourism=museum", "tourism=gallery", "amenity=arts_centre"]
   },
   {
+    id: 17,
     group: "education",
     value: "observatory",
     icon: "https://wiki.openstreetmap.org/w/images/e/e0/Telescope_dome-14.svg",
     query: `
-${nwrFee(`["man_made"="observatory"]`)}
+    ${nwrFee(`["man_made"="observatory"]`)}
 
-${nwrFee(`["amenity"="observatory"]`)}
+    ${nwrFee(`["amenity"="observatory"]`)}
 
-${nwrFee(`["landuse"="observatory"]`)}`,
+    ${nwrFee(`["landuse"="observatory"]`)}`,
     color: "#00008B",
     tags: ["man_made=observatory"],
     edit: ["man_made=observatory", "landuse"]
   },
   {
+    id: 18,
     group: "culture",
     value: "ruins",
     icon:
       "https://wiki.openstreetmap.org/w/images/7/78/Building_ruins_generic.svg",
     query: `
-nwr["historic"="ruins"];
+    nwr["historic"="ruins"];
 
-nwr["ruins"]["ruins"!="no"];
+    nwr["ruins"]["ruins"!="no"];
 
-nwr["building"="ruins"];`,
+    nwr["building"="ruins"];`,
     color: "#A9A9A9",
     tags: ["historic=ruins", "building=ruins", "ruins=*"],
     edit: ["historic=ruins", "building=ruins", "historic", "building"]
   },
   {
+    id: 19,
     group: "natural",
     value: "cave",
     icon: "https://wiki.openstreetmap.org/w/images/b/b1/Cave.14.svg",
     query: `
-nw["natural"="cave_entrance"];`,
+    nw["natural"="cave_entrance"];`,
     color: "#2F4F4F",
     tags: ["natural=cave_entrance"],
     edit: ["natural=cave_entrance"]
   },
   {
+    id: 20,
     group: "natural",
     value: "natural_monument",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
     nw["denotation"~"^(natural_monument|landmark|religious|memorial)$"]
-    
+
     node["natural"="tree"][religion];
-    way["natural"="tree_row"][religion];   
-    
+    way["natural"="tree_row"][religion];
+
     node["natural"="tree"]["historic"];
     way["natural"="tree_row"]["historic"];`,
     color: "#228B22",
@@ -265,11 +299,12 @@ nw["natural"="cave_entrance"];`,
     edit: ["natural=tree", "natural=tree_row", "natural"]
   },
   {
+    id: 21,
     group: "natural",
     value: "pond",
     icon: "/lib/maki-icons/water-15.svg",
     query: `
-nwr["natural"="water"]["water"~"^(pond|lake|reservoir|reflecting_pool)$"];`,
+    nwr["natural"="water"]["water"~"^(pond|lake|reservoir|reflecting_pool)$"];`,
     color: "#5F9EA0",
     tags: [
       "natural=water",
@@ -281,50 +316,54 @@ nwr["natural"="water"]["water"~"^(pond|lake|reservoir|reflecting_pool)$"];`,
     edit: ["natural=water"]
   },
   {
+    id: 22,
     group: "natural",
     value: "rock",
     icon: "/lib/maki-icons/circle-15.svg",
     query: `
-nwr["natural"="^(rock|stone)$"];`,
+    nwr["natural"="^(rock|stone)$"];`,
     color: "#D3D3D3",
     tags: ["natural=rock", "natural=stone"],
     edit: ["natural=rock", "natural=stone"]
   },
   {
+    id: 23,
     group: "natural",
     value: "viewpoint",
     icon: "https://wiki.openstreetmap.org/w/images/c/c2/Viewpoint-16.svg",
     query: `
-nwr["tourism"="viewpoint"];
+    nwr["tourism"="viewpoint"];
 
-nw["viewpoint"="yes"];
+    nw["viewpoint"="yes"];
 
-nwr["tower:type"="observation"];`,
+    nwr["tower:type"="observation"];`,
     color: "#98FB98",
     tags: ["tourism=viewpoint", "viewpoint=*", "tower:type=observation"],
     edit: ["tourism=viewpoint", "man_made=tower", "man_made", "natural"]
   },
   {
+    id: 24,
     group: "natural",
     value: "waterfall",
     icon: "https://wiki.openstreetmap.org/w/images/7/72/Waterfall-14.svg",
     query: `
-nwr["waterway"="^(waterfall|dam|weir)$"];`,
+    nwr["waterway"="^(waterfall|dam|weir)$"];`,
     color: "#20B2AA",
     tags: ["waterway=waterfall", "waterway=dam", "waterway=weir"],
     edit: ["waterway=waterfall", "waterway=dam", "waterway=weir"]
   },
   {
+    id: 25,
     group: "community",
     value: "assistance",
     icon:
       "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
     query: `
-    nwr["social_facility"="outreach"];
+      nwr["social_facility"="outreach"];
 
-    nwr["amenity"="social_centre"];
+      nwr["amenity"="social_centre"];
 
-    ${nwFee(`["healthcare"="counselling"]`)}`,
+      ${nwFee(`["healthcare"="counselling"]`)}`,
     color: "#DC143C",
     tags: [
       "social_facility=outreach",
@@ -338,22 +377,24 @@ nwr["waterway"="^(waterfall|dam|weir)$"];`,
     ]
   },
   {
+    id: 26,
     group: "community",
     value: "assisted-repair",
     icon: "/lib/temaki-icons/tools.svg",
     query: `
-node["repair"="assisted_self_service"];
+  node["repair"="assisted_self_service"];
 
-nw["leisure"="hackerspace"]["repair"];
+  nw["leisure"="hackerspace"]["repair"];
 
-node["network"~"Repair Caf[eé]",i];
-node["name"~"Repair Caf[eé]",i];
-node["brand"~"Repair Caf[eé]",i];`,
+  node["network"~"Repair Caf[eé]",i];
+  node["name"~"Repair Caf[eé]",i];
+  node["brand"~"Repair Caf[eé]",i];`,
     color: "#1975ae",
     tags: ["repair=assisted_self_service", "leisure=hackerspace", "repair=*"],
     edit: ["amenity", "leisure=hackerspace"]
   },
   {
+    id: 27,
     group: "object_of_utility",
     value: "barbecue",
     icon: "https://wiki.openstreetmap.org/w/images/5/50/Bbq-14.svg",
@@ -366,18 +407,20 @@ nwr["barbecue_grill"="yes"];`,
     edit: ["amenity=bbq", "tourism"]
   },
   {
+    id: 28,
     group: "object_of_utility",
     value: "baking-oven",
     icon: "https://wiki.openstreetmap.org/w/images/f/fe/Bakery-16.svg",
     query: `
     nw["amenity"="baking_oven"][!"historic"];
-    
+
     nw["building"="bakehouse"]["disused:amenity"!="baking_oven"]["disused:amenity"!="oven"][!"disused:oven"]["abandoned:amenity"!="baking_oven"]["abandoned:amenity"!="oven"][!"abandoned:oven"][!"shop"][!"historic"];`,
     color: "#D2B48C",
     tags: ["amenity=baking_oven", "building=bakehouse"],
     edit: ["amenity", "building"]
   },
   {
+    id: 132,
     group: "object_of_utility",
     value: "bicycle-rental",
     icon: "https://wiki.openstreetmap.org/w/images/d/d5/Rental-bicycle-16.svg",
@@ -388,17 +431,17 @@ nwr["barbecue_grill"="yes"];`,
     edit: ["amenity=bicycle_rental"]
   },
   {
+    id: 29,
     group: "object_of_utility",
     value: "bicycle-self-repair",
     icon:
       "https://wiki.openstreetmap.org/w/images/0/01/Bicycle_repair_station-14.svg",
     query: `
-    nw["amenity"="bicycle_repair_station"]["service:bicycle:tools"!="no"];
+      nw["amenity"="bicycle_repair_station"]["service:bicycle:tools"!="no"];
 
-    node["repair"="assisted_self_service"]["service:bicycle:repair"="yes"];
-    node["repair"="assisted_self_service"]["bicycle:repair"="yes"];
-  
-    nw["service:bicycle:diy"="yes"];`,
+      ${assistedRepair("bicycle")}
+
+      nw["service:bicycle:diy"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=bicycle_repair_station",
@@ -410,12 +453,13 @@ nwr["barbecue_grill"="yes"];`,
     edit: ["amenity=bicycle_repair_station", "amenity", "shop"]
   },
   {
+    id: 30,
     group: "object_of_utility",
     value: "charging-station",
     icon:
       "https://wiki.openstreetmap.org/w/images/a/af/Charging_station.16.svg",
     query: `
-    (nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"]; 
+    (nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"];
       - nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
       nw["amenity"="charging_station"]["fee"="no"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#0092da",
@@ -423,22 +467,24 @@ nwr["barbecue_grill"="yes"];`,
     edit: ["amenity=charging_station"]
   },
   {
+    id: 31,
     group: "community",
     value: "community-centre",
     icon:
       "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
     query: `
-nwr["amenity"="community_centre"];`,
+  nwr["amenity"="community_centre"];`,
     color: "#da532c",
     tags: ["amenity=community_centre"],
     edit: ["amenity=community_centre"]
   },
   {
+    id: 32,
     group: "community",
     value: "community-garden",
     icon: "/lib/maki-icons/garden-centre-15.svg",
     query: `
-nwr["garden:type"="community"];  
+nwr["garden:type"="community"];
 
 nw["landuse"="community_food_growing"];`,
     color: "#228B22",
@@ -446,28 +492,31 @@ nw["landuse"="community_food_growing"];`,
     edit: ["leisure=garden"]
   },
   {
+    id: 42,
     group: "health",
     value: "diaper-changing-table",
     icon: "https://wiki.openstreetmap.org/w/images/f/ff/Babycare_01.png",
     query: `
-nwr["changing_table"]["changing_table"!="no"]["changing_table:fee"!="yes"]["fee"!="yes"];
+  nwr["changing_table"]["changing_table"!="no"]["changing_table:fee"!="yes"]["fee"!="yes"];
 
-nwr["diaper"]["diaper"!="no"]["diaper:fee"!="yes"]["fee"!="yes"];`,
+  nwr["diaper"]["diaper"!="no"]["diaper:fee"!="yes"]["fee"!="yes"];`,
     color: "#F4A460",
     tags: ["changing_table=*"],
     edit: ["amenity=toilets", "amenity", "shop"]
   },
   {
+    id: 44,
     group: "health",
     value: "kneipp_water_cure",
     icon: "https://wiki.openstreetmap.org/w/images/c/c1/Kneipp_water_cure.svg",
     query: `
-nwr["amenity"="kneipp_water_cure"];`,
+  nwr["amenity"="kneipp_water_cure"];`,
     color: "#33CCCC",
     tags: ["amenity=kneipp_water_cure"],
     edit: ["amenity=kneipp_water_cure"]
   },
   {
+    id: 45,
     group: "health",
     value: "drinking-water",
     icon: "https://wiki.openstreetmap.org/w/images/0/08/Drinking-water-16.svg",
@@ -500,52 +549,57 @@ nw["drinking_water:refill"="yes"];`,
     ]
   },
   {
+    id: 46,
     group: "health",
     value: "food-sharing",
     icon: "https://wiki.openstreetmap.org/w/images/3/3c/Foodbank.svg",
     query: `
-    nw["social_facility"="food_bank"];
-  
-    nw["social_facility"="soup_kitchen"];
+      nw["social_facility"~"^(food_bank|soup_kitchen|dairy_kitchen)$"];
 
-    nw["amenity"="food_sharing"];
-    nw["social_facility"="food_sharing"];
+      nw["amenity"="food_sharing"];
+      nw["social_facility"="food_sharing"];
 
-    nw["recycling:food"="yes"];
+      nw["recycling:food"="yes"];
 
-    nw["reuse"="fridge"];
+      nw["reuse"="fridge"];
 
-    nw["amenity"="fridge"];`,
+      nw["amenity"="fridge"];`,
     color: "#FFD700",
-    tags: ["social_facility=food_bank", "social_facility=soup_kitchen"],
-    edit: ["amenity=social_facility"]
+    tags: [
+      "amenity=food_sharing",
+      "social_facility=food_bank",
+      "social_facility=soup_kitchen",
+      "social_facility=dairy_kitchen"
+    ],
+    edit: ["amenity=social_facility", "amenity"]
   },
   {
+    id: 48,
     group: "object_of_utility",
     value: "goods-exchange",
     icon: "/lib/maki-icons/gift-15.svg",
-    query: `    
-    // Givebox (Preferred tag)
-    nw["amenity"="give_box"];
+    query: `
+      // Givebox (Preferred tag)
+      nw["amenity"="give_box"];
 
-    nw["amenity"="givebox"];
+      nw["amenity"="givebox"];
 
-    // Reuse
-    nw["amenity"="reuse"]["reuse:books"!="only"];
-    
-    // Give-away shop
-    nw["shop"="charity"]["payment:none"="yes"];
-    nw["shop"]["charity"="yes"]["payment:none"="yes"];
-    nw["shop"="second_hand"]["payment:none"="yes"];
-    nw["shop"]["second_hand"="yes"]["payment:none"="yes"];
-    
-    nw["shop"="charity"]["fee"="no"];
-    nw["shop"]["charity"="yes"]["fee"="no"];
-    nw["shop"="second_hand"]["fee"="no"];
-    nw["shop"]["second_hand"="yes"]["fee"="no"];
-    
-    // Toy library free of charge
-    nw["amenity"="toy_library"]["fee"="no"];`,
+      // Reuse
+      nw["amenity"="reuse"]["reuse:books"!="only"];
+
+      // Give-away shop
+      nw["shop"="charity"]["payment:none"="yes"];
+      nw["shop"]["charity"="yes"]["payment:none"="yes"];
+      nw["shop"="second_hand"]["payment:none"="yes"];
+      nw["shop"]["second_hand"="yes"]["payment:none"="yes"];
+
+      nw["shop"="charity"]["fee"="no"];
+      nw["shop"]["charity"="yes"]["fee"="no"];
+      nw["shop"="second_hand"]["fee"="no"];
+      nw["shop"]["second_hand"="yes"]["fee"="no"];
+
+      // Toy library free of charge
+      nw["amenity"="toy_library"]["fee"="no"];`,
     color: "#8A2BE2",
     tags: [
       "amenity=give_box",
@@ -556,18 +610,20 @@ nw["drinking_water:refill"="yes"];`,
     edit: ["amenity", "shop=charity", "shop=second_hand", "amenity=toy_library"]
   },
   {
+    id: 50,
     group: "community",
     value: "hackerspace",
     icon: "/lib/temaki-icons/toolbox.svg",
     query: `
-    nw["leisure"="hackerspace"]["repair"!="only"];
-    
-    nw["club"="doityourself"];`,
+      nw["leisure"="hackerspace"]["repair"!="only"];
+
+      nw["club"="doityourself"];`,
     color: "#333333",
     tags: ["leisure=hackerspace", "club=doityourself"],
     edit: ["leisure=hackerspace", "club"]
   },
   {
+    id: 51,
     group: "community",
     value: "contribute",
     icon: "/lib/maki-icons/heart-15.svg",
@@ -607,53 +663,56 @@ nw["drinking_water:refill"="yes"];`,
     ]
   },
   {
+    id: 52,
     group: "community",
     value: "coworking",
     icon: "/lib/maki-icons/building-15.svg",
     query: `
     ${nwFee(`["amenity"="coworking_space"]`)}
-    
+
     ${nwFee(`["office"="coworking"]`)}`,
     color: "#8FBC8F",
     tags: ["amenity=coworking_space", "office=coworking"],
     edit: ["amenity=coworking_space", "office=coworking"]
   },
   {
+    id: 53,
     group: "health",
     value: "public-shower",
     icon: "https://wiki.openstreetmap.org/w/images/5/5a/Shower-14.svg",
     query: `
-    // Show only showers that are not inside a bath
+     // Show only showers that are not inside a bath
+  (
     (
-      (
-      nw["amenity"="shower"];
-      );
-      -(
-        (
-          wr["amenity"="public_bath"]["fee"!="no"];
-          wr["leisure"~"water_park|sports_centre|stadium"]["fee"!="no"];
-        );
-        map_to_area -> .b;
-        (
-          nw(area.b)["amenity"="shower"];
-        );
-      );
-    );`,
+nw["amenity"="shower"];
+  );
+  -(
+    (
+      wr["amenity"="public_bath"]["fee"!="no"];
+      wr["leisure"~"water_park|sports_centre|stadium"]["fee"!="no"];
+    );
+    map_to_area -> .b;
+    (
+      nw(area.b)["amenity"="shower"];
+    );
+  );
+);`,
     color: "#1E90FF",
     tags: ["amenity=shower"],
     edit: ["amenity=shower"]
   },
   {
+    id: 54,
     group: "object_of_utility",
     value: "pump",
     icon:
       "https://wiki.openstreetmap.org/w/images/0/01/Bicycle_repair_station-14.svg",
     query: `
-nw["amenity"="compressed_air"];
+  nw["amenity"="compressed_air"];
 
-nw["compressed_air"="yes"]["compressed_air:fee"!="yes"];
+  nw["compressed_air"="yes"]["compressed_air:fee"!="yes"];
 
-nw["service:bicycle:pump"="yes"];`,
+  nw["service:bicycle:pump"="yes"];`,
     color: "#00BFFF",
     tags: [
       "amenity=compressed_air",
@@ -668,23 +727,25 @@ nw["service:bicycle:pump"="yes"];`,
     ]
   },
   {
+    id: 55,
     group: "health",
     value: "toilet",
     icon: "https://wiki.openstreetmap.org/w/images/f/fa/Toilets-16.svg",
     query: `
-// Public toilet
-nw["amenity"="toilets"];
+  // Public toilet
+  nw["amenity"="toilets"];
 
-// Public toilet (Alternativ)
-nw["building"="toilets"];
-            
-// Toilet in other Feature
-nwr["toilets"="yes"];`,
+  // Public toilet (Alternativ)
+  nw["building"="toilets"];
+
+  // Toilet in other Feature
+  nwr["toilets"="yes"];`,
     color: "#8B4513",
     tags: ["amenity=toilets", "building=toilets", "toilets=*"],
     edit: ["amenity=toilets", "building", "amenity"]
   },
   {
+    id: 56,
     group: "communitySport",
     value: "basketball",
     icon: "/lib/maki-icons/basketball-15.svg",
@@ -698,36 +759,37 @@ nwr["toilets"="yes"];`,
     edit: ["leisure=pitch"]
   },
   {
+    id: 57,
     group: "sport",
     value: "bath",
     icon: "https://wiki.openstreetmap.org/w/images/0/01/Public_bath.svg",
     query: `
-${nwrFee(`["amenity"="public_bath"]`)}
-${nwrFee(`["leisure"="water_park"]`)}
-nwr["leisure"="bathing_place"];
+    ${nwrFee(`["amenity"="public_bath"]`)}
+    ${nwrFee(`["leisure"="water_park"]`)}
+    nwr["leisure"="bathing_place"];
 
-${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
+    ${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
 
-// Show only swimming pools that are not inside a bath
-(
+  // Show only swimming pools that are not inside a bath
   (
-    nwr["leisure"="swimming_pool"];  
-    nwr["leisure"="swimming_area"];
-    nwr["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
-  );
-  -(
     (
-      wr["amenity"="public_bath"];
-      wr["leisure"~"water_park|sports_centre|stadium"];
+      nwr["leisure"="swimming_pool"];
+      nwr["leisure"="swimming_area"];
+      nwr["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
     );
-    map_to_area -> .b;
-    (
-      nwr(area.b)["leisure"="swimming_pool"];
-      nwr(area.b)["leisure"="swimming_area"];
-      nwr(area.b)["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
+    -(
+      (
+        wr["amenity"="public_bath"];
+        wr["leisure"~"water_park|sports_centre|stadium"];
+      );
+      map_to_area -> .b;
+      (
+        nwr(area.b)["leisure"="swimming_pool"];
+        nwr(area.b)["leisure"="swimming_area"];
+        nwr(area.b)["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
+      );
     );
-  );
-);`,
+  );`,
     color: "#0000CD",
     tags: [
       "sport=swimming",
@@ -745,6 +807,7 @@ ${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
     ]
   },
   {
+    id: 58,
     group: "sport",
     value: "bikepark",
     icon: "/lib/maki-icons/bicycle-15.svg",
@@ -756,6 +819,7 @@ ${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
     edit: ["leisure=track", "landuse=recreation_ground", "leisure=pitch"]
   },
   {
+    id: 59,
     group: "sport",
     value: "skatepark",
     icon: "/lib/temaki-icons/skateboarding.svg",
@@ -767,31 +831,34 @@ ${nwrFee(`["sport"="swimming"]["leisure"~"sports_centre|stadium"]`)}
     edit: ["leisure=pitch"]
   },
   {
+    id: 60,
     group: "communitySport",
     value: "chess",
     icon:
       "https://upload.wikimedia.org/wikipedia/commons/d/d4/Chess_pictogram.svg",
     query: `
-nw["sport"="chess"];`,
+    nw["sport"="chess"];`,
     color: "#000000",
     tags: ["sport=chess"],
     edit: ["leisure=pitch"]
   },
   {
+    id: 61,
     group: "sport",
     value: "climbing",
     icon: "/lib/temaki-icons/abseiling.svg",
     query: `
-    // climbing and rock_climbing
-nwr["sport"~"climbing"]["leisure"!~"sports_centre|stadium"];
-${nwrFee(`["sport"~"climbing"]["leisure"~"sports_centre|stadium"]`)}
+      // climbing and rock_climbing
+      nwr["sport"~"climbing"]["leisure"!~"sports_centre|stadium"];
+      ${nwrFee(`["sport"~"climbing"]["leisure"~"sports_centre|stadium"]`)}
 
-nwr["playground"="climbingwall"];`,
+      nwr["playground"="climbingwall"];`,
     color: "#696969",
     tags: ["sport=climbing", "playground=climbingwall"],
     edit: ["natural", "landuse=recreation_ground", "playground"]
   },
   {
+    id: 62,
     group: "communitySport",
     value: "boules",
     icon: "/lib/maki-icons/pitch-15.svg",
@@ -803,6 +870,7 @@ nwr["playground"="climbingwall"];`,
     edit: ["leisure=pitch"]
   },
   {
+    id: 63,
     group: "sport",
     value: "fitness",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
@@ -823,22 +891,24 @@ nw["playground:slackline"="yes"];`,
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 64,
     group: "sport",
     subgroup: "fitness",
     value: "horizontal_bar",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-minus",
     query: `
-nwr["fitness_station"~"horizontal_bar"];
-nwr["fitness_station:horizontal_bar"="yes"];
+    nwr["fitness_station"~"horizontal_bar"];
+    nwr["fitness_station:horizontal_bar"="yes"];
 
-nw["playground"~"horizontal_bar"];
-nw["playground:horizontal_bar"="yes"];`,
+    nw["playground"~"horizontal_bar"];
+    nw["playground:horizontal_bar"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 65,
     group: "sport",
     subgroup: "fitness",
     value: "parallel_bars",
@@ -852,189 +922,200 @@ nwr["fitness_station:parallel_bars"="yes"];`,
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 66,
     group: "sport",
     subgroup: "fitness",
     value: "rings",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "far fa-circle",
     query: `
-nwr["fitness_station"~"rings"];
-nwr["fitness_station:rings"="yes"];`,
+    nwr["fitness_station"~"rings"];
+    nwr["fitness_station:rings"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 67,
     group: "sport",
     subgroup: "fitness",
     value: "exercise-machine",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-biking",
     query: `
-nwr["fitness_station"~"elliptical_trainer|air_walker|exercise_bike|rower"];
+    nwr["fitness_station"~"elliptical_trainer|air_walker|exercise_bike|rower"];
 
-nwr["fitness_station:elliptical_trainer"="yes"];
-nwr["fitness_station:air_walker"="yes"];
-nwr["fitness_station:exercise_bike"="yes"];
-nwr["fitness_station:rower"="yes"];
+    nwr["fitness_station:elliptical_trainer"="yes"];
+    nwr["fitness_station:air_walker"="yes"];
+    nwr["fitness_station:exercise_bike"="yes"];
+    nwr["fitness_station:rower"="yes"];
 
-nw["playground"~"exercise"];
-nw["playground:exercise"="yes"];`,
+    nw["playground"~"exercise"];
+    nw["playground:exercise"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 68,
     group: "sport",
     subgroup: "fitness",
     value: "balance",
     icon: "/lib/maki-icons/fitness-centre-15.svg",
     button: "fas fa-street-view",
     query: `
-nwr["fitness_station"~"slackline|balance(_)?beam"];
+    nwr["fitness_station"~"slackline|balance(_)?beam"];
 
-nwr["fitness_station:slackline"="yes"];
-nwr["fitness_station:balance_beam"="yes"];
-nwr["fitness_station:balancebeam"="yes"];
+    nwr["fitness_station:slackline"="yes"];
+    nwr["fitness_station:balance_beam"="yes"];
+    nwr["fitness_station:balancebeam"="yes"];
 
-nw["playground"~"slackline|balance(_)?beam"];
+    nw["playground"~"slackline|balance(_)?beam"];
 
-nw["playground:slackline"="yes"];
-nw["playground:balance_beam"="yes"];
-nw["playground:balancebeam"="yes"];`,
+    nw["playground:slackline"="yes"];
+    nw["playground:balance_beam"="yes"];
+    nw["playground:balancebeam"="yes"];`,
     color: "#0000FF",
     tags: ["leisure=fitness_station", "sport=*", "playground=*"],
     edit: ["leisure=fitness_station", "playground"]
   },
   {
+    id: 69,
     group: "sport",
     value: "sledding",
     icon: "/lib/temaki-icons/sledding.svg",
     query: `
-nwr["sport"="toboggan"];
+  nwr["sport"="toboggan"];
 
-nwr["piste:type"="sled"];
+  nwr["piste:type"="sled"];
 
-nwr["playground"="sledding"];`,
+  nwr["playground"="sledding"];`,
     color: "#D2691E",
     tags: ["sport=toboggan", "piste:type=sled", "playground=sledding"],
     edit: []
   },
   {
+    id: 70,
     group: "sport",
     value: "fitness-trail",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
-nwr["route"="fitness_trail"];`,
+  nwr["route"="fitness_trail"];`,
     color: "#8B008B",
     tags: ["route=fitness_trail"],
     edit: ["type=route"]
   },
   {
+    id: 71,
     group: "sport",
     value: "running",
     icon: "/lib/maki-icons/pitch-15.svg",
     query: `
-nwr["sport"="running"]["leisure"!~"sports_centre|stadium"];
-${nwrFee(`["sport"="running"]["leisure"~"sports_centre|stadium"]`)}
+  nwr["sport"="running"]["leisure"!~"sports_centre|stadium"];
+  ${nwrFee(`["sport"="running"]["leisure"~"sports_centre|stadium"]`)}
 
-nwr["leisure"="track"]["sport"="athletics"];`,
+  nwr["leisure"="track"]["sport"="athletics"];`,
     color: "#8B0000",
     tags: ["sport=running", "sport=athletics"],
     edit: ["sport=running", "sport=athletics"]
   },
   {
+    id: 72,
     group: "communitySport",
     value: "soccer",
     icon: "/lib/maki-icons/soccer-15.svg",
     query: `
     // exclude table_soccer
-nwr["sport"~"(^soccer)|;soccer|multi"]["leisure"!~"sports_centre|stadium"];
-${nwrFee(
-  `["sport"~"(^soccer)|;soccer|multi"]["leisure"~"sports_centre|stadium"]`
-)}`,
+      nwr["sport"~"(^soccer)|;soccer|multi"]["leisure"!~"sports_centre|stadium"];
+      ${nwrFee(
+        `["sport"~"(^soccer)|;soccer|multi"]["leisure"~"sports_centre|stadium"]`
+      )}`,
     color: "#ADFF2F",
     tags: ["leisure=pitch", "sport=soccer", "sport=multi"],
     edit: ["leisure=pitch"]
   },
   {
+    id: 73,
     group: "communitySport",
     value: "table-tennis",
     icon: "/lib/maki-icons/table-tennis-15.svg",
     query: `
-// Table tennis
-nw["sport"="table_tennis"];
+  // Table tennis
+  nw["sport"="table_tennis"];
 
-// Table tennis (obsolete)
-nw["leisure"="table_tennis_table"];`,
+  // Table tennis (obsolete)
+  nw["leisure"="table_tennis_table"];`,
     color: "#008000",
     tags: ["sport=table_tennis"],
     edit: ["leisure=pitch"]
   },
   {
+    id: 74,
     group: "communitySport",
     value: "table-soccer",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Kicker02.png",
     query: `
-    nwr["leisure"="pitch"]["sport"="table_soccer"]["fee"];`,
+      nwr["leisure"="pitch"]["sport"="table_soccer"]["fee"];`,
     color: "#7CFC00",
     tags: ["sport=table_soccer"],
     edit: ["leisure=pitch"]
   },
   {
+    id: 75,
     group: "communitySport",
     value: "volleyball",
     icon: "/lib/maki-icons/volleyball-15.svg",
     query: `
-    // volleyball and beachvolleyball
-    nwr["sport"~"volleyball"]["leisure"!~"sports_centre|stadium"];
-    ${nwrFee(`["sport"~"volleyball"]["leisure"~"sports_centre|stadium"]`)}`,
+      // volleyball and beachvolleyball
+      nwr["sport"~"volleyball"]["leisure"!~"sports_centre|stadium"];
+      ${nwrFee(`["sport"~"volleyball"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#F4A460",
     tags: ["leisure=pitch", "sport=volleyball", "sport=beachvolleyball"],
     edit: ["leisure=pitch"]
   },
   {
+    id: 76,
     group: "trip",
     value: "animal",
     icon: "/lib/maki-icons/zoo-15.svg",
     query: `
-nwr["tourism"="zoo"];
-nwr["zoo"];
+  nwr["tourism"="zoo"];
+  nwr["zoo"];
 
-// Show only animals that are not inside a zoo
-(
-  nwr["attraction"="animal"];
-  -(
-    wr["tourism"="zoo"];
-    map_to_area -> .z;
-    (
-      nwr(area.z)["attraction"="animal"];
+  // Show only animals that are not inside a zoo
+  (
+    nwr["attraction"="animal"];
+    -(
+      wr["tourism"="zoo"];
+      map_to_area -> .z;
+      (
+        nwr(area.z)["attraction"="animal"];
+      );
     );
   );
-);
 
-nwr["tourism"="aquarium"];
+  nwr["tourism"="aquarium"];
 
-nw["man_made"="beehive"];
-nwr["landuse"="apiary"];
+  nw["man_made"="beehive"];
+  nwr["landuse"="apiary"];
 
-nwr["landuse"="animal_keeping"];
-nwr["animal_keeping"];
-way["landuse"="animal_enclosure"];
+  nwr["landuse"="animal_keeping"];
+  nwr["animal_keeping"];
+  way["landuse"="animal_enclosure"];
 
-way["landuse"="meadow"]["animal"];
-way["landuse"="farmyard"]["animal"];
+  way["landuse"="meadow"]["animal"];
+  way["landuse"="farmyard"]["animal"];
 
-way["landuse"="meadow"]["livestock"];
-way["landuse"="farmyard"]["livestock"];
-nw["landuse"="livestock"];
-wr["meadow"="pasture"];
+  way["landuse"="meadow"]["livestock"];
+  way["landuse"="farmyard"]["livestock"];
+  nw["landuse"="livestock"];
+  wr["meadow"="pasture"];
 
-way["landuse"="meadow"]["species"];
-way["landuse"="farmyard"]["species"];
+  way["landuse"="meadow"]["species"];
+  way["landuse"="farmyard"]["species"];
 
-way["landuse"="paddock"];
-wr["meadow"="paddock"];`,
+  way["landuse"="paddock"];
+  wr["meadow"="paddock"];`,
     color: "#DAA520",
     tags: [
       "tourism=zoo",
@@ -1057,19 +1138,20 @@ wr["meadow"="paddock"];`,
     ]
   },
   {
+    id: 77,
     group: "trip",
     subgroup: "animal",
     value: "observation",
     icon: "/lib/temaki-icons/binoculars.svg",
     button: "fas fa-binoculars",
     query: `
-nw["leisure"="bird_hide"];
-nw["leisure"="wildlife_hide"];
-nw["observation"="wild_animal"];
-nw["man_made"="nesting_site"];
-nw["man_made"="insect_hotel"];
-node["natural"="anthill"];
-node["natural"="termite_mound"];`,
+  nw["leisure"="bird_hide"];
+  nw["leisure"="wildlife_hide"];
+  nw["observation"="wild_animal"];
+  nw["man_made"="nesting_site"];
+  nw["man_made"="insect_hotel"];
+  node["natural"="anthill"];
+  node["natural"="termite_mound"];`,
     color: "#DAA520",
     tags: [
       "leisure=bird_hide",
@@ -1089,45 +1171,50 @@ node["natural"="termite_mound"];`,
     ]
   },
   {
+    id: 78,
     group: "trip",
     value: "maze",
     icon: "/lib/temaki-icons/compass.svg",
     query: `
-    nwr["attraction"="maze"];
-    nwr["leisure"="maze"];`,
+nwr["attraction"="maze"];
+nwr["leisure"="maze"];`,
     color: "#197419",
     tags: ["attraction=maze"],
     edit: ["attraction=maze"]
   },
   {
+    id: 79,
     group: "trip",
     value: "webcam",
     icon: "/lib/temaki-icons/security_camera.svg",
     query: `
-    node["man_made"="surveillance"]["website"];
-    node["man_made"="surveillance"]["contact:website"];
-    node["man_made"="surveillance"]["website:webcam"];
-    
-    node["man_made"="surveillance"]["webcam"];
-    node["man_made"="surveillance"]["contact:webcam"];
-    node["man_made"="surveillance"]["webcam:url"];
-    
-    node["man_made"="surveillance"]["url"];
-    node["man_made"="surveillance"]["url:webcam"];
-    
-    node["man_made"="surveillance"]["image"];`,
+node["man_made"="surveillance"]["website"];
+node["man_made"="surveillance"]["contact:website"];
+node["man_made"="surveillance"]["website:webcam"];
+
+node["man_made"="surveillance"]["webcam"];
+node["man_made"="surveillance"]["contact:webcam"];
+node["man_made"="surveillance"]["webcam:url"];
+
+node["man_made"="surveillance"]["url"];
+node["man_made"="surveillance"]["url:webcam"];
+
+node["man_made"="surveillance"]["image"];`,
     color: "#a6a6a6",
     tags: ["man_made=surveillance"],
     edit: ["man_made=surveillance"]
   },
   {
+    id: 80,
     group: "object_of_utility",
     value: "piano",
     icon: "/lib/maki-icons/music-15.svg",
     query: `
-node[amenity=piano][!"shop"];
-node[musical_instrument=piano][!"shop"];
-node["musical_instrument:piano"=yes][!"shop"];`,
+nw["amenity"="piano"][!"craft"][!"shop"];
+nw["piano"="yes"][!"craft"][!"shop"];
+
+nw["musical_instrument"="piano"][!"craft"][!"shop"];
+nw["musical_instrument:piano"="yes"][!"craft"][!"shop"];`,
     color: "#008B8B",
     tags: [
       "amenity=piano",
@@ -1137,17 +1224,18 @@ node["musical_instrument:piano"=yes][!"shop"];`,
     edit: ["amenity"]
   },
   {
+    id: 82,
     group: "object_of_utility",
     value: "advertising",
     icon: "https://wiki.openstreetmap.org/w/images/2/20/Column-14.svg",
     query: `
-    nwr["advertising"]["access"];
-    nwr["man_made"="advertising"]["access"];
-    
-    node["advertising"][!"access"]["operator:type"="community"];
-    node["advertising"][!"access"]["operator:type"="public"];
-    
-    nw["board_type"="notice"]["access"];`,
+      nwr["advertising"]["access"];
+      nwr["man_made"="advertising"]["access"];
+
+      node["advertising"]["operator:type"="community"];
+      node["advertising"]["operator:type"="public"];
+
+      nw["board_type"="notice"]["access"];`,
     color: "#e6007a",
     tags: ["man_made=advertising", "board_type=notice"],
     edit: [
@@ -1159,18 +1247,19 @@ node["musical_instrument:piano"=yes][!"shop"];`,
     ]
   },
   {
+    id: 83,
     group: "trip",
     value: "fireplace",
     icon: "https://wiki.openstreetmap.org/w/images/d/df/Firepit.svg",
     query: `
-nwr["leisure"="firepit"];
-nwr["fireplace"="yes"];
+  nwr["leisure"="firepit"];
+  nwr["fireplace"="yes"];
 
-nwr["openfire"="yes"]["tourism"!="camp_site"];
+  nwr["openfire"="yes"]["tourism"!="camp_site"];
 
-nwr["amenity"="bbq"];
-nwr["bbq"="yes"];
-nwr["barbecue_grill"="yes"];`,
+  nwr["amenity"="bbq"];
+  nwr["bbq"="yes"];
+  nwr["barbecue_grill"="yes"];`,
     color: "#B22222",
     tags: [
       "leisure=firepit",
@@ -1182,59 +1271,62 @@ nwr["barbecue_grill"="yes"];`,
     edit: ["leisure=firepit", "amenity=bbq", "tourism"]
   },
   {
+    id: 84,
     group: "trip",
     value: "map",
     icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
     query: `
-node["information"="map"];`,
+      node["information"="map"];`,
     color: "#FFE4C4",
     tags: ["information=map"],
     edit: ["tourism=information"]
   },
   {
+    id: 85,
     group: "trip",
     subgroup: "map",
     value: "openstreetmap",
     icon: "https://wiki.openstreetmap.org/w/images/c/ca/Map-14.svg",
     button: "fas fa-heart",
     query: `
-    node["information"="map"]["map:source"~"^(OSM|OpenStreetMap)$",i];  
-    node["information"="map"]["map_source"~"^(OSM|OpenStreetMap)$",i];    
-    node["information"="map"]["mapsource"~"^(OSM|OpenStreetMap)$",i];`,
+      node["information"="map"][~"map[:_]{0,1}source"~"^(OSM|OpenStreetMap)$",i];`,
     color: "#9fd485",
     tags: ["information=map"],
     edit: ["tourism=information"]
   },
   {
+    id: 86,
     group: "trip",
     value: "garden",
     icon: "/lib/maki-icons/garden-15.svg",
     query: `
-nwr["leisure"="garden"];`,
+  nwr["leisure"="garden"];`,
     color: "#BA55D3",
     tags: ["leisure=garden"],
     edit: ["leisure=garden"]
   },
   {
+    id: 87,
     group: "trip",
     subgroup: "garden",
     value: "garden-with-name",
     icon: "/lib/maki-icons/garden-15.svg",
     button: "far fa-minus-square",
     query: `
-nwr["leisure"="garden"]["name"];`,
+  nwr["leisure"="garden"]["name"];`,
     color: "#BA55D3",
     tags: ["leisure=garden"],
     edit: ["leisure=garden"]
   },
   {
+    id: 88,
     group: "natural",
     value: "nature-park",
     icon: "/lib/maki-icons/natural-15.svg",
     query: `
-    nwr["leisure"="nature_reserve"];
-    nwr["boundary"="national_park"];
-    nwr["boundary"="protected_area"];`,
+      nwr["leisure"="nature_reserve"];
+      nwr["boundary"="national_park"];
+      nwr["boundary"="protected_area"];`,
     color: "#006400",
     tags: [
       "leisure=nature_reserve",
@@ -1244,41 +1336,140 @@ nwr["leisure"="garden"]["name"];`,
     edit: ["leisure=nature_reserve", "boundary"]
   },
   {
+    id: 89,
     group: "trip",
     value: "park",
     icon: "/lib/maki-icons/park-15.svg",
     query: `
-nwr["leisure"="park"];
-nwr["landuse"="recreation_ground"];
-nwr["leisure"="recreation_ground"];`,
+  nwr["leisure"="park"];
+  nwr["landuse"="recreation_ground"];
+  nwr["leisure"="recreation_ground"];`,
     color: "#90EE90",
     tags: ["leisure=park", "landuse=recreation_ground"],
     edit: ["leisure=park", "landuse=recreation_ground"]
   },
   {
+    id: 90,
     group: "trip",
     subgroup: "park",
     value: "park-with-name",
     icon: "/lib/maki-icons/park-15.svg",
     button: "far fa-minus-square",
     query: `
-nwr["leisure"="park"]["name"];
-nwr["landuse"="recreation_ground"]["name"];
-nwr["leisure"="recreation_ground"]["name"];`,
+  nwr["leisure"="park"]["name"];
+  nwr["landuse"="recreation_ground"]["name"];
+  nwr["leisure"="recreation_ground"]["name"];`,
     color: "#90EE90",
     tags: ["leisure=park", "landuse=recreation_ground"],
     edit: ["leisure=park", "landuse=recreation_ground"]
   },
   {
+    id: 91,
+    group: "material",
+    value: "battery-recycling",
+    icon: "/lib/temaki-icons/power.svg",
+    query: `
+    ${recycling("batteries", "car_batteries")}`,
+    color: "#ffe000",
+    tags: ["recycling:batteries=yes", "recycling:car_batteries=yes"],
+    edit: ["amenity=recycling"]
+  },
+  {
+    id: 92,
+    group: "material",
+    value: "reusable-bottle-reuse",
+    icon: "https://wiki.openstreetmap.org/w/images/e/eb/Alcohol-16.svg",
+    query: `
+    nw["vending"="bottle_return"];
+    nw["recycling:refund_bottles"="yes"];`,
+    color: "#267b26",
+    tags: ["vending=bottle_return"],
+    edit: ["vending=bottle_return"]
+  },
+  {
+    id: 93,
+    group: "material",
+    value: "oil-recycling",
+    icon: "/lib/maki-icons/water-15.svg",
+    query: `
+    ${recycling("cooking_oil", "engine_oil", "oil", "waste_oil")}`,
+    color: "#582d19",
+    tags: [
+      "recycling:cooking_oil=yes",
+      "recycling:engine_oil=yes",
+      "recycling:oil=yes",
+      "recycling:waste_oil=yes"
+    ],
+    edit: ["amenity=recycling"]
+  },
+  {
+    id: 94,
+    group: "material",
+    value: "hazardous-recycling",
+    icon: "/lib/maki-icons/danger-15.svg",
+    query: `
+    ${recycling("hazardous_waste", "hydrargyrum", "paint")}`,
+    color: "#000000",
+    tags: [
+      "recycling:hazardous_waste=yes",
+      "recycling:hydrargyrum=yes",
+      "recycling:paint=yes"
+    ],
+    edit: ["amenity=recycling"]
+  },
+  {
+    id: 95,
+    group: "material",
+    value: "rubble-recycling",
+    icon: "/lib/temaki-icons/ruins.svg",
+    query: `
+    ${recycling("hardcore", "rubble")}`,
+    color: "#d39476",
+    tags: ["recycling:hardcore=yes", "recycling:rubble=yes"],
+    edit: ["amenity=recycling"]
+  },
+  {
+    id: 96,
+    group: "material",
+    value: "plastic-recycling",
+    icon: "https://wiki.openstreetmap.org/w/images/9/98/Beverages-14.svg",
+    query: `
+    ${recycling(
+      "plastic",
+      "plastic_bottles",
+      "plastic_packaging",
+      "PET",
+      "plastic_bags",
+      "polystyrene_foam",
+      "polyester",
+      "styrofoam",
+      "foil"
+    )}`,
+    color: "#5F9EA0",
+    tags: [
+      "recycling:plastic=yes",
+      "recycling:plastic_bottles=yes",
+      "recycling:plastic_packaging=yes",
+      "recycling:PET=yes",
+      "recycling:plastic_bags=yes",
+      "recycling:polystyrene_foam=yes",
+      "recycling:polyester=yes",
+      "recycling:styrofoam=yes",
+      "recycling:foil=yes"
+    ],
+    edit: ["amenity=recycling"]
+  },
+  {
+    id: 97,
     group: "trip",
     value: "picnic-site",
     icon: "https://wiki.openstreetmap.org/w/images/f/fc/Picnic_site.svg",
     query: `
-nwr["tourism"="picnic_site"];
+  nwr["tourism"="picnic_site"];
 
-nw["leisure"="picnic_table"];
+  nw["leisure"="picnic_table"];
 
-nw["shelter_type"="picnic_shelter"];`,
+  nw["shelter_type"="picnic_shelter"];`,
     color: "#DEB887",
     tags: [
       "tourism=picnic_site",
@@ -1288,6 +1479,7 @@ nw["shelter_type"="picnic_shelter"];`,
     edit: ["tourism=picnic_site", "leisure=picnic_table", "amenity=shelter"]
   },
   {
+    id: 98,
     group: "trip",
     value: "square",
     icon: "/lib/temaki-icons/pedestrian.svg",
@@ -1307,6 +1499,7 @@ way["highway"="footway"]["area"="yes"];`,
     edit: ["place=square", "leisure=common", "highway"]
   },
   {
+    id: 99,
     group: "trip",
     subgroup: "square",
     value: "square-with-name",
@@ -1328,46 +1521,46 @@ way["highway"="footway"]["area"="yes"]["name"];`,
     edit: ["place=square", "leisure=common", "highway"]
   },
   {
+    id: 100,
     group: "trip",
     value: "playground",
     icon: "https://wiki.openstreetmap.org/w/images/3/31/Playground-16.svg",
     query: `
-    nwr["leisure"="playground"];
-    nw["playground"];
-    nw[~"^playground:.*$"~".*"];`,
+      nwr["leisure"="playground"];
+      nw["playground"];
+      nw[~"^playground:.*$"~".*"];`,
     color: "#32CD32",
     tags: ["leisure=playground", "playground=*"],
     edit: ["leisure=playground", "playground"]
   },
   {
+    id: 101,
     group: "trip",
     value: "lounger",
     icon: "/lib/maki-icons/beach-15.svg",
     query: `
-nw["amenity"="lounger"];
-    
-nw["amenity"="hammock"];`,
+  nw["amenity"="lounger"];
+
+  nw["amenity"="hammock"];`,
     color: "#e6e600",
     tags: ["amenity=lounger", "amenity=hammock"],
     edit: ["amenity"]
   },
   {
+    id: 102,
     group: "goods",
     value: "clothes",
     icon: "/lib/maki-icons/clothing-store-15.svg",
     query: `
-    // Give
-    nw["recycling:clothes"="yes"];
+      // Give
+      ${recycling("belts", "clothes", "shoes", "textiles")}
 
-    // Give and take
-    nw["social_facility"="clothing_bank"];
-    nw["amenity"="give_box"]["clothes"!="no"];
+      // Give and take
+      nw["social_facility"="clothing_bank"];
+      nw["amenity"="give_box"]["clothes"!="no"];
 
-    // Repair
-    node["repair"="assisted_self_service"]["service:clothes:repair"="yes"];
-    node["repair"="assisted_self_service"]["clothes:repair"="yes"];
-    node["repair"="assisted_self_service"]["service:fabrik:repair"="yes"];
-    node["repair"="assisted_self_service"]["fabrik:repair"="yes"];`,
+      // Repair
+      ${assistedRepair("clothes", "shoes", "fabrik")}`,
     color: "#FF7F50",
     tags: [
       "amenity=recycling",
@@ -1378,74 +1571,75 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity=social_facility", "amenity"]
   },
   {
+    id: 103,
     group: "goods",
     subgroup: "clothes",
     value: "clothes-give",
     icon: "/lib/maki-icons/clothing-store-15.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:clothes"="yes"];
+      ${recycling("belts", "clothes", "shoes", "textiles")}
 
-    nw["social_facility"="clothing_bank"];
+      nw["social_facility"="clothing_bank"];
 
-    nw["amenity"="give_box"]["clothes"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["clothes"!="no"]["give_box:policy"!="free_to_take"];`,
     color: "#FF7F50",
     tags: [
-      "amenity=recycling",
+      "recycling:clothes=yes",
+      "recycling:shoes=yes",
       "social_facility=clothing_bank",
       "amenity=give_box"
     ],
     edit: ["amenity=recycling", "amenity=social_facility", "amenity"]
   },
   {
+    id: 104,
     group: "goods",
     subgroup: "clothes",
     value: "clothes-take",
     icon: "/lib/maki-icons/clothing-store-15.svg",
     button: "fas fa-long-arrow-alt-left",
     query: `
-    nw["social_facility"="clothing_bank"];
+      nw["social_facility"="clothing_bank"];
 
-    nw["amenity"="give_box"]["clothes"!="no"];`,
+      nw["amenity"="give_box"]["clothes"!="no"];`,
     color: "#FF7F50",
     tags: ["social_facility=clothing_bank", "amenity=give_box"],
     edit: ["amenity=social_facility", "amenity"]
   },
   {
+    id: 105,
     group: "goods",
     subgroup: "clothes",
     value: "clothes-repair",
     icon: "/lib/maki-icons/clothing-store-15.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:clothes:repair"="yes"];
-    node["repair"="assisted_self_service"]["clothes:repair"="yes"];
-    node["repair"="assisted_self_service"]["service:fabrik:repair"="yes"];
-    node["repair"="assisted_self_service"]["fabrik:repair"="yes"];`,
+    ${assistedRepair("clothes", "shoes", "fabrik")}`,
     color: "#FF7F50",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
   {
+    id: 106,
     group: "goods",
     value: "mobile-phones",
     icon: "/lib/maki-icons/mobile-phone-15.svg",
     query: `
-    // Give
-    nw["recycling:mobile_phones"="yes"];
+      // Give
+      ${recycling("mobile_phones")}
 
-    // Give and take
-    nw["amenity"="give_box"]["electronics"!="no"];
-    
-    // Repair
-    node["repair"="assisted_self_service"]["service:mobile_phone:repair"="yes"];
-    node["repair"="assisted_self_service"]["mobile_phone:repair"="yes"];
-    
-    // Charge
-    node["amenity"="device_charging_station"]["fee"!="yes"];`,
+      // Give and take
+      nw["amenity"="give_box"]["electronics"!="no"];
+
+      // Repair
+      ${assistedRepair("mobile_phone")}
+
+      // Charge
+      node["amenity"="device_charging_station"]["fee"!="yes"];`,
     color: "#191970",
     tags: [
-      "amenity=recycling",
+      "recycling:mobile_phones=yes",
       "amenity=give_box",
       "repair=assisted_self_service",
       "repair=*",
@@ -1454,20 +1648,22 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 107,
     group: "goods",
     subgroup: "mobile-phones",
     value: "mobile-phones-give",
     icon: "/lib/maki-icons/mobile-phone-15.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:mobile_phones"="yes"];
+    ${recycling("mobile_phones")}
 
-    nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
     color: "#191970",
     tags: ["amenity=recycling", "amenity=give_box"],
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 108,
     group: "goods",
     subgroup: "mobile-phones",
     value: "mobile-phones-take",
@@ -1480,32 +1676,32 @@ nw["amenity"="hammock"];`,
     edit: ["amenity"]
   },
   {
+    id: 109,
     group: "goods",
     subgroup: "mobile-phones",
     value: "mobile-phones-repair",
     icon: "/lib/maki-icons/mobile-phone-15.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:mobile_phone:repair"="yes"];
-    node["repair"="assisted_self_service"]["mobile_phone:repair"="yes"];`,
+     ${assistedRepair("mobile_phone")}`,
     color: "#191970",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
   {
+    id: 110,
     group: "goods",
     value: "computers",
     icon: "https://wiki.openstreetmap.org/w/images/b/bb/Computer-14.svg",
     query: `
-    // Give
-    nw["recycling:computers"="yes"];
+      // Give
+      ${recycling("computers")}
 
-    // Give and take
-    nw["amenity"="give_box"]["electronics"!="no"];
-    
-    // Repair
-    node["repair"="assisted_self_service"]["service:computer:repair"="yes"];
-    node["repair"="assisted_self_service"]["computer:repair"="yes"];`,
+      // Give and take
+      nw["amenity"="give_box"]["electronics"!="no"];
+
+      // Repair
+      ${assistedRepair("computer")}`,
     color: "#ABAB9A",
     tags: [
       "amenity=recycling",
@@ -1516,64 +1712,66 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 111,
     group: "goods",
     subgroup: "computers",
     value: "computers-give",
     icon: "https://wiki.openstreetmap.org/w/images/b/bb/Computer-14.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:computers"="yes"];
+      ${recycling("computers")}
 
-    nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
     color: "#ABAB9A",
     tags: ["amenity=recycling", "amenity=give_box"],
     edit: ["amenity=recycling"]
   },
   {
+    id: 112,
     group: "goods",
     subgroup: "computers",
     value: "computers-take",
     icon: "https://wiki.openstreetmap.org/w/images/b/bb/Computer-14.svg",
     button: "fas fa-long-arrow-alt-left",
     query: `
-    nw["amenity"="give_box"]["electronics"!="no"];`,
+      nw["amenity"="give_box"]["electronics"!="no"];`,
     color: "#ABAB9A",
     tags: ["amenity=give_box"],
     edit: ["amenity"]
   },
   {
+    id: 113,
     group: "goods",
     subgroup: "computers",
     value: "computers-repair",
     icon: "https://wiki.openstreetmap.org/w/images/b/bb/Computer-14.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:computer:repair"="yes"];
-    node["repair"="assisted_self_service"]["computer:repair"="yes"];`,
+    ${assistedRepair("computer")}`,
     color: "#ABAB9A",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
   {
+    id: 114,
     group: "goods",
     value: "toys",
     icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
     query: `
-    // Give
-    nw["recycling:toys"="yes"];
+      // Give
+      ${recycling("toys")}
 
-    // Give and take
-    nw["amenity"="give_box"];
+      // Give and take
+      nw["amenity"="give_box"];
 
-    // Rent
-    nw["amenity"="toy_library"]["fee"="no"];
-    
-    // Repair
-    node["repair"="assisted_self_service"]["service:toy:repair"="yes"];
-    node["repair"="assisted_self_service"]["toy:repair"="yes"];`,
+      // Rent
+      nw["amenity"="toy_library"]["fee"="no"];
+
+      // Repair
+      ${assistedRepair("toy")}`,
     color: "#800000",
     tags: [
-      "amenity=recycling",
+      "recycling:toys=yes",
       "amenity=give_box",
       "amenity=toy_library",
       "repair=assisted_self_service",
@@ -1582,32 +1780,35 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity=toy_library", "amenity"]
   },
   {
+    id: 115,
     group: "goods",
     subgroup: "toys",
     value: "toys-give",
     icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:toys"="yes"];
+      ${recycling("toys")}
 
-    nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
     color: "#800000",
-    tags: ["amenity=recycling", "amenity=give_box"],
+    tags: ["recycling:toys=yes", "amenity=give_box"],
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 116,
     group: "goods",
     subgroup: "toys",
     value: "toys-take",
     icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
     button: "fas fa-long-arrow-alt-left",
     query: `
-    nw["amenity"="give_box"];`,
+      nw["amenity"="give_box"];`,
     color: "#800000",
     tags: ["amenity=give_box"],
     edit: ["amenity"]
   },
   // {
+  //   id: 117,
   //   group: "goods",
   //   subgroup: "toys",
   //   value: "toys-rent",
@@ -1620,39 +1821,43 @@ nw["amenity"="hammock"];`,
   //   edit: ["amenity=toy_library"]
   // },
   {
+    id: 118,
     group: "goods",
     subgroup: "toys",
     value: "toys-repair",
     icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:toy:repair"="yes"];
-    node["repair"="assisted_self_service"]["toy:repair"="yes"];`,
+    ${assistedRepair("toy")}`,
     color: "#800000",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
   {
+    id: 119,
     group: "goods",
     value: "electronics",
     icon: "/lib/temaki-icons/electronic.svg",
     query: `
-    // Give
-    nw["recycling:small_electrical_appliances"="yes"];
-    nw["recycling:small_appliances"="yes"];
-    nw["recycling:electrical_items"="yes"];
-    nw["recycling:electrical_appliances"="yes"];
-    nw["recycling:electronic"="yes"];
-    nw["recycling:electronics"="yes"];
+      // Give
+      ${recycling(
+        "small_electrical_appliances",
+        "chipboard",
+        "electrical_items",
+        "electrical_appliances",
+        "electronic",
+        "electronics",
+        "fridge_and_freezer",
+        "small_appliances",
+        "white_goods",
+        "tv_monitor"
+      )}
 
-    // Give and take
-    nw["amenity"="give_box"]["electronics"!="no"];
-  
-    // Repair
-    node["repair"="assisted_self_service"]["service:small_electronics_device:repair"="yes"];
-    node["repair"="assisted_self_service"]["small_electronics_device:repair"="yes"];
-    node["repair"="assisted_self_service"]["service:electronics:repair"="yes"];
-    node["repair"="assisted_self_service"]["electronics:repair"="yes"];`,
+      // Give and take
+      nw["amenity"="give_box"]["electronics"!="no"];
+
+      // Repair
+      ${assistedRepair("small_electronics_device", "electronics", "camera")}`,
     color: "#800080",
     tags: [
       "amenity=recycling",
@@ -1663,25 +1868,33 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 120,
     group: "goods",
     subgroup: "electronics",
     value: "electronics-give",
     icon: "/lib/temaki-icons/electronic.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:small_electrical_appliances"="yes"];
-    nw["recycling:small_appliances"="yes"];
-    nw["recycling:electrical_items"="yes"];
-    nw["recycling:electrical_appliances"="yes"];
-    nw["recycling:electronic"="yes"];
-    nw["recycling:electronics"="yes"];
+    ${recycling(
+      "small_electrical_appliances",
+      "small_appliances",
+      "chipboard",
+      "electrical_items",
+      "electrical_appliances",
+      "electronic",
+      "electronics",
+      "fridge_and_freezer",
+      "white_goods",
+      "tv_monitor"
+    )}
 
-    nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
     color: "#800080",
     tags: ["amenity=recycling", "amenity=give_box"],
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 121,
     group: "goods",
     subgroup: "electronics",
     value: "electronics-take",
@@ -1694,37 +1907,36 @@ nw["amenity"="hammock"];`,
     edit: ["amenity"]
   },
   {
+    id: 122,
     group: "goods",
     subgroup: "electronics",
     value: "electronics-repair",
     icon: "/lib/temaki-icons/electronic.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:small_electronics_device:repair"="yes"];
-    node["repair"="assisted_self_service"]["small_electronics_device:repair"="yes"];
-    node["repair"="assisted_self_service"]["service:electronics:repair"="yes"];
-    node["repair"="assisted_self_service"]["electronics:repair"="yes"];`,
+    ${assistedRepair("small_electronics_device", "electronics", "camera")}`,
     color: "#800080",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
   {
+    id: 123,
     group: "goods",
     value: "furniture",
     icon: "/lib/temaki-icons/furniture.svg",
     query: `
-    // Give
-    nw["recycling:furniture"="yes"];
+      // Give
+      ${recycling("furniture", "interior_decoration", "wood", "pallets")}
 
-    // Give and take
-    nw["amenity"="give_box"];
-    
-    // Repair
-    node["repair"="assisted_self_service"]["service:furniture:repair"="yes"];
-    node["repair"="assisted_self_service"]["furniture:repair"="yes"];`,
+      // Give and take
+      nw["amenity"="give_box"];
+
+      // Repair
+      ${assistedRepair("furniture")}`,
     color: "#B8860B",
     tags: [
-      "amenity=recycling",
+      "recycling:furniture=yes",
+      "recycling:wood=yes",
       "amenity=give_box",
       "repair=assisted_self_service",
       "repair=*"
@@ -1732,75 +1944,76 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 124,
     group: "goods",
     subgroup: "furniture",
     value: "furniture-give",
     icon: "/lib/temaki-icons/furniture.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:furniture"="yes"];
+    ${recycling("furniture", "interior_decoration", "wood", "pallets")}
 
-    nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
     color: "#B8860B",
-    tags: ["amenity=recycling", "amenity=give_box"],
+    tags: ["recycling:furniture=yes", "recycling:wood=yes", "amenity=give_box"],
     edit: ["amenity=recycling", "amenity"]
   },
   {
+    id: 125,
     group: "goods",
     subgroup: "furniture",
     value: "furniture-take",
     icon: "/lib/temaki-icons/furniture.svg",
     button: "fas fa-long-arrow-alt-left",
     query: `
-    nw["amenity"="give_box"];`,
+      nw["amenity"="give_box"];`,
     color: "#B8860B",
     tags: ["amenity=give_box"],
     edit: ["amenity"]
   },
   {
+    id: 126,
     group: "goods",
     subgroup: "furniture",
     value: "furniture-repair",
     icon: "/lib/temaki-icons/furniture.svg",
     button: "fas fa-tools",
     query: `
-    node["repair"="assisted_self_service"]["service:furniture:repair"="yes"];
-    node["repair"="assisted_self_service"]["furniture:repair"="yes"];`,
+    ${assistedRepair("furniture")}`,
     color: "#B8860B",
     tags: ["repair=assisted_self_service", "repair=*"],
     edit: ["amenity"]
   },
-
   {
+    id: 127,
     group: "goods",
     value: "bicycle",
     icon: "/lib/maki-icons/bicycle-15.svg",
     query: `
-    // Give
-    nw["recycling:bicycles"="yes"];
-  
-    // Rent
-    ${nwFee(`["amenity"="bicycle_rental"]`)}
+      // Give
+      ${recycling("bicycles")}
 
-    // Repair
-    nw["amenity"="bicycle_repair_station"];
-    node["repair"="assisted_self_service"]["service:bicycle:repair"="yes"];
-    node["repair"="assisted_self_service"]["bicycle:repair"="yes"];
-    nw["service:bicycle:diy"="yes"];
+      // Rent
+      ${nwFee(`["amenity"="bicycle_rental"]`)}
 
-    // Pump
-    nw["amenity"="compressed_air"];
-    nw["compressed_air"="yes"];
-    nw["service:bicycle:pump"="yes"];
+      // Repair
+      nw["amenity"="bicycle_repair_station"];
+      ${assistedRepair("bicycle")}
+      nw["service:bicycle:diy"="yes"];
 
-    // Park
-    nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
-    ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}
-    
-    // Charge
-    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]; 
-    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
-    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
+      // Pump
+      nw["amenity"="compressed_air"];
+      nw["compressed_air"="yes"];
+      nw["service:bicycle:pump"="yes"];
+
+      // Park
+      nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
+      ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}
+
+      // Charge
+      (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"];
+      - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
+      nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=recycling",
@@ -1830,18 +2043,20 @@ nw["amenity"="hammock"];`,
     ]
   },
   {
+    id: 128,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-give",
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-long-arrow-alt-right",
     query: `
-    nw["recycling:bicycles"="yes"];`,
+    ${recycling("bicycles")}`,
     color: "#4682B4",
     tags: ["amenity=recycling"],
     edit: ["amenity=recycling"]
   },
   {
+    id: 130,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-rent",
@@ -1854,6 +2069,7 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=bicycle_rental"]
   },
   {
+    id: 131,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-repair",
@@ -1862,8 +2078,7 @@ nw["amenity"="hammock"];`,
     query: `
     nw["amenity"="bicycle_repair_station"]["service:bicycle:tools"!="no"];
 
-    node["repair"="assisted_self_service"]["service:bicycle:repair"="yes"];
-    node["repair"="assisted_self_service"]["bicycle:repair"="yes"];
+    ${assistedRepair("bicycle")}
 
     nw["service:bicycle:diy"="yes"];`,
     color: "#4682B4",
@@ -1877,17 +2092,18 @@ nw["amenity"="hammock"];`,
     edit: ["amenity=bicycle_repair_station", "amenity", "shop"]
   },
   {
+    id: 133,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-pump",
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-tachometer-alt",
     query: `
-    nw["amenity"="compressed_air"];
+      nw["amenity"="compressed_air"];
 
-    nw["compressed_air"="yes"];
+      nw["compressed_air"="yes"];
 
-    nw["service:bicycle:pump"="yes"];`,
+      nw["service:bicycle:pump"="yes"];`,
     color: "#4682B4",
     tags: [
       "amenity=compressed_air",
@@ -1902,28 +2118,30 @@ nw["amenity"="hammock"];`,
     ]
   },
   {
+    id: 134,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-park",
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-infinity",
     query: `
-    nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
-    ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}`,
+      nwr["sport"~"bmx|cycling"]["leisure"!~"sports_centre|stadium"];
+      ${nwrFee(`["sport"~"bmx|cycling"]["leisure"~"sports_centre|stadium"]`)}`,
     color: "#4682B4",
     tags: ["sport=bmx", "sport=cycling"],
     edit: ["leisure=track", "landuse=recreation_ground", "leisure=pitch"]
   },
   {
+    id: 135,
     group: "goods",
     subgroup: "bicycle",
     value: "bicycle-charge",
     icon: "/lib/maki-icons/bicycle-15.svg",
     button: "fas fa-charging-station",
     query: `
-    (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]; 
-    - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
-    nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
+      (nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"];
+      - nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"][~"^authentication:.*$"~"^yes$"];);
+      nw["amenity"="charging_station"]["fee"="no"]["bicycle"="yes"]["parking:fee"!="yes"]["authentication:none"="yes"];`,
     color: "#4682B4",
     tags: ["amenity=charging_station"],
     edit: ["amenity=charging_station"]
