@@ -263,7 +263,7 @@ export function initMap<M>(
         for (const f of filterOptions)
           if (f.group + "/" + f.value === o) {
             offers.push(f.group + "/" + f.value);
-            init(f.value, f.icon, f.query, attributes, local, f.color);
+            init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
 
             (getHtmlElement(
               `#filters input[value='${f.group + "/" + f.value}']`
@@ -408,7 +408,7 @@ out center;`
           if (!input.checked) {
             input.checked = true;
             offers.push(k + "/" + f.value);
-            init(f.value, f.icon, f.query, attributes, local, f.color);
+            init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
 
             const params = getHashParams();
             params["offers"] = offers.toString();
@@ -555,7 +555,7 @@ out center;`
         function () {
           if (this.checked) {
             offers.push(k + "/" + f.value);
-            init(f.value, f.icon, f.query, attributes, local, f.color);
+            init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
           } else {
             const index = offers.indexOf(k + "/" + f.value);
             if (index > -1) offers.splice(index, 1);
@@ -579,6 +579,7 @@ out center;`
 }
 
 function init<M>(
+  group:string,
   value: string,
   icon: string,
   query: string,
@@ -587,6 +588,7 @@ function init<M>(
   color: string
 ) {
   layers[value] = createOverPassLayer(
+    group,
     value,
     icon,
     query,

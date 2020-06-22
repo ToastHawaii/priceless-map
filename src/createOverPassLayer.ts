@@ -5,7 +5,7 @@ import { isImage } from "./utilities/image";
 import { toTitle, toLevel, toOpenOrClose } from "./view";
 import { getJson } from "./utilities/jsonRequest";
 import { getHtmlElement, createElement } from "./utilities/html";
-import { parseOpeningHours,  updateCount } from "./map";
+import { parseOpeningHours, updateCount } from "./map";
 import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
 import {
@@ -19,6 +19,7 @@ import {
 import { equalsIgnoreCase } from "./utilities/string";
 
 export function createOverPassLayer<M>(
+  group: string,
   value: string,
   icon: string,
   query: string,
@@ -228,7 +229,7 @@ export function createOverPassLayer<M>(
         share.addEventListener("click", function (e) {
           e.preventDefault();
           shareLink(
-            window.location.href,
+            `${window.location.origin}${window.location.pathname}#offers=${group}/${value}&location=${model.address.latitude},${model.address.longitude}`,
             share,
             local,
             toTitle(model),
