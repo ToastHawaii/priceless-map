@@ -271,6 +271,10 @@ export const type = {
         url: "https://mundraub.org/map#z={zoom}&lat={lat}&lng={lng}"
       },
       {
+        name: "falling fruit",
+        url: "http://fallingfruit.org/?z={zoom}&y={lng}&x={lat}&locale=de"
+      },
+      {
         name: "Zero Waste Map",
         url: "https://zerowastemap.org/de/"
       }
