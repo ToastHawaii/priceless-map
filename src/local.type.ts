@@ -271,7 +271,7 @@ export const type = {
       },
       {
         name: "falling fruit",
-        url: "http://fallingfruit.org/?z={zoom}&y={lat}&x={lng}&locale=en"
+        url: "http://fallingfruit.org/?z={zoom}&y={lat}&x={lng}&t=OSM&locale=en"
       },
       {
         name: "Zero Waste Map",
