@@ -53,9 +53,10 @@ export const attributes: Attribute<{}>[] = [
     check: tags =>
       tags.leisure === "playground" ||
       !!tags.playground ||
-      tags.swimming_pool === "wading" ||
+      tags.swimming_pool === "paddling_pool" ||
       tags.swimming_pool === "kids" ||
-      tags.swimming_pool === "plunge" ||
+      tags.swimming_pool === "wading" ||
+      tags.swimming_pool === "children's_pool" ||
       tags.children === "designated" ||
       tags.children === "yes" ||
       (tags.kids_area === "yes" && tags["kids_area:fee"] !== "yes"),

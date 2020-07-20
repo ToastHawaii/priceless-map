@@ -454,6 +454,11 @@ export const type = {
         name: "Zoo-Infos.org - Frankreich",
         url: "http://fr.zoo-infos.org/set.html?karte.php",
         bounds: [42.13, -5.02, 51.27, 8.43]
+      },
+      {
+        name: "Arca-Net",
+        url: "http://arca-net.info/map_categories/frame_map.asp?sprache=de",
+        bounds: [-32.0, -0.3, 52.3, 68.9]
       }
     ]
   },
@@ -483,8 +488,28 @@ export const type = {
     ]
   },
   fireplace: { name: "Feuerstelle", description: "" },
-  garden: { name: "Garten", description: "" },
-  "garden-with-name": { name: "Garten (Mit Name)", description: "" },
+  garden: {
+    name: "Garten",
+    description: "",
+    externalResources: [
+      {
+        name: "Arca-Net",
+        url: "http://arca-net.info/map_categories/frame_map.asp?sprache=de",
+        bounds: [-32.0, -0.3, 52.3, 68.9]
+      }
+    ]
+  },
+  "garden-with-name": {
+    name: "Garten (Mit Name)",
+    description: "",
+    externalResources: [
+      {
+        name: "Arca-Net",
+        url: "http://arca-net.info/map_categories/frame_map.asp?sprache=de",
+        bounds: [-32.0, -0.3, 52.3, 68.9]
+      }
+    ]
+  },
   "nature-park": { name: "Naturpark", description: "" },
   park: { name: "Park", description: "" },
   "park-with-name": { name: "Park (Mit Name)", description: "" },
