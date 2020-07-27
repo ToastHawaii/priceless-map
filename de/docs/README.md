@@ -81,7 +81,7 @@ Probiere einen der folgenden Services aus:
 - [uMap](https://umap.openstreetmap.fr/de/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:UMap))
 - [overpass turbo](https://overpass-turbo.eu/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:Overpass_turbo)) Du kannst den "Wizard" verwenden um eine Abfrage zu erstellen, dieser versteht auch deutsche Wörter wie z.B. "See", "Bäckerei", etc.
 
-[Weitere Karten basierend aus OpenStreetMap](https://wiki.openstreetmap.org/wiki/DE:List_of_OSM-based_services)
+[Weitere Karten basierend auf OpenStreetMap](https://wiki.openstreetmap.org/wiki/DE:List_of_OSM-based_services)
 
 ## Weiteres
 
