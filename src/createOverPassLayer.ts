@@ -46,6 +46,7 @@ export function createOverPassLayer<M>(
     minZoom: 14,
     query: `(${query});out center;`,
     timeout: 30, // Seconds
+    retryOnTimeout: true,
     cacheEnabled: true,
     cacheTTL: 86400, // 24h
     onSuccess(data: { elements: any[] }) {
