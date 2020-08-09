@@ -159,6 +159,10 @@ export const type = {
       {
         name: "Zero Waste Map",
         url: "https://zerowastemap.org/de/"
+      },
+      {
+        name: "iFixit",
+        url: "https://de.ifixit.com/Anleitung"
       }
     ]
   },
