@@ -231,6 +231,7 @@ export const type = {
   },
   "diaper-changing-table": { name: "Wickeltische", description: "" },
   "drinking-water": { name: "Trinkwasser", description: "" },
+  "defibrillator": { name: "Defibrillator", description: "" },
   "food-sharing": {
     name: "Lebensmittel teilen",
     description:

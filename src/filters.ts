@@ -365,16 +365,8 @@ nwr["wifi"]["wifi"!="no"];`,
 
       ${nwFee(`["healthcare"]`)}`,
     color: "#DC143C",
-    tags: [
-      "social_facility=outreach",
-      "amenity=social_centre",
-      "healthcare"
-    ],
-    edit: [
-      "amenity=social_facility",
-      "amenity=social_centre",
-      "healthcare"
-    ]
+    tags: ["social_facility=outreach", "amenity=social_centre", "healthcare"],
+    edit: ["amenity=social_facility", "amenity=social_centre", "healthcare"]
   },
   {
     id: 26,
@@ -547,6 +539,17 @@ nw["drinking_water:refill"="yes"];`,
       "natural=spring",
       "amenity"
     ]
+  },
+  {
+    id: 144,
+    group: "health",
+    value: "defibrillator",
+    icon: "/lib/maki-icons/defibrillator-15.svg",
+    query: `
+nw["emergency"="defibrillator"];`,
+    color: "#008855",
+    tags: ["emergency=defibrillator"],
+    edit: ["emergency=defibrillator"]
   },
   {
     id: 46,

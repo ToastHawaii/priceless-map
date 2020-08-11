@@ -24,6 +24,20 @@ export const attributeDescriptions: Attribute<{ website?: string }>[] = [
   },
   {
     check: (tags, _value, _model, local) =>
+      !!(tags["emergency"] === "defibrillator") &&
+      !!(
+        tags[`defibrillator:location:${local.code || "en"}`] ||
+        tags["defibrillator:location"]
+      ),
+    template: (local, tags) =>
+      template(
+        "fas fa-heartbeat",
+        tags[`defibrillator:location:${local.code || "en"}`] ||
+          tags["defibrillator:location"]
+      )
+  },
+  {
+    check: (tags, _value, _model, local) =>
       ((!!tags.internet_access &&
         tags.internet_access !== "no" &&
         tags["internet_access:fee"] !== "customers" &&

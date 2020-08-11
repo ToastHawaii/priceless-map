@@ -230,6 +230,7 @@ export const type = {
   },
   "diaper-changing-table": { name: "Diaper-changing table", description: "" },
   "drinking-water": { name: "Drinking water", description: "" },
+  "defibrillator": { name: "Defibrillator", description: "" },
   "food-sharing": {
     name: "Food sharing",
     description:
