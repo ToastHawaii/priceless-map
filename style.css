@@ -188,7 +188,35 @@ button {
   user-select: none;
 }
 
-#filters .filter + .filter .filter-label {
+#filters a,
+#filters .filter-sub {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  float: right;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  font-size: 14px;
+  text-align: center;
+  min-width: 10px;
+  display: inline-block;
+}
+
+#filters a {
+  padding-right: 1px;
+}
+
+#filters .filter i {
+  height: 14px;
+}
+
+#filters .filter-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -200,18 +228,49 @@ button {
   width: 0px;
 }
 
-#filters .filter:hover input ~ .filter-label {
+#filters .filter:hover {
   background-color: rgb(247, 247, 247);
 }
 
-#filters .filter input:checked ~ .filter-label {
+#filters .filter input:checked ~ .filter-background {
   background-color: rgb(238, 238, 238);
+}
+
+#filters .filter-sub:hover {
+  background-color: rgb(229, 229, 229);
+}
+
+#filters .filter input:checked ~ .filter-sub-background {
+  background-color: rgb(220, 220, 220);
+}
+
+#filters .filter input:checked ~ .filter-background {
+  position: absolute;
+  z-index: 0;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#filters .filter input:checked ~ .filter-sub-background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 #filters .filter .filter-label {
   z-index: -1;
   padding: 6px;
-  border-top: 2px solid rgba(0, 0, 0, 0.2);
+  padding-right: 2px;
+  padding-left: 1px;
+  margin-left: 5px;
+}
+
+#filters .filter .filter-label span {
+  position: relative;
 }
 
 #filters details:last-child .filter:last-child .filter-label {
@@ -227,20 +286,10 @@ button {
   top: 2px;
 }
 
-#filters a,
-#filters .filter-sub {
-  float: right;
-  cursor: pointer;
-  position: relative;
-  z-index: 1;
-  margin-left: 4px;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 9px;
-  display: inline-block;
-}
 #filters a {
-  margin-right: 6px;
+  margin-right: 5px;
+  display: block;
+  height: 15px;
 }
 
 details + details {
@@ -516,3 +565,4 @@ button.menu .title {
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
 }
+

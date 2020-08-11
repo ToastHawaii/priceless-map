@@ -364,6 +364,7 @@ export function initMap<M>(
           "label",
           `
           <input value="${k + "/" + f.value}" type="checkbox" />
+          <div class="filter-background"></div>
           <div class="filter-label">
             <img class="${f.value}-icon"
               src="${f.icon}"
@@ -542,7 +543,8 @@ out center;`
         contentElement = createElement(
           "label",
           `<input value="${k + "/" + f.value}" type="checkbox" />
-           <i class="${f.button}" style="color: ${f.color}" title="${
+              <div class="filter-sub-background"></div>
+              <i class="${f.button}" style="color: ${f.color}" title="${
             local.type[f.value].name
           }"></i>`,
           ["filter", "filter-sub", "filter-" + k + "-" + f.value]
@@ -579,7 +581,7 @@ out center;`
 }
 
 function init<M>(
-  group:string,
+  group: string,
   value: string,
   icon: string,
   query: string,

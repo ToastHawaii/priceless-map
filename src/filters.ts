@@ -363,17 +363,17 @@ nwr["wifi"]["wifi"!="no"];`,
 
       nwr["amenity"="social_centre"];
 
-      ${nwFee(`["healthcare"="counselling"]`)}`,
+      ${nwFee(`["healthcare"]`)}`,
     color: "#DC143C",
     tags: [
       "social_facility=outreach",
       "amenity=social_centre",
-      "healthcare=counselling"
+      "healthcare"
     ],
     edit: [
       "amenity=social_facility",
       "amenity=social_centre",
-      "healthcare=counselling"
+      "healthcare"
     ]
   },
   {
