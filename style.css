@@ -201,7 +201,7 @@ button {
   padding-bottom: 7px;
   font-size: 14px;
   text-align: center;
-  min-width: 10px;
+  min-width: 8px;
   display: inline-block;
 }
 
@@ -565,4 +565,3 @@ button.menu .title {
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
 }
-
