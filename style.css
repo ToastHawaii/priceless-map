@@ -428,7 +428,9 @@ button i {
 
 .attribut {
   float: right;
-  margin-left: 5px;
+  padding: 0 2px;
+  text-align: center;
+  min-width: 8px;
 }
 
 .info-container {
@@ -487,7 +489,7 @@ button i {
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 4px 4px 0 0;
+  padding: 4px 4px 0;
   border: none;
   text-align: center;
   width: 18px;

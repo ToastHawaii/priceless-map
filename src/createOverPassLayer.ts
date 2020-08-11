@@ -137,10 +137,10 @@ export function createOverPassLayer<M>(
         const contentElement = createElement(
           "div",
           `<div id="hcard-Name" class="vcard">
-          <a style="float:right;margin-left: 5px;" href="https://www.openstreetmap.org/edit?${
+          <a style="float:right;padding: 0 0 0 3px;" href="https://www.openstreetmap.org/edit?${
             e.type
           }=${e.id}"><i class="fas fa-pencil-alt"></i></a>
-          <a style="float:right;" href="" class="share"><i class="fas fa-share-alt"></i></a>
+          <a style="float:right;padding: 0 3px;" href="" class="share"><i class="fas fa-share-alt"></i></a>
           <strong class="name" title="${toTitle(model)}">${toTitle(
             model
           )}</strong>
@@ -351,7 +351,7 @@ export function createOverPassLayer<M>(
                     // check each, in order of preference
                     const w = (local.code || "en") + "wiki";
                     if (entity.sitelinks[w]) {
-                      const title = entity.sitelinks[w].title;
+                      const title = entity.sitelinks[w].title || "";
                       const url = `https://${
                         local.code || "en"
                       }.wikipedia.org/wiki/${title.replace(/ /g, "_")}`;
@@ -579,7 +579,7 @@ async function loadWikipediaSummary(siteTitle: string, language: string) {
     const firstPage = pages[keys[0]];
     return {
       url: firstPage.fullurl,
-      summary: textTruncate(firstPage.extract, 500),
+      summary: textTruncate(firstPage.extract || "", 500),
       image: firstPage.thumbnail && firstPage.thumbnail.source
     };
   } else {
