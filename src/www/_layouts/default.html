@@ -51,11 +51,24 @@
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+    <style>
+      @media (prefers-color-scheme: dark) {
+        html {
+          filter: invert(100%) hue-rotate(180deg);
+        }
+
+        html img,
+        html input[type="image"] {
+          filter: invert(100%) hue-rotate(-180deg);
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">
       {{ content }}
     </div>
+
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
   </body>
 </html>

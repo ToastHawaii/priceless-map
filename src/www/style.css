@@ -567,3 +567,30 @@ button.menu .title {
   border: 2px solid rgba(0, 0, 0, 0.2);
   background-clip: padding-box;
 }
+
+@media (prefers-color-scheme: dark) {
+  html {
+    filter: invert(100%) hue-rotate(180deg);
+  }
+
+  html img,
+  html input[type="image"] {
+    filter: invert(100%) hue-rotate(-180deg);
+  }
+
+  #filters .filter:hover {
+    background-color: rgb(229, 229, 229);
+  }
+
+  #filters .filter input:checked ~ .filter-background {
+    background-color: rgb(220, 220, 220);
+  }
+
+  #filters .filter-sub:hover {
+    background-color: rgb(211, 211, 211);
+  }
+
+  #filters .filter input:checked ~ .filter-sub-background {
+    background-color: rgb(202, 202, 202);
+  }
+}
