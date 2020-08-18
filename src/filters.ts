@@ -195,7 +195,7 @@ nwr["wifi"]["wifi"!="no"];`,
     value: "history",
     icon: "https://wiki.openstreetmap.org/w/images/c/c8/Acheological.png",
     query: `
-    nwr["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
+    nwr["historic"]["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
 
     nw["board_type"="history"];
     nw["information"="history"];`,
