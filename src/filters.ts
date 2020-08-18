@@ -321,7 +321,7 @@ nwr["wifi"]["wifi"!="no"];`,
     value: "rock",
     icon: "/lib/maki-icons/circle-15.svg",
     query: `
-    nwr["natural"="^(rock|stone)$"];`,
+    nwr["natural"~"^(rock|stone)$"];`,
     color: "#D3D3D3",
     tags: ["natural=rock", "natural=stone"],
     edit: ["natural=rock", "natural=stone"]
@@ -347,7 +347,7 @@ nwr["wifi"]["wifi"!="no"];`,
     value: "waterfall",
     icon: "https://wiki.openstreetmap.org/w/images/7/72/Waterfall-14.svg",
     query: `
-    nwr["waterway"="^(waterfall|dam|weir)$"];`,
+    nwr["waterway"~"^(waterfall|dam|weir)$"];`,
     color: "#20B2AA",
     tags: ["waterway=waterfall", "waterway=dam", "waterway=weir"],
     edit: ["waterway=waterfall", "waterway=dam", "waterway=weir"]
