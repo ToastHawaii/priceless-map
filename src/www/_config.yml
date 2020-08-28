@@ -6,7 +6,7 @@ defaults:
       title: "Priceless"
       description: "Experience the world. Free of charge."
       base: "/"
-      site_name: "Priceless map"
+      tagline: "Priceless map"
   - scope:
       path: "de/docs/README.md"
     values:
@@ -14,4 +14,4 @@ defaults:
       title: "Unbezahlbar"
       description: "Erlebe die Welt. Gratis."
       base: "/de/"
-      site_name: "Unbezahlbar Karte"
+      tagline: "Unbezahlbar Karte"
