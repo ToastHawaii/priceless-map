@@ -4,6 +4,7 @@ defaults:
     values:
       permalink: ""
       lang: "en"
+      l: "en"
       title: "Priceless"
       description: "Experience the world. Free of charge."
   - scope:
@@ -11,5 +12,6 @@ defaults:
     values:
       permalink: "de"
       lang: "de"
+      l: "de"
       title: "Unbezahlbar"
       description: "Erlebe die Welt. Gratis."
