@@ -8,7 +8,6 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <meta name="description" content="{{ page.description }}" />
 
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -16,7 +15,7 @@
     <meta name="apple-mobile-web-app-title" content="{{ page.title }}" />
     <meta name="theme-color" content="#da532c" />
     <meta name="msapplication-navbutton-color" content="#da532c" />
-    <meta name="msapplication-starturl" content="/{{ page.permalink }}" />
+    <meta name="msapplication-starturl" content="{{ page.base }}" />
 
     <link
       rel="apple-touch-icon"
@@ -40,7 +39,7 @@
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-config" content="/icons/browserconfig.xml" />
 
-    {% seo %}
+    {% seo title=false %}
 
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
