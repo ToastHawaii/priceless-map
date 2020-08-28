@@ -8,6 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="description" content="{{ page.description }}" />
 
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -39,8 +40,6 @@
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="msapplication-config" content="/icons/browserconfig.xml" />
 
-    {% seo title=false %}
-
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
       rel="stylesheet"
@@ -70,7 +69,5 @@
   </head>
   <body>
     <div class="container-lg px-3 my-5 markdown-body">{{ content }}</div>
-
-    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
   </body>
 </html>
