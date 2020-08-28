@@ -1,0 +1,23 @@
+{
+    "name": "Unbezahlbar Karte",
+    "short_name": "Unbezahlbar",
+    "description": "Erlebe die Welt. Gratis.",
+    "lang": "de",
+    "start_url": "/de/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#da532c",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/icons/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
