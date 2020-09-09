@@ -368,6 +368,105 @@ nwr["wifi"]["wifi"!="no"];`,
     tags: ["social_facility=outreach", "amenity=social_centre", "healthcare"],
     edit: ["amenity=social_facility", "amenity=social_centre", "healthcare"]
   },
+   // {
+  //   id: 137,
+  //   group: "community",
+  //   subgroup: "assistance",
+  //   value: "assistance-senior",
+  //   button: "fas fa-blind",
+  //   icon:
+  //     "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+  //   query: `
+  //     nwr["social_facility:for"~"senior|elderly"];`,
+  //   color: "#DC143C",
+  //   tags: ["social_facility"],
+  //   edit: ["amenity=social_facility"]
+  // },
+  {
+    id: 138,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-disabled",
+    button: "fab fa-accessible-icon",
+    icon:
+      "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"disabled|mental_health|diseased"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"]
+  },
+  {
+    id: 139,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-homeless",
+    button: "fas fa-angle-up",
+    icon:
+      "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"homeless|underprivileged|drug_addicted|unemployed"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"]
+  },
+  {
+    id: 140,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-migrant",
+    button: "fas fa-running",
+    icon:
+      "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"migrant|refugees|refugee|displaced|migrants"];
+      nwr["emergency:social_facility:for"~"displaced"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"]
+  },
+  {
+    id: 141,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-female",
+    button: "fas fa-female",
+    icon:
+      "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"woman|women",i];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"]
+  },
+  // {
+  //   id: 142,
+  //   group: "community",
+  //   subgroup: "assistance",
+  //   value: "assistance-male",
+  //   button: "fas fa-male",
+  //   icon:
+  //     "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+  //   query: `
+  //     nwr["social_facility:for"~"men"];`,
+  //   color: "#DC143C",
+  //   tags: ["social_facility"],
+  //   edit: ["amenity=social_facility"]
+  // },
+  {
+    id: 143,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-children",
+    button: "fas fa-child",
+    icon:
+      "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"child|juvenile|orphan|children|youth"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"]
+  },
   {
     id: 26,
     group: "community",

@@ -524,6 +524,21 @@ h1 a {
   text-decoration: none;
 }
 
+details[open] summary ~ * {
+  animation: sweep 0.4s ease-in-out;
+}
+
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -5px;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0px;
+  }
+}
+
 /* Fix details-element-polyfill */
 details:not([open]) > *:not(summary) {
   display: none !important;

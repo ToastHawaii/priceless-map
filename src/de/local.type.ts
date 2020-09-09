@@ -137,6 +137,13 @@ export const type = {
       }
     ]
   },
+  "assistance-female": { name: "Für Frauen", description: "" },
+  "assistance-male": { name: "Für Männer", description: "" },
+  "assistance-senior": { name: "Für Ältere", description: "" },
+  "assistance-disabled": { name: "Für Behinderte", description: "" },
+  "assistance-homeless": { name: "Für Benachteiligte", description: "" },
+  "assistance-migrant": { name: "Für Vertriebene", description: "" },
+  "assistance-children": { name: "Für Kinder", description: "" },
   "assisted-repair": {
     name: "Begleitete Reparatur",
     description:
@@ -231,7 +238,7 @@ export const type = {
   },
   "diaper-changing-table": { name: "Wickeltische", description: "" },
   "drinking-water": { name: "Trinkwasser", description: "" },
-  "defibrillator": { name: "Defibrillator", description: "" },
+  defibrillator: { name: "Defibrillator", description: "" },
   "food-sharing": {
     name: "Lebensmittel teilen",
     description:
