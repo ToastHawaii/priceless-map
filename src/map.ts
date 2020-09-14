@@ -148,6 +148,18 @@ export function initMap<M>(
     set<State>("position", state);
   });
 
+  let timeoutToken: any;
+  map
+    .on("movestart zoomstart", () => {
+      clearTimeout(timeoutToken);
+      getHtmlElement("html").classList.remove("help");
+    })
+    .on("moveend zoomend", () => {
+      timeoutToken = setTimeout(() => {
+        getHtmlElement("html").classList.add("help");
+      }, 1500);
+    });
+
   function partAreaVisible() {
     const visibles = getHtmlElements(`.external-link`);
     let hasPrev = false;

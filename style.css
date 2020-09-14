@@ -569,6 +569,39 @@ button.menu .title {
   left: auto;
 }
 
+.help .help-text:after {
+  content: attr(title);
+  display: block;
+  position: absolute;
+  right: 36px;
+  top: 7px;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+
+  animation: fade 0.5s ease-in-out 2.5s backwards;
+}
+.help .help-text.help-text-right:after {
+  right: auto;
+  left: 36px;
+  color: #666;
+}
+.help #filters.right-collapsed {
+  overflow: visible;
+}
+.help #filters.right-collapsed .help-text.help-text-right:after {
+  top: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .leaflet-marker-icon {
   animation: pin-down 0.4s ease-in-out;
 }
