@@ -149,15 +149,23 @@ export function initMap<M>(
   });
 
   let timeoutToken: any;
+  let popopopen = false;
   map
-    .on("movestart zoomstart", () => {
+    .on("movestart zoomstart popupopen", () => {
       clearTimeout(timeoutToken);
       getHtmlElement("html").classList.remove("help");
     })
-    .on("moveend zoomend", () => {
+    .on("moveend zoomend popupclose", () => {
       timeoutToken = setTimeout(() => {
-        getHtmlElement("html").classList.add("help");
+        if (!popopopen) getHtmlElement("html").classList.add("help");
       }, 1500);
+    });
+  map
+    .on("popupopen", () => {
+      popopopen = true;
+    })
+    .on("popupclose", () => {
+      popopopen = false;
     });
 
   function partAreaVisible() {

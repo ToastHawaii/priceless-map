@@ -579,7 +579,7 @@ button.menu .title {
   user-select: none;
   pointer-events: none;
 
-  animation: fade 0.5s ease-in-out 2.5s backwards;
+  animation: fade 0.5s ease-in-out backwards;
 }
 .help .help-text.help-text-right:after {
   right: auto;
