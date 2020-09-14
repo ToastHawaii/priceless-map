@@ -14,7 +14,7 @@ import {
   getHtmlElements,
   createElement
 } from "./utilities/html";
-import { createOverPassLayer, shareLink } from "./createOverPassLayer";
+import { createOverPassLayer, isIOS, shareLink } from "./createOverPassLayer";
 import BigNumber from "bignumber.js";
 import { funding } from "./funding";
 
@@ -109,9 +109,12 @@ export function initMap<M>(
       }
     });
 
-    window.location.href = `https://www.openstreetmap.org/edit#editor=id&map=${zoom}/${
-      latlng.lat
-    }/${latlng.lng}${presets ? `&presets=${presets}` : ``}`;
+    if (isIOS())
+      window.location.href = `https://gomaposm.com/edit?center=${latlng.lat},${latlng.lng}&zoom=${zoom}`;
+    else
+      window.location.href = `https://www.openstreetmap.org/edit#editor=id&map=${zoom}/${
+        latlng.lat
+      }/${latlng.lng}${presets ? `&presets=${presets}` : ``}`;
   });
 
   moment.locale(local.code || "en");

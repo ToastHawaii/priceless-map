@@ -16,7 +16,7 @@ import {
   extractLocality,
   extractStreet
 } from "./data";
-import { equalsIgnoreCase } from "./utilities/string";
+import { equalsIgnoreCase, textTruncate } from "./utilities/string";
 
 export function createOverPassLayer<M>(
   group: string,
@@ -134,12 +134,16 @@ export function createOverPassLayer<M>(
           attributeDescriptions
         );
         let isLoaded = false;
+
+        let href: string = "";
+        if (isIOS())
+          href = `https://gomaposm.com/edit?center=${pos.lat},${pos.lng}&zoom=20`;
+        else href = `https://www.openstreetmap.org/edit?${e.type}=${e.id}`;
+
         const contentElement = createElement(
           "div",
           `<div id="hcard-Name" class="vcard">
-          <a style="float:right;padding: 0 0 0 3px;" href="https://www.openstreetmap.org/edit?${
-            e.type
-          }=${e.id}"><i class="fas fa-pencil-alt"></i></a>
+          <a style="float:right;padding: 0 0 0 3px;" href="${href}"><i class="fas fa-pencil-alt"></i></a>
           <a style="float:right;padding: 0 3px;" href="" class="share"><i class="fas fa-share-alt"></i></a>
           <strong class="name" title="${toTitle(model)}">${toTitle(
             model
@@ -644,10 +648,18 @@ function copyTextToClipboard(text: string) {
   document.body.removeChild(textArea);
 }
 
-function textTruncate(text: string, length = 200, ending = "...") {
-  if (text.length > length) {
-    return text.substring(0, length - ending.length) + ending;
-  } else {
-    return text;
-  }
+
+export function isIOS() {
+  return (
+    [
+      "iPad Simulator",
+      "iPhone Simulator",
+      "iPod Simulator",
+      "iPad",
+      "iPhone",
+      "iPod"
+    ].includes(navigator.platform) ||
+    // iPad on iOS 13 detection
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  );
 }
