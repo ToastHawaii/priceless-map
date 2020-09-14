@@ -5,7 +5,7 @@ import { isImage } from "./utilities/image";
 import { toTitle, toLevel, toOpenOrClose } from "./view";
 import { getJson } from "./utilities/jsonRequest";
 import { getHtmlElement, createElement } from "./utilities/html";
-import { parseOpeningHours,  updateCount } from "./map";
+import { parseOpeningHours, updateCount } from "./map";
 import * as L from "leaflet";
 import { attributeDescriptions } from "./attributeDescriptions";
 import {
@@ -647,7 +647,6 @@ function copyTextToClipboard(text: string) {
 
   document.body.removeChild(textArea);
 }
-
 
 export function isIOS() {
   return (
