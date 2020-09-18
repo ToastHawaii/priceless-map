@@ -67,9 +67,9 @@ You can find links to external resources on the map next to the selection of the
 
 ## I have a website, can I use this map?
 
-Yes, the code is free for use, copying and modification.
+Yes. The app is licensed under the [GNU Affero General Public License v3.0](/LICENSE). The code is free for use, copying and modification if you publish under the same license.
 
-The code can also be used as a basis for your own theme map.
+The code can be used as a basis for your own theme map.
 
 [View source code of this map on GitHub](https://github.com/ToastHawaii/priceless-map)
 
@@ -77,11 +77,12 @@ The code can also be used as a basis for your own theme map.
 
 Try one of the following services:
 
+- [MapComplete](https://pietervdvn.github.io/MapComplete/index.html) ([Wiki](https://wiki.openstreetmap.org/wiki/MapComplete))
 - [MapContrib](https://www.mapcontrib.xyz/) ([Wiki](https://wiki.openstreetmap.org/wiki/MapContrib))
 - [uMap](https://umap.openstreetmap.fr/en/) ([Wiki](https://wiki.openstreetmap.org/wiki/UMap))
 - [overpass turbo](https://overpass-turbo.eu/) ([Wiki](https://wiki.openstreetmap.org/wiki/Overpass_turbo)) You can use the "Wizard" to create a query, it also understands words like " Lake", " Bakery" and so on
 
-[Other maps based on OpenStreetMap](https://wiki.openstreetmap.org/wiki/List_of_OSM-based_services)
+[Other maps based on OpenStreetMap](https://osm-apps.zottelig.ch/)
 
 ## More
 
@@ -95,7 +96,7 @@ More maps for inspiration:
 - A map that shows facilities and services that are environmentally, socially and economically sustainable. [Sustainable](https://sustainable.zottelig.ch/)
 - A map with public bookcases. [Public bookcase](https://book-exchange.zottelig.ch/)
 
-Support me with coffee and cake:
+Support me with coffee ☕ and cake 🍰:
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />
