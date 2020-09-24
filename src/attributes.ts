@@ -1,17 +1,17 @@
 // Copyright (C) 2020 Markus Peloso
-// 
+//
 // This file is part of Priceless map.
-// 
+//
 // Priceless map is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Affero General Public License as
 // published by the Free Software Foundation, either version 3 of the
 // License, or (at your option) any later version.
-// 
+//
 // Priceless map is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU Affero General Public License for more details.
-// 
+//
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -23,6 +23,11 @@ const template = (title: string, icon: string, value?: string) =>
   }</span>`;
 
 export const attributes: Attribute<{}>[] = [
+  {
+    check: tags => !!tags.colour,
+    template: (local, tags) =>
+      `<span title="${local.colour}" class="attribut"><i class="fas fa-circle" style="color:${tags.colour};"></i></span>`
+  },
   {
     check: tags =>
       (!!tags.internet_access &&
@@ -38,7 +43,7 @@ export const attributes: Attribute<{}>[] = [
       template(
         local.difficulty,
         "fas fa-exclamation-circle",
-        (local["piste:difficulty"] as any)[tags["piste:difficulty"]]
+        (local["piste:difficulty"] as any)[tags["piste:difficulty"] || ""]
       )
   },
   {
@@ -245,45 +250,45 @@ export const attributes: Attribute<{}>[] = [
   },
   {
     check: tags =>
-      /horizontal_bar/.test(tags["fitness_station"]) ||
+      /horizontal_bar/.test(tags["fitness_station"] || "") ||
       tags["fitness_station:horizontal_bar"] === "yes" ||
-      /horizontal_bar/.test(tags["playground"]) ||
+      /horizontal_bar/.test(tags["playground"] || "") ||
       tags["playground:horizontal_bar"] === "yes",
     template: local => template(local.horizontalBar, "fas fa-minus")
   },
   {
     check: tags =>
-      /parallel_bars/.test(tags["fitness_station"]) ||
+      /parallel_bars/.test(tags["fitness_station"] || "") ||
       tags["fitness_station:parallel_bars"] === "yes",
     template: local =>
       template(local.parallelBars, "fas fa-grip-lines-vertical")
   },
   {
     check: tags =>
-      /rings/.test(tags["fitness_station"]) ||
+      /rings/.test(tags["fitness_station"] || "") ||
       tags["fitness_station:rings"] === "yes",
     template: local => template(local.rings, "far fa-circle")
   },
   {
     check: tags =>
       /elliptical_trainer|air_walker|exercise_bike|rower/.test(
-        tags["fitness_station"]
+        tags["fitness_station"] || ""
       ) ||
       tags["fitness_station:elliptical_trainer"] === "yes" ||
       tags["fitness_station:air_walker"] === "yes" ||
       tags["fitness_station:exercise_bike"] === "yes" ||
       tags["fitness_station:rower"] === "yes" ||
-      /exercise/.test(tags["playground"]) ||
+      /exercise/.test(tags["playground"] || "") ||
       tags["playground:exercise"] === "yes",
     template: local => template(local.exerciseMachine, "fas fa-biking")
   },
   {
     check: tags =>
-      /slackline|balance(_)?beam/.test(tags["fitness_station"]) ||
+      /slackline|balance(_)?beam/.test(tags["fitness_station"] || "") ||
       tags["fitness_station:slackline"] === "yes" ||
       tags["fitness_station:balance_beam"] === "yes" ||
       tags["fitness_station:balancebeam"] === "yes" ||
-      /slackline|balance(_)?beam/.test(tags["playground"]) ||
+      /slackline|balance(_)?beam/.test(tags["playground"] || "") ||
       tags["playground:slackline"] === "yes" ||
       tags["playground:balance_beam"] === "yes" ||
       tags["playground:balancebeam"] === "yes",
@@ -301,7 +306,7 @@ export const attributes: Attribute<{}>[] = [
   }
 ];
 
-function wheelchairAccesText(tags: { wheelchair: string }, local: any) {
+function wheelchairAccesText(tags: { wheelchair?: string }, local: any) {
   switch (tags.wheelchair) {
     case "yes":
     case "designated":
@@ -316,7 +321,7 @@ function wheelchairAccesText(tags: { wheelchair: string }, local: any) {
   }
 }
 
-function wheelchairAccesColor(tags: { wheelchair: string }) {
+function wheelchairAccesColor(tags: { wheelchair?: string }) {
   switch (tags.wheelchair) {
     case "yes":
     case "designated":
@@ -331,7 +336,7 @@ function wheelchairAccesColor(tags: { wheelchair: string }) {
   }
 }
 
-function wheelchairAccesIcon(tags: { wheelchair: string }) {
+function wheelchairAccesIcon(tags: { wheelchair?: string }) {
   switch (tags.wheelchair) {
     case "yes":
     case "designated":

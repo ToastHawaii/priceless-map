@@ -756,6 +756,8 @@ setInterval(async () => {
 
   const marker = markers[getRandomInt(0, markers.length - 1)];
 
+  if (!marker) return;
+
   marker.style.animation = "0.4s ease-in-out 0s forwards alternate pin-top";
 
   await delay(400);
