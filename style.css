@@ -646,6 +646,28 @@ button.menu .title {
   }
 }
 
+.leaflet-popup a {
+  padding: 0 6px;
+  font-size: 14px;
+  margin-top: -3px;
+  float: left;
+  text-decoration: none;
+}
+
+.leaflet-popup a:last-of-type {
+  padding: 0 0 0 6px;
+}
+
+.leaflet-popup a:first-of-type {
+  padding: 0 6px 0 0;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  padding: 4px 4px 0 0;
+  margin: 0;
+  height: 20px;
+}
+
 .leaflet-control-emptyIndicator {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
