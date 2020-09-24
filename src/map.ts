@@ -25,7 +25,8 @@ import { setHashParams, getHashParams } from "./utilities/url";
 import { Attribute } from "./Generator";
 import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
-import { groupBy } from "./utilities/data";
+import { groupBy, delay, getRandomInt } from "./utilities/data";
+import { toString } from "./utilities/string";
 import {
   getHtmlElement,
   getHtmlElements,
@@ -739,7 +740,25 @@ function offersfromShort(
   return offers;
 }
 
-function toString(value: number, precision: number) {
-  const power = Math.pow(10, precision || 0);
-  return (Math.round(value * power) / power).toFixed(precision);
-}
+setInterval(async () => {
+  if (!document.getElementsByTagName("html")[0].classList.contains("help"))
+    return;
+
+  const markers: HTMLElement[] = [];
+  const mapBounds = map.getBounds();
+  map.eachLayer(layer => {
+    if (layer instanceof L.Marker) {
+      if (mapBounds.contains(layer.getLatLng())) {
+        markers.push((layer as L.Marker).getElement() as HTMLElement);
+      }
+    }
+  });
+
+  const marker = markers[getRandomInt(0, markers.length - 1)];
+
+  marker.style.animation = "0.4s ease-in-out 0s forwards alternate pin-top";
+
+  await delay(400);
+
+  marker.style.animation = "";
+}, 2000);
