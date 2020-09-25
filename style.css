@@ -563,13 +563,13 @@ details:not([open]) > *:not(summary) {
   display: none !important;
 }
 
-.attribut,
-.share {
+.leaflet-popup .attribut,
+.leaflet-popup .share {
   position: relative;
 }
 
-.attribut .title,
-.share .title,
+.leaflet-popup .attribut .title,
+.leaflet-popup .share .title,
 button.menu .title {
   position: absolute;
   top: 20px;
@@ -646,26 +646,55 @@ button.menu .title {
   }
 }
 
-.leaflet-popup a {
-  padding: 0 6px;
-  font-size: 14px;
-  margin-top: -3px;
-  float: left;
-  text-decoration: none;
+.description,
+.text {
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
-.leaflet-popup a:last-of-type {
-  padding: 0 0 0 6px;
-}
-
-.leaflet-popup a:first-of-type {
-  padding: 0 6px 0 0;
-}
-
-.leaflet-container a.leaflet-popup-close-button {
+.leaflet-popup a.leaflet-popup-close-button {
   padding: 4px 4px 0 0;
   margin: 0;
   height: 20px;
+}
+
+.leaflet-popup .edit.button {
+  float: right;
+  margin-top: -3px;
+  padding: 0 6px;
+  font-size: 14px;
+}
+
+.leaflet-popup .share.button {
+  float: right;
+  margin-top: -3px;
+  padding: 0 6px 0 3px;
+  font-size: 14px;
+}
+
+.leaflet-popup .geo a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.leaflet-popup a.img {
+  font-size: 14px;
+}
+
+.leaflet-popup .contact a {
+  padding: 0 4px;
+  font-size: 14px;
+  margin-top: -3px;
+  text-decoration: none;
+}
+
+.leaflet-popup .contact a:last-of-type {
+  padding: 0 0 0 4px;
+}
+
+.leaflet-popup .contact a:first-of-type {
+  padding: 0 4px 0 0;
 }
 
 .leaflet-control-emptyIndicator {

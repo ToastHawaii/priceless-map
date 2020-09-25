@@ -165,8 +165,8 @@ export function createOverPassLayer<M>(
         const contentElement = createElement(
           "div",
           `<div id="hcard-Name" class="vcard">
-          <a style="float:right;padding: 0 6px;" href="${href}"><i class="fas fa-pencil-alt"></i></a>
-          <a style="float:right;padding: 0 6px 0 3px;" href="" class="share"><i class="fas fa-share-alt"></i></a>
+          <a href="${href}" class="edit button"><i class="fas fa-pencil-alt"></i></a>
+          <a href="" class="share button"><i class="fas fa-share-alt"></i></a>
           <strong class="name" title="${toTitle(model)}">${toTitle(
             model
           )}</strong>
