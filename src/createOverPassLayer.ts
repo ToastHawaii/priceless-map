@@ -47,7 +47,7 @@ export function createOverPassLayer<M>(
   color: string,
   isActive: () => boolean
 ) {
-  return new L.OverPassLayer({
+  return (new L.OverPassLayer({
     markerIcon: L.divIcon({
       className: "custom-div-icon",
       html: `<div style="background-color:${
@@ -71,7 +71,7 @@ export function createOverPassLayer<M>(
     cacheTTL: 86400, // 24h
     onSuccess(this: IOverPassLayer & L.FeatureGroup<any>, data) {
       if (!isActive()) return;
-
+      
       for (let i = 0; i < data.elements.length; i++) {
         const e = data.elements[i];
         if (e.id in this._ids) continue;
@@ -509,7 +509,7 @@ export function createOverPassLayer<M>(
       }
       updateCount(local);
     }
-  });
+  }) as any) as L.Layer;
 }
 
 function generateHtmlDescription(model: {

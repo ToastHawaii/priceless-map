@@ -603,7 +603,7 @@ out center;`
             const index = offers.indexOf(k + "/" + f.value);
             if (index > -1) offers.splice(index, 1);
 
-            map.removeLayer(layers[f.value]);
+            map.removeLayer(layers[k + "/" + f.value]);
           }
 
           const params = getHashParams();
@@ -630,7 +630,7 @@ function init<M>(
   local: any,
   color: string
 ) {
-  layers[value] = createOverPassLayer(
+  layers[group + "/" + value] = createOverPassLayer(
     group,
     value,
     icon,
@@ -644,7 +644,7 @@ function init<M>(
       ) as HTMLInputElement).checked
   );
 
-  map.addLayer(layers[value]);
+  map.addLayer(layers[group + "/" + value]);
 }
 
 export function parseOpeningHours(
