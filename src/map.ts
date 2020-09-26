@@ -35,7 +35,6 @@ import {
 import { createOverPassLayer, isIOS, shareLink } from "./createOverPassLayer";
 import BigNumber from "bignumber.js";
 import { funding } from "./funding";
-import { IOverPassLayer } from "leaflet-overpass-layer";
 
 declare var taginfo_taglist: any;
 
@@ -638,8 +637,13 @@ function init<M>(
     query,
     attributes,
     local,
-    color
+    color,
+    () =>
+      (getHtmlElement(
+        `#filters input[value='${group + "/" + value}']`
+      ) as HTMLInputElement).checked
   );
+
   map.addLayer(layers[value]);
 }
 

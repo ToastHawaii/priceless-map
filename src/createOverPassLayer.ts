@@ -35,6 +35,7 @@ import {
 } from "./data";
 import { equalsIgnoreCase, textTruncate } from "./utilities/string";
 import { IOverPassLayer } from "leaflet-overpass-layer";
+import { delay } from "./utilities/data";
 
 export function createOverPassLayer<M>(
   group: string,
@@ -43,7 +44,8 @@ export function createOverPassLayer<M>(
   query: string,
   attributes: Attribute<M>[],
   local: any,
-  color: string
+  color: string,
+  isActive: () => boolean
 ) {
   return new L.OverPassLayer({
     markerIcon: L.divIcon({
@@ -68,6 +70,8 @@ export function createOverPassLayer<M>(
     cacheEnabled: true,
     cacheTTL: 86400, // 24h
     onSuccess(this: IOverPassLayer & L.FeatureGroup<any>, data) {
+      if (!isActive()) return;
+
       for (let i = 0; i < data.elements.length; i++) {
         const e = data.elements[i];
         if (e.id in this._ids) continue;
@@ -538,7 +542,7 @@ function generateHtmlWikipediaDescription(wikipedia: {
   return `${wikipedia.summary} <a href="${wikipedia.url}" target="_blank">Wikipedia</a>`;
 }
 
-export function shareLink(
+export async function shareLink(
   url: string,
   target: HTMLElement,
   local: { linkCopied: string },
@@ -570,9 +574,8 @@ export function shareLink(
 
       target.append(titleElement);
 
-      setTimeout(() => {
-        titleElement.remove();
-      }, 2000);
+      await delay(2000);
+      titleElement.remove();
     }
   }
 }
