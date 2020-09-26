@@ -214,8 +214,8 @@ nwr["wifi"]["wifi"!="no"];`,
     query: `
     nwr["historic"]["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
 
-    nw["board_type"="history"];
-    nw["information"="history"];`,
+    nw["board_type"="history"]["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];
+    nw["information"="history"]["historic"!~"^(castle|tower|fort|ruins|memorial|monument|archaeological_site)$"]["building"!="bunker"]["military"!="bunker"];`,
     color: "#e0e094",
     tags: ["historic=*", "board_type=history"],
     edit: ["historic", "tourism=information"]
