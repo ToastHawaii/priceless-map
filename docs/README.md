@@ -106,4 +106,4 @@ Support me with coffee ☕ and cake 🍰:
 
 ---
 
-[Deutsch](/de/docs)
+<a href="/de/docs" hreflang="de">Deutsch</a>
