@@ -95,7 +95,7 @@ Weitere Karten und Verzeichnisse als Inspiration:
 - Eine Karte, welche Einrichtungen und Angebote anzeigt, die ökologisch-, sozial- und wirtschaftlich nachhaltig sind. [Nachhaltig](https://sustainable.zottelig.ch/de)
 - Eine Karte mit öffentlichen Bücherschränken. [Öffentlichen Bücherschränke](https://book-exchange.zottelig.ch/de)
 
-Unterstütze mich mit Kaffee und Kuchen:
+Unterstütze mich mit Kaffee ☕ und Kuchen 🍰:
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick" />

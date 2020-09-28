@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanCSSPlugin = require("less-plugin-clean-css");
 const path = require("path");
 
 module.exports = {
@@ -71,9 +72,25 @@ module.exports = {
           }
         ]
       },
-
-      // Load CSS files, embed small PNG/JPG/GIF/SVG images as well as fonts as Data URLs and copy larger files to the output directory
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader", // compiles Less to CSS
+            options: {
+              lessOptions: {
+                plugins: [new CleanCSSPlugin({ advanced: true })]
+              }
+            }
+          }
+        ]
+      },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
         loader: "url-loader",
