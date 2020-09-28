@@ -75,7 +75,7 @@ export function initMap<M>(
   getHtmlElement(".about").addEventListener("click", () => {
     window.location.href = `https://priceless.zottelig.ch${
       local.code ? `/${local.code}` : ""
-    }/docs`;
+    }/docs/`;
   });
 
   getHtmlElement(".donate").addEventListener("click", () => {

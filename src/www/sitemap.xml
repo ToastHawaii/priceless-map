@@ -3,24 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
 <url>
-<loc>https://priceless.zottelig.ch/docs</loc>
-  <xhtml:link 
+<loc>https://priceless.zottelig.ch/docs/</loc>
+  <xhtml:link
                rel="alternate"
                hreflang="de"
-               href="https://priceless.zottelig.ch/de/docs"/>
-    <xhtml:link 
+               href="https://priceless.zottelig.ch/de/docs/"/>
+  <xhtml:link
                rel="alternate"
                hreflang="en"
-               href="https://priceless.zottelig.ch/docs"/>
+               href="https://priceless.zottelig.ch/docs/"/>
 
 </url>
 <url>
 <loc>https://priceless.zottelig.ch</loc>
-  <xhtml:link 
+  <xhtml:link
                rel="alternate"
                hreflang="de"
-               href="https://priceless.zottelig.ch/de"/>
-    <xhtml:link 
+               href="https://priceless.zottelig.ch/de/"/>
+  <xhtml:link
                rel="alternate"
                hreflang="en"
                href="https://priceless.zottelig.ch"/>

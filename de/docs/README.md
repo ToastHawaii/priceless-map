@@ -2,7 +2,7 @@
 
 Erlebe die Welt. Gratis.
 
-[Hier geht es zur Karte](https://priceless.zottelig.ch/de)
+[Hier geht es zur Karte](https://priceless.zottelig.ch/de/)
 
 Dies ist eine einfache Karte, welche öffentliche und kostenlose Einrichtungen und Angebote in deiner Nähe anzeigt. Die Informationen werden von [OpenStreetMap](https://www.openstreetmap.org) geladen.
 
@@ -105,4 +105,4 @@ Unterstütze mich mit Kaffee und Kuchen:
 
 ---
 
-<a href="/docs" hreflang="en">English</a>
+[English](/docs/)
