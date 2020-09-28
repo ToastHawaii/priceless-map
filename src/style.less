@@ -30,6 +30,11 @@ body,
   width: 100%;
 }
 
+button,
+a {
+  cursor: pointer;
+}
+
 .closed {
   color: red;
 }
@@ -62,87 +67,59 @@ h1 {
   width: 250px;
   vertical-align: middle;
   white-space: nowrap;
-}
 
-.container input#osm-search {
-  width: 250px;
-  height: 30px;
-  background: #ffffff;
-  border: none;
-  font-size: 10pt;
-  float: left;
-  color: #333;
-  padding-left: 15px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  outline: none;
+  input#osm-search {
+    width: 250px;
+    height: 30px;
+    background: #ffffff;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #333;
+    padding-left: 15px;
+    border-radius: 20px;
+    outline: none;
 
-  -webkit-transition: all 0.55s ease;
-  -moz-transition: all 0.55s ease;
-  -ms-transition: all 0.55s ease;
-  -o-transition: all 0.55s ease;
-  transition: all 0.55s ease;
-}
+    &::placeholder {
+      color: #999;
+    }
+  }
 
-.container input#osm-search::-webkit-input-placeholder {
-  color: #999;
-}
+  button.geo {
+    position: absolute;
+    left: -32px;
+    border-radius: 50%;
+    border: none;
+    background: #eee;
+    height: 30px;
+    width: 30px;
+    color: #666;
+    font-size: 10pt;
+  }
 
-.container input#osm-search:-moz-placeholder {
-  /* Firefox 18- */
-  color: #999;
-}
+  button.icon {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    background: #eee;
+    height: 30px;
+    width: 30px;
+    color: #666;
+    opacity: 0;
+    font-size: 10pt;
+    -webkit-transition: all 0.55s ease;
+    -moz-transition: all 0.55s ease;
+    -ms-transition: all 0.55s ease;
+    -o-transition: all 0.55s ease;
+    transition: all 0.55s ease;
+  }
 
-.container input#osm-search::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #999;
-}
-
-.container input#osm-search:-ms-input-placeholder {
-  color: #999;
-}
-
-.container button.geo {
-  position: absolute;
-  left: -32px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  border: none;
-  background: #eee;
-  height: 30px;
-  width: 30px;
-  color: #666;
-  font-size: 10pt;
-}
-
-.container button.icon {
-  -webkit-border-top-right-radius: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  -moz-border-radius-topright: 20px;
-  -moz-border-radius-bottomright: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border: none;
-  background: #eee;
-  height: 30px;
-  width: 30px;
-  color: #666;
-  opacity: 0;
-  font-size: 10pt;
-  -webkit-transition: all 0.55s ease;
-  -moz-transition: all 0.55s ease;
-  -ms-transition: all 0.55s ease;
-  -o-transition: all 0.55s ease;
-  transition: all 0.55s ease;
-}
-
-.container:hover button.icon,
-.container:active button.icon,
-.container:focus button.icon {
-  opacity: 1;
-  margin-left: -30px;
+  &:hover button.icon,
+  &:active button.icon,
+  &:focus button.icon {
+    opacity: 1;
+    margin-left: -30px;
+  }
 }
 
 .leaflet-control.leaflet-control-minZoomIndicator {
@@ -346,16 +323,16 @@ summary:focus {
   left: 50%;
   top: 50%;
   margin: -21px 0 0 -18px;
-}
 
-.marker-pin::after {
-  content: "";
-  width: 30px;
-  height: 30px;
-  margin: 3px 0 0 3px;
-  background: #fff;
-  position: absolute;
-  border-radius: 50%;
+  &::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    margin: 3px 0 0 3px;
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+  }
 }
 
 .custom-div-icon .marker-icon {
@@ -382,16 +359,16 @@ summary:focus {
   border-radius: 50% !important;
 }
 
-.leaflet-bar a,
-.leaflet-bar a:hover {
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 22px;
-}
-
 .leaflet-bar {
   box-shadow: none;
+
+  a,
+  a:hover {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 22px;
+  }
 }
 
 .name {
@@ -401,11 +378,10 @@ summary:focus {
   display: block;
 }
 
-button.menu {
+button.menu,
+a.menu {
   right: 10px;
   bottom: 25px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
   border-radius: 50%;
   border: none;
   background: #eee;
@@ -414,35 +390,32 @@ button.menu {
   color: #666;
   font-size: 10pt;
   position: fixed;
-  z-index: 1000;
-}
-button.menu.donate {
-  bottom: 25px;
-}
-button.menu.about {
-  bottom: 60px;
-}
-button.menu.share {
-  bottom: 95px;
-  z-index: 1001;
-}
-button.menu.edit {
-  bottom: 130px;
-}
-button.menu.note {
-  bottom: 165px;
-}
-
-button {
-  position: relative;
   text-align: center;
-}
+  z-index: 1000;
 
-button i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &.donate {
+    bottom: 25px;
+  }
+  &.about {
+    bottom: 60px;
+  }
+  &.share {
+    bottom: 95px;
+    z-index: 1001;
+  }
+  &.edit {
+    bottom: 130px;
+  }
+  &.note {
+    bottom: 165px;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .attribut {
@@ -520,6 +493,8 @@ button i {
 
 button {
   outline: none;
+  position: relative;
+  text-align: center;
 }
 
 .close-button:hover {
@@ -568,7 +543,8 @@ details:not([open]) > *:not(summary) {
 
 .leaflet-popup .attribut .title,
 .leaflet-popup .share .title,
-button.menu .title {
+button.menu .title,
+a.menu .title {
   position: absolute;
   top: 20px;
   background: white;
@@ -581,7 +557,8 @@ button.menu .title {
   pointer-events: none;
   z-index: 1100;
 }
-button.menu .title {
+button.menu .title,
+a.menu .title {
   right: 0;
   left: auto;
 }
@@ -651,48 +628,50 @@ button.menu .title {
   hyphens: auto;
 }
 
-.leaflet-popup a.leaflet-popup-close-button {
-  padding: 4px 4px 0 0;
-  margin: 0;
-  height: 20px;
-}
+.leaflet-popup {
+  a.leaflet-popup-close-button {
+    padding: 4px 4px 0 0;
+    margin: 0;
+    height: 20px;
+  }
 
-.leaflet-popup .edit.button {
-  float: right;
-  margin-top: -3px;
-  padding: 0 6px;
-  font-size: 14px;
-}
+  .edit.button {
+    float: right;
+    margin-top: -3px;
+    padding: 0 6px;
+    font-size: 14px;
+  }
 
-.leaflet-popup .share.button {
-  float: right;
-  margin-top: -3px;
-  padding: 0 6px 0 3px;
-  font-size: 14px;
-}
+  .share.button {
+    float: right;
+    margin-top: -3px;
+    padding: 0 6px 0 3px;
+    font-size: 14px;
+  }
 
-.leaflet-popup .geo a {
-  font-size: 14px;
-  text-decoration: none;
-}
+  .geo a {
+    font-size: 14px;
+    text-decoration: none;
+  }
 
-.leaflet-popup a.img {
-  font-size: 14px;
-}
+  a.img {
+    font-size: 14px;
+  }
 
-.leaflet-popup .contact a {
-  padding: 0 4px;
-  font-size: 14px;
-  margin-top: -3px;
-  text-decoration: none;
-}
+  .contact a {
+    padding: 0 4px;
+    font-size: 14px;
+    margin-top: -3px;
+    text-decoration: none;
+  }
 
-.leaflet-popup .contact a:last-of-type {
-  padding: 0 0 0 4px;
-}
+  .contact a:last-of-type {
+    padding: 0 0 0 4px;
+  }
 
-.leaflet-popup .contact a:first-of-type {
-  padding: 0 4px 0 0;
+  .contact a:first-of-type {
+    padding: 0 4px 0 0;
+  }
 }
 
 .leaflet-control-emptyIndicator {
@@ -712,11 +691,11 @@ button.menu .title {
 @media (prefers-color-scheme: dark) {
   html {
     filter: invert(100%) hue-rotate(180deg);
-  }
 
-  html img,
-  html input[type="image"] {
-    filter: invert(100%) hue-rotate(-180deg);
+    img,
+    input[type="image"] {
+      filter: invert(100%) hue-rotate(-180deg);
+    }
   }
 
   #filters .filter:hover {
