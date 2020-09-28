@@ -72,15 +72,14 @@ export function initMap<M>(
     return false;
   });
 
-  getHtmlElement(".about").addEventListener("click", () => {
-    window.location.href = `https://priceless.zottelig.ch${
-      local.code ? `/${local.code}` : ""
-    }/docs/`;
-  });
+  (getHtmlElement(
+    ".about"
+  ) as HTMLLinkElement).href = `https://priceless.zottelig.ch${
+    local.code ? `/${local.code}` : ""
+  }/docs/`;
 
-  getHtmlElement(".donate").addEventListener("click", () => {
-    window.open(funding[local.code] || funding.en);
-  });
+  (getHtmlElement(".donate") as HTMLLinkElement).href =
+    funding[local.code] || funding.en;
 
   const shareButton = getHtmlElement(".share");
   shareButton.addEventListener("click", e => {
