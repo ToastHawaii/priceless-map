@@ -52,6 +52,22 @@ h1 {
   color: #333;
 }
 
+button {
+  outline: none;
+  text-align: center;
+}
+
+button,
+a {
+  position: relative;
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 .box {
   width: 250px;
   height: 30px;
@@ -482,22 +498,6 @@ a.menu {
   text-decoration: none;
   font-weight: bold;
   background: transparent;
-}
-
-button {
-  outline: none;
-  position: relative;
-  text-align: center;
-}
-
-button,
-a {
-  i {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 }
 
 .close-button:hover {
