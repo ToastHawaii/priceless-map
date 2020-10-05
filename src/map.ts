@@ -342,14 +342,12 @@ export function initMap<M>(
 
   if (params["location"]) {
     search(params["location"]);
-    map.locate({ setView: false, maxZoom: 16 });
   } else if (params["b"]) {
     const bounds = params["b"].split(",").map(b => parseFloat(b));
     map.fitBounds([
       [bounds[0], bounds[1]],
       [bounds[2], bounds[3]]
     ]);
-    map.locate({ setView: false, maxZoom: 16 });
   } else map.locate({ setView: true, maxZoom: 16 });
 
   map.on("popupopen", e => {
