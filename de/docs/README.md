@@ -40,7 +40,7 @@ Besuche bereits eingetragene Einrichtungen und fotografiere sie und verlinke das
 
 ### Möchtest du die Karte in deine Sprache übersetzen?
 
-Die Texte befinden sich im src Ordner in den Dateien local.ts, index.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/ToastHawaii/priceless-map) oder nimm direkt mit mir [kontakt](https://it.zottelig.ch/kontakt) auf.
+Die Texte befinden sich im [src Ordner](https://github.com/ToastHawaii/priceless-map/tree/master/src) in den Dateien local.ts, index.html und README.md. Sende mir einen Pull Request über [GitHub](https://github.com/ToastHawaii/priceless-map) oder [nimm direkt mit mir kontakt auf](https://it.zottelig.ch/kontakt).
 
 ### Schreibs du gerne?
 
@@ -56,7 +56,7 @@ Oder erweitere die Unterstützung für die Tags und Keys in den Tools der OpenSt
 
 - Du hast eine Idee wie die Karte erweitert werden kann? Sende mir eine [Issue über GitHub](https://github.com/ToastHawaii/priceless-map/issues/new) oder eine Nachricht über meine [Kontakt Seite](https://it.zottelig.ch/kontakt).
 - Rede darüber und teile die Karte mit deinen Freunden und Bekannten.
-- Unterstütze [mich](https://it.zottelig.ch/kontakt) mit Kaffee und Kuchen.
+- [Unterstütze mich](https://it.zottelig.ch/%C3%BCber-mich) mit Kaffee und Kuchen.
 - Geniesse das Leben. ;)
 
 ### Bekannte öffentliche und kostenlose Einrichtungen und Angebote
@@ -67,7 +67,7 @@ Links zu externen Ressourcen findest du auf der Karte neben der Auswahl der Einr
 
 ## Ich habe eine Webseite, kann ich diese Karte einbauen?
 
-Ja, der Code steht frei zur Verwendung, Kopierung und Modifizierung.
+Ja. Die Anwendung ist unter der [GNU Affero General Public License v3.0](https://github.com/ToastHawaii/priceless-map/blob/master/LICENSE) lizenziert. Der Code steht frei zur Verwendung, Kopierung und Modifizierung, wenn er unter der gleichen Lizenz veröffentlichet wird.
 
 Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 

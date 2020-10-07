@@ -40,7 +40,7 @@ Visit already registered facilities and photograph them and link the picture in 
 
 ### Do you want to translate the map into your language?
 
-The texts are located in the src folder in the files local.ts, index.html and README.md. Send me a pull request via [GitHub](https://github.com/ToastHawaii/priceless-map) or [contact](https://it.zottelig.ch/kontakt) me directly.
+The texts are located in the [src folder](https://github.com/ToastHawaii/priceless-map/tree/master/src) in the files local.ts, index.html and README.md. Send me a pull request via [GitHub](https://github.com/ToastHawaii/priceless-map) or [contact me directly](https://it.zottelig.ch/kontakt).
 
 ### Do you like to write?
 
@@ -48,15 +48,15 @@ Complete the description of the facilities in the [OpenStreetMap Wiki](https://w
 
 ### Can you program?
 
-Then improve this map and send me a Pull Requests. [Click here to go to the project website of unbezahlbar](https://github.com/ToastHawaii/priceless-map)
+Then improve this map and send me a Pull Requests. [Click here to go to the project website of the priceless map](https://github.com/ToastHawaii/priceless-map)
 
-Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser)](https://wiki.openstreetmap.org/wiki/ID), [JOSM (PC)](https://wiki.openstreetmap.org/wiki/JOSM), [Vespucci (Android)](https://wiki.openstreetmap.org/wiki/Vespucci), [Go Map!!! (iOS)](https://wiki.openstreetmap.org/wiki/Go_Map!!)
+Or extend the support for tags and keys in the OpenStreetMap tools. [iD (Browser)](https://wiki.openstreetmap.org/wiki/ID), [JOSM (PC)](https://wiki.openstreetmap.org/wiki/JOSM), [Vespucci (Android)](https://wiki.openstreetmap.org/wiki/Vespucci), [Go Map!! (iOS)](https://wiki.openstreetmap.org/wiki/Go_Map!!)
 
 ### Miscellaneous
 
-- You have an idea how the map can be extended? Send me an [issue via GitHub](https://github.com/ToastHawaii/priceless-map/issues/new) or a message via my [contact page](https://it.zottelig.ch/kontakt).
+- You have an idea how the map can be extended? Send me an [issue via GitHub](https://github.com/ToastHawaii/priceless-map/issues/new) or a message via [my contact page](https://it.zottelig.ch/kontakt).
 - Share this map with your friends.
-- Support [me](https://it.zottelig.ch/kontakt) with coffee and cake.
+- [Support me](https://it.zottelig.ch/%C3%BCber-mich) with coffee and cake.
 - Enjoy your life. ;)
 
 ### Known public and free facilitie or offer
@@ -67,11 +67,11 @@ You can find links to external resources on the map next to the selection of the
 
 ## I have a website, can I use this map?
 
-Yes. The app is licensed under the [GNU Affero General Public License v3.0](/LICENSE). The code is free for use, copying and modification if you publish under the same license.
+Yes. The app is licensed under the [GNU Affero General Public License v3.0](https://github.com/ToastHawaii/priceless-map/blob/master/LICENSE). The code is free for use, copying and modification if you publish under the same license.
 
 The code can be used as a basis for your own theme map.
 
-[View source code of this map on GitHub](https://github.com/ToastHawaii/priceless-map)
+[View the source code of this map on GitHub](https://github.com/ToastHawaii/priceless-map)
 
 ### I cannot program, how can I create my own theme map?
 
