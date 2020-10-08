@@ -320,6 +320,129 @@ export function initMap<M>(
     }
   }
 
+  function showInfoContainer(f: { value: string; query: string; tags: any[] }) {
+    getHtmlElement(".info-container").style.display = "block";
+    getHtmlElement(".info-container .info h4").innerText =
+      local.type[f.value].name;
+    (getHtmlElement(
+      ".info-container .info .link"
+    ) as HTMLAnchorElement).href = `http://overpass-turbo.eu/?Q=${encodeURI(
+      `[out:json][timeout:30][bbox:{{bbox}}];
+(
+${f.query.trim()}
+);
+out center;`
+    )}`;
+    getHtmlElement(".info-container .info .query").innerText = f.query.trim();
+
+    const wikiElement = getHtmlElement(".info-container .info .wiki");
+
+    wikiElement.innerHTML = `<div class="taglist"
+data-taginfo-taglist-tags="${f.tags.join()}"
+data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
+</div>`;
+
+    taginfo_taglist.convert_to_taglist(".taglist");
+
+    getHtmlElement(".info-container .info .text").innerText = "";
+
+    if (local.type[f.value].description) {
+      getHtmlElement(".info-container .info .text").innerText =
+        local.type[f.value].description;
+    } else {
+      if (f.tags) {
+        const tags = [];
+        const keys = [];
+
+        for (const t of f.tags) {
+          if (/=/gi.test(t)) {
+            tags.push(`Tag:${t}`);
+            keys.push(`Key:${t.split(/=/gi)[0]}`);
+          } else keys.push("Key:" + t);
+        }
+        getJson("https://wiki.openstreetmap.org/w/api.php", {
+          format: "json",
+          action: "wbgetentities",
+          languages: local.code || "en",
+          languagefallback: "0",
+          props: "descriptions",
+          origin: "*",
+          sites: "wiki",
+          titles: [tags.join("|"), keys.join("|")].filter(t => t).join("|")
+        }).then(r => {
+          if (r && r.error) return;
+
+          let description = "";
+          for (const prop in r.entities) {
+            if (!r.entities.hasOwnProperty(prop)) continue;
+
+            const entity = r.entities[prop];
+
+            if (
+              entity.descriptions &&
+              Object.keys(entity.descriptions).length > 0
+            ) {
+              description =
+                entity.descriptions[Object.keys(entity.descriptions)[0]].value;
+
+              break;
+            }
+          }
+          getHtmlElement(".info-container .info .text").innerText = description;
+        });
+      }
+    }
+
+    getHtmlElement(".info-container .info .external").innerText = "";
+
+    if (
+      local.type[f.value].externalResources &&
+      local.type[f.value].externalResources.length > 0
+    ) {
+      const links = [];
+      for (const external of local.type[f.value].externalResources) {
+        links.push(
+          `<a class="external-link${
+            external.bounds ? " part-area-visible" : ""
+          }" href="${external.url}" target="_blank"${
+            external.bounds
+              ? ` part-area-visible="${external.bounds.join(",")}"`
+              : ""
+          } href="${external.url}">${external.name}</a>`
+        );
+      }
+
+      getHtmlElement(
+        ".info-container .info .external"
+      ).innerHTML = `<br/><span class="external-label">${
+        local.externalResources
+      }: </span>${links.join(`<span class="external-separator">, </span>`)}`;
+    }
+
+    for (const a of getHtmlElements(".external-link")) {
+      a.addEventListener("click", () => {
+        const latlng = map.getCenter();
+        const zoom = map.getZoom();
+        const bounds = map.getBounds();
+
+        window.open(
+          (a as HTMLAnchorElement).href
+            .replace(/\{lat\}/i, latlng.lat + "")
+            .replace(/\{lng\}/i, latlng.lng + "")
+            .replace(/\{zoom\}/i, zoom + "")
+            .replace(
+              /\{bbox\}/i,
+              `${bounds.getNorthWest().lat},${bounds.getNorthWest().lng},${
+                bounds.getSouthEast().lat
+              },${bounds.getSouthEast().lng}`
+            ),
+          "_blank"
+        );
+        return false;
+      });
+    }
+  }
+
   window.addEventListener("hashchange", hashchange);
 
   setTimeout(() => {
@@ -418,31 +541,6 @@ export function initMap<M>(
         );
 
         aElement.addEventListener("click", () => {
-          getHtmlElement(".info-container").style.display = "block";
-          getHtmlElement(".info-container .info h4").innerText =
-            local.type[f.value].name;
-          (getHtmlElement(
-            ".info-container .info .link"
-          ) as HTMLAnchorElement).href = `http://overpass-turbo.eu/?Q=${encodeURI(
-            `[out:json][timeout:30][bbox:{{bbox}}];
-(
-  ${f.query.trim()}
-);
-out center;`
-          )}`;
-          getHtmlElement(
-            ".info-container .info .query"
-          ).innerText = f.query.trim();
-
-          const wikiElement = getHtmlElement(".info-container .info .wiki");
-
-          wikiElement.innerHTML = `<div class="taglist"
-  data-taginfo-taglist-tags="${f.tags.join()}"
-  data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
-</div>`;
-
-          taginfo_taglist.convert_to_taglist(".taglist");
-
           const input = getHtmlElement("input", contentElement);
           if (!input.checked) {
             input.checked = true;
@@ -454,110 +552,7 @@ out center;`
             setHashParams(params, hashchange);
           }
 
-          getHtmlElement(".info-container .info .text").innerText = "";
-
-          if (local.type[f.value].description) {
-            getHtmlElement(".info-container .info .text").innerText =
-              local.type[f.value].description;
-          } else {
-            if (f.tags) {
-              const tags = [];
-              const keys = [];
-
-              for (const t of f.tags) {
-                if (/=/gi.test(t)) {
-                  tags.push(`Tag:${t}`);
-                  keys.push(`Key:${t.split(/=/gi)[0]}`);
-                } else keys.push("Key:" + t);
-              }
-              getJson("https://wiki.openstreetmap.org/w/api.php", {
-                format: "json",
-                action: "wbgetentities",
-                languages: local.code || "en",
-                languagefallback: "0",
-                props: "descriptions",
-                origin: "*",
-                sites: "wiki",
-                titles: [tags.join("|"), keys.join("|")]
-                  .filter(t => t)
-                  .join("|")
-              }).then(r => {
-                if (r && r.error) return;
-
-                let description = "";
-                for (const prop in r.entities) {
-                  if (!r.entities.hasOwnProperty(prop)) continue;
-
-                  const entity = r.entities[prop];
-
-                  if (
-                    entity.descriptions &&
-                    Object.keys(entity.descriptions).length > 0
-                  ) {
-                    description =
-                      entity.descriptions[Object.keys(entity.descriptions)[0]]
-                        .value;
-
-                    break;
-                  }
-                }
-                getHtmlElement(
-                  ".info-container .info .text"
-                ).innerText = description;
-              });
-            }
-          }
-
-          getHtmlElement(".info-container .info .external").innerText = "";
-
-          if (
-            local.type[f.value].externalResources &&
-            local.type[f.value].externalResources.length > 0
-          ) {
-            const links = [];
-            for (const external of local.type[f.value].externalResources) {
-              links.push(
-                `<a class="external-link${
-                  external.bounds ? " part-area-visible" : ""
-                }" href="${external.url}" target="_blank"${
-                  external.bounds
-                    ? ` part-area-visible="${external.bounds.join(",")}"`
-                    : ""
-                } href="${external.url}">${external.name}</a>`
-              );
-            }
-
-            getHtmlElement(
-              ".info-container .info .external"
-            ).innerHTML = `<br/><span class="external-label">${
-              local.externalResources
-            }: </span>${links.join(
-              `<span class="external-separator">, </span>`
-            )}`;
-          }
-
-          for (const a of getHtmlElements(".external-link")) {
-            a.addEventListener("click", () => {
-              const latlng = map.getCenter();
-              const zoom = map.getZoom();
-              const bounds = map.getBounds();
-
-              window.open(
-                (a as HTMLAnchorElement).href
-                  .replace(/\{lat\}/i, latlng.lat + "")
-                  .replace(/\{lng\}/i, latlng.lng + "")
-                  .replace(/\{zoom\}/i, zoom + "")
-                  .replace(
-                    /\{bbox\}/i,
-                    `${bounds.getNorthWest().lat},${
-                      bounds.getNorthWest().lng
-                    },${bounds.getSouthEast().lat},${bounds.getSouthEast().lng}`
-                  ),
-                "_blank"
-              );
-              return false;
-            });
-          }
+          showInfoContainer(f);
 
           partAreaVisible();
 
