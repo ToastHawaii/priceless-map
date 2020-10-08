@@ -308,6 +308,9 @@ export function initMap<M>(
             (getHtmlElement(
               `#filters input[value='${f.group + "/" + f.value}']`
             ) as HTMLInputElement).checked = true;
+
+            if (params["info"] === f.group + "/" + f.value)
+              showInfoContainer(f);
           }
 
     if (params["location"]) search(params["location"]);
@@ -541,18 +544,22 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
         );
 
         aElement.addEventListener("click", () => {
+          const params = getHashParams();
+
           const input = getHtmlElement("input", contentElement);
           if (!input.checked) {
             input.checked = true;
             offers.push(k + "/" + f.value);
             init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
 
-            const params = getHashParams();
             params["offers"] = offers.toString();
-            setHashParams(params, hashchange);
           }
 
           showInfoContainer(f);
+
+          params["info"] = f.group + "/" + f.value;
+
+          setHashParams(params, hashchange);
 
           partAreaVisible();
 
