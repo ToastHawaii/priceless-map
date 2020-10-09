@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CleanCSSPlugin = require("less-plugin-clean-css");
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.join(__dirname, "./"),
@@ -44,6 +45,9 @@ module.exports = {
           context: "../node_modules/leaflet-overpass-layer/dist/"
         }
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: "style.css"
     })
   ],
   mode: "production",
@@ -75,9 +79,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          {
-            loader: "style-loader" // creates style nodes from JS strings
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader" // translates CSS into CommonJS
           },
