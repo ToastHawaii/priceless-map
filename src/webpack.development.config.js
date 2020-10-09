@@ -6,21 +6,27 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.join(__dirname, "./"),
-  entry: "./script.ts",
+  entry: {
+    en: "./en/local.ts",
+    de: "./de/local.ts",
+    app: "./script.ts"
+  },
   output: {
-    filename: "script.js",
+    filename: "[name].js",
     path: __dirname + "/.."
   },
   plugins: [
     new HtmlWebpackPlugin({
       // Load a custom template
-      template: "./index.html",
-      filename: "./index.html"
+      template: "./en/index.html",
+      filename: "./index.html",
+      chunks: ["app", "en"]
     }),
     new HtmlWebpackPlugin({
       // Load a custom template
       template: "./de/index.html",
-      filename: "./de/index.html"
+      filename: "./de/index.html",
+      chunks: ["app", "de"]
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -43,7 +49,7 @@ module.exports = {
       ]
     }),
     new MiniCssExtractPlugin({
-      filename: "style.css"
+      filename: "[name].css"
     })
   ],
   mode: "development",
