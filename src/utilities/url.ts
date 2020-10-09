@@ -90,13 +90,11 @@ export function setQueryParams(params: {
     )
     .join("&");
 
-  if (s) {
-    window.history.replaceState(
-      {},
-      "",
-      window.location.origin + window.location.pathname + "?" + s
-    );
-  }
+  window.history.replaceState(
+    {},
+    "",
+    window.location.origin + window.location.pathname + (  s ? "?" + s : "")
+  );
 }
 
 export function getHashParams() {
@@ -130,11 +128,9 @@ export function setHashParams(
     )
     .join("&");
 
-  if (s) {
-    window.removeEventListener("hashchange", hashChangeEventListener);
-    window.location.hash = "#" + s;
-    setTimeout(() => {
-      window.addEventListener("hashchange", hashChangeEventListener);
-    }, 0);
-  }
+  window.removeEventListener("hashchange", hashChangeEventListener);
+  window.location.hash = s ? "#" + s : "";
+  setTimeout(() => {
+    window.addEventListener("hashchange", hashChangeEventListener);
+  }, 0);
 }
