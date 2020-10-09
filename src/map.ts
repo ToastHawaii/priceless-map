@@ -269,7 +269,8 @@ export function initMap<M>(
 
     setQueryParams({
       offers: offers.toString(),
-      location: value
+      location: value,
+      info: getQueryParams()["info"]
     });
 
     getJson("https://nominatim.openstreetmap.org/search", {
@@ -479,7 +480,8 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     const latLng = marker.getLatLng();
     setQueryParams({
       offers: offers.toString(),
-      location: `${latLng.lat},${latLng.lng}`
+      location: `${latLng.lat},${latLng.lng}`,
+      info: getQueryParams()["info"]
     });
   });
 
