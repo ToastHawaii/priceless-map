@@ -83,6 +83,7 @@ export function setQueryParams(params: {
   [p: string]: string | number | boolean | undefined;
 }) {
   const s = Object.keys(params)
+    .filter(key => params[key])
     .map(
       key =>
         encodeURIComponent(key) + "=" + encodeURIComponent(params[key] || "")
