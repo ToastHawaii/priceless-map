@@ -551,8 +551,13 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
           "a",
           `<i class="fas fa-info-circle"></i>`
         );
+        aElement.title = local.type[f.value].name;
+        aElement.href = `?offers=${k + "/" + f.value}&info=${
+          k + "/" + f.value
+        }`;
+        aElement.addEventListener("click", ev => {
+          ev.preventDefault();
 
-        aElement.addEventListener("click", () => {
           const params = getQueryParams();
 
           const input = getHtmlElement("input", contentElement);
