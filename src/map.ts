@@ -518,6 +518,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
       .sort((a, b) => (b.order || 1000) - (a.order || 1000)),
     "group"
   );
+  let iconColors = "";
   for (const k in groups) {
     const group = groups[k];
     const detailsElement = createElement("details");
@@ -527,155 +528,129 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     );
     detailsElement.appendChild(summaryElement);
 
-    let first = true;
+    for (const f of group) {
+      let contentElement: HTMLLabelElement;
+      if (f.color) {
+        const rgb = hexToRgb(f.color);
+        const color = new Color(rgb[0], rgb[1], rgb[2]);
+        const solver = new Solver(color);
+        const result = solver.solve();
 
-    summaryElement.addEventListener("click", () => {
-      if (first) {
-        first = false;
-        let iconColors = "";
-
-        for (const f of group) {
-          let contentElement: HTMLLabelElement;
-          if (f.color) {
-            const rgb = hexToRgb(f.color);
-            const color = new Color(rgb[0], rgb[1], rgb[2]);
-            const solver = new Solver(color);
-            const result = solver.solve();
-
-            iconColors += `.${f.value}-icon{${result.filter.replace(
-              /filter:/gi,
-              "filter: brightness(0%)"
-            )}}`;
-          }
-
-          if (!f.subgroup) {
-            contentElement = createElement(
-              "label",
-              `
-        <input value="${k + "/" + f.value}" type="checkbox" />
-        <div class="filter-background"></div>
-        <div class="filter-label">
-          <img class="${f.value}-icon"
-            src="${f.icon}"
-          />
-          <span>${local.type[f.value].name}</span>
-        </div>`,
-              ["filter", "filter-" + k + "-" + f.value]
-            );
-
-            const aElement = createElement(
-              "a",
-              `<i class="fas fa-info-circle"></i>`
-            );
-            aElement.title = local.type[f.value].name;
-            aElement.href = `?offers=${k + "/" + f.value}&info=${
-              k + "/" + f.value
-            }`;
-            aElement.addEventListener("click", ev => {
-              ev.preventDefault();
-
-              const params = getQueryParams();
-
-              const input = getHtmlElement("input", contentElement);
-              if (!input.checked) {
-                input.checked = true;
-                offers.push(k + "/" + f.value);
-                init(
-                  f.group,
-                  f.value,
-                  f.icon,
-                  f.query,
-                  attributes,
-                  local,
-                  f.color
-                );
-
-                params["offers"] = offers.toString();
-              }
-
-              showInfoContainer(f);
-
-              params["info"] = f.group + "/" + f.value;
-
-              setQueryParams(params);
-
-              partAreaVisible();
-
-              return false;
-            });
-            detailsElement.appendChild(aElement);
-            getHtmlElement(".info-container .close-button").addEventListener(
-              "click",
-              () => {
-                getHtmlElement(".info-container").style.display = "none";
-
-                document.title = local.title;
-                document
-                  .querySelector('meta[name="description"]')
-                  ?.setAttribute("content", local.description);
-
-                const params = getQueryParams();
-                params["info"] = "";
-                setQueryParams(params);
-              }
-            );
-
-            detailsElement.appendChild(contentElement);
-          } else {
-            const group = getHtmlElement(
-              ".filter-" + k + "-" + f.subgroup,
-              detailsElement
-            );
-
-            contentElement = createElement(
-              "label",
-              `<input value="${k + "/" + f.value}" type="checkbox" />
-            <div class="filter-sub-background"></div>
-            <i class="${f.button}" style="color: ${f.color}" title="${
-                local.type[f.value].name
-              }"></i>`,
-              ["filter", "filter-sub", "filter-" + k + "-" + f.value]
-            );
-
-            detailsElement.insertBefore(contentElement, group);
-          }
-          getHtmlElement("input", contentElement).addEventListener(
-            "change",
-            function () {
-              if (this.checked) {
-                offers.push(k + "/" + f.value);
-                init(
-                  f.group,
-                  f.value,
-                  f.icon,
-                  f.query,
-                  attributes,
-                  local,
-                  f.color
-                );
-              } else {
-                const index = offers.indexOf(k + "/" + f.value);
-                if (index > -1) offers.splice(index, 1);
-
-                map.removeLayer(layers[k + "/" + f.value]);
-              }
-
-              const params = getQueryParams();
-              params["offers"] = offers.toString();
-              setQueryParams(params);
-
-              updateCount(local);
-            }
-          );
-        }
-
-        const style = createElement("style", iconColors);
-        document.head.appendChild(style);
+        iconColors += `.${f.value}-icon{${result.filter.replace(
+          /filter:/gi,
+          "filter: brightness(0%)"
+        )}}`;
       }
-    });
 
+      if (!f.subgroup) {
+        contentElement = createElement(
+          "label",
+          `
+          <input value="${k + "/" + f.value}" type="checkbox" />
+          <div class="filter-background"></div>
+          <div class="filter-label">
+            <img class="${f.value}-icon"
+              src="${f.icon}"
+            />
+            <span>${local.type[f.value].name}</span>
+          </div>`,
+          ["filter", "filter-" + k + "-" + f.value]
+        );
+
+        const aElement = createElement(
+          "a",
+          `<i class="fas fa-info-circle"></i>`
+        );
+        aElement.title = local.type[f.value].name;
+        aElement.href = `?offers=${k + "/" + f.value}&info=${
+          k + "/" + f.value
+        }`;
+        aElement.addEventListener("click", ev => {
+          ev.preventDefault();
+
+          const params = getQueryParams();
+
+          const input = getHtmlElement("input", contentElement);
+          if (!input.checked) {
+            input.checked = true;
+            offers.push(k + "/" + f.value);
+            init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
+
+            params["offers"] = offers.toString();
+          }
+
+          showInfoContainer(f);
+
+          params["info"] = f.group + "/" + f.value;
+
+          setQueryParams(params);
+
+          partAreaVisible();
+
+          return false;
+        });
+        detailsElement.appendChild(aElement);
+        getHtmlElement(".info-container .close-button").addEventListener(
+          "click",
+          () => {
+            getHtmlElement(".info-container").style.display = "none";
+
+            document.title = local.title;
+            document
+              .querySelector('meta[name="description"]')
+              ?.setAttribute("content", local.description);
+
+            const params = getQueryParams();
+            params["info"] = "";
+            setQueryParams(params);
+          }
+        );
+
+        detailsElement.appendChild(contentElement);
+      } else {
+        const group = getHtmlElement(
+          ".filter-" + k + "-" + f.subgroup,
+          detailsElement
+        );
+
+        contentElement = createElement(
+          "label",
+          `<input value="${k + "/" + f.value}" type="checkbox" />
+              <div class="filter-sub-background"></div>
+              <i class="${f.button}" style="color: ${f.color}" title="${
+            local.type[f.value].name
+          }"></i>`,
+          ["filter", "filter-sub", "filter-" + k + "-" + f.value]
+        );
+
+        detailsElement.insertBefore(contentElement, group);
+      }
+      getHtmlElement("input", contentElement).addEventListener(
+        "change",
+        function () {
+          if (this.checked) {
+            offers.push(k + "/" + f.value);
+            init(f.group, f.value, f.icon, f.query, attributes, local, f.color);
+          } else {
+            const index = offers.indexOf(k + "/" + f.value);
+            if (index > -1) offers.splice(index, 1);
+
+            map.removeLayer(layers[k + "/" + f.value]);
+          }
+
+          const params = getQueryParams();
+          params["offers"] = offers.toString();
+          setQueryParams(params);
+
+          updateCount(local);
+        }
+      );
+    }
     getHtmlElement("#filters").appendChild(detailsElement);
   }
+
+  const style = createElement("style", iconColors);
+  document.head.appendChild(style);
 }
 
 function init<M>(
