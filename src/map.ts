@@ -87,7 +87,7 @@ export function initMap<M>(
 
     const bbox = map.getBounds();
     shareLink(
-      `${window.location.origin}${window.location.pathname}#o=${offersToShort(
+      `${window.location.origin}${window.location.pathname}?o=${offersToShort(
         offers,
         filterOptions
       )}&b=${toString(bbox.getSouth(), 4)},${toString(

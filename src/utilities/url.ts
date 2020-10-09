@@ -123,6 +123,7 @@ export function setHashParams(
   }
 ) {
   const s = Object.keys(params)
+    .filter(key => params[key])
     .map(
       key =>
         encodeURIComponent(key) + "=" + encodeURIComponent(params[key] || "")
