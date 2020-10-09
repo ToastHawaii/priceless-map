@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
-import { utilQsString } from "./utilities/url";
+import { getQueryParams, utilQsString } from "./utilities/url";
 import { Generator, Attribute } from "./Generator";
 import { links } from "./links";
 import { isImage } from "./utilities/image";
@@ -244,11 +244,17 @@ export function createOverPassLayer<M>(
         </div>
         </div>`
         );
+
+        const info = getQueryParams()["info"];
         const share = contentElement.querySelector(".share") as HTMLLinkElement;
         share.addEventListener("click", function (e) {
           e.preventDefault();
           shareLink(
-            `${window.location.origin}${window.location.pathname}?offers=${group}/${value}&location=${model.address.latitude},${model.address.longitude}`,
+            `${window.location.origin}${
+              window.location.pathname
+            }?offers=${group}/${value}&location=${model.address.latitude},${
+              model.address.longitude
+            }${info ? `&info=${info}` : ``}`,
             share,
             local,
             toTitle(model),

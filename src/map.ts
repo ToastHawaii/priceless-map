@@ -85,15 +85,17 @@ export function initMap<M>(
   shareButton.addEventListener("click", e => {
     e.preventDefault();
 
+    const info = getQueryParams()["info"];
     const bbox = map.getBounds();
     shareLink(
-      `${window.location.origin}${window.location.pathname}?o=${offersToShort(
-        offers,
-        filterOptions
-      )}&b=${toString(bbox.getSouth(), 4)},${toString(
+      `${window.location.origin}${window.location.pathname}?${
+        offers.length > 0 ? `o=${offersToShort(offers, filterOptions)}&` : ``
+      }b=${toString(bbox.getSouth(), 4)},${toString(
         bbox.getWest(),
         4
-      )},${toString(bbox.getNorth(), 4)},${toString(bbox.getEast(), 4)}`,
+      )},${toString(bbox.getNorth(), 4)},${toString(bbox.getEast(), 4)}${
+        info ? `&info=${info}` : ``
+      }`,
       shareButton,
       local,
       local.title,
