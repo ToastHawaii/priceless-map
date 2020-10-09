@@ -324,6 +324,8 @@ export function initMap<M>(
   }
 
   function showInfoContainer(f: { value: string; query: string; tags: any[] }) {
+    document.title = `${local.type[f.value].name} - ${local.title}`;
+
     getHtmlElement(".info-container").style.display = "block";
     getHtmlElement(".info-container .info h4").innerText =
       local.type[f.value].name;
@@ -348,10 +350,16 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     taginfo_taglist.convert_to_taglist(".taglist");
 
     getHtmlElement(".info-container .info .text").innerText = "";
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute("content", local.description);
 
     if (local.type[f.value].description) {
       getHtmlElement(".info-container .info .text").innerText =
         local.type[f.value].description;
+      document
+        .querySelector('meta[name="description"]')
+        ?.setAttribute("content", local.type[f.value].description);
     } else {
       if (f.tags) {
         const tags = [];
@@ -392,6 +400,9 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
             }
           }
           getHtmlElement(".info-container .info .text").innerText = description;
+          document
+            .querySelector('meta[name="description"]')
+            ?.setAttribute("content", description);
         });
       }
     }
@@ -568,6 +579,11 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
           "click",
           () => {
             getHtmlElement(".info-container").style.display = "none";
+
+            document.title = local.title;
+            document
+              .querySelector('meta[name="description"]')
+              ?.setAttribute("content", local.description);
 
             const params = getQueryParams();
             params["info"] = "";
