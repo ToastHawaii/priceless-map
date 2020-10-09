@@ -326,11 +326,14 @@ export function initMap<M>(
   function showInfoContainer(f: { value: string; query: string; tags: any[] }) {
     document.title = `${local.type[f.value].name} - ${local.title}`;
 
-    getHtmlElement(".info-container").style.display = "block";
-    getHtmlElement(".info-container .info h4").innerText =
+    const infoContainer = getHtmlElement(".info-container");
+
+    infoContainer.style.display = "block";
+    getHtmlElement(".info h4", infoContainer).innerText =
       local.type[f.value].name;
     (getHtmlElement(
-      ".info-container .info .link"
+      ".info .link",
+      infoContainer
     ) as HTMLAnchorElement).href = `http://overpass-turbo.eu/?Q=${encodeURI(
       `[out:json][timeout:30][bbox:{{bbox}}];
 (
@@ -338,24 +341,30 @@ ${f.query.trim()}
 );
 out center;`
     )}`;
-    getHtmlElement(".info-container .info .query").innerText = f.query.trim();
+    getHtmlElement(".info .query", infoContainer).innerText = f.query.trim();
 
-    const wikiElement = getHtmlElement(".info-container .info .wiki");
+    const wikiElement = getHtmlElement(".info .wiki", infoContainer);
 
     wikiElement.innerHTML = `<div class="taglist"
 data-taginfo-taglist-tags="${f.tags.join()}"
 data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
 </div>`;
+    let first = true;
 
-    taginfo_taglist.convert_to_taglist(".taglist");
+    getHtmlElement("summary", infoContainer).addEventListener("click", () => {
+      if (first) {
+        taginfo_taglist.convert_to_taglist(".taglist");
+        first = false;
+      }
+    });
 
-    getHtmlElement(".info-container .info .text").innerText = "";
+    getHtmlElement(".info .text", infoContainer).innerText = "";
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute("content", local.description);
 
     if (local.type[f.value].description) {
-      getHtmlElement(".info-container .info .text").innerText =
+      getHtmlElement(".info .text", infoContainer).innerText =
         local.type[f.value].description;
       document
         .querySelector('meta[name="description"]')
@@ -399,7 +408,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
               break;
             }
           }
-          getHtmlElement(".info-container .info .text").innerText = description;
+          getHtmlElement(".info .text", infoContainer).innerText = description;
           document
             .querySelector('meta[name="description"]')
             ?.setAttribute("content", description);
@@ -407,7 +416,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
       }
     }
 
-    getHtmlElement(".info-container .info .external").innerText = "";
+    getHtmlElement(".info .external", infoContainer).innerText = "";
 
     if (
       local.type[f.value].externalResources &&
@@ -427,7 +436,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
       }
 
       getHtmlElement(
-        ".info-container .info .external"
+        ".info .external", infoContainer
       ).innerHTML = `<br/><span class="external-label">${
         local.externalResources
       }: </span>${links.join(`<span class="external-separator">, </span>`)}`;
