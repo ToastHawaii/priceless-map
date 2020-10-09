@@ -63,6 +63,41 @@ export function utilQsString(obj: any, noencode?: boolean) {
     .join("&");
 }
 
+export function getQueryParams() {
+  if (!(window.location.search && window.location.search.substr(1))) return {};
+
+  const hash = window.location.search.substr(1);
+
+  const result = hash
+    .split("&")
+    .reduce((result: { [k: string]: string }, item) => {
+      const parts = item.split("=");
+      result[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+      return result;
+    }, {});
+
+  return result;
+}
+
+export function setQueryParams(params: {
+  [p: string]: string | number | boolean | undefined;
+}) {
+  const s = Object.keys(params)
+    .map(
+      key =>
+        encodeURIComponent(key) + "=" + encodeURIComponent(params[key] || "")
+    )
+    .join("&");
+
+  if (s) {
+    window.history.replaceState(
+      {},
+      "",
+      window.location.origin + window.location.pathname + "?" + s
+    );
+  }
+}
+
 export function getHashParams() {
   if (!(window.location.hash && window.location.hash.substr(1))) return {};
 

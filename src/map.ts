@@ -21,7 +21,7 @@ import * as opening_hours from "opening_hours";
 import * as moment from "moment";
 import { Solver } from "./coloriz/Solver";
 import { Color, hexToRgb } from "./coloriz/Color";
-import { setHashParams, getHashParams } from "./utilities/url";
+import { setQueryParams, getQueryParams } from "./utilities/url";
 import { Attribute } from "./Generator";
 import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
@@ -267,13 +267,10 @@ export function initMap<M>(
       value ||
       (document.getElementById("osm-search") as HTMLInputElement).value;
 
-    setHashParams(
-      {
-        offers: offers.toString(),
-        location: value
-      },
-      hashchange
-    );
+    setQueryParams({
+      offers: offers.toString(),
+      location: value
+    });
 
     getJson("https://nominatim.openstreetmap.org/search", {
       format: "json",
@@ -290,7 +287,7 @@ export function initMap<M>(
   }
 
   function hashchange() {
-    const params = getHashParams();
+    const params = getQueryParams();
 
     let offersParams: string[] = [];
 
@@ -453,7 +450,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     hashchange();
   }, 0);
 
-  const params = getHashParams();
+  const params = getQueryParams();
 
   let offersParams: string[] = [];
 
@@ -480,13 +477,10 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     const marker = (e as L.PopupEvent & { popup: { _source: L.Marker } }).popup
       ._source;
     const latLng = marker.getLatLng();
-    setHashParams(
-      {
-        offers: offers.toString(),
-        location: `${latLng.lat},${latLng.lng}`
-      },
-      hashchange
-    );
+    setQueryParams({
+      offers: offers.toString(),
+      location: `${latLng.lat},${latLng.lng}`
+    });
   });
 
   const groups = groupBy(
@@ -544,7 +538,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
         );
 
         aElement.addEventListener("click", () => {
-          const params = getHashParams();
+          const params = getQueryParams();
 
           const input = getHtmlElement("input", contentElement);
           if (!input.checked) {
@@ -559,7 +553,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
 
           params["info"] = f.group + "/" + f.value;
 
-          setHashParams(params, hashchange);
+          setQueryParams(params);
 
           partAreaVisible();
 
@@ -570,6 +564,10 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
           "click",
           () => {
             getHtmlElement(".info-container").style.display = "none";
+
+            const params = getQueryParams();
+            params["info"] = "";
+            setQueryParams(params);
           }
         );
 
@@ -605,9 +603,9 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
             map.removeLayer(layers[k + "/" + f.value]);
           }
 
-          const params = getHashParams();
+          const params = getQueryParams();
           params["offers"] = offers.toString();
-          setHashParams(params, hashchange);
+          setQueryParams(params);
 
           updateCount(local);
         }
