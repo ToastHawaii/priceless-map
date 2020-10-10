@@ -33,18 +33,18 @@ module.exports = {
         { from: "./www" },
         {
           from: "*.css*",
-          to: "../lib/",
-          context: "../node_modules/leaflet/dist/"
+          to: __dirname + "/../lib/",
+          context: __dirname + "/../node_modules/leaflet/dist/"
         },
         {
           from: "**/*.png",
-          to: "../lib/",
-          context: "../node_modules/leaflet/dist/"
+          to: __dirname + "/../lib/",
+          context: __dirname + "/../node_modules/leaflet/dist/"
         },
         {
           from: "*.css*",
-          to: "../lib/",
-          context: "../node_modules/leaflet-overpass-layer/dist/"
+          to: __dirname + "/../lib/",
+          context: __dirname + "/../node_modules/leaflet-overpass-layer/dist/"
         }
       ]
     }),
