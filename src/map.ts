@@ -16,7 +16,6 @@
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
 import * as L from "leaflet";
-import "leaflet-overpass-layer";
 import * as opening_hours from "opening_hours";
 import * as moment from "moment";
 import { Solver } from "./coloriz/Solver";
