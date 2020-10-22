@@ -15,30 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
-export function equalsIgnoreCase(
-  s1: string | undefined,
-  s2: string | undefined
-) {
-  return (s1 || "").toUpperCase() === (s2 || "").toUpperCase();
-}
+import { init } from "../init";
+import * as local from "./local";
 
-export function startsWithIgnoreCase(
-  s: string,
-  searchString: string,
-  position?: number
-) {
-  return s.toUpperCase().startsWith(searchString.toUpperCase(), position);
-}
-
-export function textTruncate(text: string, length = 200, ending = "...") {
-  if (text.length > length) {
-    return text.substring(0, length - ending.length) + ending;
-  } else {
-    return text;
-  }
-}
-
-export function toString(value: number, precision: number) {
-  const power = Math.pow(10, precision || 0);
-  return (Math.round(value * power) / power).toFixed(precision);
-}
+init(local.local);

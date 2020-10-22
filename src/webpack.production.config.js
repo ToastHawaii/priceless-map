@@ -8,12 +8,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   context: path.join(__dirname, "./"),
   entry: {
-    en: "./en/local.ts",
-    de: "./de/local.ts",
-    app: "./script.ts"
+    en: "./en/main.ts",
+    de: "./de/main.ts"
   },
   output: {
-    filename: "[name].js",
+    filename: "[name]/main.js",
     path: __dirname + "/.."
   },
   plugins: [
@@ -21,39 +20,22 @@ module.exports = {
       // Load a custom template
       template: "./en/index.html",
       filename: "./index.html",
-      chunks: ["app", "en"]
+      chunks: ["en"]
     }),
     new HtmlWebpackPlugin({
       // Load a custom template
       template: "./de/index.html",
       filename: "./de/index.html",
-      chunks: ["app", "de"]
+      chunks: ["de"]
     }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("production")
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "./www" },
-        {
-          from: "*.css*",
-          to: __dirname + "/../lib/",
-          context: __dirname + "/../node_modules/leaflet/dist/"
-        },
-        {
-          from: "**/*.png",
-          to: __dirname + "/../lib/",
-          context: __dirname + "/../node_modules/leaflet/dist/"
-        },
-        {
-          from: "*.css*",
-          to: __dirname + "/../lib/",
-          context: __dirname + "/../node_modules/leaflet-overpass-layer/dist/"
-        }
-      ]
+      patterns: [{ from: "./www" }]
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css"
+      filename: "[name]/main.css"
     })
   ],
   mode: "production",
@@ -83,7 +65,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.less$/,
+        test: /\.(less|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -98,13 +80,6 @@ module.exports = {
             }
           }
         ]
-      },
-      {
-        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: "url-loader",
-        options: {
-          limit: 10000
-        }
       }
     ]
   }

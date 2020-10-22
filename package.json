@@ -1,5 +1,5 @@
 {
-  "name": "priceless-map",
+  "name": "sustainable-map",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,27 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ToastHawaii/priceless-map"
+    "url": "git+https://github.com/ToastHawaii/sustainable-map"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ToastHawaii",
+  "license": "AGPL",
   "bugs": {
-    "url": "https://github.com/ToastHawaii/priceless-map/issues"
+    "url": "https://github.com/ToastHawaii/sustainable-map/issues"
   },
-  "homepage": "https://github.com/ToastHawaii/priceless-map#readme",
+  "homepage": "https://github.com/ToastHawaii/sustainable-map#readme",
   "dependencies": {
-    "@babel/runtime": "7.11.2",
-    "@types/leaflet": "1.5.17",
-    "@types/md5": "2.2.0",
-    "@types/moment": "2.13.0",
-    "details-element-polyfill": "2.4.0",
-    "i18next-client": "1.11.4",
-    "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
-    "md5": "2.2.1",
-    "moment": "2.27.0",
-    "opening_hours": "3.5.0",
-    "country-language": "0.1.7",
-    "bignumber.js": "9.0.0"
+    "osm-app-component": "github:ToastHawaii/osm-app-component"
   },
   "devDependencies": {
     "@babel/core": "7.11.1",
@@ -39,16 +28,15 @@
     "@babel/preset-typescript": "7.10.4",
     "babel-loader": "8.1.0",
     "copy-webpack-plugin": "6.0.3",
-    "css-loader": "3.2.0",
-    "file-loader": "4.2.0",
-    "html-webpack-plugin": "3.2.0",
+    "css-loader": "4.3.0",
+    "html-webpack-plugin": "4.5.0",
     "less": "3.12.2",
     "less-loader": "7.0.1",
     "less-plugin-clean-css": "1.5.1",
-    "mini-css-extract-plugin": "1.0.0",
+    "mini-css-extract-plugin": "0.11.2",
     "source-map-loader": "0.2.4",
     "typescript": "4.0.3",
-    "webpack": "4.44.1",
+    "webpack": "4.44.2",
     "webpack-cli": "3.3.12"
   },
   "resolutions": {

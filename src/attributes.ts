@@ -15,7 +15,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Attribute } from "./Generator";
+import { Attribute } from "osm-app-component/dist/Generator";
+
 
 const template = (title: string, icon: string, value?: string) =>
   `<span title="${title}" class="attribut"><i class="${icon}"></i>${
