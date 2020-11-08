@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CleanCSSPlugin = require("less-plugin-clean-css");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -12,7 +13,7 @@ module.exports = {
   },
   output: {
     filename: "[name]/main.js",
-    path: __dirname + "/.."
+    path: __dirname + "/../.."
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -25,11 +26,14 @@ module.exports = {
       filename: "./de/index.html",
       chunks: ["de"]
     }),
+    new webpack.DefinePlugin({
+      "process.env.NODE_ENV": JSON.stringify("production")
+    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: "./www" },
         {
-          context: "../node_modules/osm-app-component/dist/",
+          context: "../../node_modules/osm-app-component/dist/",
           from: "*/local.js",
           to: "[path]/[path][name].[ext]"
         }
@@ -39,9 +43,7 @@ module.exports = {
       filename: "[name]/main.css"
     })
   ],
-  mode: "development",
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: "inline-source-map",
+  mode: "production",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
@@ -67,22 +69,19 @@ module.exports = {
           }
         ]
       },
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.(less|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
-            }
+            loader: "css-loader" // translates CSS into CommonJS
           },
           {
-            loader: "less-loader",
+            loader: "less-loader", // compiles Less to CSS
             options: {
-              sourceMap: true
+              lessOptions: {
+                plugins: [new CleanCSSPlugin({ advanced: true })]
+              }
             }
           }
         ]
