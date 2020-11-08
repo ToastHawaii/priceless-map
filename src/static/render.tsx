@@ -126,8 +126,8 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
         <meta name="msapplication-TileColor" content={attributes.color} />
         <meta name="msapplication-config" content="/icons/browserconfig.xml" />
 
-        <link rel="stylesheet" href="lib/leaflet.css" type="text/css" />
-        <link rel="stylesheet" href="lib/OverPassLayer.css" type="text/css" />
+        <link rel="stylesheet" href="/lib/leaflet.css" type="text/css" />
+        <link rel="stylesheet" href="/lib/OverPassLayer.css" type="text/css" />
 
         <link
           rel="stylesheet"
