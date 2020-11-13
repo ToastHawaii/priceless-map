@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build:development": "ts-node-dev --project src/static/tsconfig.json src/static/render.tsx && webpack --config src/client/webpack.development.config.js serve",
-    "build:production": "npx ts-node --project src/static/tsconfig.json src/static/render.tsx && webpack --config src/client/webpack.production.config.js"
+    "build:production": "npx ts-node --project src/static/tsconfig.json src/static/render.tsx && webpack --config src/client/webpack.production.config.js && del-cli --force src/_temp"
   },
   "repository": {
     "type": "git",
@@ -47,7 +47,8 @@
     "typescript": "4.0.5",
     "webpack": "5.3.2",
     "webpack-cli": "4.1.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "3.11.0",
+    "del-cli": "3.0.1"
   },
   "resolutions": {
     "terser": "3.14.1"

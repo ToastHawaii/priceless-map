@@ -22,6 +22,15 @@ import ReactDOMServer from "react-dom/server";
 import { local as en } from "./en/local";
 import { local as de } from "./de/local";
 
+
+function Logo() {
+  return (<img
+    className="community-centre-icon"
+    src="https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg"
+    style={{ width: "24px", verticalAlign: "text-bottom" }}
+  />);
+}
+
 render({
   logo: <Logo />,
   color: "#da532c",
@@ -62,17 +71,42 @@ function render(customize: {
       </App>);
     const htmlWDoc = "<!DOCTYPE html>" + html;
     const prettyHtml = prettier.format(htmlWDoc, { parser: "html" });
-    const outputFile = `./src/client/${local.code}/index.html`;
-    fs.writeFileSync(outputFile, prettyHtml);
+    const outputFile = `./src/_temp/${local.code}/index.html`;
+    writeFileSyncRecursive(outputFile, prettyHtml);
   }
 }
 
-function Logo() {
-  return (<img
-    className="community-centre-icon"
-    src="https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg"
-    style={{ width: "24px", verticalAlign: "text-bottom" }}
-  />);
+function writeFileSyncRecursive(filename, content?, charset?) {
+  // -- normalize path separator to '/' instead of path.sep,
+  // -- as / works in node for Windows as well, and mixed \\ and / can appear in the path
+  let filepath = filename.replace(/\\/g, '/');
+
+  // -- preparation to allow absolute paths as well
+  let root = '';
+  if (filepath[0] === '/') {
+    root = '/';
+    filepath = filepath.slice(1);
+  }
+  else if (filepath[1] === ':') {
+    root = filepath.slice(0, 3);   // c:\
+    filepath = filepath.slice(3);
+  }
+
+  // -- create folders all the way down
+  const folders = filepath.split('/').slice(0, -1);  // remove last item, file
+  folders.reduce(
+    (acc, folder) => {
+      const folderPath = acc + folder + '/';
+      if (!fs.existsSync(folderPath)) {
+        fs.mkdirSync(folderPath);
+      }
+      return folderPath
+    },
+    root // first 'acc', important
+  );
+
+  // -- write file
+  fs.writeFileSync(root + filepath, content, charset);
 }
 
 function App(attributes: { local: typeof en, color: string, baseUrl: string, children: any }) {

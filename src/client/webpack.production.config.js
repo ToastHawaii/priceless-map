@@ -17,12 +17,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./en/index.html",
+      template: "../_temp/en/index.html",
       filename: "./index.html",
       chunks: ["en"]
     }),
     new HtmlWebpackPlugin({
-      template: "./de/index.html",
+      template: "../_temp/de/index.html",
       filename: "./de/index.html",
       chunks: ["de"]
     }),
