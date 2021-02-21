@@ -19,8 +19,8 @@ import * as fs from "fs";
 import prettier from "prettier";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { local as en } from "./en/local";
-import { local as de } from "./de/local";
+import { local as en } from "./en/static.local";
+import { local as de } from "./de/static.local";
 
 
 function Logo() {

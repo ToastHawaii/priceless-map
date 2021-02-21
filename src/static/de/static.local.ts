@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
-import * as en from "../en/local";
+import * as en from "../en/static.local";
 
 export const local: typeof en.local = {
   code: "de",
