@@ -204,7 +204,8 @@ export const attributes: Attribute<{}>[] = [
     check: tags =>
       (tags.amenity === "library" && tags.library !== "booksharing") ||
       tags.amenity === "toy_library" ||
-      tags.amenity === "bicycle_rental",
+      tags.amenity === "bicycle_rental"||      
+      tags.amenity === "bicycle_library",
     template: local => template(local.borrow, "fas fa-redo-alt")
   },
   {
