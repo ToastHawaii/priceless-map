@@ -238,6 +238,10 @@ export const type = {
       {
         name: "Open Charge Map",
         url: "https://map.openchargemap.io/"
+      },
+      {
+        name: "bike energy | Ladestationen für E-Bikes & E-Car",
+        url: "https://www.google.com/maps/d/u/0/viewer?mid=1wdyB_yGO8FqEWUbD-HJTvpQ-KRY&ll={lat}%2C{lng}&z={zoom}"
       }
     ]
   },
