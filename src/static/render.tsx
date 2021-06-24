@@ -169,6 +169,8 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
           media="print"
         />
 
+        <meta name="monetization" content="$ilp.uphold.com/BwpBDr48YqPi" />
+
         <script src="/serviceWorkerRegister.js"></script>
       </head>
 
