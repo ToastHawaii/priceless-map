@@ -143,6 +143,7 @@ export const type = {
   rock: { name: "Rock", description: "" },
   viewpoint: { name: "Viewpoint", description: "" },
   waterfall: { name: "Waterfall", description: "" },
+  spring: { name: "Spring", description: "" },
   assistance: {
     name: "Assistance",
     description: "",

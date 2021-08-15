@@ -370,6 +370,17 @@ nwr["wifi"]["wifi"!="no"];`,
       edit: ["waterway=waterfall", "waterway=dam", "waterway=weir"]
     },
     {
+      id: 145,
+      group: "natural",
+      value: "spring",
+      icon: "https://wiki.openstreetmap.org/w/images/0/0e/Spring-14.svg",
+      query: `
+    nw["natural"="spring;`,
+      color: "#20B2AA",
+      tags: ["natural=spring"],
+      edit: ["natural=spring"]
+    },
+    {
       id: 25,
       group: "community",
       value: "assistance",

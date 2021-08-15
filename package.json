@@ -1,5 +1,5 @@
 {
-  "name": "sustainable-map",
+  "name": "priceless-map",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ToastHawaii/sustainable-map"
+    "url": "git+https://github.com/ToastHawaii/priceless-map"
   },
   "author": "ToastHawaii",
   "license": "AGPL",
   "bugs": {
-    "url": "https://github.com/ToastHawaii/sustainable-map/issues"
+    "url": "https://github.com/ToastHawaii/priceless-map/issues"
   },
-  "homepage": "https://github.com/ToastHawaii/sustainable-map#readme",
+  "homepage": "https://github.com/ToastHawaii/priceless-map#readme",
   "dependencies": {
     "osm-app-component": "github:ToastHawaii/osm-app-component"
   },
@@ -33,6 +33,7 @@
     "babel-loader": "8.1.0",
     "copy-webpack-plugin": "6.2.1",
     "css-loader": "5.0.0",
+    "del-cli": "3.0.1",
     "html-webpack-plugin": "4.5.0",
     "less": "3.12.2",
     "less-loader": "7.0.2",
@@ -43,12 +44,11 @@
     "react-dom": "17.0.1",
     "source-map-loader": "1.1.2",
     "ts-node": "9.0.0",
-    "ts-node-dev": "1.0.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "4.0.5",
     "webpack": "5.3.2",
     "webpack-cli": "4.1.0",
-    "webpack-dev-server": "3.11.0",
-    "del-cli": "3.0.1"
+    "webpack-dev-server": "3.11.0"
   },
   "resolutions": {
     "terser": "3.14.1"
