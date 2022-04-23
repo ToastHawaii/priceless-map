@@ -719,6 +719,8 @@ nw["emergency"="defibrillator"];`,
       nw["amenity"="reuse"]["reuse:books"!="only"];
 
       // Give-away shop
+      nw["amenity"="freeshop"];
+
       nw["shop"="charity"]["payment:none"="yes"];
       nw["shop"]["charity"="yes"]["payment:none"="yes"];
       nw["shop"="second_hand"]["payment:none"="yes"];
@@ -734,11 +736,12 @@ nw["emergency"="defibrillator"];`,
       color: "#8A2BE2",
       tags: [
         "amenity=give_box",
+        "amenity=freeshop",
         "shop=charity",
         "shop=second_hand",
         "amenity=toy_library"
       ],
-      edit: ["amenity", "shop=charity", "shop=second_hand", "amenity=toy_library"]
+      edit: ["amenity=give_box", "shop=charity", "shop=second_hand", "amenity=toy_library", "amenity"]
     },
     {
       id: 50,
@@ -1689,6 +1692,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       // Give and take
       nw["social_facility"="clothing_bank"];
       nw["amenity"="give_box"]["clothes"!="no"];
+      nw["amenity"="freeshop"]["clothes"!="no"];
 
       // Repair
       ${assistedRepair("clothes", "shoes", "fabrik")}`,
@@ -1696,10 +1700,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       tags: [
         "amenity=recycling",
         "amenity=give_box",
+        "amenity=freeshop",
         "repair=assisted_self_service",
         "repair=*"
       ],
-      edit: ["amenity=recycling", "amenity=social_facility", "amenity"]
+      edit: ["amenity=recycling", "amenity=social_facility", "amenity=give_box", "amenity"]
     },
     {
       id: 103,
@@ -1713,15 +1718,17 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       nw["social_facility"="clothing_bank"];
 
-      nw["amenity"="give_box"]["clothes"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["clothes"!="no"]["give_box:policy"!="free_to_take"];
+      nw["amenity"="freeshop"]["clothes"!="no"]["give_box:policy"!="free_to_take"];`,
       color: "#FF7F50",
       tags: [
         "recycling:clothes=yes",
         "recycling:shoes=yes",
         "social_facility=clothing_bank",
-        "amenity=give_box"
+        "amenity=give_box",
+        "amenity=freeshop"
       ],
-      edit: ["amenity=recycling", "amenity=social_facility", "amenity"]
+      edit: ["amenity=recycling", "amenity=social_facility", "amenity=give_box", "amenity"]
     },
     {
       id: 104,
@@ -1733,10 +1740,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       query: `
       nw["social_facility"="clothing_bank"];
 
-      nw["amenity"="give_box"]["clothes"!="no"];`,
+      nw["amenity"="give_box"]["clothes"!="no"];
+      nw["amenity"="freeshop"]["clothes"!="no"];`,
       color: "#FF7F50",
-      tags: ["social_facility=clothing_bank", "amenity=give_box"],
-      edit: ["amenity=social_facility", "amenity"]
+      tags: ["social_facility=clothing_bank", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=social_facility", "amenity=give_box", "amenity"]
     },
     {
       id: 105,
@@ -1762,6 +1770,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       // Give and take
       nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];
 
       // Repair
       ${assistedRepair("mobile_phone")}
@@ -1772,11 +1781,12 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       tags: [
         "recycling:mobile_phones=yes",
         "amenity=give_box",
+        "amenity=freeshop",
         "repair=assisted_self_service",
         "repair=*",
         "amenity=device_charging_station"
       ],
-      edit: ["amenity=recycling", "amenity"]
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 107,
@@ -1788,10 +1798,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       query: `
     ${recycling("mobile_phones")}
 
-      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+    nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];
+    nw["amenity"="freeshop"]["electronics"!="no"]["freeshop:policy"!="free_to_take"];`,
       color: "#191970",
-      tags: ["amenity=recycling", "amenity=give_box"],
-      edit: ["amenity=recycling", "amenity"]
+      tags: ["amenity=recycling", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 108,
@@ -1801,10 +1812,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       icon: "/lib/maki-icons/mobile-phone-15.svg",
       button: "fas fa-long-arrow-alt-left",
       query: `
-    nw["amenity"="give_box"]["electronics"!="no"];`,
+      nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];`,
       color: "#191970",
-      tags: ["amenity=give_box"],
-      edit: ["amenity"]
+      tags: ["amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=give_box", "amenity"]
     },
     {
       id: 109,
@@ -1830,6 +1842,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       // Give and take
       nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];
 
       // Repair
       ${assistedRepair("computer")}`,
@@ -1837,10 +1850,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       tags: [
         "amenity=recycling",
         "amenity=give_box",
+        "amenity=freeshop",
         "repair=assisted_self_service",
         "repair=*"
       ],
-      edit: ["amenity=recycling", "amenity"]
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 111,
@@ -1852,10 +1866,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       query: `
       ${recycling("computers")}
 
-      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];
+      nw["amenity"="freeshop"]["electronics"!="no"]["freeshop:policy"!="free_to_take"];`,
       color: "#ABAB9A",
-      tags: ["amenity=recycling", "amenity=give_box"],
-      edit: ["amenity=recycling"]
+      tags: ["amenity=recycling", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 112,
@@ -1865,10 +1880,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       icon: "https://wiki.openstreetmap.org/w/images/b/bb/Computer-14.svg",
       button: "fas fa-long-arrow-alt-left",
       query: `
-      nw["amenity"="give_box"]["electronics"!="no"];`,
+      nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];`,
       color: "#ABAB9A",
-      tags: ["amenity=give_box"],
-      edit: ["amenity"]
+      tags: ["amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=give_box", "amenity"]
     },
     {
       id: 113,
@@ -1894,6 +1910,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       // Give and take
       nw["amenity"="give_box"];
+      nw["amenity"="freeshop"];
 
       // Rent
       nw["amenity"="toy_library"]["fee"="no"];
@@ -1904,11 +1921,12 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       tags: [
         "recycling:toys=yes",
         "amenity=give_box",
+        "amenity=freeshop",
         "amenity=toy_library",
         "repair=assisted_self_service",
         "repair=*"
       ],
-      edit: ["amenity=recycling", "amenity=toy_library", "amenity"]
+      edit: ["amenity=recycling", "amenity=toy_library", "amenity=give_box", "amenity"]
     },
     {
       id: 115,
@@ -1920,10 +1938,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       query: `
       ${recycling("toys")}
 
-      nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];
+      nw["amenity"="freeshop"]["freeshop:policy"!="free_to_take"];`,
       color: "#800000",
-      tags: ["recycling:toys=yes", "amenity=give_box"],
-      edit: ["amenity=recycling", "amenity"]
+      tags: ["recycling:toys=yes", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 116,
@@ -1933,10 +1952,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
       button: "fas fa-long-arrow-alt-left",
       query: `
-      nw["amenity"="give_box"];`,
+      nw["amenity"="give_box"];
+      nw["amenity"="freeshop"];`,
       color: "#800000",
-      tags: ["amenity=give_box"],
-      edit: ["amenity"]
+      tags: ["amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=give_box", "amenity"]
     },
     // {
     //   id: 117,
@@ -1986,6 +2006,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       // Give and take
       nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];
 
       // Repair
       ${assistedRepair("small_electronics_device", "electronics", "camera")}`,
@@ -1993,10 +2014,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       tags: [
         "amenity=recycling",
         "amenity=give_box",
+        "amenity=freeshop",
         "repair=assisted_self_service",
         "repair=*"
       ],
-      edit: ["amenity=recycling", "amenity"]
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 120,
@@ -2019,10 +2041,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
         "tv_monitor"
       )}
 
-      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];`,
+      nw["amenity"="give_box"]["electronics"!="no"]["give_box:policy"!="free_to_take"];
+      nw["amenity"="freeshop"]["electronics"!="no"]["freeshop:policy"!="free_to_take"];`,
       color: "#800080",
-      tags: ["amenity=recycling", "amenity=give_box"],
-      edit: ["amenity=recycling", "amenity"]
+      tags: ["amenity=recycling", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 121,
@@ -2032,10 +2055,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       icon: "/lib/temaki-icons/electronic.svg",
       button: "fas fa-long-arrow-alt-left",
       query: `
-    nw["amenity"="give_box"]["electronics"!="no"];`,
+      nw["amenity"="give_box"]["electronics"!="no"];
+      nw["amenity"="freeshop"]["electronics"!="no"];`,
       color: "#800080",
-      tags: ["amenity=give_box"],
-      edit: ["amenity"]
+      tags: ["amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=give_box", "amenity"]
     },
     {
       id: 122,
@@ -2061,6 +2085,7 @@ way["highway"="footway"]["area"="yes"]["name"];`,
 
       // Give and take
       nw["amenity"="give_box"];
+      nw["amenity"="freeshop"];
 
       // Repair
       ${assistedRepair("furniture")}`,
@@ -2069,10 +2094,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
         "recycling:furniture=yes",
         "recycling:wood=yes",
         "amenity=give_box",
+        "amenity=freeshop",
         "repair=assisted_self_service",
         "repair=*"
       ],
-      edit: ["amenity=recycling", "amenity"]
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 124,
@@ -2084,10 +2110,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       query: `
     ${recycling("furniture", "interior_decoration", "wood", "pallets")}
 
-      nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];`,
+    nw["amenity"="give_box"]["give_box:policy"!="free_to_take"];
+    nw["amenity"="freeshop"]["freeshop:policy"!="free_to_take"];`,
       color: "#B8860B",
-      tags: ["recycling:furniture=yes", "recycling:wood=yes", "amenity=give_box"],
-      edit: ["amenity=recycling", "amenity"]
+      tags: ["recycling:furniture=yes", "recycling:wood=yes", "amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=recycling", "amenity=give_box", "amenity"]
     },
     {
       id: 125,
@@ -2097,10 +2124,11 @@ way["highway"="footway"]["area"="yes"]["name"];`,
       icon: "/lib/temaki-icons/furniture.svg",
       button: "fas fa-long-arrow-alt-left",
       query: `
-      nw["amenity"="give_box"];`,
+      nw["amenity"="give_box"];
+      nw["amenity"="freeshop"];`,
       color: "#B8860B",
-      tags: ["amenity=give_box"],
-      edit: ["amenity"]
+      tags: ["amenity=give_box", "amenity=freeshop"],
+      edit: ["amenity=give_box", "amenity"]
     },
     {
       id: 126,
