@@ -34,7 +34,7 @@ module.exports = {
         {
           context: "../../node_modules/osm-app-component/dist/",
           from: "*/local.js",
-          to: "[path]/[path][name].[ext]"
+          to: "[path]/[path][name][ext]"
         }
       ]
     }),
