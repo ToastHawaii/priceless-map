@@ -304,7 +304,7 @@ nwr["wifi"]["wifi"!="no"];`,
       value: "natural_monument",
       icon: "/lib/maki-icons/park-15.svg",
       query: `
-    nw["denotation"~"^(natural_monument|landmark|religious|memorial)$"]
+    nw["denotation"~"^(natural_monument|landmark|religious|memorial)$"];
 
     node["natural"="tree"][religion];
     way["natural"="tree_row"][religion];
