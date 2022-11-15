@@ -36,6 +36,7 @@ export const local: typeof en.local = {
     note: "Notiz hinzufügen",
     edit: "Bearbeiten",
     share: "Teilen",
+    theme: "Theme",
     about: "Über diese Seite",
     donate: "Mich unterstützen"
   }

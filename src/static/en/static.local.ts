@@ -34,6 +34,7 @@ export const local = {
     note: "Add note",
     edit: "Edit",
     share: "Share",
+    theme: "Theme",
     about: "About this site",
     donate: "Support me"
   }

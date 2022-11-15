@@ -239,6 +239,15 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
         <button className="menu share help-text" type="button" title={local.menu.share}>
           <i className="fas fa-share-alt"></i>
         </button>
+        <button className="menu theme theme-mode-dark-visible help-text" type="button" title={local.menu.theme}>
+          <i className="fas fa-circle"></i>
+        </button>
+        <button className="menu theme theme-mode-light-visible help-text" type="button" title={local.menu.theme}>
+          <i className="far fa-circle"></i>
+        </button>
+        <button className="menu theme theme-mode-system-visible help-text" type="button" title={local.menu.theme}>
+          <i className="fas fa-adjust"></i>
+        </button>
         <a className="menu about help-text" title={local.menu.about}>
           <i className="fas fa-info"></i>
         </a>
