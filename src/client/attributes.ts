@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with Priceless map.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Attribute } from "osm-app-component/dist/Generator";
+import { Attribute, Tags } from "osm-app-component/dist/Generator";
 
 const template = (title: string, icon: string, value?: string) =>
   `<span title="${title}" class="attribut"><i class="${icon}"></i>${
@@ -81,7 +81,13 @@ export const attributes: Attribute<{}>[] = [
       tags.swimming_pool === "children's_pool" ||
       tags.children === "designated" ||
       tags.children === "yes" ||
-      (tags.kids_area === "yes" && tags["kids_area:fee"] !== "yes"),
+      (tags.kids_area === "yes" && tags["kids_area:fee"] !== "yes") ||
+      /child|juvenile|orphan|children|youth|family/gi.test(
+        tags["social_facility:for"] || ""
+      ) ||
+      /juvenile|child|multigeneration|orphan|children|youth|family|multigeneration/gi.test(
+        tags["community_centre:for"] || ""
+      ),
     template: (local) => template(local.playground, "fas fa-child"),
   },
   {
@@ -95,12 +101,22 @@ export const attributes: Attribute<{}>[] = [
   },
   {
     check: (tags) =>
-      tags["service:bicycle:repair"] === "yes" ||
-      tags["bicycle:repair"] === "yes" ||
+      tags["service:bicycle:tools"] === "yes" ||
+      tags["service:bicycle:diy"] === "yes",
+    template: (local) => template(local.tools, "fas fa-tools"),
+  },
+  {
+    check: (tags) =>
       tags["service:bicycle:tools"] === "yes" ||
       tags["service:bicycle:diy"] === "yes" ||
-      hasPropThatEndsWith(tags, ":repair", "yes"),
-    template: (local) => template(local.tools, "fas fa-tools"),
+      tags["service:bicycle:chain_tool"] === "yes" ||
+      tags["service:bicycle:chaintool"] === "yes" ||
+      tags["shop"] === "shoe_repair" ||
+      tags["craft"] === "bag_repair" ||
+      tags["craft"] === "shoe_repair" ||
+      tags["repair"] === "ski" ||
+      hasPropThatEndsWith(tags, "repair", "yes"),
+    template: (local) => template(local.repair, "fas fa-tools"),
   },
   {
     check: (tags) =>
@@ -128,8 +144,91 @@ export const attributes: Attribute<{}>[] = [
       tags["service:fabrik:repair"] === "yes" ||
       tags["fabrik:repair"] === "yes" ||
       tags["reuse:clothes"] === "yes" ||
-      tags["recycling:clothes"] === "yes",
+      tags["recycling:clothes"] === "yes" ||
+      tags["recycling:textiles"] === "yes" ||
+      tags["recycling:belts"] === "yes" ||
+      tags["craft"] === "bag_repair" ||
+      tags["shop"] === "clothes",
     template: (local) => template(local.clothes, "fas fa-tshirt"),
+  },
+  {
+    check: (tags) => tags["recycling:batteries"] === "yes",
+    template: (local) => template(local.battery, "fas fa-battery-full"),
+  },
+  {
+    check: (tags) => tags["recycling:car_batteries"] === "yes",
+    template: (local) => template(local.carBattery, "fas fa-car-battery"),
+  },
+  {
+    check: (tags) => tags["recycling:cooking_oil"] === "yes",
+    template: (local) => template(local.cookingOil, "fas fa-fill-drip"),
+  },
+  {
+    check: (tags) => tags["recycling:engine_oil"] === "yes",
+    template: (local) => template(local.engineOil, "fas fa-oil-can"),
+  },
+  {
+    check: (tags) =>
+      tags["recycling:oil"] === "yes" || tags["recycling:waste_oil"] === "yes",
+    template: (local) => template(local.oil, "fas fa-oil-can"),
+  },
+  {
+    check: (tags) => tags["recycling:paint"] === "yes",
+    template: (local) => template(local.paint, "fas fa-brush"),
+  },
+  {
+    check: (tags) => tags["recycling:hazardous_waste"] === "yes",
+    template: (local) => template(local.hazardous, "fas fa-skull-crossbones"),
+  },
+  {
+    check: (tags) => tags["recycling:hydrargyrum"] === "yes",
+    template: (local) => template(local.hydrargyrum, "fas fa-thermometer-full"),
+  },
+  {
+    check: (tags) => tags["recycling:plastic"] === "yes",
+    template: (local) => template(local.plastic, "fas fa-cube"),
+  },
+  {
+    check: (tags) => tags["recycling:plastic_bottles"] === "yes",
+    template: (local) => template(local.plastic_bottles, "fas fa-wine-bottle"),
+  },
+  {
+    check: (tags) => tags["recycling:plastic_packaging"] === "yes",
+    template: (local) => template(local.plastic_packaging, "fas fa-cube"),
+  },
+  {
+    check: (tags) => tags["recycling:PET"] === "yes",
+    template: (local) => template(local.PET, "fas fa-wine-bottle"),
+  },
+  {
+    check: (tags) => tags["recycling:plastic_bags"] === "yes",
+    template: (local) => template(local.plastic_bags, "fas fa-shopping-bag"),
+  },
+  {
+    check: (tags) => tags["recycling:polyester"] === "yes",
+    template: (local) => template(local.polyester, "fas fa-tshirt"),
+  },
+  {
+    check: (tags) =>
+      tags["recycling:polystyrene_foam"] === "yes" ||
+      tags["recycling:styrofoam"] === "yes",
+    template: (local) => template(local.polystyrene_foam, "fas fa-box"),
+  },
+  {
+    check: (tags) =>
+      tags["recycling:rubble"] === "yes" ||
+      tags["recycling:hardcore"] === "yes",
+    template: (local) => template(local.rubble, "fas fa-shapes"),
+  },
+  {
+    check: (tags) =>
+      /^(yes|only)$/gi.test(tags.shoe_repair || "") ||
+      tags["repair"] === "shoes" ||
+      tags["shop"] === "shoe_repair" ||
+      tags["craft"] === "shoe_repair" ||
+      tags["recycling:shoes"] === "yes" ||
+      tags["shop"] === "shoes",
+    template: (local) => template(local.shoes, "fas fa-shoe-prints"),
   },
   {
     check: (tags) =>
@@ -184,7 +283,9 @@ export const attributes: Attribute<{}>[] = [
     template: (local) => template(local.toy, "fas fa-horse"),
   },
   {
-    check: (tags) => hasPropThatStartsWith(tags, "recycling:", "yes"),
+    check: (tags) =>
+      hasPropThatStartsWith(tags, "recycling:", "yes") ||
+      tags.composting === "yes",
     template: (local) =>
       template(local.freeToGive, "fas fa-long-arrow-alt-right"),
   },
@@ -198,7 +299,9 @@ export const attributes: Attribute<{}>[] = [
       tags["reuse:policy"] === "free_to_take_or_give" ||
       (!tags["reuse:policy"] &&
         (tags["amenity"] === "reuse" ||
-          hasPropThatStartsWith(tags, "reuse:", "yes"))),
+          hasPropThatStartsWith(tags, "reuse:", "yes") ||
+          tags["amenity"] === "give_box" ||
+          tags["amenity"] === "freeshop")),
     template: (local) =>
       template(local.freeToTakeOrGive, "fas fa-exchange-alt"),
   },
@@ -207,7 +310,16 @@ export const attributes: Attribute<{}>[] = [
       (tags.amenity === "library" && tags.library !== "booksharing") ||
       tags.amenity === "toy_library" ||
       tags.amenity === "bicycle_rental" ||
-      tags.amenity === "bicycle_library",
+      tags.amenity === "bicycle_library" ||
+      tags.shop === "bicycle_rental" ||
+      tags.amenity === "bicycle_sharing" ||
+      tags.shop === "tool_hire" ||
+      tags.amenity === "ski_rental" ||
+      tags.shop === "ski_rental" ||
+      tags.ski === "rental" ||
+      hasPropThatEndsWith(tags, "rental", "yes") ||
+      hasPropThatEndsWith(tags, "rental", "only") ||
+      tags.amenity === "piano",
     template: (local) => template(local.borrow, "fas fa-redo-alt"),
   },
   {
@@ -228,12 +340,57 @@ export const attributes: Attribute<{}>[] = [
       `<span title="${local.hoops}" class="attribut"><img style="height: 13px;vertical-align: text-top;" src="/lib/maki-icons/basketball-15.svg"> ${tags.hoops}</span>`,
   },
   {
-    check: (tags) => tags.female === "yes" || tags.unisex === "yes",
+    check: (tags) =>
+      tags.female === "yes" ||
+      /woman|women/gi.test(tags["social_facility:for"] || "") ||
+      /woman|women/gi.test(tags["community_centre:for"] || "") ||
+      tags.unisex === "yes",
     template: (local) => template(local.female, "fas fa-female"),
   },
   {
-    check: (tags) => tags.male === "yes" || tags.unisex === "yes",
+    check: (tags) =>
+      tags.male === "yes" ||
+      /^men|^man/gi.test(tags["social_facility:for"] || "") ||
+      /^men|^man/gi.test(tags["community_centre:for"] || "") ||
+      tags.unisex === "yes",
     template: (local) => template(local.male, "fas fa-male"),
+  },
+  {
+    check: (tags) =>
+      /senior|elderly/gi.test(tags["social_facility:for"] || "") ||
+      /senior|multigeneration/gi.test(tags["community_centre:for"] || ""),
+    template: (local) => template(local.senior, "fas fa-blind"),
+  },
+  {
+    check: (tags) =>
+      /disabled|mental_health|diseased/gi.test(
+        tags["social_facility:for"] || ""
+      ) || /disabled/gi.test(tags["community_centre:for"] || ""),
+    template: (local) => template(local.disabled, "fab fa-accessible-icon"),
+  },
+  {
+    check: (tags) =>
+      /homeless|underprivileged|drug_addicted|unemployed/gi.test(
+        tags["social_facility:for"] || ""
+      ),
+    template: (local) => template(local.homeless, "fas fa-angle-up"),
+  },
+  {
+    check: (tags) =>
+      /migrant|refugees|refugee|displaced|migrants/gi.test(
+        tags["social_facility:for"] || ""
+      ) ||
+      /immigrant/gi.test(tags["community_centre:for"] || "") ||
+      /displaced/gi.test(tags["emergency:social_facility:for"] || ""),
+    template: (local) => template(local.migrant, "fas fa-running"),
+  },
+  {
+    check: (tags) =>
+      (tags.lgbtq && tags.lgbtq !== "no") ||
+      /LGBTI/gi.test(tags["social_facility:for"] || "") ||
+      /lgbtq|homosexual/gi.test(tags["community_centre:for"] || "") ||
+      /welcome|yes|only/gi.test(tags.gay || ""),
+    template: (local) => template(local.lgbtq, "fas fa-rainbow"),
   },
   {
     check: (tags) =>
@@ -254,103 +411,78 @@ export const attributes: Attribute<{}>[] = [
   },
   {
     check: (tags) =>
-      /horizontal_bar/.test(tags["fitness_station"] || "") ||
+      /horizontal_bar/gi.test(tags["fitness_station"] || "") ||
       tags["fitness_station:horizontal_bar"] === "yes" ||
-      /horizontal_bar/.test(tags["playground"] || "") ||
+      /horizontal_bar/gi.test(tags["playground"] || "") ||
       tags["playground:horizontal_bar"] === "yes",
     template: (local) => template(local.horizontalBar, "fas fa-minus"),
   },
   {
     check: (tags) =>
-      /parallel_bars/.test(tags["fitness_station"] || "") ||
+      /parallel_bars/gi.test(tags["fitness_station"] || "") ||
       tags["fitness_station:parallel_bars"] === "yes",
     template: (local) =>
       template(local.parallelBars, "fas fa-grip-lines-vertical"),
   },
   {
     check: (tags) =>
-      /rings/.test(tags["fitness_station"] || "") ||
+      /rings/gi.test(tags["fitness_station"] || "") ||
       tags["fitness_station:rings"] === "yes",
     template: (local) => template(local.rings, "far fa-circle"),
   },
   {
     check: (tags) =>
-      /elliptical_trainer|air_walker|exercise_bike|rower/.test(
+      /elliptical_trainer|air_walker|exercise_bike|rower/gi.test(
         tags["fitness_station"] || ""
       ) ||
       tags["fitness_station:elliptical_trainer"] === "yes" ||
       tags["fitness_station:air_walker"] === "yes" ||
       tags["fitness_station:exercise_bike"] === "yes" ||
       tags["fitness_station:rower"] === "yes" ||
-      /exercise/.test(tags["playground"] || "") ||
+      /exercise/gi.test(tags["playground"] || "") ||
       tags["playground:exercise"] === "yes",
     template: (local) => template(local.exerciseMachine, "fas fa-biking"),
   },
   {
     check: (tags) =>
-      /slackline|balance(_)?beam/.test(tags["fitness_station"] || "") ||
+      /slackline|balance(_)?beam/gi.test(tags["fitness_station"] || "") ||
       tags["fitness_station:slackline"] === "yes" ||
       tags["fitness_station:balance_beam"] === "yes" ||
       tags["fitness_station:balancebeam"] === "yes" ||
-      /slackline|balance(_)?beam/.test(tags["playground"] || "") ||
+      /slackline|balance(_)?beam/gi.test(tags["playground"] || "") ||
       tags["playground:slackline"] === "yes" ||
       tags["playground:balance_beam"] === "yes" ||
       tags["playground:balancebeam"] === "yes",
     template: (local) => template(local.balance, "fas fa-street-view"),
   },
   {
-    check: (tags) => !!wheelchairAccesIcon(tags),
-    template: (local, tags) =>
-      `<span title="${wheelchairAccesText(
-        tags,
-        local
-      )}" class="attribut"><i class="fab fa-accessible-icon"></i> <i class="fas fa-${wheelchairAccesIcon(
-        tags
-      )}" style="color: ${wheelchairAccesColor(tags)};"></i></span>`,
+    check: (tags) => !!wheelchairAccess(tags, {}),
+    template: (local, tags) => {
+      const access = wheelchairAccess(tags, local);
+      return `<span title="${access?.text}" class="attribut"><i class="fab fa-accessible-icon"></i> <i class="fas fa-${access?.icon}" style="color: ${access?.color};"></i></span>`;
+    },
   },
 ];
 
-function wheelchairAccesText(tags: { wheelchair?: string }, local: any) {
-  switch (tags.wheelchair) {
+function wheelchairAccess(tags: Tags, local: any) {
+  switch (tags["wheelchair"]) {
     case "yes":
     case "designated":
-      return local.wheelchairYes;
+      return {
+        text: local.wheelchair?.yes,
+        color: "green",
+        icon: "check-circle",
+      };
     case "limited":
-      return local.wheelchairLimited;
+      return {
+        text: local.wheelchair?.limited,
+        color: "orange",
+        icon: "exclamation-circle",
+      };
     case "no":
-      return local.wheelchairNo;
+      return { text: local.wheelchair?.no, color: "red", icon: "times-circle" };
     default:
       // do not display for others values or undefined
-      return "";
-  }
-}
-
-function wheelchairAccesColor(tags: { wheelchair?: string }) {
-  switch (tags.wheelchair) {
-    case "yes":
-    case "designated":
-      return "green";
-    case "limited":
-      return "orange";
-    case "no":
-      return "red";
-    default:
-      // do not display for others values or undefined
-      return "black";
-  }
-}
-
-function wheelchairAccesIcon(tags: { wheelchair?: string }) {
-  switch (tags.wheelchair) {
-    case "yes":
-    case "designated":
-      return "check-circle";
-    case "limited":
-      return "exclamation-circle";
-    case "no":
-      return "times-circle";
-    default:
-      // do not display icon for others values or undefined
       return undefined;
   }
 }
