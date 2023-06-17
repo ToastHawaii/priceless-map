@@ -33,10 +33,10 @@ export const local: typeof en.local = {
     overpassTurbo: "overpass-turbo"
   },
   menu: {
-    note: "Notiz hinzufügen",
-    edit: "Bearbeiten",
-    share: "Teilen",
-    theme: "Theme",
+    note: "Hinweis für Kartographen hinzufügen",
+    edit: "Karte bearbeiten",
+    share: "Ort teilen",
+    theme: "Theme ändern",
     about: "Über diese Seite",
     donate: "Mich unterstützen"
   }

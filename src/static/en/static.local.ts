@@ -31,10 +31,10 @@ export const local = {
     overpassTurbo: "overpass-turbo"
   },
   menu: {
-    note: "Add note",
-    edit: "Edit",
-    share: "Share",
-    theme: "Theme",
+    note: "Add note for mappers",
+    edit: "Edit map",
+    share: "Share place",
+    theme: "Change theme",
     about: "About this site",
     donate: "Support me"
   }
