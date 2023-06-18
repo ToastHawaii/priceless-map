@@ -22,8 +22,8 @@ export const local = {
   title: "Unbezahlbar Karte",
   description: "Erlebe die Welt. Gratis.",
   minZoomMessageNoLayer: "Keine Ebene zugewiesen",
-  minZoomMessage: "Vergrössern, um Standorte zu laden",
-  emptyIndicator: "Keine Orte gefunden",
+  minZoomMessage: "Zoome hinein, um Kartenmerkmale zu laden",
+  emptyIndicator: "Keine Kartenobjekte in diesem Bereich gefunden",
   linkCopied: "Link in die Zwischenablage kopiert",
   capacity: "Kapazität",
   playground: "Für Kinder",
@@ -84,7 +84,7 @@ export const local = {
   wheelchair: {
     yes: "Rollstuhlgerecht",
     limited: "Limitiert Rollstuhlgerecht",
-    no: "Nicht Rollstuhlgerecht"
+    no: "Nicht Rollstuhlgerecht",
   },
   colour: "Farbe",
   open: "Geöffnet",
@@ -115,7 +115,7 @@ export const local = {
     communitySport: "Gemeinschaftssport",
     trip: "Ausflug",
     goods: "Gegenstände",
-    material: "Material weiterverwerten"
+    material: "Material weiterverwerten",
   },
-  type: type
+  type: type,
 };

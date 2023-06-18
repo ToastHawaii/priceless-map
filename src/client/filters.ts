@@ -903,6 +903,7 @@ nw["amenity"="shower"];
     (
       nwr["leisure"="swimming_pool"];
       nwr["leisure"="swimming_area"];
+      nwr["leisure"="paddling_pool"];
       nwr["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
     );
     -(
@@ -914,6 +915,7 @@ nw["amenity"="shower"];
       (
         nwr(area.b)["leisure"="swimming_pool"];
         nwr(area.b)["leisure"="swimming_area"];
+        nwr(area.b)["leisure"="paddling_pool"];
         nwr(area.b)["sport"="swimming"]["leisure"!~"sports_centre|stadium"];
       );
     );
@@ -925,6 +927,7 @@ nw["amenity"="shower"];
       "leisure=water_park",
       "leisure=swimming_pool",
       "leisure=swimming_area",
+      "leisure=paddling_pool",
     ],
     edit: [
       "amenity=public_bath",
@@ -932,6 +935,7 @@ nw["amenity"="shower"];
       "leisure=water_park",
       "leisure=swimming_pool",
       "leisure=swimming_area",
+      "leisure",
     ],
   },
   {
