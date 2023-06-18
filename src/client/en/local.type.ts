@@ -319,13 +319,23 @@ export const type = {
       "Here you will find a table, a shelf or a shop to bring and take items. Well-known facilities are give-away shops and giveboxes.",
     externalResources: [
       {
-        name: "Pumpipumpe",
-        url: "https://map.pumpipumpe.ch/"
+        name: "nimms",
+        url: "https://www.nimms.ch/",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
       },
       {
-        name: "PING!-Station",
-        url: "https://pingstation.de/finden/",
-        bounds: [45.71, 5.44, 55.26, 15.29]
+        name: "Gratis zu verschenken",
+        url: "https://gratiszuverschenken.ch/",
+        bounds: [45.818, 5.9559, 47.8085, 10.4923]
+      },
+      {
+        name: "Gratis zu verschenken",
+        url: "https://gratiszuverschenken.de/",
+        bounds: [44.57, 2.63, 55.26, 19.55]
+      },
+      {
+        name: "Pumpipumpe",
+        url: "https://map.pumpipumpe.ch/"
       },
       {
         name: "umap - Give box",
