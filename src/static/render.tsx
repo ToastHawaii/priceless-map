@@ -230,29 +230,35 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
           </div>
           <button className="close-button">×</button>
         </div>
-        <button className="menu note help-text" type="button" title={local.menu.note}>
-          <i className="fas fa-comment-alt"></i>
-        </button>
-        <button className="menu edit help-text" type="button" title={local.menu.edit}>
-          <i className="fas fa-pencil-alt"></i>
-        </button>
-        <button className="menu share help-text" type="button" title={local.menu.share}>
-          <i className="fas fa-share-alt"></i>
-        </button>
-        <button className="menu theme theme-mode-dark-visible help-text" type="button" title={local.menu.theme}>
-          <i className="fas fa-circle"></i>
-        </button>
-        <button className="menu theme theme-mode-light-visible help-text" type="button" title={local.menu.theme}>
-          <i className="far fa-circle"></i>
-        </button>
-        <button className="menu theme theme-mode-system-visible help-text" type="button" title={local.menu.theme}>
-          <i className="fas fa-adjust"></i>
-        </button>
-        <a className="menu about help-text" title={local.menu.about}>
-          <i className="fas fa-info"></i>
-        </a>
-        <a className="menu donate help-text" target="_blank" title={local.menu.donate}>
-          <i className="fas fa-mug-hot"></i>
+
+        <div className="menu-group collapsed">
+          <button className="menu note help-text" type="button" title={local.menu.note}>
+            <i className="fas fa-comment-alt"></i>
+          </button>
+          <button className="menu edit help-text" type="button" title={local.menu.edit}>
+            <i className="fas fa-pencil-alt"></i>
+          </button>
+          <button className="menu share help-text" type="button" title={local.menu.share}>
+            <i className="fas fa-share-alt"></i>
+          </button>
+          <button className="menu theme theme-mode-dark-visible help-text" type="button" title={local.menu.theme}>
+            <i className="fas fa-circle"></i>
+          </button>
+          <button className="menu theme theme-mode-light-visible help-text" type="button" title={local.menu.theme}>
+            <i className="far fa-circle"></i>
+          </button>
+          <button className="menu theme theme-mode-system-visible help-text" type="button" title={local.menu.theme}>
+            <i className="fas fa-adjust"></i>
+          </button>
+          <a className="menu about help-text" title={local.menu.about}>
+            <i className="fas fa-info"></i>
+          </a>
+          <a className="menu donate help-text" target="_blank" title={local.menu.donate}>
+            <i className="fas fa-mug-hot"></i>
+          </a>
+        </div>
+        <a className="menu toggle" >
+          <i className="fas fa-ellipsis-v"></i>
         </a>
         <script
           async
