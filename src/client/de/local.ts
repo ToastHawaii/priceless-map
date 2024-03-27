@@ -45,6 +45,7 @@ export const local = {
   electronics: "Elektrongeräte",
   furniture: "Möbel",
   computer: "Computer",
+  defibrillator: "Defibrillator",
   toy: "Spielzeug",
   clothes: "Kleider",
   battery: "Batterie",
