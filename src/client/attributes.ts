@@ -35,11 +35,10 @@ export const attributes: Attribute<{}>[] = [
         tags["internet_access:fee"] !== "customers" &&
         tags["internet_access:fee"] !== "yes") ||
       (!!tags.wifi && tags.wifi !== "no"),
-    template: (local) =>
+    template: (local, tags) =>
       template(
         local.internet,
         "fas fa-wifi",
-
         [
           tags["internet_access:ssid"],
           tags[`internet_access:description:${local.code || "en"}`] ||
