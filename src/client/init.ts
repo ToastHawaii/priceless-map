@@ -65,15 +65,7 @@ export function equalsIgnoreCase(
 }
 
 window.addEventListener("load", () => {
-  document.querySelectorAll("link[media='print']").forEach(e => {
+  document.querySelectorAll("link[media='print']").forEach((e) => {
     e.setAttribute("media", "all");
   });
-});
-
-document.querySelector(".right-collapse")?.addEventListener("click", () => {
-  if (document.getElementById("filters")?.className) {
-    document.getElementById("filters")?.classList.remove("right-collapsed");
-  } else {
-    document.getElementById("filters")?.classList.add("right-collapsed");
-  }
 });

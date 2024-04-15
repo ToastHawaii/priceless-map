@@ -22,53 +22,61 @@ import ReactDOMServer from "react-dom/server";
 import { local as en } from "./en/static.local";
 import { local as de } from "./de/static.local";
 
-
 function Logo() {
-  return (<img
-    className="community-centre-icon"
-    src="https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg"
-    style={{ width: "24px", verticalAlign: "text-bottom" }}
-  />);
+  return (
+    <img
+      className="community-centre-icon"
+      src="https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg"
+      style={{ width: "24px", verticalAlign: "text-bottom" }}
+    />
+  );
 }
 
 render({
   logo: <Logo />,
   color: "#da532c",
-  locals: [{
-    code: "en",
-    baseUrl: "/",
-    ...en
-  },
-  {
-    code: "de",
-    baseUrl: "/de/",
-    ...de
-  }]
+  locals: [
+    {
+      code: "en",
+      baseUrl: "/",
+      ...en,
+    },
+    {
+      code: "de",
+      baseUrl: "/de/",
+      ...de,
+    },
+  ],
 });
 
 function render(customize: {
-  logo: React.ReactElement,
-  color: string,
+  logo: React.ReactElement;
+  color: string;
   locals: {
-    code: string
+    code: string;
     baseUrl: string;
     meta: {
       title: string;
       titleShort: string;
       description: string;
-    }
-  }[]
+    };
+  }[];
 }) {
   const locals: { [code: string]: typeof en } = {
     en: en,
-    de: de
+    de: de,
   };
 
   for (const local of customize.locals) {
     const html = ReactDOMServer.renderToStaticMarkup(
-      <App local={{ meta: { ...local.meta }, ...locals[local.code] }} color={customize.color} baseUrl={local.baseUrl}>
+      <App
+        local={{ meta: { ...local.meta }, ...locals[local.code] }}
+        color={customize.color}
+        baseUrl={local.baseUrl}
+      >
         {customize.logo}
-      </App>);
+      </App>
+    );
     const htmlWDoc = "<!DOCTYPE html>" + html;
     const prettyHtml = prettier.format(htmlWDoc, { parser: "html" });
     const outputFile = `./src/_temp/${local.code}/index.html`;
@@ -79,28 +87,27 @@ function render(customize: {
 function writeFileSyncRecursive(filename, content?, charset?) {
   // -- normalize path separator to '/' instead of path.sep,
   // -- as / works in node for Windows as well, and mixed \\ and / can appear in the path
-  let filepath = filename.replace(/\\/g, '/');
+  let filepath = filename.replace(/\\/g, "/");
 
   // -- preparation to allow absolute paths as well
-  let root = '';
-  if (filepath[0] === '/') {
-    root = '/';
+  let root = "";
+  if (filepath[0] === "/") {
+    root = "/";
     filepath = filepath.slice(1);
-  }
-  else if (filepath[1] === ':') {
-    root = filepath.slice(0, 3);   // c:\
+  } else if (filepath[1] === ":") {
+    root = filepath.slice(0, 3); // c:\
     filepath = filepath.slice(3);
   }
 
   // -- create folders all the way down
-  const folders = filepath.split('/').slice(0, -1);  // remove last item, file
+  const folders = filepath.split("/").slice(0, -1); // remove last item, file
   folders.reduce(
     (acc, folder) => {
-      const folderPath = acc + folder + '/';
+      const folderPath = acc + folder + "/";
       if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath);
       }
-      return folderPath
+      return folderPath;
     },
     root // first 'acc', important
   );
@@ -109,7 +116,12 @@ function writeFileSyncRecursive(filename, content?, charset?) {
   fs.writeFileSync(root + filepath, content, charset);
 }
 
-function App(attributes: { local: typeof en, color: string, baseUrl: string, children: any }) {
+function App(attributes: {
+  local: typeof en;
+  color: string;
+  baseUrl: string;
+  children: any;
+}) {
   const local = attributes.local;
   return (
     <html className="help" lang={attributes.local.code}>
@@ -121,15 +133,15 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
           name="viewport"
           content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <meta
-          name="description"
-          content={local.meta.description}
-        />
+        <meta name="description" content={local.meta.description} />
 
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="application-name" content={local.meta.titleShort} />
-        <meta name="apple-mobile-web-app-title" content={local.meta.titleShort} />
+        <meta
+          name="apple-mobile-web-app-title"
+          content={local.meta.titleShort}
+        />
         <meta name="theme-color" content={attributes.color} />
         <meta name="msapplication-navbutton-color" content={attributes.color} />
         <meta name="msapplication-starturl" content="/" />
@@ -183,10 +195,11 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
           </a>
         </h1>
         <div id="filters">
-          <div
-            className="right-collapse"
-          >
+          <div className="right-collapse">
             <i className="fas fa-list"></i>
+          </div>
+          <div className="filters-clear" style={{ display: "none" }}>
+            <i className="fas fa-times"></i>
           </div>
         </div>
         <div className="box">
@@ -232,32 +245,60 @@ function App(attributes: { local: typeof en, color: string, baseUrl: string, chi
         </div>
 
         <div className="menu-group collapsed">
-          <button className="menu note help-text" type="button" title={local.menu.note}>
+          <button
+            className="menu note help-text"
+            type="button"
+            title={local.menu.note}
+          >
             <i className="fas fa-comment-alt"></i>
           </button>
-          <button className="menu edit help-text" type="button" title={local.menu.edit}>
+          <button
+            className="menu edit help-text"
+            type="button"
+            title={local.menu.edit}
+          >
             <i className="fas fa-pencil-alt"></i>
           </button>
-          <button className="menu share help-text" type="button" title={local.menu.share}>
+          <button
+            className="menu share help-text"
+            type="button"
+            title={local.menu.share}
+          >
             <i className="fas fa-share-alt"></i>
           </button>
-          <button className="menu theme theme-mode-dark-visible help-text" type="button" title={local.menu.theme}>
+          <button
+            className="menu theme theme-mode-dark-visible help-text"
+            type="button"
+            title={local.menu.theme}
+          >
             <i className="fas fa-circle"></i>
           </button>
-          <button className="menu theme theme-mode-light-visible help-text" type="button" title={local.menu.theme}>
+          <button
+            className="menu theme theme-mode-light-visible help-text"
+            type="button"
+            title={local.menu.theme}
+          >
             <i className="far fa-circle"></i>
           </button>
-          <button className="menu theme theme-mode-system-visible help-text" type="button" title={local.menu.theme}>
+          <button
+            className="menu theme theme-mode-system-visible help-text"
+            type="button"
+            title={local.menu.theme}
+          >
             <i className="fas fa-adjust"></i>
           </button>
           <a className="menu about help-text" title={local.menu.about}>
             <i className="fas fa-info"></i>
           </a>
-          <a className="menu donate help-text" target="_blank" title={local.menu.donate}>
+          <a
+            className="menu donate help-text"
+            target="_blank"
+            title={local.menu.donate}
+          >
             <i className="fas fa-mug-hot"></i>
           </a>
         </div>
-        <a className="menu toggle" >
+        <a className="menu toggle">
           <i className="fas fa-ellipsis-v"></i>
         </a>
         <script
