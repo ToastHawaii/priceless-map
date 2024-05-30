@@ -77,7 +77,7 @@ Der Code kann auch als Basis für eine eigene Themenkarte verwendet werden.
 
 Probiere einen der folgenden Services aus:
 
-- [MapComplete](https://pietervdvn.github.io/MapComplete/index.html) ([Wiki](https://wiki.openstreetmap.org/wiki/MapComplete))
+- [MapComplete](https://mapcomplete.org/) ([Wiki](https://wiki.openstreetmap.org/wiki/MapComplete))
 - [MapContrib](https://www.mapcontrib.xyz/) ([Wiki](https://wiki.openstreetmap.org/wiki/MapContrib))
 - [uMap](https://umap.openstreetmap.fr/de/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:UMap))
 - [overpass turbo](https://overpass-turbo.eu/) ([Wiki](https://wiki.openstreetmap.org/wiki/DE:Overpass_turbo)) Du kannst den "Wizard" verwenden um eine Abfrage zu erstellen, dieser versteht auch deutsche Wörter wie z.B. "See", "Bäckerei", etc.
