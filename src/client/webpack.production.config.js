@@ -9,25 +9,25 @@ module.exports = {
   context: path.join(__dirname, "./"),
   entry: {
     en: "./en/main.ts",
-    de: "./de/main.ts"
+    de: "./de/main.ts",
   },
   output: {
     filename: "[name]/main.js",
-    path: __dirname + "/../.."
+    path: __dirname + "/../../docs",
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: "../_temp/en/index.html",
       filename: "./index.html",
-      chunks: ["en"]
+      chunks: ["en"],
     }),
     new HtmlWebpackPlugin({
       template: "../_temp/de/index.html",
       filename: "./de/index.html",
-      chunks: ["de"]
+      chunks: ["de"],
     }),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production")
+      "process.env.NODE_ENV": JSON.stringify("production"),
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -35,19 +35,21 @@ module.exports = {
         {
           context: "../../node_modules/osm-app-component/dist/",
           from: "*/local.js",
-          to: "[path]/[path][name][ext]"
-        }
-      ]
+          to: "[path]/[path][name][ext]",
+        },
+        { from: "./www/LICENSE", to: "[path]/../../[name][ext]" },
+        { from: "./www/docs/README.md", to: "[path]/../../[name][ext]" },
+      ],
     }),
     new MiniCssExtractPlugin({
-      filename: "[name]/main.css"
-    })
+      filename: "[name]/main.css",
+    }),
   ],
   mode: "production",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
   },
 
   module: {
@@ -63,29 +65,29 @@ module.exports = {
               plugins: [
                 ["@babel/transform-runtime"],
                 "@babel/proposal-class-properties",
-                "@babel/proposal-object-rest-spread"
-              ]
-            }
-          }
-        ]
+                "@babel/proposal-object-rest-spread",
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(less|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader" // translates CSS into CommonJS
+            loader: "css-loader", // translates CSS into CommonJS
           },
           {
             loader: "less-loader", // compiles Less to CSS
             options: {
               lessOptions: {
-                plugins: [new CleanCSSPlugin({ advanced: true })]
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+                plugins: [new CleanCSSPlugin({ advanced: true })],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
