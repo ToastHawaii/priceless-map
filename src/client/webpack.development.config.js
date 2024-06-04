@@ -32,7 +32,7 @@ module.exports = {
       patterns: [
         { from: "./www" },
         {
-          context: "../../node_modules/osm-app-component/dist/",
+          context: "../osm-app-component/",
           from: "*/local.js",
           to: "[path]/[path][name][ext]"
         }

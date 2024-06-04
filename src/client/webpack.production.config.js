@@ -32,11 +32,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "./www" },
-        {
-          context: "../../node_modules/osm-app-component/dist/",
-          from: "*/local.js",
-          to: "[path]/[path][name][ext]",
-        },
         { from: "./www/LICENSE", to: "[path]/../../[name][ext]" },
         { from: "./www/docs/README.md", to: "[path]/../../[name][ext]" },
       ],
@@ -87,6 +82,13 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: "url-loader",
+        options: {
+          limit: 10000,
+        },
       },
     ],
   },

@@ -17,7 +17,16 @@
   },
   "homepage": "https://github.com/ToastHawaii/priceless-map#readme",
   "dependencies": {
-    "osm-app-component": "github:ToastHawaii/osm-app-component"
+    "@babel/runtime": "7.17.9",
+    "@types/leaflet": "1.9.8",
+    "@types/md5": "2.2.1",
+    "bignumber.js": "9.0.2",
+    "details-element-polyfill": "2.4.0",
+    "i18next-client": "1.11.4",
+    "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
+    "md5": "2.3.0",
+    "moment": "2.29.4",
+    "opening_hours": "3.7.0"
   },
   "devDependencies": {
     "@babel/core": "7.17.9",
@@ -33,6 +42,7 @@
     "babel-loader": "8.2.5",
     "copy-webpack-plugin": "10.2.4",
     "css-loader": "6.7.1",
+    "url-loader": "4.1.1",
     "del-cli": "4.0.1",
     "html-webpack-plugin": "5.5.0",
     "less": "4.1.2",
