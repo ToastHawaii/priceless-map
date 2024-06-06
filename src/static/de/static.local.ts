@@ -19,25 +19,4 @@ import * as en from "../en/static.local";
 
 export const local: typeof en.local = {
   code: "de",
-  meta: {
-    title: "Unbezahlbar Karte",
-    titleShort: "Unbezahlbar",
-    description: "Erlebe die Welt. Gratis."
-  },
-  search: {
-    placeholder: "Einen Ort suchen"
-  },
-  info: {
-    osmTags: "Dokumentation",
-    query: "Abfrage",
-    overpassTurbo: "overpass-turbo"
-  },
-  menu: {
-    note: "Hinweis für Kartographen hinzufügen",
-    edit: "Karte bearbeiten",
-    share: "Ort teilen",
-    theme: "Theme ändern",
-    about: "Über diese Seite",
-    donate: "Mich unterstützen"
-  }
 };

@@ -19,8 +19,8 @@ import * as fs from "fs";
 import prettier from "prettier";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { local as en } from "./en/static.local";
-import { local as de } from "./de/static.local";
+import { useTranslation } from "react-i18next";
+import "./initI18next";
 
 function Logo() {
   return (
@@ -39,12 +39,10 @@ render({
     {
       code: "en",
       baseUrl: "/",
-      ...en,
     },
     {
       code: "de",
       baseUrl: "/de/",
-      ...de,
     },
   ],
 });
@@ -55,25 +53,11 @@ function render(customize: {
   locals: {
     code: string;
     baseUrl: string;
-    meta: {
-      title: string;
-      titleShort: string;
-      description: string;
-    };
   }[];
 }) {
-  const locals: { [code: string]: typeof en } = {
-    en: en,
-    de: de,
-  };
-
   for (const local of customize.locals) {
     const html = ReactDOMServer.renderToStaticMarkup(
-      <App
-        local={{ meta: { ...local.meta }, ...locals[local.code] }}
-        color={customize.color}
-        baseUrl={local.baseUrl}
-      >
+      <App lang={local.code} color={customize.color} baseUrl={local.baseUrl}>
         {customize.logo}
       </App>
     );
@@ -117,30 +101,31 @@ function writeFileSyncRecursive(filename, content?, charset?) {
 }
 
 function App(attributes: {
-  local: typeof en;
+  lang: string;
   color: string;
   baseUrl: string;
   children: any;
 }) {
-  const local = attributes.local;
+  let { t } = useTranslation();
+  let a = (key: string) => t(key, { lng: attributes.lang });
   return (
-    <html className="help" lang={attributes.local.code}>
+    <html className="help" lang={attributes.lang}>
       <head>
-        <title>{local.meta.title}</title>
+        <title>{a("meta.title")}</title>
         <meta charSet="utf-8" />
-        <link rel="manifest" href={`/manifest.${local.code}.json`} />
+        <link rel="manifest" href={`/manifest.${attributes.lang}.json`} />
         <meta
           name="viewport"
           content="width=device-width, target-densitydpi=device-dpi, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <meta name="description" content={local.meta.description} />
+        <meta name="description" content={a("meta.description")} />
 
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content={local.meta.titleShort} />
+        <meta name="application-name" content={a("meta.titleShort")} />
         <meta
           name="apple-mobile-web-app-title"
-          content={local.meta.titleShort}
+          content={a("meta.titleShort")}
         />
         <meta name="theme-color" content={attributes.color} />
         <meta name="msapplication-navbutton-color" content={attributes.color} />
@@ -191,7 +176,7 @@ function App(attributes: {
         <h1>
           <a href={`${attributes.baseUrl}docs/`}>
             {attributes.children}
-            {local.meta.titleShort}
+            {a("meta.titleShort")}
           </a>
         </h1>
         <div id="filters">
@@ -211,7 +196,7 @@ function App(attributes: {
               <input
                 type="search"
                 id="osm-search"
-                placeholder={local.search.placeholder}
+                placeholder={a("search.placeholder")}
                 required
               />
               <button className="icon" type="submit">
@@ -228,14 +213,14 @@ function App(attributes: {
             <small>
               <details>
                 <summary>
-                  <strong>{local.info.osmTags}</strong>
+                  <strong>{a("info.osmTags")}</strong>
                 </summary>
                 <br />
                 <div className="wiki"></div>
-                <strong>{local.info.query}</strong>
+                <strong>{a("info.query")}</strong>
                 <code className="query"></code>
                 <a className="link" target="_blank">
-                  {local.info.overpassTurbo}
+                  {a("info.overpassTurbo")}
                 </a>
               </details>
             </small>
@@ -248,52 +233,52 @@ function App(attributes: {
           <button
             className="menu note help-text"
             type="button"
-            title={local.menu.note}
+            title={a("menu.note")}
           >
             <i className="fas fa-comment-alt"></i>
           </button>
           <button
             className="menu edit help-text"
             type="button"
-            title={local.menu.edit}
+            title={a("menu.edit")}
           >
             <i className="fas fa-pencil-alt"></i>
           </button>
           <button
             className="menu share help-text"
             type="button"
-            title={local.menu.share}
+            title={a("menu.share")}
           >
             <i className="fas fa-share-alt"></i>
           </button>
           <button
             className="menu theme theme-mode-dark-visible help-text"
             type="button"
-            title={local.menu.theme}
+            title={a("menu.theme")}
           >
             <i className="fas fa-circle"></i>
           </button>
           <button
             className="menu theme theme-mode-light-visible help-text"
             type="button"
-            title={local.menu.theme}
+            title={a("menu.theme")}
           >
             <i className="far fa-circle"></i>
           </button>
           <button
             className="menu theme theme-mode-system-visible help-text"
             type="button"
-            title={local.menu.theme}
+            title={a("menu.theme")}
           >
             <i className="fas fa-adjust"></i>
           </button>
-          <a className="menu about help-text" title={local.menu.about}>
+          <a className="menu about help-text" title={a("menu.about")}>
             <i className="fas fa-info"></i>
           </a>
           <a
             className="menu donate help-text"
             target="_blank"
-            title={local.menu.donate}
+            title={a("menu.donate")}
           >
             <i className="fas fa-mug-hot"></i>
           </a>

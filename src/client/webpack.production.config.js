@@ -26,9 +26,6 @@ module.exports = {
       filename: "./de/index.html",
       chunks: ["de"],
     }),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
-    }),
     new CopyWebpackPlugin({
       patterns: [
         { from: "./www" },
@@ -40,7 +37,7 @@ module.exports = {
       filename: "[name]/main.css",
     }),
   ],
-  mode: "production",
+  mode: "development",
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.

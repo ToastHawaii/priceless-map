@@ -13,7 +13,8 @@
                 "*",
                 "@types/*"
             ]
-        }
+        },
+        "resolveJsonModule": true
     },
     "include": [
         "*.tsx"

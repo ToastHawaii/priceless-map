@@ -17,25 +17,4 @@
 
 export const local = {
   code: "en",
-  meta: {
-    title: "Priceless map",
-    titleShort: "Priceless",
-    description: "Experience the world. Free of charge."
-  },
-  search: {
-    placeholder: "Search a location"
-  },
-  info: {
-    osmTags: "Documentation",
-    query: "Query",
-    overpassTurbo: "overpass-turbo"
-  },
-  menu: {
-    note: "Add note for mappers",
-    edit: "Edit map",
-    share: "Share place",
-    theme: "Change theme",
-    about: "About this site",
-    donate: "Support me"
-  }
 };

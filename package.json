@@ -23,6 +23,8 @@
     "bignumber.js": "9.0.2",
     "details-element-polyfill": "2.4.0",
     "i18next-client": "1.11.4",
+    "i18next": "22.0.4",
+    "react-i18next": "12.1.1",
     "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
     "md5": "2.3.0",
     "moment": "2.29.4",
