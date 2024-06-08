@@ -25,10 +25,10 @@ export const links: Attribute<{
   website?: string;
 }>[] = [
   {
-    check: (tags, _value, model, local) =>
+    check: (tags, _value, model, t) =>
       !!(
         tags.website ||
-        tags[`${local.code || "en"}:wikipedia`] ||
+        tags[`${t("code")}:wikipedia`] ||
         tags.wikipedia ||
         model.website ||
         tags.url ||
@@ -36,21 +36,21 @@ export const links: Attribute<{
         tags["facebook"] ||
         tags["contact:facebook"] ||
         tags["brand:website"] ||
-        tags[`brand:wikipedia:${local.code || "en"}`] ||
+        tags[`brand:wikipedia:${t("code")}`] ||
         tags["brand:wikipedia"] ||
         tags["network:website"] ||
-        tags[`network:wikipedia:${local.code || "en"}`] ||
+        tags[`network:wikipedia:${t("code")}`] ||
         tags["network:wikipedia"] ||
         tags["operator:website"] ||
-        tags[`operator:wikipedia:${local.code || "en"}`] ||
+        tags[`operator:wikipedia:${t("code")}`] ||
         tags["operator:wikipedia"] ||
         tags["opening_hours:url"]
       ),
-    template: (local, tags, _value, model) =>
+    template: (t, tags, _value, model) =>
       template(
         toUrl(tags.website) ||
           toWikipediaUrl(
-            tags[`${local.code || "en"}:wikipedia`] || tags.wikipedia
+            tags[`${t("code")}:wikipedia`] || tags.wikipedia
           ) ||
           toUrl(model.website) ||
           toUrl(tags.url) ||
@@ -58,13 +58,13 @@ export const links: Attribute<{
           toFacebookUrl(tags["facebook"]) ||
           toFacebookUrl(tags["contact:facebook"]) ||
           tags["brand:website"] ||
-          tags[`brand:wikipedia:${local.code || "en"}`] ||
+          tags[`brand:wikipedia:${t("code")}`] ||
           tags["brand:wikipedia"] ||
           tags["network:website"] ||
-          tags[`network:wikipedia:${local.code || "en"}`] ||
+          tags[`network:wikipedia:${t("code")}`] ||
           tags["network:wikipedia"] ||
           tags["operator:website"] ||
-          tags[`operator:wikipedia:${local.code || "en"}`] ||
+          tags[`operator:wikipedia:${t("code")}`] ||
           tags["operator:wikipedia"] ||
           toUrl(tags["opening_hours:url"]) ||
           "",

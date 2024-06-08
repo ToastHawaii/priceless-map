@@ -17,14 +17,13 @@
 
 import * as L from "leaflet";
 import * as opening_hours from "opening_hours";
-import * as moment from "moment";
 import { Solver } from "./coloriz/Solver";
 import { Color, hexToRgb } from "./coloriz/Color";
 import { setQueryParams, getQueryParams, combine } from "./utilities/url";
 import { Attribute } from "./Generator";
 import { getJson } from "./utilities/jsonRequest";
 import { get, set } from "./utilities/storage";
-import { groupBy, delay, getRandomInt, mergeDeep } from "./utilities/data";
+import { groupBy, delay, getRandomInt } from "./utilities/data";
 import { toString } from "./utilities/string";
 import {
   getHtmlElement,
@@ -37,13 +36,14 @@ import BigNumber from "bignumber.js";
 import { funding } from "./funding";
 import "leaflet/dist/leaflet.css";
 import "leaflet-overpass-layer/dist/OverPassLayer.css";
-import "./style.less";
+import "./style.scss";
 import "details-element-polyfill";
 
 // Fix: https://github.com/Leaflet/Leaflet/issues/4968
 import icon from "leaflet/dist/images/marker-icon.png";
 import icon2x from "leaflet/dist/images/marker-icon-2x.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
+import { TFunction } from "i18next";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
@@ -114,16 +114,11 @@ export async function initMap<M>(
     tags: string[];
   }[],
   attributes: Attribute<M>[],
-  local: any,
-  globalFilter?: (tags: any) => boolean,
-  minZoom = 14
+  t: TFunction<"translation", undefined>,
+  globalFilter?: (tags: any, group: any, value: any) => boolean,
+  minZoom = 14,
+  externalResources: any = {}
 ) {
-  const existingLocal = await import(
-    /* webpackChunkName: "[request]" */ `./${local.code || "en"}/local`
-  );
-
-  local = mergeDeep(local, existingLocal.local);
-
   getHtmlElement(".search").addEventListener("submit", (ev) => {
     ev.preventDefault();
     search();
@@ -146,30 +141,33 @@ export async function initMap<M>(
     getHtmlElement(".menu-group").classList.toggle("collapsed");
   });
 
-  getHtmlElement("#filters .right-collapse").addEventListener("click", () => {
-    if (document.getElementById("filters")?.className) {
-      document.getElementById("filters")?.classList.remove("right-collapsed");
-    } else {
-      document.getElementById("filters")?.classList.add("right-collapsed");
-    }
-  });
+  document
+    .querySelector("#filters .right-collapse")
+    ?.addEventListener("click", () => {
+      if (document.getElementById("filters")?.className) {
+        document.getElementById("filters")?.classList.remove("right-collapsed");
+      } else {
+        document.getElementById("filters")?.classList.add("right-collapsed");
+      }
+    });
 
-  getHtmlElement("#filters .filters-clear").addEventListener("click", () => {
-    const inputs = getHtmlElements("#filters input");
+  document
+    .querySelector("#filters .filters-clear")
+    ?.addEventListener("click", () => {
+      const inputs = getHtmlElements("#filters input");
 
-    for (const input of inputs.filter((i) => i.checked)) {
-      input.checked = false;
-      input.dispatchEvent(new Event("change"));
-    }
-  });
+      for (const input of inputs.filter((i: any) => i.checked)) {
+        (input as any).checked = false;
+        input.dispatchEvent(new Event("change"));
+      }
+    });
 
   (getHtmlElement(".about") as HTMLLinkElement).href = combine(
     baseUrl,
-    `${local.code ? `${local.code}/` : ""}docs`
+    `/docs`
   );
 
-  (getHtmlElement(".donate") as HTMLLinkElement).href =
-    funding[local.code] || funding.en;
+  (getHtmlElement(".donate") as HTMLLinkElement).href = funding.en;
 
   const shareButton = getHtmlElement(".share");
   shareButton.addEventListener("click", (e) => {
@@ -189,9 +187,9 @@ export async function initMap<M>(
         info ? `&info=${info}` : ``
       }`,
       shareButton,
-      local,
-      local.title,
-      local.description
+      t("linkCopied"),
+      t("title"),
+      t("description")
     );
   });
 
@@ -280,8 +278,6 @@ export async function initMap<M>(
       }/${latlng.lng}${presets ? `&presets=${presets}` : ``}`;
   });
 
-  moment.locale(local.code || "en");
-
   const attribution = [
     'Map data &copy; <a href="https://openstreetmap.org/">OpenStreetMap</a>',
     'POI via <a href="https://www.overpass-api.de/">Overpass</a>',
@@ -312,7 +308,7 @@ export async function initMap<M>(
   let currentAccuracy: L.Layer | L.Circle<any>;
 
   map.on("moveend zoomend", () => {
-    updateCount(local, minZoom);
+    updateCount(t("emptyIndicator"), minZoom);
     const center = map.getCenter();
     const state = { lat: center.lat, lng: center.lng, zoom: map.getZoom() };
     set<State>("position", state);
@@ -458,7 +454,7 @@ export async function initMap<M>(
                 f.icon,
                 f.query,
                 attributes,
-                local,
+                t,
                 f.color,
                 minZoom,
                 single,
@@ -482,7 +478,7 @@ export async function initMap<M>(
           f.icon,
           f.query,
           attributes,
-          local,
+          t,
           f.color,
           minZoom,
           single,
@@ -501,13 +497,14 @@ export async function initMap<M>(
   }
 
   function showInfoContainer(f: { value: string; query: string; tags: any[] }) {
-    document.title = `${local.type[f.value].name} - ${local.title}`;
+    document.title = `${t("type." + f.value + ".name")} - ${t("title")}`;
 
     const infoContainer = getHtmlElement(".info-container");
 
     infoContainer.style.display = "block";
-    getHtmlElement(".info h4", infoContainer).innerText =
-      local.type[f.value].name;
+    getHtmlElement(".info h4", infoContainer).innerText = t(
+      "type." + f.value + ".name"
+    );
     (
       getHtmlElement(".info .link", infoContainer) as HTMLAnchorElement
     ).href = `http://overpass-turbo.eu/?Q=${encodeURI(
@@ -525,7 +522,7 @@ out center;`
 
     wikiElement.innerHTML = `<div class="taglist"
 data-taginfo-taglist-tags="${f.tags.join()}"
-data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
+data-taginfo-taglist-options='{"with_count": true, "lang": "${t("code")}"}'>
 </div>`;
     let first = true;
 
@@ -539,14 +536,15 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     getHtmlElement(".info .text", infoContainer).innerText = "";
     document
       .querySelector('meta[name="description"]')
-      ?.setAttribute("content", local.description);
+      ?.setAttribute("content", t("description"));
 
-    if (local.type[f.value].description) {
-      getHtmlElement(".info .text", infoContainer).innerText =
-        local.type[f.value].description;
+    if (t("type." + f.value + ".description")) {
+      getHtmlElement(".info .text", infoContainer).innerText = t(
+        "type." + f.value + ".description"
+      );
       document
         .querySelector('meta[name="description"]')
-        ?.setAttribute("content", local.type[f.value].description);
+        ?.setAttribute("content", t("type." + f.value + ".description"));
     } else {
       if (f.tags) {
         const tags = [];
@@ -561,7 +559,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
         getJson("https://wiki.openstreetmap.org/w/api.php", {
           format: "json",
           action: "wbgetentities",
-          languages: local.code || "en",
+          languages: t("code"),
           languagefallback: "0",
           props: "descriptions",
           origin: "*",
@@ -597,11 +595,11 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     getHtmlElement(".info .external", infoContainer).innerText = "";
 
     if (
-      local.type[f.value].externalResources &&
-      local.type[f.value].externalResources.length > 0
+      externalResources.type[f.value] &&
+      externalResources.type[f.value].length > 0
     ) {
       const links = [];
-      for (const external of local.type[f.value].externalResources) {
+      for (const external of externalResources.type[f.value]) {
         links.push(
           `<a class="external-link${
             external.bounds ? " part-area-visible" : ""
@@ -616,9 +614,9 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
       getHtmlElement(
         ".info .external",
         infoContainer
-      ).innerHTML = `<br/><span class="external-label">${
-        local.externalResources
-      }: </span>${links.join(`<span class="external-separator">, </span>`)}`;
+      ).innerHTML = `<br/><span class="external-label">${externalResources}: </span>${links.join(
+        `<span class="external-separator">, </span>`
+      )}`;
     }
 
     for (const a of getHtmlElements(".external-link")) {
@@ -711,10 +709,12 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     const groups = groupBy(
       filterOptions
         .sort((a, b) =>
-          local.type[a.value].name.localeCompare(local.type[b.value].name)
+          t("type." + a.value + ".name").localeCompare(
+            t("type." + b.value + ".name")
+          )
         )
         .sort((a, b) =>
-          local.group[a.group].localeCompare(local.group[b.group])
+          t("group." + a.group).localeCompare(t("group." + b.group))
         )
         .sort((a, b) => (a.subgroup || "").localeCompare(b.subgroup || ""))
         .sort((a, b) => (b.order || 1000) - (a.order || 1000)),
@@ -728,7 +728,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
       const countElement = createElement("span", count ? `(${count})` : "", [
         "count",
       ]);
-      const labelElement = createElement("span", local.group[k]);
+      const labelElement = createElement("span", t("group." + k));
       const summaryElement = createElement("summary");
       summaryElement.appendChild(labelElement);
       summaryElement.insertBefore(countElement, labelElement);
@@ -747,7 +747,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
               <img class="${f.value}-icon"
                 src="${f.icon}"
               />
-              <span>${local.type[f.value].name}</span>
+              <span>${t("type." + f.value + ".name")}</span>
             </div>`,
             ["filter", "filter-" + k + "-" + f.value]
           );
@@ -756,7 +756,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
             "a",
             `<i class="fas fa-info-circle"></i>`
           );
-          aElement.title = local.type[f.value].name;
+          aElement.title = t("type." + f.value + ".name");
           aElement.href = `?offers=${k + "/" + f.value}&info=${
             k + "/" + f.value
           }`;
@@ -785,10 +785,10 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
             () => {
               getHtmlElement(".info-container").style.display = "none";
 
-              document.title = local.title;
+              document.title = t("title");
               document
                 .querySelector('meta[name="description"]')
-                ?.setAttribute("content", local.description);
+                ?.setAttribute("content", t("description"));
 
               const params = getQueryParams();
               params["info"] = "";
@@ -807,9 +807,9 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
             "label",
             `<input value="${k + "/" + f.value}" type="checkbox" />
                 <div class="filter-sub-background"></div>
-                <i class="${f.button}" style="color: ${f.color}" title="${
-              local.type[f.value].name
-            }"></i>`,
+                <i class="${f.button}" style="color: ${f.color}" title="${t(
+              "type." + f.value + ".name"
+            )}"></i>`,
             ["filter", "filter-sub", "filter-" + k + "-" + f.value]
           );
 
@@ -827,7 +827,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
                 f.icon,
                 f.query,
                 attributes,
-                local,
+                t,
                 f.color,
                 minZoom,
                 filterOptions.length <= 1,
@@ -848,13 +848,17 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
               params["offers"] = offers.toString();
             setQueryParams(params);
 
-            updateCount(local, minZoom);
+            updateCount(t("emptyIndicator"), minZoom);
 
-            if (offers.length >= 1) {
-              getHtmlElement("#filters .filters-clear").style.display = "";
-            } else {
-              getHtmlElement("#filters .filters-clear").style.display = "none";
-            }
+            const filter = document.querySelector<HTMLElement>(
+              "#filters .filters-clear"
+            );
+            if (filter)
+              if (offers.length >= 1) {
+                filter.style.display = "";
+              } else {
+                filter.style.display = "none";
+              }
           }
         );
       }
@@ -862,11 +866,13 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${local.code}"}'>
     }
   }
 
-  if (offers.length >= 1) {
-    getHtmlElement("#filters .filters-clear").style.display = "";
-  } else {
-    getHtmlElement("#filters .filters-clear").style.display = "none";
-  }
+  const filter = document.querySelector<HTMLElement>("#filters .filters-clear");
+  if (filter)
+    if (offers.length >= 1) {
+      filter.style.display = "";
+    } else {
+      filter.style.display = "none";
+    }
 }
 
 function init<M>(
@@ -875,19 +881,19 @@ function init<M>(
   icon: string,
   query: string,
   attributes: Attribute<M>[],
-  local: any,
+  t: TFunction<"translation", undefined>,
   color: string,
   minZoom: number,
   single: boolean,
-  globalFilter?: (tags: any) => boolean
+  globalFilter?: (tags: any, group: any, value: any) => boolean
 ) {
   layers[group + "/" + value] = createOverPassLayer(
     group,
     value,
     icon,
     query,
-    attributes,
-    local,
+    attributes as any,
+    t,
     color,
     minZoom,
     single,
@@ -934,7 +940,7 @@ export function parseOpeningHours(
 
 let emptyIndicatorElement: HTMLDivElement | undefined;
 
-export function updateCount(local: any, minZoom: number) {
+export function updateCount(emptyIndicator: string, minZoom: number) {
   const visible =
     countMarkersInView(map) === 0 &&
     offers.length > 0 &&
@@ -942,7 +948,7 @@ export function updateCount(local: any, minZoom: number) {
   if (visible && !emptyIndicatorElement) {
     emptyIndicatorElement = createElement(
       "div",
-      `<div class="leaflet-control-emptyIndicator leaflet-control">${local.emptyIndicator}</div>`,
+      `<div class="leaflet-control-emptyIndicator leaflet-control">${emptyIndicator}</div>`,
       ["leaflet-bottom", "leaflet-left"]
     );
 

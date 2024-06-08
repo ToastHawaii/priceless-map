@@ -15,26 +15,28 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with osm-app-component.  If not, see <http://www.gnu.org/licenses/>.
 
+import { TFunction } from "i18next";
+
 export type Local = { [t: string]: string };
 export type Tags = { [t: string]: string | undefined };
 export type Attribute<M> = {
-  check: (tags: Tags, value: string, model: M, local: Local) => boolean;
-  template: (local: Local, tags: Tags, value: string, model: M) => string;
+  check: (tags: Tags, value: string, model: M, t:  TFunction<"translation", undefined>) => boolean;
+  template: (t:  TFunction<"translation", undefined>, tags: Tags, value: string, model: M) => string;
 };
 
 export class Generator<M extends {}> {
   public constructor(private attributes: Attribute<M>[]) {}
 
-  public empty(tags: Tags, value: string, model: M, local: Local) {
+  public empty(tags: Tags, value: string, model: M, t:  TFunction<"translation", undefined>) {
     return (
       this.attributes.filter((attribute) =>
-        attribute.check(tags, value, model, local)
+        attribute.check(tags, value, model, t)
       ).length <= 0
     );
   }
 
   public render(
-    local: Local,
+    t:  TFunction<"translation", undefined>,
     tags: Tags,
     value: string,
     model: M,
@@ -42,8 +44,8 @@ export class Generator<M extends {}> {
   ) {
     return this.attributes
       .map((attribute) =>
-        attribute.check(tags, value, model, local)
-          ? attribute.template(local, tags, value, model)
+        attribute.check(tags, value, model, t)
+          ? attribute.template(t, tags, value, model)
           : ""
       )
       .filter((el) => el)

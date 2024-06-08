@@ -1,0 +1,8 @@
+defaults:
+  - scope:
+      path: "docs/README.md"
+    values:
+      lang: "en"
+      title: "Priceless"
+      description: "Experience the world. Free of charge."
+      base: "/"

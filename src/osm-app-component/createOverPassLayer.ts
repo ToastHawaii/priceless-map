@@ -35,14 +35,15 @@ import {
 import { textTruncate } from "./utilities/string";
 import "leaflet-overpass-layer";
 import { delay } from "./utilities/data";
+import { TFunction } from "i18next";
 
-export function createOverPassLayer<M>(
+export function createOverPassLayer<M extends {}>(
   group: string,
   value: string,
   icon: string,
   query: string,
   attributes: Attribute<M>[],
-  local: any,
+  t: TFunction<"translation", undefined>,
   color: string,
   minZoom: number,
   single: boolean,
@@ -62,8 +63,8 @@ export function createOverPassLayer<M>(
     minZoomIndicatorEnabled: true,
     minZoomIndicatorOptions: {
       position: "bottomleft",
-      minZoomMessageNoLayer: local.minZoomMessageNoLayer,
-      minZoomMessage: local.minZoomMessage,
+      minZoomMessageNoLayer: t("minZoomMessageNoLayer"),
+      minZoomMessage: t("minZoomMessage"),
     },
     minZoom: minZoom,
     query: `(${overpassSubs(query)});out center;`,
@@ -102,8 +103,8 @@ export function createOverPassLayer<M>(
           });
         }
         const model = {
-          name: extractName(tags, local.code || "en") || tags["piste:name"],
-          type: extractType(local, tags, value),
+          name: extractName(tags, t("code")) || tags["piste:name"],
+          type: extractType(t, tags, value),
           operator: extractOperator(tags),
           address: {
             name: "",
@@ -116,13 +117,12 @@ export function createOverPassLayer<M>(
             longitude: pos.lng,
           },
           opening:
-            parseOpeningHours(tags.service_times, local.code || "en") ||
-            parseOpeningHours(tags.opening_hours, local.code || "en"),
+            parseOpeningHours(tags.service_times, t("code")) ||
+            parseOpeningHours(tags.opening_hours, t("code")),
           seasonal: tags.seasonal,
           conditionalFee:
             tags.fee &&
-            (parseOpeningHours(tags.fee, local.code || "en") ||
-              tags["fee:conditional"]),
+            (parseOpeningHours(tags.fee, t("code")) || tags["fee:conditional"]),
           img: "",
           description: "",
           wikimediaDescription: "",
@@ -130,7 +130,7 @@ export function createOverPassLayer<M>(
         };
         model.img = model.img || extractImage(tags) || "";
         model.description =
-          tags[`description:${local.code || "en"}`] || tags.description || "";
+          tags[`description:${t("code")}`] || tags.description || "";
         const attributesGenerator = new Generator<M>(attributes);
         const linksGenerator = new Generator(links);
         let isLoaded = false;
@@ -149,30 +149,30 @@ export function createOverPassLayer<M>(
         <div class="adr">
          <div class="street-address">${model.address.street} ${
             model.address.houseNumber
-          } ${toLevel(parseFloat(model.address.level), local)}</div>
+          } ${toLevel(parseFloat(model.address.level), t)}</div>
             <span class="postal-code">${model.address.postcode}</span>
          <span class="region">${model.address.locality}</span>
         </div>
         <div class="attributes">
         ${
-          !attributesGenerator.empty(tags, value, {} as M, local)
+          !attributesGenerator.empty(tags, value, {} as M, t)
             ? `
         <br />
-          ${attributesGenerator.render(local, tags, value, {} as M)}`
+          ${attributesGenerator.render(t, tags, value, {} as M)}`
             : ``
         }
         </div>
         ${
           model.opening
-            ? `<br><div>${toOpenOrClose(model.opening, local)}</div>`
+            ? `<br><div>${toOpenOrClose(model.opening, t)}</div>`
             : ``
         }
         ${
           model.seasonal
-            ? `<br><div>${toSeasonal(model.seasonal, local)}</div>`
+            ? `<br><div>${toSeasonal(model.seasonal, t)}</div>`
             : ``
         }
-        ${model.conditionalFee ? `<br><div>${local.conditionalFee}</div>` : ``}
+        ${model.conditionalFee ? `<br><div>${t("conditionalFee")}</div>` : ``}
         <div class="img-container" style="clear: both;">
         ${
           model.img || model.wikipedia.image
@@ -189,10 +189,10 @@ export function createOverPassLayer<M>(
         </div>
         <div class="contact">
         ${
-          !linksGenerator.empty(tags, value, {}, local)
+          !linksGenerator.empty(tags, value, {}, t)
             ? `
           <br />
-            ${linksGenerator.render(local, tags, value, {})}`
+            ${linksGenerator.render(t, tags, value, {})}`
             : ``
         }
         </div>
@@ -203,23 +203,23 @@ export function createOverPassLayer<M>(
            ll: `${model.address.latitude},${model.address.longitude}`,
            q: toTitle(model),
          })}"><i class="far fa-compass"></i>
-           ${local.route}
+           ${t("route")}
          </a>
-         <a href="" class="share button"><i class="fas fa-share-alt"></i> ${
-           local.share
-         }</a>
-         <a href="${href}" class="edit button"><i class="fas fa-pencil-alt"></i> ${
-            local.edit
-          }</a>
+         <a href="" class="share button"><i class="fas fa-share-alt"></i> ${t(
+           "share"
+         )}</a>
+         <a href="${href}" class="edit button"><i class="fas fa-pencil-alt"></i> ${t(
+            "edit"
+          )}</a>
          </small>
         </div>
         <details class="more">
-        <summary>${local.documentation}</summary>
+        <summary>${t("documentation")}</summary>
         <span class="more-title"><a href="https://www.openstreetmap.org/${
           e.type
         }/${e.id}" target="_blank">${e.type} ${e.id}</a></span>
         <table class="osm-data">
-        ${renderTags(tags, local)}
+        ${renderTags(tags, t("code"))}
         </table>
         </details>
         </div>`
@@ -236,7 +236,7 @@ export function createOverPassLayer<M>(
               info ? `&info=${info}` : ``
             }`,
             share,
-            local,
+            t("linkCopied"),
             toTitle(model),
             model.description ||
               model.wikipedia.summary ||
@@ -263,10 +263,7 @@ export function createOverPassLayer<M>(
                 lat: pos.lat,
                 lon: pos.lng,
               }).then((result) => {
-                model.address.name = extractName(
-                  result.namedetails,
-                  local.code || "en"
-                );
+                model.address.name = extractName(result.namedetails, t("code"));
                 model.address.postcode =
                   model.address.postcode || result.address.postcode || "";
                 model.address.locality =
@@ -274,7 +271,7 @@ export function createOverPassLayer<M>(
                   extractLocality(result.address) ||
                   "";
                 if (!model.address.street) {
-                  model.address.street = extractStreet(result, local) || "";
+                  model.address.street = extractStreet(result, t("code")) || "";
                   model.address.houseNumber =
                     model.address.houseNumber ||
                     result.address.house_number ||
@@ -288,7 +285,7 @@ export function createOverPassLayer<M>(
                   contentElement
                 ).innerHTML = `${model.address.street} ${
                   model.address.houseNumber
-                } ${toLevel(parseFloat(model.address.level), local)}`;
+                } ${toLevel(parseFloat(model.address.level), t)}`;
                 getHtmlElement(".postal-code", contentElement).innerHTML =
                   model.address.postcode;
                 getHtmlElement(".region", contentElement).innerHTML =
@@ -307,8 +304,8 @@ export function createOverPassLayer<M>(
                   formatversion: "2",
                   ids: qid,
                   props: "labels|descriptions|claims|sitelinks",
-                  sitefilter: (local.code || "en") + "wiki",
-                  languages: local.code || "en",
+                  sitefilter: t("code") + "wiki",
+                  languages: t("code"),
                   languagefallback: "0",
                   origin: "*",
                 }).then(async (r) => {
@@ -365,17 +362,17 @@ export function createOverPassLayer<M>(
                   }
                   if (entity.sitelinks) {
                     // check each, in order of preference
-                    const w = (local.code || "en") + "wiki";
+                    const w = t("code") + "wiki";
                     if (entity.sitelinks[w]) {
                       const title = entity.sitelinks[w].title || "";
-                      const url = `https://${
-                        local.code || "en"
-                      }.wikipedia.org/wiki/${title.replace(/ /g, "_")}`;
+                      const url = `https://${t(
+                        "code"
+                      )}.wikipedia.org/wiki/${title.replace(/ /g, "_")}`;
                       result.wiki = {
                         title: title,
                         url: url,
                       };
-                      loadWikipediaSummary(title, local.code || "en").then(
+                      loadWikipediaSummary(title, t("code")).then(
                         (wikipedia) => {
                           model.wikipedia = wikipedia;
 
@@ -418,11 +415,11 @@ export function createOverPassLayer<M>(
                           ? result.wiki.url
                           : undefined,
                       },
-                      local
+                      t
                     )
                       ? `
     <br />
-    ${linksGenerator.render(local, tags, value, {
+    ${linksGenerator.render(t, tags, value, {
       website: model.wikipedia.url
         ? model.wikipedia.url
         : result.wiki
@@ -446,16 +443,16 @@ export function createOverPassLayer<M>(
                 });
 
               const wikipediaUrl =
-                tags[`wikipedia:${local.code || "en"}`] ||
+                tags[`wikipedia:${t("code")}`] ||
                 tags.wikipedia ||
-                tags[`brand:wikipedia:${local.code || "en"}`] ||
+                tags[`brand:wikipedia:${t("code")}`] ||
                 tags["brand:wikipedia"] ||
-                tags[`network:wikipedia:${local.code || "en"}`] ||
+                tags[`network:wikipedia:${t("code")}`] ||
                 tags["network:wikipedia"] ||
-                tags[`operator:wikipedia:${local.code || "en"}`] ||
+                tags[`operator:wikipedia:${t("code")}`] ||
                 tags["operator:wikipedia"];
               if (wikipediaUrl)
-                loadWikipediaSummary(wikipediaUrl, local.code || "en").then(
+                loadWikipediaSummary(wikipediaUrl, t("code")).then(
                   (wikipedia) => {
                     model.wikipedia = wikipedia;
 
@@ -485,7 +482,7 @@ export function createOverPassLayer<M>(
         marker.bindPopup(popup);
         this._markers?.addLayer(marker);
       }
-      updateCount(local, minZoom);
+      updateCount(t("emptyIndicator"), minZoom);
     },
   });
 }
@@ -523,7 +520,7 @@ function generateHtmlWikipediaDescription(wikipedia: {
 export async function shareLink(
   url: string,
   target: HTMLElement,
-  local: { linkCopied: string },
+  linkCopied: string,
   title: string,
   description: string
 ) {
@@ -548,9 +545,7 @@ export async function shareLink(
     copyTextToClipboard(url);
 
     if (target) {
-      const titleElement = createElement("span", " " + local.linkCopied, [
-        "title",
-      ]);
+      const titleElement = createElement("span", linkCopied, ["title"]);
 
       target.append(titleElement);
 
@@ -653,16 +648,14 @@ function copyTextToClipboard(text: string) {
   document.body.removeChild(textArea);
 }
 
-function renderTags(tags: any, local: any) {
+function renderTags(tags: any, code: string) {
   const pairs: string[] = [];
   for (const key in tags) {
     if (Object.prototype.hasOwnProperty.call(tags, key)) {
       const element = tags[key];
 
       pairs.push(
-        `<tr><td title="${key}"><a href="https://wiki.openstreetmap.org/wiki/Key:${key}?uselang=${
-          local.code || "en"
-        }" target="_blank">${key}</a></td><td title="${element}">= ${element}</td></tr>`
+        `<tr><td title="${key}"><a href="https://wiki.openstreetmap.org/wiki/Key:${key}?uselang=${code}" target="_blank">${key}</a></td><td title="${element}">= ${element}</td></tr>`
       );
     }
   }

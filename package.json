@@ -2,10 +2,6 @@
   "name": "priceless-map",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "build:development": "ts-node-dev --project src/static/tsconfig.json src/static/render.tsx && webpack --config src/client/webpack.development.config.js serve",
-    "build:production": "npx ts-node --project src/static/tsconfig.json src/static/render.tsx && webpack --config src/client/webpack.production.config.js && del-cli --force src/_temp"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ToastHawaii/priceless-map"
@@ -15,54 +11,47 @@
   "bugs": {
     "url": "https://github.com/ToastHawaii/priceless-map/issues"
   },
-  "homepage": "https://github.com/ToastHawaii/priceless-map#readme",
   "dependencies": {
-    "@babel/runtime": "7.17.9",
     "@types/leaflet": "1.9.8",
     "@types/md5": "2.2.1",
+    "@types/node": "16.18.95",
+    "@types/react": "18.2.74",
+    "@types/react-dom": "18.2.24",
     "bignumber.js": "9.0.2",
     "details-element-polyfill": "2.4.0",
-    "i18next-client": "1.11.4",
     "i18next": "22.0.4",
-    "react-i18next": "12.1.1",
+    "i18next-client": "1.11.4",
     "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
     "md5": "2.3.0",
     "moment": "2.29.4",
-    "opening_hours": "3.7.0"
+    "opening_hours": "3.7.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-i18next": "12.1.1",
+    "react-scripts": "5.0.1",
+    "sass": "1.77.4",
+    "typescript": "4.9.5"
   },
-  "devDependencies": {
-    "@babel/core": "7.17.9",
-    "@babel/plugin-proposal-class-properties": "7.16.7",
-    "@babel/plugin-proposal-object-rest-spread": "7.17.3",
-    "@babel/plugin-transform-runtime": "7.17.0",
-    "@babel/preset-env": "7.16.11",
-    "@babel/preset-typescript": "7.16.7",
-    "@types/node": "17.0.25",
-    "@types/prettier": "2.6.0",
-    "@types/react": "18.0.6",
-    "@types/react-dom": "18.0.2",
-    "babel-loader": "8.2.5",
-    "copy-webpack-plugin": "10.2.4",
-    "css-loader": "6.7.1",
-    "url-loader": "4.1.1",
-    "del-cli": "4.0.1",
-    "html-webpack-plugin": "5.5.0",
-    "less": "4.1.2",
-    "less-loader": "10.2.0",
-    "less-plugin-clean-css": "1.5.1",
-    "mini-css-extract-plugin": "2.6.0",
-    "prettier": "2.6.2",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "source-map-loader": "3.0.1",
-    "ts-node": "10.7.0",
-    "ts-node-dev": "1.1.8",
-    "typescript": "4.6.3",
-    "webpack": "5.72.0",
-    "webpack-cli": "4.9.2",
-    "webpack-dev-server": "4.8.1"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
-  "resolutions": {
-    "terser": "3.14.1"
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

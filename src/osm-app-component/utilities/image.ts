@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with osm-app-component.  If not, see <http://www.gnu.org/licenses/>.
 
-import * as md5 from "md5";
+import md5 from "md5";
 import { httpRegex } from "./url";
 import { startsWithIgnoreCase } from "./string";
 

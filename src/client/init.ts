@@ -17,15 +17,16 @@
 
 import { initMap, parseOpeningHours } from "../osm-app-component";
 import { filters } from "./filters";
-import "../osm-app-component/style.less";
+import "../osm-app-component/style.scss";
 import { attributes } from "./attributes";
+import { TFunction } from "i18next";
 
-export function init(local: any) {
+export function init(t: TFunction<"translation", undefined>) {
   initMap(
     "https://priceless.zottelig.ch/",
     filters,
     attributes,
-    local,
+    t,
     (tags, _group, value) => {
       if (
         tags.fee &&
@@ -34,7 +35,7 @@ export function init(local: any) {
         !equalsIgnoreCase(tags.fee, "interval") &&
         !equalsIgnoreCase(tags.fee, "free") &&
         !equalsIgnoreCase(tags.fee, "none") &&
-        !parseOpeningHours(tags.fee, local.code || "en") &&
+        !parseOpeningHours(tags.fee, t("code")) &&
         !tags["fee:conditional"]
       )
         return true;
@@ -63,9 +64,3 @@ export function equalsIgnoreCase(
 ) {
   return (s1 || "").toUpperCase() === (s2 || "").toUpperCase();
 }
-
-window.addEventListener("load", () => {
-  document.querySelectorAll("link[media='print']").forEach((e) => {
-    e.setAttribute("media", "all");
-  });
-});

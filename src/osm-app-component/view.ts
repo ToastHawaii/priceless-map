@@ -15,8 +15,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with osm-app-component.  If not, see <http://www.gnu.org/licenses/>.
 
-import * as moment from "moment";
-import { getOrDefault } from "./data";
+import moment from "moment";
+import { TFunction } from "i18next";
 
 export function toTitle(model: {
   name: string;
@@ -36,21 +36,14 @@ export function toTitle(model: {
   return name + (model.operator ? ` (${model.operator})` : ``);
 }
 
-export function toLevel(
-  model: number,
-  local: {
-    groundFloor: (level: number) => string;
-    basement: (level: number) => string;
-    floor: (level: number) => string;
-  }
-) {
+export function toLevel(model: number, t: TFunction<"translation", undefined>) {
   if (!isNumeric(model)) return ``;
 
-  if (model === 0) return local.groundFloor(model);
+  if (model === 0) return t("groundFloor", { level: model });
 
-  if (model < 0) return local.basement(model);
+  if (model < 0) return t("basement", { level: Math.abs(model) });
 
-  if (model > 0) return local.floor(model);
+  if (model > 0) return t("floor", { level: model });
 
   return ``;
 }
@@ -62,30 +55,21 @@ export function toOpenOrClose(
     getState: (date?: Date) => string;
     getNextChange: () => Date;
   },
-  local: {
-    maybeOpen: string;
-    thatDependsOn: string;
-    open: string;
-    closed: string;
-    maybeCloses: string;
-    maybeOpens: string;
-    closes: string;
-    opens: string;
-  }
+  t: TFunction<"translation", undefined>
 ) {
   let output = "";
   try {
     if (model.getUnknown()) {
-      output = `<span class="open">${local.maybeOpen}</span>${
+      output = `<span class="open">${t("maybeOpen")}</span>${
         model.getComment()
-          ? ` ${local.thatDependsOn}: "${model.getComment()}"`
+          ? ` ${t("thatDependsOn")}: "${model.getComment()}"`
           : ""
       }`;
     } else {
       output =
         (model.getState()
-          ? `<span class="open">${local.open}</span>`
-          : `<span class="closed">${local.closed}</span>`) +
+          ? `<span class="open">${t("open")}</span>`
+          : `<span class="closed">${t("closed")}</span>`) +
         (model.getComment() ? ` "${model.getComment()}"` : ``);
     }
     if (
@@ -96,8 +80,8 @@ export function toOpenOrClose(
       output += ` - `;
 
       if (model.getUnknown(model.getNextChange()))
-        output += model.getState() ? local.maybeCloses : local.maybeOpens;
-      else output += model.getState() ? local.closes : local.opens;
+        output += model.getState() ? t("maybeCloses") : t("maybeOpens");
+      else output += model.getState() ? t("closes") : t("opens");
 
       output += ` ${moment(model.getNextChange()).calendar()} ${
         model.getComment(model.getNextChange())
@@ -114,11 +98,11 @@ export function toOpenOrClose(
 
 export function toSeasonal(
   value: string,
-  local: { seasonal: { [name: string]: string } }
+  t: TFunction<"translation", undefined>
 ) {
   return value
     .split(";")
-    .map(v => getOrDefault(local, "seasonal")[v])
+    .map((v) => t("seasonal." + v, { defaultValue: "" }))
     .join(", ");
 }
 

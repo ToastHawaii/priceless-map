@@ -46,10 +46,10 @@ export function mergeDeep<T, S>(target: T, source: S) {
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!(target as any)[key]) Object.assign(target, { [key]: {} });
+        if (!(target as any)[key]) Object.assign(target as any, { [key]: {} });
         mergeDeep((target as any)[key], source[key]);
       } else {
-        Object.assign(target, { [key]: source[key] });
+        Object.assign(target as any, { [key]: source[key] });
       }
     }
   }

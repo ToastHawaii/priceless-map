@@ -15,6 +15,7 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with osm-app-component.  If not, see <http://www.gnu.org/licenses/>.
 
+import { TFunction } from "i18next";
 import { toWikimediaCommonsUrl, toMapillaryUrl } from "./utilities/image";
 import { toUrl } from "./utilities/url";
 
@@ -43,30 +44,39 @@ export function extractName(tags: any, langCode: string) {
   );
 }
 
-export function extractType(local: any, tags: any, value: string) {
+export function extractType(
+  t: TFunction<"translation", undefined>,
+  tags: any,
+  value: string
+) {
+  debugger;
   return (
-    getOrDefault(local, "public_bookcase:type")[tags["public_bookcase:type"]] ||
-    getOrDefault(local, "garden:type")[tags["garden:type"]] ||
-    getOrDefault(local, "garden:style")[tags["garden:style"]] ||
-    getOrDefault(local, "castle_type")[tags["castle_type"]] ||
-    getOrDefault(local, "historic")[tags["historic"]] ||
-    getOrDefault(local, "fitness_station")[tags["fitness_station"]] ||
-    getOrDefault(local, "site_type")[tags["site_type"]] ||
-    tags["species:" + (local.code || "en")] ||
+    t("public_bookcase:type" + "." + tags["public_bookcase:type"], {
+      defaultValue: "",
+    }) ||
+    t("garden:type" + "." + tags["garden:type"], { defaultValue: "" }) ||
+    t("garden:style" + "." + tags["garden:style"], { defaultValue: "" }) ||
+    t("castle_type" + "." + tags["castle_type"], { defaultValue: "" }) ||
+    t("historic" + "." + tags["historic"], { defaultValue: "" }) ||
+    t("fitness_station" + "." + tags["fitness_station"], {
+      defaultValue: "",
+    }) ||
+    t("site_type" + "." + tags["site_type"], { defaultValue: "" }) ||
+    tags["species:" + t("code")] ||
     tags.species ||
-    tags["genus:" + (local.code || "en")] ||
+    tags["genus:" + t("code")] ||
     tags.genus ||
     tags.protection_title ||
-    getOrDefault(local, "boules")[tags.boules] ||
-    getOrDefault(local, "sport")[tags.sport] ||
-    getOrDefault(local, "amenity")[tags.amenity] ||
-    getOrDefault(local, "leisure")[tags.leisure] ||
-    getOrDefault(local, "man_made")[tags.man_made] ||
-    getOrDefault(local, "landuse")[tags.landuse] ||
-    getOrDefault(local, "natural")[tags.natural] ||
-    getOrDefault(local, "shop")[tags.shop] ||
-    getOrDefault(local, "type", value).name ||
-    local.default
+    t("boules" + "." + tags.boules, { defaultValue: "" }) ||
+    t("sport" + "." + tags.sport, { defaultValue: "" }) ||
+    t("amenity" + "." + tags.amenity, { defaultValue: "" }) ||
+    t("leisure" + "." + tags.leisure, { defaultValue: "" }) ||
+    t("man_made" + "." + tags.man_made, { defaultValue: "" }) ||
+    t("landuse" + "." + tags.landuse, { defaultValue: "" }) ||
+    t("natural" + "." + tags.natural, { defaultValue: "" }) ||
+    t("shop" + "." + tags.shop, { defaultValue: "" }) ||
+    t("type." + value + ".name", { defaultValue: "" }) ||
+    t("def", { defaultValue: "" })
   );
 }
 
@@ -103,7 +113,7 @@ export function extractLocality(address: any): any {
   );
 }
 
-export function extractStreet(result: any, local: { code: string }): any {
+export function extractStreet(result: any, code: string): any {
   return (
     result.address.path ||
     result.address.footway ||
@@ -112,19 +122,7 @@ export function extractStreet(result: any, local: { code: string }): any {
     result.address.pedestrian ||
     result.address.farmyard ||
     result.address.construction ||
-    extractName(result.namedetails, local.code || "en") ||
+    extractName(result.namedetails, code) ||
     result.address.neighbourhood
   );
-}
-
-export function getOrDefault(
-  arr: any,
-  ...names: string[]
-): { [name: string]: string } {
-  if (names.length > 1)
-    return getOrDefault(
-      arr[names[0]] || {},
-      ...names.slice(1, names.length)
-    ) as { [name: string]: string };
-  else return (arr[names[0]] || {}) as unknown as { [name: string]: string };
 }
