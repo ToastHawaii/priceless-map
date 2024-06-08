@@ -595,11 +595,11 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${t("code")}"}'>
     getHtmlElement(".info .external", infoContainer).innerText = "";
 
     if (
-      externalResources.type[f.value] &&
-      externalResources.type[f.value].length > 0
+      externalResources[f.value] &&
+      externalResources[f.value].length > 0
     ) {
       const links = [];
-      for (const external of externalResources.type[f.value]) {
+      for (const external of externalResources[f.value]) {
         links.push(
           `<a class="external-link${
             external.bounds ? " part-area-visible" : ""
@@ -614,7 +614,7 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${t("code")}"}'>
       getHtmlElement(
         ".info .external",
         infoContainer
-      ).innerHTML = `<br/><span class="external-label">${externalResources}: </span>${links.join(
+      ).innerHTML = `<br/><span class="external-label">${t("externalResources")}: </span>${links.join(
         `<span class="external-separator">, </span>`
       )}`;
     }
