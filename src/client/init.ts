@@ -20,8 +20,8 @@ import { filters } from "./filters";
 import "../osm-app-component/style.scss";
 import { attributes } from "./attributes";
 import { TFunction } from "i18next";
-import externalResourcesEn from "./en/externalResources.json";
-import externalResourcesDe from "./de/externalResources.json";
+import externalResourcesEn from "./externalResources/en.json";
+import externalResourcesDe from "./externalResources/de.json";
 
 export function init(t: TFunction<"translation", undefined>) {
   initMap(

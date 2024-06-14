@@ -1,0 +1,54 @@
+{
+    "floor": "({{level}}E)",
+    "basement": "(-{{level}}E)",
+    "route": "Route",
+    "share": "Partager",
+    "edit": "Modifier",
+    "documentation": "Documentation",
+    "groundFloor": "(RDC)",
+    "man_made": {
+        "windmill": "Éolienne",
+        "tower": "Tour",
+        "water_well": "Puits",
+        "watermill": "Moulin à eau",
+        "mineshaft": "Puits de mine",
+        "drinking_fountain": "Fontaine à eau",
+        "beehive": "Ruche",
+        "insect_hotel": "Hôtel à insectes"
+    },
+    "piste:difficulty": {
+        "novice": "Novice",
+        "easy": "Facile",
+        "intermediate": "Intermédiaire",
+        "advanced": "Avancé",
+        "expert": "Expert",
+        "freeride": "Libre",
+        "extreme": "Extrême"
+    },
+    "leisure": {
+        "wildlife_hide": "Point d'observation de la nature",
+        "bird_hide": "Point d'observation des oiseaux"
+    },
+    "sport": {
+        "bowls": "Bols",
+        "boules": "Pétanque"
+    },
+    "boules": {
+        "petanque": "Pétanque",
+        "bocce": "Bocce",
+        "lyonnaise": "Jeu provençal",
+        "boule_de_fort": "Boule de fort",
+        "pétanque": "Pétanque"
+    },
+    "amenity": {
+        "hunting_stand": "Stand de chasse",
+        "give_box": "Boîte à don"
+    },
+    "natural": {
+        "anthill": "Fourmilière",
+        "termite_mound": "Termitière"
+    },
+    "landuse": {
+        "apiary": "Ruche"
+    }
+}

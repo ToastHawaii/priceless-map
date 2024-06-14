@@ -1,11 +1,8 @@
 {
-  "code": "de",
-
   "route": "Routen",
   "share": "Teilen",
   "edit": "Bearbeiten",
   "documentation": "Dokumentation",
-
   "floor": "({{level}}. OG)",
   "groundFloor": "(EG)",
   "basement": "({{level}}. UG)",
@@ -38,7 +35,10 @@
     "anthill": "Ameisenhügel",
     "termite_mound": "Termitenhügel"
   },
-  "sport": { "bowls": "Bowls", "boules": "Boule" },
+  "sport": {
+    "bowls": "Bowls",
+    "boules": "Boule"
+  },
   "boules": {
     "petanque": "Pétanque",
     "lyonnaise": "Jeu Provençal",

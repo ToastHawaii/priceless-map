@@ -487,7 +487,8 @@ a.menu {
   }
 }
 
-.info-container {
+.info-container,
+.intro-container {
   position: absolute;
   top: 80px;
   right: 0px;
@@ -511,7 +512,8 @@ a.menu {
   display: none;
 }
 
-#filters.right-collapsed ~ .info-container {
+#filters.right-collapsed ~ .info-container,
+#filters.right-collapsed ~ .intro-container {
   max-width: calc(100% - 56px);
 }
 
@@ -546,7 +548,7 @@ a.menu {
   padding: 6px;
   border: none;
   text-align: center;
-  font: 16px/14px Tahoma, Verdana, sans-serif;
+  font: 24px/14px Tahoma, Verdana, sans-serif;
   color: #c3c3c3;
   text-decoration: none;
   font-weight: bold;
@@ -574,6 +576,15 @@ h1 a {
 
 details[open] summary ~ * {
   animation: sweep 0.4s ease-in-out;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  td {
+    padding: 6px 13px;
+    border: 1px solid #dfe2e5;
+  }
 }
 
 @keyframes sweep {

@@ -1,15 +1,18 @@
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
+import moment from "moment";
 import { initReactI18next } from "react-i18next";
 import * as en from "./locales/en.json";
-import * as clientEn from "../client/en/local.json";
-import * as clientTypeEn from "../client/en/local.type.json";
-import * as oapEn from "../osm-app-component/en/local.json";
+import * as oacEn from "../osm-app-component/locales/en.json";
+
 import * as de from "./locales/de.json";
-import * as clientDe from "../client/de/local.json";
-import * as clientTypeDe from "../client/de/local.type.json";
-import * as oapDe from "../osm-app-component/de/local.json";
-import moment from "moment";
+import * as oacDe from "../osm-app-component/locales/de.json";
+import * as es from "./locales/es.json";
+import * as oacEs from "../osm-app-component/locales/es.json";
+import * as fr from "./locales/fr.json";
+import * as oacFr from "../osm-app-component/locales/fr.json";
+import * as pl from "./locales/pl.json";
+import * as oacPl from "../osm-app-component/locales/pl.json";
 
 i18next.on("languageChanged", function (lng) {
   document.documentElement.setAttribute("lang", lng);
@@ -26,8 +29,11 @@ i18next
     fallbackLng: "en",
 
     resources: {
-      en: { translation: { ...en, ...clientEn, ...oapEn, type: clientTypeEn } },
-      de: { translation: { ...de, ...clientDe, ...oapDe, type: clientTypeDe } },
+      en: { translation: { ...en, ...oacEn } },
+      de: { translation: { ...de, ...oacDe } },
+      es: { translation: { ...es, ...oacEs } },
+      fr: { translation: { ...fr, ...oacFr } },
+      pl: { translation: { ...pl, ...oacPl } },
     },
 
     interpolation: {

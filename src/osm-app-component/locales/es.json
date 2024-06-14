@@ -1,0 +1,61 @@
+{
+  "amenity": {
+    "hunting_stand": "Puesto de caza",
+    "give_box": "Caja de regalo"
+  },
+  "edit": "Editar",
+  "documentation": "Documentación",
+  "floor": "({{level}}F)",
+  "groundFloor": "(PB)",
+  "shop": {
+    "books": "Librería"
+  },
+  "leisure": {
+    "bird_hide": "Lugar para observar aves",
+    "wildlife_hide": "Lugar para observar vida silvestre"
+  },
+  "man_made": {
+    "water_well": "Pozo",
+    "watermill": "Molino de agua",
+    "mineshaft": "Pozo de mina",
+    "beehive": "Colmena",
+    "insect_hotel": "Caja de insectos",
+    "windmill": "Molino de viento",
+    "drinking_fountain": "Fuente para beber",
+    "tower": "Torre",
+    "nesting_site": "Casita para aves"
+  },
+  "landuse": {
+    "apiary": "Colmena"
+  },
+  "natural": {
+    "termite_mound": "Termitero",
+    "anthill": "Hormiguero"
+  },
+  "sport": {
+    "bowls": "Bolos",
+    "boules": "Pelotas"
+  },
+  "boules": {
+    "petanque": "Petanca",
+    "lyonnaise": "Juego provenzal",
+    "pétanque": "Petanca",
+    "bocce": "Bochas",
+    "boule_de_fort": "Boule de fort"
+  },
+  "route": "Ruta",
+  "share": "Compartir",
+  "piste:difficulty": {
+    "easy": "Fácil",
+    "advanced": "Avanzado",
+    "freeride": "Freeride o fuera de pista",
+    "extreme": "Extremo",
+    "novice": "Principiante",
+    "intermediate": "Intermedio",
+    "expert": "Experto"
+  },
+  "basement": "(B{{level}}F)",
+  "fitness_station": {
+    "balance_beam": "Barra de equilibrio"
+  }
+}
