@@ -9,6 +9,18 @@
   "search": {
     "placeholder": "Einen Ort suchen"
   },
+  "intro": {
+    "title": "Unbezahlbar",
+    "tagline": "Erlebe die Welt. Gratis.",
+    "description": "Dies ist eine einfache Karte, welche öffentliche und kostenlose Einrichtungen und Angebote in deiner Nähe anzeigt.",
+    "osm": "Die Informationen werden von <o>OpenStreetMap</o> geladen. <e>Füge dir bekannte Orte hinzu.</e>",
+    "license": "Die Anwendung ist unter der <l>GNU Affero General Public License v3.0</l> lizenziert. Der <c>Code</c> steht frei zur Verwendung, Kopierung und Modifizierung, wenn er unter der gleichen Lizenz veröffentlichet wird.",
+    "translate": "Hilf übersetzen",
+    "translationStatus": "Stand der Übersetzung",
+    "contribute": "Wie du zu OpenStreetMap beitragen kannst",
+    "moreApps": "Mehr Apps basierend auf OpenStreetMap",
+    "aboutMe": "Über mich"
+  },
   "info": {
     "osmTags": "Dokumentation",
     "query": "Abfrage",

@@ -9,6 +9,18 @@
   "search": {
     "placeholder": "Search a location"
   },
+  "intro": {
+    "title": "Priceless",
+    "tagline": "Experience the world. Free of charge.",
+    "description": "This is a simple map showing public and free facilities and offers near you.",
+    "osm": "The information is loaded from <o>OpenStreetMap</o>. <e>Add places you know.</e>",
+    "license": "The app is licensed under the <l>GNU Affero General Public License v3.0</l>. The <c>code</c> is free for use, copying and modification if you publish under the same license.",
+    "translate": "Help translate",
+    "translationStatus": "Translation status",
+    "contribute": "How to contribute to OpenStreetMap",
+    "moreApps": "More apps based on OpenStreetMap",
+    "aboutMe": "About me"
+  },
   "info": {
     "osmTags": "Documentation",
     "query": "Query",

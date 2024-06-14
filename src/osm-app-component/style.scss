@@ -541,6 +541,12 @@ a.menu {
   }
 }
 
+.responsive-table {
+  max-width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+}
+
 .close-button {
   position: absolute;
   top: 10px;
@@ -578,7 +584,7 @@ details[open] summary ~ * {
   animation: sweep 0.4s ease-in-out;
 }
 
-table {
+.intro-container table {
   border-spacing: 0;
   border-collapse: collapse;
   td {

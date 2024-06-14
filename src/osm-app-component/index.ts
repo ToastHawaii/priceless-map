@@ -144,11 +144,8 @@ export async function initMap<M>(
   document
     .querySelector("#filters .right-collapse")
     ?.addEventListener("click", () => {
-      if (document.getElementById("filters")?.className) {
-        document.getElementById("filters")?.classList.remove("right-collapsed");
-      } else {
-        document.getElementById("filters")?.classList.add("right-collapsed");
-      }
+      document.getElementById("filters")?.classList.toggle("right-collapsed");
+      getHtmlElement(".info-container").style.display = "none";
     });
 
   document
@@ -164,6 +161,8 @@ export async function initMap<M>(
 
   document.querySelector(".about")?.addEventListener("click", () => {
     getHtmlElement(".intro-container").style.display = "block";
+    getHtmlElement(".info-container").style.display = "none";
+    getHtmlElement(".menu-group").classList.remove("collapsed");
   });
 
   (getHtmlElement(".donate") as HTMLLinkElement).href =
@@ -256,27 +255,29 @@ export async function initMap<M>(
     window.location.href = `https://www.openstreetmap.org/note/new#map=${zoom}/${latlng.lat}/${latlng.lng}`;
   });
 
-  getHtmlElement(".edit").addEventListener("click", () => {
-    const latlng = map.getCenter();
-    const zoom = map.getZoom();
+  getHtmlElements(".edit").forEach((e) =>
+    e.addEventListener("click", function () {
+      const latlng = map.getCenter();
+      const zoom = map.getZoom();
 
-    let presets = "";
-    for (const o of offers) {
-      const p = filterOptions
-        .filter((f) => `${f.group}/${f.value}` === o)
-        .map((o) => o.edit.map((t) => t.replace(/=/gi, "/")).join(","))
-        .filter((o) => o)
-        .join(",");
-      presets += (presets && p ? "," : "") + p;
-    }
+      let presets = "";
+      for (const o of offers) {
+        const p = filterOptions
+          .filter((f) => `${f.group}/${f.value}` === o)
+          .map((o) => o.edit.map((t) => t.replace(/=/gi, "/")).join(","))
+          .filter((o) => o)
+          .join(",");
+        presets += (presets && p ? "," : "") + p;
+      }
 
-    if (isIOS())
-      window.location.href = `https://gomaposm.com/edit?center=${latlng.lat},${latlng.lng}&zoom=${zoom}`;
-    else
-      window.location.href = `https://www.openstreetmap.org/edit#editor=id&map=${zoom}/${
-        latlng.lat
-      }/${latlng.lng}${presets ? `&presets=${presets}` : ``}`;
-  });
+      if (isIOS())
+        window.location.href = `https://gomaposm.com/edit?center=${latlng.lat},${latlng.lng}&zoom=${zoom}`;
+      else
+        window.location.href = `https://www.openstreetmap.org/edit#editor=id&map=${zoom}/${
+          latlng.lat
+        }/${latlng.lng}${presets ? `&presets=${presets}` : ``}`;
+    })
+  );
 
   const attribution = [
     'Map data &copy; <a href="https://openstreetmap.org/">OpenStreetMap</a>',
@@ -782,6 +783,9 @@ data-taginfo-taglist-options='{"with_count": true, "lang": "${t("code")}"}'>
             "click",
             () => {
               getHtmlElement(".info-container").style.display = "none";
+              document
+                .getElementById("filters")
+                ?.classList.remove("right-collapsed");
 
               document.title = t("title");
               document
