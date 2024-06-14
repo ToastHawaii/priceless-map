@@ -1,0 +1,23 @@
+{
+    "name": "Priceless map",
+    "short_name": "Priceless",
+    "description": "Experience the world. Free of charge.",
+    "lang": "en",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "theme_color": "#da532c",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/icons/favicon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icons/favicon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
