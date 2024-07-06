@@ -393,20 +393,19 @@ nwr["wifi"]["wifi"!="no"];`,
     tags: ["social_facility=outreach", "amenity=social_centre", "healthcare"],
     edit: ["amenity=social_facility", "amenity=social_centre", "healthcare"],
   },
-  // {
-  //   id: 137,
-  //   group: "community",
-  //   subgroup: "assistance",
-  //   value: "assistance-senior",
-  //   button: "fas fa-blind",
-  //   icon:
-  //     "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
-  //   query: `
-  //     nwr["social_facility:for"~"senior|elderly"];`,
-  //   color: "#DC143C",
-  //   tags: ["social_facility"],
-  //   edit: ["amenity=social_facility"]
-  // },
+  {
+    id: 137,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-senior",
+    button: "fas fa-blind",
+    icon: "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"senior|elderly"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"],
+  },
   {
     id: 138,
     group: "community",
@@ -460,20 +459,19 @@ nwr["wifi"]["wifi"!="no"];`,
     tags: ["social_facility"],
     edit: ["amenity=social_facility"],
   },
-  // {
-  //   id: 142,
-  //   group: "community",
-  //   subgroup: "assistance",
-  //   value: "assistance-male",
-  //   button: "fas fa-male",
-  //   icon:
-  //     "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
-  //   query: `
-  //     nwr["social_facility:for"~"men"];`,
-  //   color: "#DC143C",
-  //   tags: ["social_facility"],
-  //   edit: ["amenity=social_facility"]
-  // },
+  {
+    id: 142,
+    group: "community",
+    subgroup: "assistance",
+    value: "assistance-male",
+    button: "fas fa-male",
+    icon: "https://wiki.openstreetmap.org/w/images/0/0b/Community_centre-14.svg",
+    query: `
+      nwr["social_facility:for"~"men"];`,
+    color: "#DC143C",
+    tags: ["social_facility"],
+    edit: ["amenity=social_facility"],
+  },
   {
     id: 143,
     group: "community",
@@ -1974,19 +1972,19 @@ way["highway"="footway"]["area"="yes"]["name"];`,
     tags: ["amenity=give_box", "amenity=freeshop"],
     edit: ["amenity=give_box", "amenity"],
   },
-  // {
-  //   id: 117,
-  //   group: "goods",
-  //   subgroup: "toys",
-  //   value: "toys-rent",
-  //   icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
-  //   button: "fas fa-redo-alt",
-  //   query: `
-  //   nw["amenity"="toy_library"]["fee"="no"];`,
-  //   color: "#800000",
-  //   tags: ["amenity=toy_library"],
-  //   edit: ["amenity=toy_library"]
-  // },
+  {
+    id: 117,
+    group: "goods",
+    subgroup: "toys",
+    value: "toys-rent",
+    icon: "https://wiki.openstreetmap.org/w/images/6/62/Toys-14.svg",
+    button: "fas fa-redo-alt",
+    query: `
+    nw["amenity"="toy_library"]["fee"="no"];`,
+    color: "#800000",
+    tags: ["amenity=toy_library"],
+    edit: ["amenity=toy_library"],
+  },
   {
     id: 118,
     group: "goods",
