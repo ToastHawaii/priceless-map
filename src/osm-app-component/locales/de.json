@@ -1,11 +1,52 @@
 {
+  "code": "de",
+
+  "info": {
+    "moreFilters": "Mehr Filter:",
+    "osmTags": "Dokumentation",
+    "query": "Abfrage",
+    "overpassTurbo": "overpass-turbo",
+    "externalResources": "Andere"
+  },
+
+  "search": {
+    "placeholder": "Einen Ort suchen"
+  },
+
+  "menu": {
+    "note": "Hinweis für Kartographen hinzufügen",
+    "edit": "Karte bearbeiten",
+    "share": "Ort teilen",
+    "theme": "Theme ändern",
+    "about": "Über diese Seite",
+    "donate": "Mich unterstützen"
+  },
+
+  "minZoomMessageNoLayer": "Keine Ebene zugewiesen",
+  "minZoomMessage": "Zoome hinein, um Kartenmerkmale zu laden",
+  "emptyIndicator": "Keine Kartenobjekte in diesem Bereich gefunden",
+  "linkCopied": "Link in die Zwischenablage kopiert",
+
   "route": "Routen",
   "share": "Teilen",
   "edit": "Bearbeiten",
   "documentation": "Dokumentation",
+
+  "thatDependsOn": "Das hängt ab von",
+  "conditionalFee": "Nur zu bestimmten Zeiten kostenlos.",
+
+  "open": "Geöffnet",
+  "closed": "Geschlossen",
+  "maybeOpen": "Vielleicht geöffnet",
+  "maybeOpens": "Öffnet vielleicht",
+  "maybeCloses": "Schliesst vielleicht",
+  "opens": "Öffnet",
+  "closes": "Schliesst",
+
   "floor": "({{level}}. OG)",
   "groundFloor": "(EG)",
   "basement": "({{level}}. UG)",
+  
   "amenity": {
     "hunting_stand": "Hochsitz für Jäger",
     "give_box": "GiveBox"

@@ -49,7 +49,6 @@ export function extractType(
   tags: any,
   value: string
 ) {
-  debugger;
   return (
     t("public_bookcase:type" + "." + tags["public_bookcase:type"], {
       defaultValue: "",

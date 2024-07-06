@@ -1,0 +1,52 @@
+{
+    "code": "zh-Hant",
+  "route": "路線",
+  "share": "分享",
+  "info": {
+    "externalResources": "其他"
+  },
+  "leisure": {
+    "wildlife_hide": "觀察野生動物的地方",
+    "bird_hide": "觀察鳥類的地方"
+  },
+  "man_made": {
+    "tower": "塔樓",
+    "water_well": "水井",
+    "watermill": "水磨坊",
+    "windmill": "風車",
+    "mineshaft": "礦井",
+    "drinking_fountain": "飲水噴泉",
+    "beehive": "蜂箱",
+    "insect_hotel": "昆蟲旅館",
+    "nesting_site": "築巢輔助工具"
+  },
+  "piste:difficulty": {
+    "easy": "容易",
+    "intermediate": "中級",
+    "novice": "新手",
+    "advanced": "高級",
+    "expert": "專家",
+    "extreme": "極端"
+  },
+  "edit": "編輯",
+  "documentation": "文件",
+  "groundFloor": "（地下層）",
+  "floor": "（{{level}} 層）",
+  "basement": "（地庫 {{level}} 層）",
+  "amenity": {
+    "hunting_stand": "狩獵台"
+  },
+  "shop": {
+    "books": "書店"
+  },
+  "landuse": {
+    "apiary": "蜂箱"
+  },
+  "natural": {
+    "anthill": "蟻窩",
+    "termite_mound": "白蟻丘"
+  },
+  "boules": {
+    "petanque": "法式滾球"
+  }
+}

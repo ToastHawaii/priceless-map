@@ -1,54 +1,89 @@
 {
-    "floor": "({{level}}E)",
-    "basement": "(-{{level}}E)",
-    "route": "Route",
-    "share": "Partager",
-    "edit": "Modifier",
-    "documentation": "Documentation",
-    "groundFloor": "(RDC)",
-    "man_made": {
-        "windmill": "Éolienne",
-        "tower": "Tour",
-        "water_well": "Puits",
-        "watermill": "Moulin à eau",
-        "mineshaft": "Puits de mine",
-        "drinking_fountain": "Fontaine à eau",
-        "beehive": "Ruche",
-        "insect_hotel": "Hôtel à insectes"
-    },
-    "piste:difficulty": {
-        "novice": "Novice",
-        "easy": "Facile",
-        "intermediate": "Intermédiaire",
-        "advanced": "Avancé",
-        "expert": "Expert",
-        "freeride": "Libre",
-        "extreme": "Extrême"
-    },
-    "leisure": {
-        "wildlife_hide": "Point d'observation de la nature",
-        "bird_hide": "Point d'observation des oiseaux"
-    },
-    "sport": {
-        "bowls": "Bols",
-        "boules": "Pétanque"
-    },
-    "boules": {
-        "petanque": "Pétanque",
-        "bocce": "Bocce",
-        "lyonnaise": "Jeu provençal",
-        "boule_de_fort": "Boule de fort",
-        "pétanque": "Pétanque"
-    },
-    "amenity": {
-        "hunting_stand": "Stand de chasse",
-        "give_box": "Boîte à don"
-    },
-    "natural": {
-        "anthill": "Fourmilière",
-        "termite_mound": "Termitière"
-    },
-    "landuse": {
-        "apiary": "Ruche"
-    }
+  "code": "fr",
+  "info": {
+    "osmTags": "Documentation",
+    "query": "Recherche",
+    "overpassTurbo": "overpass-turbo",
+    "externalResources": "Autres"
+  },
+  "search": {
+    "placeholder": "Rechercher un lieu"
+  },
+  "menu": {
+    "edit": "Modifier la carte",
+    "note": "Ajouter une note pour les contributeurs",
+    "share": "Partager le lieu",
+    "theme": "Modifier le thème",
+    "about": "À propos de ce site",
+    "donate": "Me soutenir"
+  },
+  "minZoomMessageNoLayer": "Aucun calque assigné",
+  "minZoomMessage": "Effectuez un zoom avant pour afficher les éléments de la carte",
+  "emptyIndicator": "Aucun élément de carte trouvé dans cette zone",
+  "linkCopied": "Lien copié dans le presse papiers",
+
+  "floor": "({{level}}E)",
+  "basement": "(-{{level}}E)",
+  "route": "Route",
+  "share": "Partager",
+  "edit": "Modifier",
+  "documentation": "Documentation",
+
+  "thatDependsOn": "Cela dépend",
+  "conditionalFee": "Gratuit à certaines périodes.",
+
+  "maybeOpens": "Ouvre peut-être",
+  "open": "Ouvert",
+  "closed": "Fermé",
+  "maybeOpen": "Peut-être ouvert",
+  "maybeCloses": "Ferme peut-être",
+  "opens": "Ouvre",
+  "closes": "Ferme",
+
+  "groundFloor": "(RDC)",
+  "man_made": {
+    "windmill": "Éolienne",
+    "tower": "Tour",
+    "water_well": "Puits",
+    "watermill": "Moulin à eau",
+    "mineshaft": "Puits de mine",
+    "drinking_fountain": "Fontaine à eau",
+    "beehive": "Ruche",
+    "insect_hotel": "Hôtel à insectes"
+  },
+  "piste:difficulty": {
+    "novice": "Novice",
+    "easy": "Facile",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "expert": "Expert",
+    "freeride": "Libre",
+    "extreme": "Extrême"
+  },
+  "leisure": {
+    "wildlife_hide": "Point d'observation de la nature",
+    "bird_hide": "Point d'observation des oiseaux"
+  },
+  "sport": {
+    "bowls": "Bols",
+    "boules": "Pétanque"
+  },
+  "boules": {
+    "petanque": "Pétanque",
+    "bocce": "Bocce",
+    "lyonnaise": "Jeu provençal",
+    "boule_de_fort": "Boule de fort",
+    "pétanque": "Pétanque"
+  },
+  "amenity": {
+    "hunting_stand": "Stand de chasse",
+    "give_box": "Boîte à don"
+  },
+  "natural": {
+    "anthill": "Fourmilière",
+    "termite_mound": "Termitière"
+  },
+  "landuse": {
+    "apiary": "Ruche"
+  }
 }

@@ -1,12 +1,52 @@
 {
+  "code": "en",
+
+  "info": {
+    "moreFilters": "More filters:",
+    "osmTags": "Documentation",
+    "query": "Query",
+    "overpassTurbo": "overpass-turbo",
+    "externalResources": "Others"
+  },
+
+  "search": {
+    "placeholder": "Search a location"
+  },
+
+  "menu": {
+    "note": "Add note for mappers",
+    "edit": "Edit map",
+    "share": "Share place",
+    "theme": "Change theme",
+    "about": "About this site",
+    "donate": "Support me"
+  },
+
+  "minZoomMessageNoLayer": "No layer assigned",
+  "minZoomMessage": "Zoom in to load map features",
+  "emptyIndicator": "No map features found in this area",
+  "linkCopied": "Link copied to the clipboard",
+
   "route": "Route",
   "share": "Share",
   "edit": "Edit",
   "documentation": "Documentation",
 
+  "thatDependsOn": "That depends on",
+  "conditionalFee": "Only free at certain times.",
+
+  "open": "Open",
+  "closed": "Closed",
+  "maybeOpen": "Maybe open",
+  "maybeOpens": "Maybe opens",
+  "maybeCloses": "Maybe closes",
+  "opens": "Opens",
+  "closes": "Closes",
+
   "floor": "({{level}}F)",
   "groundFloor": "(GF)",
   "basement": "(B{{level}}F)",
+
   "amenity": {
     "hunting_stand": "Hunting stand",
     "give_box": "GiveBox"

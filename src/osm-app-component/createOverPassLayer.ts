@@ -22,7 +22,7 @@ import { isImage } from "./utilities/image";
 import { toTitle, toLevel, toOpenOrClose, toSeasonal } from "./view";
 import { getJson } from "./utilities/jsonRequest";
 import { getHtmlElement, createElement } from "./utilities/html";
-import { parseOpeningHours, overpassSubs, updateCount } from "./index";
+import { parseOpeningHours, overpassSubs } from "./initMap";
 import * as L from "leaflet";
 import {
   extractName,
@@ -83,14 +83,14 @@ export function createOverPassLayer<M extends {}>(
         let pos: L.LatLng;
         let marker;
 
-        if (!e.tags) throw "Unexpected undefined";
+        if (!e.tags) throw "Unexpected undefined: e.tags";
         const tags = e.tags;
         if (globalFilter && globalFilter(tags, group, value)) continue;
         if (e.type === "node") {
           pos = L.latLng(e.lat, e.lon);
         } else {
           if (!(e.center && e.center.lat && e.center.lon))
-            throw "Unexpected undefined";
+            throw "Unexpected undefined: e.center";
           pos = L.latLng(e.center.lat, e.center.lon);
         }
         if (this.options.markerIcon) {
@@ -482,7 +482,6 @@ export function createOverPassLayer<M extends {}>(
         marker.bindPopup(popup);
         this._markers?.addLayer(marker);
       }
-      updateCount(t("emptyIndicator"), minZoom);
     },
   });
 }

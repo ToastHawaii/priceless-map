@@ -1,0 +1,27 @@
+{
+  "code": "el",
+
+  "info": {
+    "osmTags": "Documentación",
+    "query": "Consulta",
+    "overpassTurbo": "overpass-turbo"
+  },
+
+  "search": {
+    "placeholder": "Buscar una ubicación"
+  },
+  
+  "menu": {
+    "theme": "Cambiar el tema",
+    "about": "Acerca de esta página",
+    "donate": "Apoyarme",
+    "note": "Agregar nota para cartógrafos",
+    "edit": "Editar mapa",
+    "share": "Comparte ubicacion"
+  },
+
+  "minZoomMessageNoLayer": "Ninguna capa asignada",
+  "emptyIndicator": "No se encontraron objetos del mapa en esta zona",
+  "minZoomMessage": "Acércate para cargar las características del mapa",
+  "linkCopied": "Enlace copiado al portapapeles"
+}

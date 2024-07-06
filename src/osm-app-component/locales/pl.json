@@ -1,3 +1,22 @@
 {
-    "route": "Trasa"
+  "code": "pl",
+  "info": {
+    "osmTags": "Dokumentacja",
+    "overpassTurbo": "overpass-turbo",
+    "query": "Zapytanie",
+    "externalResources": "Inne"
+  },
+  "search": {
+    "placeholder": "Wyszukaj miejsca"
+  },
+  "menu": {
+    "theme": "Zmień motyw",
+    "about": "O tej stronie",
+    "edit": "Edytuj mapę",
+    "note": "Dodaj notkę dla innych tworzących mapy",
+    "share": "Udostępnij to miejsce"
+  },
+  "route": "Trasa",
+  "open": "Otwarte",
+  "closed": "Zamknięte"
 }

@@ -1,10 +1,27 @@
 {
+  "code": "es",
+
+  "info": {
+    "externalResources": "Otros"
+  },
+
   "amenity": {
     "hunting_stand": "Puesto de caza",
     "give_box": "Caja de regalo"
   },
   "edit": "Editar",
   "documentation": "Documentación",
+
+  "maybeOpen": "Tal vez abierto",
+  "maybeOpens": "Quizás abre",
+  "maybeCloses": "Quizás cierra",
+  "opens": "Abiertos",
+  "closes": "Cerrados",
+  "open": "Abierto",
+  "thatDependsOn": "Eso depende de",
+  "closed": "Cerrado",
+  "conditionalFee": "Gratis solo en determinados horarios.",
+
   "floor": "({{level}}F)",
   "groundFloor": "(PB)",
   "shop": {

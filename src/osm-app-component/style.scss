@@ -175,6 +175,81 @@ table.osm-data {
   text-overflow: ellipsis;
 }
 
+.filters {
+  .filter {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    user-select: none;
+  }
+
+  .filter-sub {
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    text-align: center;
+    min-width: 8px;
+    display: inline-block;
+  }
+  .filter {
+    i {
+      height: 14px;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0px;
+      width: 0px;
+    }
+
+    &:hover {
+      background-color: rgb(247, 247, 247);
+    }
+
+    input:checked {
+      ~ .filter-sub-background {
+        background-color: rgb(220, 220, 220);
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+
+    .filter-label {
+      z-index: -1;
+      padding: 6px;
+      padding-right: 2px;
+      padding-left: 1px;
+      margin-left: 5px;
+
+      span {
+        position: relative;
+      }
+    }
+  }
+
+  .filter-sub:hover {
+    background-color: rgb(229, 229, 229);
+  }
+
+  a {
+    margin-right: 5px;
+    display: block;
+    height: 15px;
+  }
+}
+
 #filters {
   position: absolute;
   top: 80px;
@@ -243,8 +318,7 @@ table.osm-data {
     user-select: none;
   }
 
-  a,
-  .filter-sub {
+  a {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     float: right;
     cursor: pointer;
@@ -299,15 +373,6 @@ table.osm-data {
         bottom: 0;
         left: 0;
       }
-      ~ .filter-sub-background {
-        background-color: rgb(220, 220, 220);
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
     }
 
     .filter-label {
@@ -329,10 +394,6 @@ table.osm-data {
       position: relative;
       top: 2px;
     }
-  }
-
-  .filter-sub:hover {
-    background-color: rgb(229, 229, 229);
   }
 
   details:last-child .filter:last-child .filter-label {
@@ -498,7 +559,18 @@ a.menu {
   max-height: calc(100% - 100px);
   overflow: auto;
   max-width: calc(100% - 268px);
-  display: none;
+}
+
+.external-separator > a {
+  &::after {
+    content: ",";
+  }
+}
+
+.external-separator:last-child > a {
+  &::after {
+    content: "";
+  }
 }
 
 .external {
@@ -537,7 +609,10 @@ a.menu {
     padding: 5px;
     border-radius: 5px;
     border: 2px solid #ccc;
-    word-break: break-all;
+
+    word-break: keep-all;
+    white-space: pre;
+    overflow-x: auto;
   }
 }
 
@@ -610,7 +685,8 @@ details:not([open]) > *:not(summary) {
 }
 
 button.menu .title,
-a.menu .title {
+a.menu .title,
+.share .title {
   position: fixed;
   background: white;
   border: 1px solid #333;
@@ -622,7 +698,8 @@ a.menu .title {
   z-index: 1100;
 }
 button.menu .title,
-a.menu .title {
+a.menu .title,
+.share .title {
   right: 0;
   left: auto;
 }
