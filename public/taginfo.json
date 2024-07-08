@@ -10,226 +10,1206 @@
     "contact_email": "info@zottelig.ch"
   },
   "tags": [
-    { "key": "tourism", "value": "artwork" },
-    { "key": "amenity", "value": "fountain" },
-    { "key": "playground", "value": "splash_pad" },
-    { "key": "tourism", "value": "attraction" },
+    {
+      "key": "social_facility",
+      "value": "outreach",
+      "description": "Community/Assistance",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assistance&info=community/assistance"
+    },
+    {
+      "key": "amenity",
+      "value": "social_centre",
+      "description": "Community/Assistance",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assistance&info=community/assistance"
+    },
+    { "key": "healthcare" },
+    {
+      "key": "repair",
+      "value": "assisted_self_service",
+      "description": "Community/Assisted repair, Goods/Bicycle, Goods/Clothes, Goods/Computer, Goods/Electronic, Goods/Furniture, Goods/Phone, Goods/Toy, Objects of utility/Bicycle self repair, Goods/Bicycle (Repair), Goods/Clothes (Repair), Goods/Computer (Repair), Goods/Electronic (Repair), Goods/Furniture (Repair), Goods/Phone (Repair), Goods/Toy (Repair)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assisted-repair&info=community/assisted-repair"
+    },
+    {
+      "key": "leisure",
+      "value": "hackerspace",
+      "description": "Community/Assisted repair, Community/Hackerspace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assisted-repair&info=community/assisted-repair"
+    },
+    { "key": "repair" },
+    {
+      "key": "amenity",
+      "value": "community_centre",
+      "description": "Community/Community centre",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/community-centre&info=community/community-centre"
+    },
+    {
+      "key": "garden:type",
+      "value": "community",
+      "description": "Community/Community garden",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/community-garden&info=community/community-garden"
+    },
+    {
+      "key": "landuse",
+      "value": "community_food_growing",
+      "description": "Community/Community garden",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/community-garden&info=community/community-garden"
+    },
+    {
+      "key": "office",
+      "value": "charity",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "shop",
+      "value": "charity",
+      "description": "Community/Contribute, Objects of utility/Goods exchange",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "charity",
+      "value": "yes",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "operator:type",
+      "value": "private_non_profit",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "operator:type",
+      "value": "charitable",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "operator:type",
+      "value": "community",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "office",
+      "value": "ngo",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "operator:type",
+      "value": "ngo",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "office",
+      "value": "foundation",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "office",
+      "value": "association",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "healthcare",
+      "value": "blood_donation",
+      "description": "Community/Contribute",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/contribute&info=community/contribute"
+    },
+    {
+      "key": "amenity",
+      "value": "coworking_space",
+      "description": "Community/Coworking",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/coworking&info=community/coworking"
+    },
+    {
+      "key": "office",
+      "value": "coworking",
+      "description": "Community/Coworking",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/coworking&info=community/coworking"
+    },
+    {
+      "key": "club",
+      "value": "doityourself",
+      "description": "Community/Hackerspace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/hackerspace&info=community/hackerspace"
+    },
+    {
+      "key": "leisure",
+      "value": "pitch",
+      "description": "Community sport/Basketball, Community sport/Soccer, Community sport/Volleyball",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/basketball&info=communitySport/basketball"
+    },
+    {
+      "key": "sport",
+      "value": "basketball",
+      "description": "Community sport/Basketball",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/basketball&info=communitySport/basketball"
+    },
+    {
+      "key": "sport",
+      "value": "multi",
+      "description": "Community sport/Basketball, Community sport/Soccer",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/basketball&info=communitySport/basketball"
+    },
+    {
+      "key": "sport",
+      "value": "boules",
+      "description": "Community sport/Boules",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/boules&info=communitySport/boules"
+    },
+    {
+      "key": "sport",
+      "value": "bowls",
+      "description": "Community sport/Boules",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/boules&info=communitySport/boules"
+    },
+    {
+      "key": "sport",
+      "value": "soccer",
+      "description": "Community sport/Soccer",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/soccer&info=communitySport/soccer"
+    },
+    {
+      "key": "sport",
+      "value": "chess",
+      "description": "Community sport/Street chess",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/chess&info=communitySport/chess"
+    },
+    {
+      "key": "sport",
+      "value": "table_soccer",
+      "description": "Community sport/Table soccer",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/table-soccer&info=communitySport/table-soccer"
+    },
+    {
+      "key": "sport",
+      "value": "table_tennis",
+      "description": "Community sport/Table tennis",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/table-tennis&info=communitySport/table-tennis"
+    },
+    {
+      "key": "sport",
+      "value": "volleyball",
+      "description": "Community sport/Volleyball",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/volleyball&info=communitySport/volleyball"
+    },
+    {
+      "key": "sport",
+      "value": "beachvolleyball",
+      "description": "Community sport/Volleyball",
+      "doc_url": "https://priceless.zottelig.ch/?offers=communitySport/volleyball&info=communitySport/volleyball"
+    },
+    {
+      "key": "historic",
+      "value": "archaeological_site",
+      "description": "Culture/Archaeological site",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/archaeological-site&info=culture/archaeological-site"
+    },
+    {
+      "key": "geological",
+      "value": "palaeontological_site",
+      "description": "Culture/Archaeological site",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/archaeological-site&info=culture/archaeological-site"
+    },
+    {
+      "key": "tourism",
+      "value": "artwork",
+      "description": "Culture/Artwork",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/artwork&info=culture/artwork"
+    },
+    {
+      "key": "historic",
+      "value": "castle",
+      "description": "Culture/Castle",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/castle&info=culture/castle"
+    },
+    {
+      "key": "historic",
+      "value": "tower",
+      "description": "Culture/Castle",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/castle&info=culture/castle"
+    },
+    {
+      "key": "historic",
+      "value": "fort",
+      "description": "Culture/Castle",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/castle&info=culture/castle"
+    },
+    {
+      "key": "amenity",
+      "value": "fountain",
+      "description": "Culture/Fountain",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/fountain&info=culture/fountain"
+    },
+    {
+      "key": "playground",
+      "value": "splash_pad",
+      "description": "Culture/Fountain",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/fountain&info=culture/fountain"
+    },
+    { "key": "historic" },
+    {
+      "key": "board_type",
+      "value": "history",
+      "description": "Culture/History",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/history&info=culture/history"
+    },
+    {
+      "key": "historic",
+      "value": "memorial",
+      "description": "Culture/Memorial",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/memorial&info=culture/memorial"
+    },
+    {
+      "key": "man_made",
+      "value": "watermill",
+      "description": "Culture/Mill",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/mill&info=culture/mill"
+    },
+    {
+      "key": "man_made",
+      "value": "windmill",
+      "description": "Culture/Mill",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/mill&info=culture/mill"
+    },
+    {
+      "key": "historic",
+      "value": "monument",
+      "description": "Culture/Monument",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/monument&info=culture/monument"
+    },
+    {
+      "key": "historic",
+      "value": "ruins",
+      "description": "Culture/Ruins",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/ruins&info=culture/ruins"
+    },
+    {
+      "key": "building",
+      "value": "ruins",
+      "description": "Culture/Ruins",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/ruins&info=culture/ruins"
+    },
+    { "key": "ruins" },
+    {
+      "key": "tourism",
+      "value": "attraction",
+      "description": "Culture/Tourist attraction",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/tourist-attraction&info=culture/tourist-attraction"
+    },
     { "key": "tourism" },
     { "key": "heritage" },
-    { "key": "historic", "value": "archaeological_site" },
-    { "key": "geological", "value": "palaeontological_site" },
-    { "key": "educational", "value": "yes" },
-    { "key": "route", "value": "educational_trail" },
-    { "key": "board_type", "value": "wildlife" },
-    { "key": "board_type", "value": "plants" },
-    { "key": "board_type", "value": "geology" },
-    { "key": "board_type", "value": "nature" },
-    { "key": "board_type", "value": "planet_walk" },
-    { "key": "board_type", "value": "astronomy" },
-    { "key": "board_type", "value": "forestry" },
-    { "key": "board_type", "value": "botany" },
-    { "key": "board_type", "value": "biology" },
-    { "key": "board_type", "value": "birds" },
-    { "key": "board_type", "value": "tree" },
-    { "key": "board_type", "value": "panorama" },
-    { "key": "board_type", "value": "science" },
-    { "key": "board_type", "value": "technology" },
-    { "key": "amenity", "value": "public_bookcase" },
-    { "key": "amenity", "value": "library" },
+    {
+      "key": "amenity",
+      "value": "public_bookcase",
+      "description": "Education/Book exchange",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/book-exchange&info=education/book-exchange"
+    },
+    {
+      "key": "amenity",
+      "value": "library",
+      "description": "Education/Book exchange",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/book-exchange&info=education/book-exchange"
+    },
+    {
+      "key": "educational",
+      "value": "yes",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "route",
+      "value": "educational_trail",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "wildlife",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "plants",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "geology",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "nature",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "planet_walk",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "astronomy",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "forestry",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "botany",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "biology",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "birds",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "tree",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "panorama",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "science",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
+    {
+      "key": "board_type",
+      "value": "technology",
+      "description": "Education/Educational trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
+    },
     { "key": "internet_access" },
     { "key": "wifi" },
-    { "key": "historic", "value": "castle" },
-    { "key": "historic", "value": "tower" },
-    { "key": "historic", "value": "fort" },
-    { "key": "man_made", "value": "watermill" },
-    { "key": "man_made", "value": "windmill" },
-    { "key": "historic" },
-    { "key": "board_type", "value": "history" },
-    { "key": "historic", "value": "memorial" },
-    { "key": "historic", "value": "monument" },
-    { "key": "tourism", "value": "museum" },
-    { "key": "tourism", "value": "gallery" },
-    { "key": "amenity", "value": "arts_centre" },
-    { "key": "man_made", "value": "observatory" },
-    { "key": "historic", "value": "ruins" },
-    { "key": "building", "value": "ruins" },
-    { "key": "ruins" },
-    { "key": "natural", "value": "cave_entrance" },
-    { "key": "denotation", "value": "natural_monument" },
-    { "key": "denotation", "value": "landmark" },
-    { "key": "natural", "value": "water" },
-    { "key": "water", "value": "pond" },
-    { "key": "water", "value": "lake" },
-    { "key": "water", "value": "reservoir" },
-    { "key": "water", "value": "reflecting_pool" },
-    { "key": "natural", "value": "rock" },
-    { "key": "natural", "value": "stone" },
-    { "key": "tourism", "value": "viewpoint" },
-    { "key": "viewpoint" },
-    { "key": "tower:type", "value": "observation" },
-    { "key": "waterway", "value": "waterfall" },
-    { "key": "waterway", "value": "dam" },
-    { "key": "waterway", "value": "weir" },
-    { "key": "natural", "value": "spring" },
-    { "key": "social_facility", "value": "outreach" },
-    { "key": "amenity", "value": "social_centre" },
-    { "key": "healthcare" },
-    { "key": "social_facility" },
-    { "key": "repair", "value": "assisted_self_service" },
-    { "key": "leisure", "value": "hackerspace" },
-    { "key": "repair" },
-    { "key": "amenity", "value": "bbq" },
-    { "key": "bbq" },
-    { "key": "amenity", "value": "baking_oven" },
-    { "key": "building", "value": "bakehouse" },
-    { "key": "amenity", "value": "bicycle_rental" },
-    { "key": "amenity", "value": "bicycle_library" },
-    { "key": "amenity", "value": "bicycle_repair_station" },
+    {
+      "key": "tourism",
+      "value": "museum",
+      "description": "Education/Museum",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/museum&info=education/museum"
+    },
+    {
+      "key": "tourism",
+      "value": "gallery",
+      "description": "Education/Museum",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/museum&info=education/museum"
+    },
+    {
+      "key": "amenity",
+      "value": "arts_centre",
+      "description": "Education/Museum",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/museum&info=education/museum"
+    },
+    {
+      "key": "man_made",
+      "value": "observatory",
+      "description": "Education/Observatory",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/observatory&info=education/observatory"
+    },
+    {
+      "key": "amenity",
+      "value": "recycling",
+      "description": "Goods/Bicycle, Goods/Clothes, Goods/Computer, Goods/Electronic, Goods/Bicycle (Give), Goods/Computer (Give), Goods/Electronic (Give), Goods/Phone (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "amenity",
+      "value": "bicycle_rental",
+      "description": "Goods/Bicycle, Objects of utility/Bicycle rental, Goods/Bicycle (Rent)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "amenity",
+      "value": "bicycle_library",
+      "description": "Goods/Bicycle, Objects of utility/Bicycle rental, Goods/Bicycle (Rent)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "amenity",
+      "value": "bicycle_repair_station",
+      "description": "Goods/Bicycle, Objects of utility/Bicycle self repair, Goods/Bicycle (Repair)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
     { "key": "service:bicycle:repair" },
-    { "key": "bicycle:repair" },
     { "key": "service:bicycle:diy" },
-    { "key": "amenity", "value": "charging_station" },
-    { "key": "amenity", "value": "community_centre" },
-    { "key": "garden:type", "value": "community" },
-    { "key": "landuse", "value": "community_food_growing" },
-    { "key": "changing_table" },
-    { "key": "amenity", "value": "kneipp_water_cure" },
-    { "key": "amenity", "value": "drinking_water" },
-    { "key": "drinking_water" },
-    { "key": "amenity", "value": "water_point" },
-    { "key": "drinking_water:refill" },
-    { "key": "emergency", "value": "defibrillator" },
-    { "key": "amenity", "value": "food_sharing" },
-    { "key": "social_facility", "value": "food_bank" },
-    { "key": "social_facility", "value": "soup_kitchen" },
-    { "key": "social_facility", "value": "dairy_kitchen" },
-    { "key": "amenity", "value": "give_box" },
-    { "key": "amenity", "value": "freeshop" },
-    { "key": "shop", "value": "charity" },
-    { "key": "shop", "value": "second_hand" },
-    { "key": "amenity", "value": "toy_library" },
-    { "key": "club", "value": "doityourself" },
-    { "key": "office", "value": "charity" },
-    { "key": "charity", "value": "yes" },
-    { "key": "operator:type", "value": "private_non_profit" },
-    { "key": "operator:type", "value": "charitable" },
-    { "key": "operator:type", "value": "community" },
-    { "key": "office", "value": "ngo" },
-    { "key": "operator:type", "value": "ngo" },
-    { "key": "office", "value": "foundation" },
-    { "key": "office", "value": "association" },
-    { "key": "healthcare", "value": "blood_donation" },
-    { "key": "amenity", "value": "coworking_space" },
-    { "key": "office", "value": "coworking" },
-    { "key": "amenity", "value": "shower" },
-    { "key": "amenity", "value": "compressed_air" },
+    {
+      "key": "amenity",
+      "value": "compressed_air",
+      "description": "Goods/Bicycle, Objects of utility/Pump, Goods/Bicycle (Pump)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
     { "key": "compressed_air" },
     { "key": "service:bicycle:pump" },
-    { "key": "amenity", "value": "toilets" },
-    { "key": "building", "value": "toilets" },
+    {
+      "key": "sport",
+      "value": "bmx",
+      "description": "Goods/Bicycle, Sport/Bikepark, Goods/Bicycle (Park)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "sport",
+      "value": "cycling",
+      "description": "Goods/Bicycle, Sport/Bikepark, Goods/Bicycle (Park)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "amenity",
+      "value": "charging_station",
+      "description": "Goods/Bicycle, Objects of utility/Charging station, Goods/Bicycle (Charge)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "amenity",
+      "value": "give_box",
+      "description": "Goods/Clothes, Goods/Computer, Goods/Electronic, Goods/Furniture, Goods/Phone, Goods/Toy, Objects of utility/Goods exchange, Goods/Clothes (Give), Goods/Clothes (Take), Goods/Computer (Give), Goods/Computer (Take), Goods/Electronic (Give), Goods/Electronic (Take), Goods/Furniture (Give), Goods/Furniture (Take), Goods/Phone (Give), Goods/Phone (Take), Goods/Toy (Give), Goods/Toy (Take)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/clothes&info=goods/clothes"
+    },
+    {
+      "key": "amenity",
+      "value": "freeshop",
+      "description": "Goods/Clothes, Goods/Computer, Goods/Electronic, Goods/Furniture, Goods/Phone, Goods/Toy, Objects of utility/Goods exchange, Goods/Clothes (Give), Goods/Clothes (Take), Goods/Computer (Give), Goods/Computer (Take), Goods/Electronic (Give), Goods/Electronic (Take), Goods/Furniture (Give), Goods/Furniture (Take), Goods/Phone (Give), Goods/Phone (Take), Goods/Toy (Give), Goods/Toy (Take)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/clothes&info=goods/clothes"
+    },
+    {
+      "key": "recycling:furniture",
+      "value": "yes",
+      "description": "Goods/Furniture, Goods/Furniture (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/furniture&info=goods/furniture"
+    },
+    {
+      "key": "recycling:wood",
+      "value": "yes",
+      "description": "Goods/Furniture, Goods/Furniture (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/furniture&info=goods/furniture"
+    },
+    {
+      "key": "recycling:mobile_phones",
+      "value": "yes",
+      "description": "Goods/Phone",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/mobile-phones&info=goods/mobile-phones"
+    },
+    {
+      "key": "amenity",
+      "value": "device_charging_station",
+      "description": "Goods/Phone",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/mobile-phones&info=goods/mobile-phones"
+    },
+    {
+      "key": "recycling:toys",
+      "value": "yes",
+      "description": "Goods/Toy, Goods/Toy (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/toys&info=goods/toys"
+    },
+    {
+      "key": "amenity",
+      "value": "toy_library",
+      "description": "Goods/Toy, Objects of utility/Goods exchange, Goods/Toy (Rent)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/toys&info=goods/toys"
+    },
+    {
+      "key": "emergency",
+      "value": "defibrillator",
+      "description": "Health/Defibrillator",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/defibrillator&info=health/defibrillator"
+    },
+    { "key": "changing_table" },
+    {
+      "key": "amenity",
+      "value": "drinking_water",
+      "description": "Health/Drinking water",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
+    },
+    { "key": "drinking_water" },
+    {
+      "key": "amenity",
+      "value": "water_point",
+      "description": "Health/Drinking water",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
+    },
+    { "key": "drinking_water:refill" },
+    {
+      "key": "amenity",
+      "value": "food_sharing",
+      "description": "Health/Food sharing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/food-sharing&info=health/food-sharing"
+    },
+    {
+      "key": "social_facility",
+      "value": "food_bank",
+      "description": "Health/Food sharing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/food-sharing&info=health/food-sharing"
+    },
+    {
+      "key": "social_facility",
+      "value": "soup_kitchen",
+      "description": "Health/Food sharing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/food-sharing&info=health/food-sharing"
+    },
+    {
+      "key": "social_facility",
+      "value": "dairy_kitchen",
+      "description": "Health/Food sharing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/food-sharing&info=health/food-sharing"
+    },
+    {
+      "key": "amenity",
+      "value": "kneipp_water_cure",
+      "description": "Health/Kneipp facility",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/kneipp_water_cure&info=health/kneipp_water_cure"
+    },
+    {
+      "key": "amenity",
+      "value": "shower",
+      "description": "Health/Public shower",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/public-shower&info=health/public-shower"
+    },
+    {
+      "key": "amenity",
+      "value": "toilets",
+      "description": "Health/Public toilet",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/toilet&info=health/toilet"
+    },
+    {
+      "key": "building",
+      "value": "toilets",
+      "description": "Health/Public toilet",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/toilet&info=health/toilet"
+    },
     { "key": "toilets" },
-    { "key": "leisure", "value": "pitch" },
-    { "key": "sport", "value": "basketball" },
-    { "key": "sport", "value": "multi" },
-    { "key": "sport", "value": "swimming" },
-    { "key": "amenity", "value": "public_bath" },
-    { "key": "leisure", "value": "water_park" },
-    { "key": "leisure", "value": "swimming_pool" },
-    { "key": "leisure", "value": "swimming_area" },
-    { "key": "leisure", "value": "paddling_pool" },
-    { "key": "sport", "value": "bmx" },
-    { "key": "sport", "value": "cycling" },
-    { "key": "sport", "value": "skateboard" },
-    { "key": "sport", "value": "chess" },
-    { "key": "sport", "value": "climbing" },
-    { "key": "playground", "value": "climbingwall" },
-    { "key": "sport", "value": "boules" },
-    { "key": "sport", "value": "bowls" },
-    { "key": "leisure", "value": "fitness_station" },
+    {
+      "key": "recycling:batteries",
+      "value": "yes",
+      "description": "Material recycling/Battery",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/battery-recycling&info=material/battery-recycling"
+    },
+    {
+      "key": "recycling:car_batteries",
+      "value": "yes",
+      "description": "Material recycling/Battery",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/battery-recycling&info=material/battery-recycling"
+    },
+    {
+      "key": "recycling:hardcore",
+      "value": "yes",
+      "description": "Material recycling/Building rubble",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/rubble-recycling&info=material/rubble-recycling"
+    },
+    {
+      "key": "recycling:rubble",
+      "value": "yes",
+      "description": "Material recycling/Building rubble",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/rubble-recycling&info=material/rubble-recycling"
+    },
+    {
+      "key": "recycling:hazardous_waste",
+      "value": "yes",
+      "description": "Material recycling/Hazardous waste",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/hazardous-recycling&info=material/hazardous-recycling"
+    },
+    {
+      "key": "recycling:hydrargyrum",
+      "value": "yes",
+      "description": "Material recycling/Hazardous waste",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/hazardous-recycling&info=material/hazardous-recycling"
+    },
+    {
+      "key": "recycling:paint",
+      "value": "yes",
+      "description": "Material recycling/Hazardous waste",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/hazardous-recycling&info=material/hazardous-recycling"
+    },
+    {
+      "key": "recycling:cooking_oil",
+      "value": "yes",
+      "description": "Material recycling/Oil",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/oil-recycling&info=material/oil-recycling"
+    },
+    {
+      "key": "recycling:engine_oil",
+      "value": "yes",
+      "description": "Material recycling/Oil",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/oil-recycling&info=material/oil-recycling"
+    },
+    {
+      "key": "recycling:oil",
+      "value": "yes",
+      "description": "Material recycling/Oil",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/oil-recycling&info=material/oil-recycling"
+    },
+    {
+      "key": "recycling:waste_oil",
+      "value": "yes",
+      "description": "Material recycling/Oil",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/oil-recycling&info=material/oil-recycling"
+    },
+    {
+      "key": "recycling:plastic",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:plastic_bottles",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:plastic_packaging",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:PET",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:plastic_bags",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:polystyrene_foam",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:polyester",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:styrofoam",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "recycling:foil",
+      "value": "yes",
+      "description": "Material recycling/Plastic",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/plastic-recycling&info=material/plastic-recycling"
+    },
+    {
+      "key": "vending",
+      "value": "bottle_return",
+      "description": "Material recycling/Reusable bottle",
+      "doc_url": "https://priceless.zottelig.ch/?offers=material/reusable-bottle-reuse&info=material/reusable-bottle-reuse"
+    },
+    {
+      "key": "natural",
+      "value": "cave_entrance",
+      "description": "Nature/Cave",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/cave&info=natural/cave"
+    },
+    {
+      "key": "denotation",
+      "value": "natural_monument",
+      "description": "Nature/Natural monument",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/natural_monument&info=natural/natural_monument"
+    },
+    {
+      "key": "denotation",
+      "value": "landmark",
+      "description": "Nature/Natural monument",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/natural_monument&info=natural/natural_monument"
+    },
+    {
+      "key": "leisure",
+      "value": "nature_reserve",
+      "description": "Nature/Nature park",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/nature-park&info=natural/nature-park"
+    },
+    {
+      "key": "boundary",
+      "value": "national_park",
+      "description": "Nature/Nature park",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/nature-park&info=natural/nature-park"
+    },
+    {
+      "key": "boundary",
+      "value": "protected_area",
+      "description": "Nature/Nature park",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/nature-park&info=natural/nature-park"
+    },
+    {
+      "key": "natural",
+      "value": "water",
+      "description": "Nature/Pond",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/pond&info=natural/pond"
+    },
+    {
+      "key": "water",
+      "value": "pond",
+      "description": "Nature/Pond",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/pond&info=natural/pond"
+    },
+    {
+      "key": "water",
+      "value": "lake",
+      "description": "Nature/Pond",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/pond&info=natural/pond"
+    },
+    {
+      "key": "water",
+      "value": "reservoir",
+      "description": "Nature/Pond",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/pond&info=natural/pond"
+    },
+    {
+      "key": "water",
+      "value": "reflecting_pool",
+      "description": "Nature/Pond",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/pond&info=natural/pond"
+    },
+    {
+      "key": "natural",
+      "value": "rock",
+      "description": "Nature/Rock",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/rock&info=natural/rock"
+    },
+    {
+      "key": "natural",
+      "value": "stone",
+      "description": "Nature/Rock",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/rock&info=natural/rock"
+    },
+    {
+      "key": "natural",
+      "value": "spring",
+      "description": "Nature/Spring",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/spring&info=natural/spring"
+    },
+    {
+      "key": "tourism",
+      "value": "viewpoint",
+      "description": "Nature/Viewpoint",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/viewpoint&info=natural/viewpoint"
+    },
+    { "key": "viewpoint" },
+    {
+      "key": "tower:type",
+      "value": "observation",
+      "description": "Nature/Viewpoint",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/viewpoint&info=natural/viewpoint"
+    },
+    {
+      "key": "waterway",
+      "value": "waterfall",
+      "description": "Nature/Waterfall",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/waterfall&info=natural/waterfall"
+    },
+    {
+      "key": "waterway",
+      "value": "dam",
+      "description": "Nature/Waterfall",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/waterfall&info=natural/waterfall"
+    },
+    {
+      "key": "waterway",
+      "value": "weir",
+      "description": "Nature/Waterfall",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/waterfall&info=natural/waterfall"
+    },
+    {
+      "key": "man_made",
+      "value": "advertising",
+      "description": "Objects of utility/Advertising space",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/advertising&info=object_of_utility/advertising"
+    },
+    {
+      "key": "board_type",
+      "value": "notice",
+      "description": "Objects of utility/Advertising space",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/advertising&info=object_of_utility/advertising"
+    },
+    {
+      "key": "amenity",
+      "value": "baking_oven",
+      "description": "Objects of utility/Baking oven",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/baking-oven&info=object_of_utility/baking-oven"
+    },
+    {
+      "key": "building",
+      "value": "bakehouse",
+      "description": "Objects of utility/Baking oven",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/baking-oven&info=object_of_utility/baking-oven"
+    },
+    {
+      "key": "amenity",
+      "value": "bbq",
+      "description": "Objects of utility/Barbecue, Trip/Fireplace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/barbecue&info=object_of_utility/barbecue"
+    },
+    { "key": "bbq" },
+    { "key": "bicycle:repair" },
+    {
+      "key": "shop",
+      "value": "second_hand",
+      "description": "Objects of utility/Goods exchange",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/goods-exchange&info=object_of_utility/goods-exchange"
+    },
+    {
+      "key": "amenity",
+      "value": "piano",
+      "description": "Objects of utility/Piano",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/piano&info=object_of_utility/piano"
+    },
+    {
+      "key": "musical_instrument",
+      "value": "piano",
+      "description": "Objects of utility/Piano",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/piano&info=object_of_utility/piano"
+    },
+    { "key": "musical_instrument:piano" },
+    {
+      "key": "sport",
+      "value": "swimming",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "amenity",
+      "value": "public_bath",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "leisure",
+      "value": "water_park",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "leisure",
+      "value": "swimming_pool",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "leisure",
+      "value": "swimming_area",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "leisure",
+      "value": "paddling_pool",
+      "description": "Sport/Bath",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/bath&info=sport/bath"
+    },
+    {
+      "key": "sport",
+      "value": "climbing",
+      "description": "Sport/Climbing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/climbing&info=sport/climbing"
+    },
+    {
+      "key": "playground",
+      "value": "climbingwall",
+      "description": "Sport/Climbing",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/climbing&info=sport/climbing"
+    },
+    {
+      "key": "leisure",
+      "value": "fitness_station",
+      "description": "Sport/Fitness, Sport/Balance, Sport/Exercise machine, Sport/Horizontal bar, Sport/Parallel bars, Sport/Rings",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/fitness&info=sport/fitness"
+    },
     { "key": "sport" },
     { "key": "playground" },
-    { "key": "sport", "value": "toboggan" },
-    { "key": "piste:type", "value": "sled" },
-    { "key": "playground", "value": "sledding" },
-    { "key": "route", "value": "fitness_trail" },
-    { "key": "sport", "value": "running" },
-    { "key": "sport", "value": "athletics" },
-    { "key": "sport", "value": "soccer" },
-    { "key": "sport", "value": "table_tennis" },
-    { "key": "sport", "value": "table_soccer" },
-    { "key": "sport", "value": "volleyball" },
-    { "key": "sport", "value": "beachvolleyball" },
-    { "key": "tourism", "value": "zoo" },
-    { "key": "attraction", "value": "animal" },
-    { "key": "tourism", "value": "aquarium" },
-    { "key": "man_made", "value": "beehive" },
-    { "key": "landuse", "value": "apiary" },
-    { "key": "landuse", "value": "animal_keeping" },
-    { "key": "landuse", "value": "meadow" },
-    { "key": "landuse", "value": "farmyard" },
-    { "key": "leisure", "value": "bird_hide" },
-    { "key": "leisure", "value": "wildlife_hide" },
-    { "key": "observation", "value": "wild_animal" },
-    { "key": "man_made", "value": "nesting_site" },
-    { "key": "man_made", "value": "insect_hotel" },
-    { "key": "natural", "value": "anthill" },
-    { "key": "natural", "value": "termite_mound" },
-    { "key": "attraction", "value": "maze" },
-    { "key": "man_made", "value": "surveillance" },
-    { "key": "amenity", "value": "piano" },
-    { "key": "musical_instrument", "value": "piano" },
-    { "key": "musical_instrument:piano" },
-    { "key": "man_made", "value": "advertising" },
-    { "key": "board_type", "value": "notice" },
-    { "key": "leisure", "value": "firepit" },
+    {
+      "key": "route",
+      "value": "fitness_trail",
+      "description": "Sport/Fitness trail",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/fitness-trail&info=sport/fitness-trail"
+    },
+    {
+      "key": "sport",
+      "value": "running",
+      "description": "Sport/Running",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/running&info=sport/running"
+    },
+    {
+      "key": "sport",
+      "value": "athletics",
+      "description": "Sport/Running",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/running&info=sport/running"
+    },
+    {
+      "key": "sport",
+      "value": "skateboard",
+      "description": "Sport/Skatepark",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/skatepark&info=sport/skatepark"
+    },
+    {
+      "key": "sport",
+      "value": "toboggan",
+      "description": "Sport/Sledding",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/sledding&info=sport/sledding"
+    },
+    {
+      "key": "piste:type",
+      "value": "sled",
+      "description": "Sport/Sledding",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/sledding&info=sport/sledding"
+    },
+    {
+      "key": "playground",
+      "value": "sledding",
+      "description": "Sport/Sledding",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/sledding&info=sport/sledding"
+    },
+    {
+      "key": "tourism",
+      "value": "zoo",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "attraction",
+      "value": "animal",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "tourism",
+      "value": "aquarium",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "man_made",
+      "value": "beehive",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "landuse",
+      "value": "apiary",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "landuse",
+      "value": "animal_keeping",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "landuse",
+      "value": "meadow",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "landuse",
+      "value": "farmyard",
+      "description": "Trip/Animal enclosure",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/animal&info=trip/animal"
+    },
+    {
+      "key": "leisure",
+      "value": "firepit",
+      "description": "Trip/Fireplace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/fireplace&info=trip/fireplace"
+    },
     { "key": "fireplace" },
     { "key": "openfire" },
-    { "key": "information", "value": "map" },
-    { "key": "leisure", "value": "garden" },
-    { "key": "leisure", "value": "nature_reserve" },
-    { "key": "boundary", "value": "national_park" },
-    { "key": "boundary", "value": "protected_area" },
-    { "key": "leisure", "value": "park" },
-    { "key": "landuse", "value": "recreation_ground" },
-    { "key": "recycling:batteries", "value": "yes" },
-    { "key": "recycling:car_batteries", "value": "yes" },
-    { "key": "vending", "value": "bottle_return" },
-    { "key": "recycling:cooking_oil", "value": "yes" },
-    { "key": "recycling:engine_oil", "value": "yes" },
-    { "key": "recycling:oil", "value": "yes" },
-    { "key": "recycling:waste_oil", "value": "yes" },
-    { "key": "recycling:hazardous_waste", "value": "yes" },
-    { "key": "recycling:hydrargyrum", "value": "yes" },
-    { "key": "recycling:paint", "value": "yes" },
-    { "key": "recycling:hardcore", "value": "yes" },
-    { "key": "recycling:rubble", "value": "yes" },
-    { "key": "recycling:plastic", "value": "yes" },
-    { "key": "recycling:plastic_bottles", "value": "yes" },
-    { "key": "recycling:plastic_packaging", "value": "yes" },
-    { "key": "recycling:PET", "value": "yes" },
-    { "key": "recycling:plastic_bags", "value": "yes" },
-    { "key": "recycling:polystyrene_foam", "value": "yes" },
-    { "key": "recycling:polyester", "value": "yes" },
-    { "key": "recycling:styrofoam", "value": "yes" },
-    { "key": "recycling:foil", "value": "yes" },
-    { "key": "tourism", "value": "picnic_site" },
-    { "key": "leisure", "value": "picnic_table" },
-    { "key": "shelter_type", "value": "picnic_shelter" },
-    { "key": "place", "value": "square" },
-    { "key": "leisure", "value": "common" },
-    { "key": "highway", "value": "pedestrian" },
-    { "key": "highway", "value": "footway" },
-    { "key": "leisure", "value": "playground" },
-    { "key": "amenity", "value": "lounger" },
-    { "key": "amenity", "value": "hammock" },
-    { "key": "amenity", "value": "recycling" },
-    { "key": "recycling:clothes", "value": "yes" },
-    { "key": "recycling:shoes", "value": "yes" },
-    { "key": "social_facility", "value": "clothing_bank" },
-    { "key": "recycling:mobile_phones", "value": "yes" },
-    { "key": "amenity", "value": "device_charging_station" },
-    { "key": "recycling:toys", "value": "yes" },
-    { "key": "recycling:furniture", "value": "yes" },
-    { "key": "recycling:wood", "value": "yes" }
+    {
+      "key": "leisure",
+      "value": "garden",
+      "description": "Trip/Garden, Trip/Garden (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/garden&info=trip/garden"
+    },
+    {
+      "key": "amenity",
+      "value": "lounger",
+      "description": "Trip/Lounger",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/lounger&info=trip/lounger"
+    },
+    {
+      "key": "amenity",
+      "value": "hammock",
+      "description": "Trip/Lounger",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/lounger&info=trip/lounger"
+    },
+    {
+      "key": "information",
+      "value": "map",
+      "description": "Trip/Map, Trip/OpenStreetMap",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/map&info=trip/map"
+    },
+    {
+      "key": "attraction",
+      "value": "maze",
+      "description": "Trip/Maze",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/maze&info=trip/maze"
+    },
+    {
+      "key": "leisure",
+      "value": "park",
+      "description": "Trip/Park, Trip/Park (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/park&info=trip/park"
+    },
+    {
+      "key": "landuse",
+      "value": "recreation_ground",
+      "description": "Trip/Park, Trip/Park (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/park&info=trip/park"
+    },
+    {
+      "key": "tourism",
+      "value": "picnic_site",
+      "description": "Trip/Picnic site",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/picnic-site&info=trip/picnic-site"
+    },
+    {
+      "key": "leisure",
+      "value": "picnic_table",
+      "description": "Trip/Picnic site",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/picnic-site&info=trip/picnic-site"
+    },
+    {
+      "key": "shelter_type",
+      "value": "picnic_shelter",
+      "description": "Trip/Picnic site",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/picnic-site&info=trip/picnic-site"
+    },
+    {
+      "key": "leisure",
+      "value": "playground",
+      "description": "Trip/Playground",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/playground&info=trip/playground"
+    },
+    {
+      "key": "place",
+      "value": "square",
+      "description": "Trip/Square, Trip/Square (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/square&info=trip/square"
+    },
+    {
+      "key": "leisure",
+      "value": "common",
+      "description": "Trip/Square, Trip/Square (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/square&info=trip/square"
+    },
+    {
+      "key": "highway",
+      "value": "pedestrian",
+      "description": "Trip/Square, Trip/Square (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/square&info=trip/square"
+    },
+    {
+      "key": "highway",
+      "value": "footway",
+      "description": "Trip/Square, Trip/Square (With name)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/square&info=trip/square"
+    },
+    {
+      "key": "man_made",
+      "value": "surveillance",
+      "description": "Trip/Webcam",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/webcam&info=trip/webcam"
+    },
+    {
+      "key": "leisure",
+      "value": "bird_hide",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "leisure",
+      "value": "wildlife_hide",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "observation",
+      "value": "wild_animal",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "man_made",
+      "value": "nesting_site",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "man_made",
+      "value": "insect_hotel",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "natural",
+      "value": "anthill",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    {
+      "key": "natural",
+      "value": "termite_mound",
+      "description": "Trip/Animal observation",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
+    },
+    { "key": "social_facility" },
+    {
+      "key": "recycling:clothes",
+      "value": "yes",
+      "description": "Goods/Clothes (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/clothes-give&info=goods/clothes-give"
+    },
+    {
+      "key": "recycling:shoes",
+      "value": "yes",
+      "description": "Goods/Clothes (Give)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/clothes-give&info=goods/clothes-give"
+    },
+    {
+      "key": "social_facility",
+      "value": "clothing_bank",
+      "description": "Goods/Clothes (Give), Goods/Clothes (Take)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/clothes-give&info=goods/clothes-give"
+    }
   ]
 }
