@@ -18,22 +18,21 @@ export function printTagInfoList(
             description: fs
               .map(
                 (fs) =>
-                  t("group." + fs.group) + "/" + t("type." + fs.value + ".name")
+                  `${t(`group.${fs.group}`)}/${t(`type.${fs.value}.name`)}`
               )
               .join(", "),
-            doc_url:
-              urlBase +
-              "?offers=" +
-              fs[0].group +
-              "/" +
-              fs[0].value +
-              "&info=" +
-              fs[0].group +
-              "/" +
-              fs[0].value,
+            doc_url: `${urlBase}?offers=${fs[0].group}/${fs[0].value}&info=${fs[0].group}/${fs[0].value}`,
           };
         }
-        return { key: keyValue[0] };
+        return {
+          key: keyValue[0],
+          description: fs
+            .map(
+              (fs) => `${t(`group.${fs.group}`)}/${t(`type.${fs.value}.name`)}`
+            )
+            .join(", "),
+          doc_url: `${urlBase}?offers=${fs[0].group}/${fs[0].value}&info=${fs[0].group}/${fs[0].value}`,
+        };
       })
     )
   );

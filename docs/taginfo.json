@@ -22,7 +22,11 @@
       "description": "Community/Assistance",
       "doc_url": "https://priceless.zottelig.ch/?offers=community/assistance&info=community/assistance"
     },
-    { "key": "healthcare" },
+    {
+      "key": "healthcare",
+      "description": "Community/Assistance",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assistance&info=community/assistance"
+    },
     {
       "key": "repair",
       "value": "assisted_self_service",
@@ -35,7 +39,11 @@
       "description": "Community/Assisted repair, Community/Hackerspace",
       "doc_url": "https://priceless.zottelig.ch/?offers=community/assisted-repair&info=community/assisted-repair"
     },
-    { "key": "repair" },
+    {
+      "key": "repair",
+      "description": "Community/Assisted repair, Goods/Bicycle, Goods/Clothes, Goods/Computer, Goods/Electronic, Goods/Furniture, Goods/Phone, Goods/Toy, Goods/Bicycle (Repair), Goods/Clothes (Repair), Goods/Computer (Repair), Goods/Electronic (Repair), Goods/Furniture (Repair), Goods/Phone (Repair), Goods/Toy (Repair)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assisted-repair&info=community/assisted-repair"
+    },
     {
       "key": "amenity",
       "value": "community_centre",
@@ -252,7 +260,11 @@
       "description": "Culture/Fountain",
       "doc_url": "https://priceless.zottelig.ch/?offers=culture/fountain&info=culture/fountain"
     },
-    { "key": "historic" },
+    {
+      "key": "historic",
+      "description": "Culture/History",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/history&info=culture/history"
+    },
     {
       "key": "board_type",
       "value": "history",
@@ -295,15 +307,27 @@
       "description": "Culture/Ruins",
       "doc_url": "https://priceless.zottelig.ch/?offers=culture/ruins&info=culture/ruins"
     },
-    { "key": "ruins" },
+    {
+      "key": "ruins",
+      "description": "Culture/Ruins",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/ruins&info=culture/ruins"
+    },
     {
       "key": "tourism",
       "value": "attraction",
       "description": "Culture/Tourist attraction",
       "doc_url": "https://priceless.zottelig.ch/?offers=culture/tourist-attraction&info=culture/tourist-attraction"
     },
-    { "key": "tourism" },
-    { "key": "heritage" },
+    {
+      "key": "tourism",
+      "description": "Culture/Tourist attraction",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/tourist-attraction&info=culture/tourist-attraction"
+    },
+    {
+      "key": "heritage",
+      "description": "Culture/Tourist attraction",
+      "doc_url": "https://priceless.zottelig.ch/?offers=culture/tourist-attraction&info=culture/tourist-attraction"
+    },
     {
       "key": "amenity",
       "value": "public_bookcase",
@@ -412,8 +436,16 @@
       "description": "Education/Educational trail",
       "doc_url": "https://priceless.zottelig.ch/?offers=education/trail&info=education/trail"
     },
-    { "key": "internet_access" },
-    { "key": "wifi" },
+    {
+      "key": "internet_access",
+      "description": "Education/Internet",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/internet&info=education/internet"
+    },
+    {
+      "key": "wifi",
+      "description": "Education/Internet",
+      "doc_url": "https://priceless.zottelig.ch/?offers=education/internet&info=education/internet"
+    },
     {
       "key": "tourism",
       "value": "museum",
@@ -462,16 +494,32 @@
       "description": "Goods/Bicycle, Objects of utility/Bicycle self repair, Goods/Bicycle (Repair)",
       "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
     },
-    { "key": "service:bicycle:repair" },
-    { "key": "service:bicycle:diy" },
+    {
+      "key": "service:bicycle:repair",
+      "description": "Goods/Bicycle, Objects of utility/Bicycle self repair, Goods/Bicycle (Repair)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "service:bicycle:diy",
+      "description": "Goods/Bicycle, Objects of utility/Bicycle self repair, Goods/Bicycle (Repair)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
     {
       "key": "amenity",
       "value": "compressed_air",
       "description": "Goods/Bicycle, Objects of utility/Pump, Goods/Bicycle (Pump)",
       "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
     },
-    { "key": "compressed_air" },
-    { "key": "service:bicycle:pump" },
+    {
+      "key": "compressed_air",
+      "description": "Goods/Bicycle, Objects of utility/Pump, Goods/Bicycle (Pump)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
+    {
+      "key": "service:bicycle:pump",
+      "description": "Goods/Bicycle, Objects of utility/Pump, Goods/Bicycle (Pump)",
+      "doc_url": "https://priceless.zottelig.ch/?offers=goods/bicycle&info=goods/bicycle"
+    },
     {
       "key": "sport",
       "value": "bmx",
@@ -544,21 +592,33 @@
       "description": "Health/Defibrillator",
       "doc_url": "https://priceless.zottelig.ch/?offers=health/defibrillator&info=health/defibrillator"
     },
-    { "key": "changing_table" },
+    {
+      "key": "changing_table",
+      "description": "Health/Diaper-changing table",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/diaper-changing-table&info=health/diaper-changing-table"
+    },
     {
       "key": "amenity",
       "value": "drinking_water",
       "description": "Health/Drinking water",
       "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
     },
-    { "key": "drinking_water" },
+    {
+      "key": "drinking_water",
+      "description": "Health/Drinking water",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
+    },
     {
       "key": "amenity",
       "value": "water_point",
       "description": "Health/Drinking water",
       "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
     },
-    { "key": "drinking_water:refill" },
+    {
+      "key": "drinking_water:refill",
+      "description": "Health/Drinking water",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/drinking-water&info=health/drinking-water"
+    },
     {
       "key": "amenity",
       "value": "food_sharing",
@@ -607,7 +667,11 @@
       "description": "Health/Public toilet",
       "doc_url": "https://priceless.zottelig.ch/?offers=health/toilet&info=health/toilet"
     },
-    { "key": "toilets" },
+    {
+      "key": "toilets",
+      "description": "Health/Public toilet",
+      "doc_url": "https://priceless.zottelig.ch/?offers=health/toilet&info=health/toilet"
+    },
     {
       "key": "recycling:batteries",
       "value": "yes",
@@ -824,7 +888,11 @@
       "description": "Nature/Viewpoint",
       "doc_url": "https://priceless.zottelig.ch/?offers=natural/viewpoint&info=natural/viewpoint"
     },
-    { "key": "viewpoint" },
+    {
+      "key": "viewpoint",
+      "description": "Nature/Viewpoint",
+      "doc_url": "https://priceless.zottelig.ch/?offers=natural/viewpoint&info=natural/viewpoint"
+    },
     {
       "key": "tower:type",
       "value": "observation",
@@ -879,8 +947,16 @@
       "description": "Objects of utility/Barbecue, Trip/Fireplace",
       "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/barbecue&info=object_of_utility/barbecue"
     },
-    { "key": "bbq" },
-    { "key": "bicycle:repair" },
+    {
+      "key": "bbq",
+      "description": "Objects of utility/Barbecue, Trip/Fireplace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/barbecue&info=object_of_utility/barbecue"
+    },
+    {
+      "key": "bicycle:repair",
+      "description": "Objects of utility/Bicycle self repair",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/bicycle-self-repair&info=object_of_utility/bicycle-self-repair"
+    },
     {
       "key": "shop",
       "value": "second_hand",
@@ -899,7 +975,11 @@
       "description": "Objects of utility/Piano",
       "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/piano&info=object_of_utility/piano"
     },
-    { "key": "musical_instrument:piano" },
+    {
+      "key": "musical_instrument:piano",
+      "description": "Objects of utility/Piano",
+      "doc_url": "https://priceless.zottelig.ch/?offers=object_of_utility/piano&info=object_of_utility/piano"
+    },
     {
       "key": "sport",
       "value": "swimming",
@@ -954,8 +1034,16 @@
       "description": "Sport/Fitness, Sport/Balance, Sport/Exercise machine, Sport/Horizontal bar, Sport/Parallel bars, Sport/Rings",
       "doc_url": "https://priceless.zottelig.ch/?offers=sport/fitness&info=sport/fitness"
     },
-    { "key": "sport" },
-    { "key": "playground" },
+    {
+      "key": "sport",
+      "description": "Sport/Fitness, Sport/Balance, Sport/Exercise machine, Sport/Horizontal bar, Sport/Parallel bars, Sport/Rings",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/fitness&info=sport/fitness"
+    },
+    {
+      "key": "playground",
+      "description": "Sport/Fitness, Trip/Playground, Sport/Balance, Sport/Exercise machine, Sport/Horizontal bar, Sport/Parallel bars, Sport/Rings",
+      "doc_url": "https://priceless.zottelig.ch/?offers=sport/fitness&info=sport/fitness"
+    },
     {
       "key": "route",
       "value": "fitness_trail",
@@ -1052,8 +1140,16 @@
       "description": "Trip/Fireplace",
       "doc_url": "https://priceless.zottelig.ch/?offers=trip/fireplace&info=trip/fireplace"
     },
-    { "key": "fireplace" },
-    { "key": "openfire" },
+    {
+      "key": "fireplace",
+      "description": "Trip/Fireplace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/fireplace&info=trip/fireplace"
+    },
+    {
+      "key": "openfire",
+      "description": "Trip/Fireplace",
+      "doc_url": "https://priceless.zottelig.ch/?offers=trip/fireplace&info=trip/fireplace"
+    },
     {
       "key": "leisure",
       "value": "garden",
@@ -1192,7 +1288,11 @@
       "description": "Trip/Animal observation",
       "doc_url": "https://priceless.zottelig.ch/?offers=trip/observation&info=trip/observation"
     },
-    { "key": "social_facility" },
+    {
+      "key": "social_facility",
+      "description": "Community/For children, Community/For disabled, Community/For elderly, Community/For men, Community/For refugees, Community/For underprivileged, Community/For women",
+      "doc_url": "https://priceless.zottelig.ch/?offers=community/assistance-children&info=community/assistance-children"
+    },
     {
       "key": "recycling:clothes",
       "value": "yes",

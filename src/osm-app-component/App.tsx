@@ -43,6 +43,8 @@ export function App<M>({
 }) {
   const { t } = useTranslation();
 
+  // printTagInfoList(t, "https://priceless.zottelig.ch/", filters);
+
   const params = getQueryParams();
 
   let offersParams: string[] = [];
