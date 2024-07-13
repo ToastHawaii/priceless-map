@@ -42,7 +42,7 @@ export function App<M>({
   externalResources?: any;
 }) {
   const { t } = useTranslation();
-
+  
   // printTagInfoList(t, "https://priceless.zottelig.ch/", filters);
 
   const params = getQueryParams();

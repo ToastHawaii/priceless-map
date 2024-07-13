@@ -123,7 +123,7 @@
   "bicycle-self-repair": [
     {
       "name": "Bikekitchen",
-      "url": "http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en"
+      "url": "https://www.heureux-cyclage.org/les-ateliers-dans-le-monde"
     },
     {
       "name": "Fahrradselbsthilfewerkstätten in Berlin",
@@ -153,7 +153,7 @@
     },
     {
       "name": "RestEssBar",
-      "url": "http://restessbar.ch/de",
+      "url": "https://restessbar.ch/standorte/",
       "bounds": [45.818, 5.9559, 47.8085, 10.4923]
     },
     {
@@ -186,7 +186,7 @@
     },
     {
       "name": "falling fruit",
-      "url": "http://fallingfruit.org/?z={zoom}&y={lat}&x={lng}&t=OSM"
+      "url": "https://fallingfruit.org/?z={zoom}&y={lat}&x={lng}&t=OSM"
     },
     {
       "name": "Zero Waste Map",
@@ -287,27 +287,27 @@
   "animal": [
     {
       "name": "Zoo-Infos.org - Schweiz",
-      "url": "http://ch.zoo-infos.org/set.html?karte.php",
+      "url": "https://ch.zoo-infos.org/set.html?karte.php",
       "bounds": [45.818, 5.9559, 47.8085, 10.4923]
     },
     {
       "name": "Zoo-Infos.de - Deutschland",
-      "url": "http://www.zoo-infos.de/set.html?karte.php",
+      "url": "https://www.zoo-infos.de/set.html?karte.php",
       "bounds": [47.27, 5.87, 55.1, 15.04]
     },
     {
       "name": "Zoo-Infos.org - Österreich",
-      "url": "http://at.zoo-infos.org/set.html?karte.php",
+      "url": "https://at.zoo-infos.org/set.html?karte.php",
       "bounds": [46.3723, 9.5307, 49.0205, 17.1608]
     },
     {
       "name": "Zoo-Infos.org - Frankreich",
-      "url": "http://fr.zoo-infos.org/set.html?karte.php",
+      "url": "https://fr.zoo-infos.org/set.html?karte.php",
       "bounds": [42.13, -5.02, 51.27, 8.43]
     },
     {
       "name": "Arca-Net",
-      "url": "http://arca-net.info/map_categories/frame_map.asp?sprache=de",
+      "url": "https://arca-net.info/suche-in-karte/",
       "bounds": [-32.0, -0.3, 52.3, 68.9]
     }
   ],
@@ -332,14 +332,14 @@
   "garden": [
     {
       "name": "Arca-Net",
-      "url": "http://arca-net.info/map_categories/frame_map.asp",
+      "url": "https://arca-net.info/suche-in-karte/",
       "bounds": [-32.0, -0.3, 52.3, 68.9]
     }
   ],
   "garden-with-name": [
     {
       "name": "Arca-Net",
-      "url": "http://arca-net.info/map_categories/frame_map.asp",
+      "url": "https://arca-net.info/suche-in-karte/",
       "bounds": [-32.0, -0.3, 52.3, 68.9]
     }
   ],
@@ -387,12 +387,12 @@
   "bicycle": [
     {
       "name": "Velafrica",
-      "url": "http://velafrica.ch/de/Machen-Sie-mit/Sammelstellen",
+      "url": "https://velafrica.ch/wie-sie-helfen/velospende/",
       "bounds": [45.818, 5.9559, 47.8085, 10.4923]
     },
     {
       "name": "Bikekitchen",
-      "url": "http://www.heureux-cyclage.org/les-ateliers-dans-le-monde?lang=en"
+      "url": "https://www.heureux-cyclage.org/les-ateliers-dans-le-monde"
     },
     {
       "name": "Fahrradselbsthilfewerkstätten in Berlin",

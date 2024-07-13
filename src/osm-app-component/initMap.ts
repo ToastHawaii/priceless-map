@@ -45,7 +45,8 @@ import icon from "leaflet/dist/images/marker-icon.png";
 import icon2x from "leaflet/dist/images/marker-icon-2x.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import { TFunction } from "i18next";
-import { search } from "./control/Search";
+import { search, searchCountry } from "./control/Search";
+import { getUserCountry } from "./utilities/getUserCountry";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
@@ -152,13 +153,24 @@ export async function initMap(
 
   type State = { lat: number; lng: number; zoom: number };
 
-  const state = get<State>("position") || {
-    lat: 47.37,
-    lng: 8.54,
-    zoom: minZoom,
-  };
+  let state = get<State>("position") as State;
 
-  map.setView(new L.LatLng(state.lat, state.lng), state.zoom);
+  if (!state) {
+    // try get position from user
+    const userCountry = getUserCountry();
+    if (userCountry) {
+      searchCountry(map, userCountry);
+    } else {
+      state = state || {
+        lat: 47.37,
+        lng: 8.54,
+        zoom: minZoom,
+      };
+      map.setView(new L.LatLng(state.lat, state.lng), state.zoom);
+    }
+  } else {
+    map.setView(new L.LatLng(state.lat, state.lng), state.zoom);
+  }
 
   // placeholders for the L.marker and L.circle representing user's current position and accuracy
   let currentPosition: L.Layer | L.Marker<any>;

@@ -20,6 +20,24 @@ export function search(map: Map, value: string) {
   });
 }
 
+export function searchCountry(map: Map, country: string) {
+  getJson("https://nominatim.openstreetmap.org/search", {
+    format: "json",
+    country: country,
+    limit: 1,
+  }).then((r) => {
+    const result = r[0];
+    if (!result) return;
+    map.flyToBounds(
+      [
+        [result.boundingbox[0], result.boundingbox[2]],
+        [result.boundingbox[1], result.boundingbox[3]],
+      ],
+      { animate: false }
+    );
+  });
+}
+
 export function Search({ map }: { map: Map }) {
   const { t } = useTranslation();
 
