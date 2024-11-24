@@ -17,7 +17,8 @@
     "license": "The app is licensed under the <l>GNU Affero General Public License v3.0</l>. The <c>code</c> is free for use, copying and modification if you publish under the same license.",
     "translate": "Help translate",
     "translationStatus": "Translation status",
-    "contribute": "How to contribute to OpenStreetMap",
+    "joinCommunity": "Join the OSM community: <m>Meet</m>, <t>Talk</t>",
+    "contribute": "Contribute to OpenStreetMap",
     "moreApps": "More apps based on OpenStreetMap",
     "aboutMe": "About me"
   },

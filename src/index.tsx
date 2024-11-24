@@ -101,6 +101,15 @@ function Intro() {
 
       <ul>
         <li>
+          <Trans
+            i18nKey="intro.joinCommunity"
+            components={{
+              m: <a href="https://usergroups.openstreetmap.de/" />,
+              t: <a href="https://community.osm.be/" />,
+            }}
+          ></Trans>
+        </li>
+        <li>
           <a href="https://wiki.openstreetmap.org/wiki/How_to_contribute">
             {t("intro.contribute")}
           </a>
