@@ -104,7 +104,8 @@ function Intro() {
           <Trans
             i18nKey="intro.joinCommunity"
             components={{
-              m: <a href="https://usergroups.openstreetmap.de/" />,
+              j: <a href="https://usergroups.openstreetmap.de/" />,
+              m: <a href="https://osmcal.org/" />,
               t: <a href="https://community.osm.be/" />,
             }}
           ></Trans>
