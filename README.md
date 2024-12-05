@@ -14,7 +14,7 @@ The app is licensed under the [GNU Affero General Public License v3.0](https://g
 
 ---
 
-- [Join](https://usergroups.openstreetmap.de/) the OSM community: [Meet](https://osmcal.org/) & [Talk](https://community.osm.be/)
+- [Join the OSM community](https://usergroups.openstreetmap.de/): [Meet](https://osmcal.org/) & [Talk](https://community.osm.be/)
 - [Contribute to OpenStreetMap](https://wiki.openstreetmap.org/wiki/How_to_contribute)
 - [More apps based on OpenStreetMap](https://osm-apps.zottelig.ch/)
 - [About me](https://wiki.openstreetmap.org/wiki/User:ToastHawaii)
