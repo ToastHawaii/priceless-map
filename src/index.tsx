@@ -104,6 +104,9 @@ function Intro() {
           <Trans
             i18nKey="intro.joinCommunity"
             components={{
+              c: (
+                <a href="https://resultmaps.neis-one.org/oooc?layers=B&zoom=5&lat=47.6215&lon=7.5816&contributors=TTTTTT" />
+              ),
               j: <a href="https://usergroups.openstreetmap.de/" />,
               m: <a href="https://osmcal.org/" />,
               t: <a href="https://community.osm.be/" />,
