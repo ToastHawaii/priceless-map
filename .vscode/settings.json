@@ -1,3 +1,7 @@
 {
-    "licenser.projectName": "Priceless map"
+    "licenser.projectName": "Priceless map",
+    "i18n-ally.localesPaths": [
+        "src/client/locales",
+        "src/osm-app-component/locales"
+    ]
 }

@@ -25,7 +25,7 @@ import { Map } from "leaflet";
 import { getQueryParams, setQueryParams } from "./utilities/url";
 import { Info } from "./control/Info";
 import { Search } from "./control/Search";
-import { offersfromShort } from "./initMap";
+import { offersfromShort, parseOpeningHours } from "./initMap";
 import { Attribute } from "./Generator";
 
 export function App<M>({
@@ -42,7 +42,7 @@ export function App<M>({
   externalResources?: any;
 }) {
   const { t } = useTranslation();
-  
+
   // printTagInfoList(t, "https://priceless.zottelig.ch/", filters);
 
   const params = getQueryParams();
@@ -123,6 +123,34 @@ export function App<M>({
           setFilterCollapsed(true);
         }}
         minZoom={14}
+        globalFilter={(tags, _group, value) => {
+          if (
+            tags.fee &&
+            !equalsIgnoreCase(tags.fee, "no") &&
+            !equalsIgnoreCase(tags.fee, "donation") &&
+            !equalsIgnoreCase(tags.fee, "interval") &&
+            !equalsIgnoreCase(tags.fee, "free") &&
+            !equalsIgnoreCase(tags.fee, "none") &&
+            !parseOpeningHours(tags.fee, t("code")) &&
+            !tags["fee:conditional"]
+          )
+            return true;
+          if (
+            tags.access &&
+            !equalsIgnoreCase(tags.access, "yes") &&
+            !equalsIgnoreCase(tags.access, "permissive")
+          )
+            return true;
+          if (
+            equalsIgnoreCase(value, "toilets") &&
+            tags["toilets:access"] &&
+            !equalsIgnoreCase(tags["toilets:access"], "yes") &&
+            !equalsIgnoreCase(tags["toilets:access"], "permissive")
+          )
+            return true;
+
+          return false;
+        }}
       />
       {map ? <Search map={map} /> : null}
       <h1>
@@ -191,4 +219,8 @@ export function App<M>({
       ) : null}
     </>
   );
+}
+
+function equalsIgnoreCase(s1: string | undefined, s2: string | undefined) {
+  return (s1 || "").toUpperCase() === (s2 || "").toUpperCase();
 }
