@@ -74,13 +74,21 @@ export function toWikimediaCommonsUrl(source: string) {
   return `https://upload.wikimedia.org/wikipedia/commons/thumb/${hash.substring(
     0,
     1
-  )}/${hash.substring(0, 2)}/${fileName}/320px-${fileName}`;
+  )}/${hash.substring(0, 2)}/${fileName}/330px-${fileName}`;
 }
 
-export function toMapillaryUrl(mapillary: string) {
-  if (!mapillary) return undefined;
+export function toPanoramaxUrl(value: string) {
+  if (!value) return undefined;
 
-  if (httpRegex.test(mapillary)) return mapillary;
+  if (httpRegex.test(value)) return value;
 
-  return `https://www.mapillary.com/map/im/${mapillary}`;
+  return ` https://api.panoramax.xyz/api/pictures/${value}/thumb.jpg`;
+}
+
+export function toMapillaryUrl(value: string) {
+  if (!value) return undefined;
+
+  if (httpRegex.test(value)) return value;
+
+  return `https://www.mapillary.com/map/im/${value}`;
 }

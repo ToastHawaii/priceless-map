@@ -16,7 +16,11 @@
 // along with osm-app-component.  If not, see <http://www.gnu.org/licenses/>.
 
 import { TFunction } from "i18next";
-import { toWikimediaCommonsUrl, toMapillaryUrl } from "./utilities/image";
+import {
+  toWikimediaCommonsUrl,
+  toMapillaryUrl,
+  toPanoramaxUrl,
+} from "./utilities/image";
 import { toUrl } from "./utilities/url";
 
 export function extractName(tags: any, langCode: string) {
@@ -47,33 +51,33 @@ export function extractName(tags: any, langCode: string) {
 export function extractType(
   t: TFunction<"translation", undefined>,
   tags: any,
-  value: string
+  value: string,
 ) {
   return (
-    t("public_bookcase:type" + "." + tags["public_bookcase:type"], {
+    t("public_bookcase:type." + tags["public_bookcase:type"], {
       defaultValue: "",
     }) ||
-    t("garden:type" + "." + tags["garden:type"], { defaultValue: "" }) ||
-    t("garden:style" + "." + tags["garden:style"], { defaultValue: "" }) ||
-    t("castle_type" + "." + tags["castle_type"], { defaultValue: "" }) ||
-    t("historic" + "." + tags["historic"], { defaultValue: "" }) ||
-    t("fitness_station" + "." + tags["fitness_station"], {
+    t("garden:type." + tags["garden:type"], { defaultValue: "" }) ||
+    t("garden:style." + tags["garden:style"], { defaultValue: "" }) ||
+    t("castle_type." + tags["castle_type"], { defaultValue: "" }) ||
+    t("historic." + tags["historic"], { defaultValue: "" }) ||
+    t("fitness_station." + tags["fitness_station"], {
       defaultValue: "",
     }) ||
-    t("site_type" + "." + tags["site_type"], { defaultValue: "" }) ||
+    t("site_type." + tags["site_type"], { defaultValue: "" }) ||
     tags["species:" + t("code")] ||
     tags.species ||
     tags["genus:" + t("code")] ||
     tags.genus ||
     tags.protection_title ||
-    t("boules" + "." + tags.boules, { defaultValue: "" }) ||
-    t("sport" + "." + tags.sport, { defaultValue: "" }) ||
-    t("amenity" + "." + tags.amenity, { defaultValue: "" }) ||
-    t("leisure" + "." + tags.leisure, { defaultValue: "" }) ||
-    t("man_made" + "." + tags.man_made, { defaultValue: "" }) ||
-    t("landuse" + "." + tags.landuse, { defaultValue: "" }) ||
-    t("natural" + "." + tags.natural, { defaultValue: "" }) ||
-    t("shop" + "." + tags.shop, { defaultValue: "" }) ||
+    t("boules." + tags.boules, { defaultValue: "" }) ||
+    t("sport." + tags.sport, { defaultValue: "" }) ||
+    t("amenity." + tags.amenity, { defaultValue: "" }) ||
+    t("leisure." + tags.leisure, { defaultValue: "" }) ||
+    t("man_made." + tags.man_made, { defaultValue: "" }) ||
+    t("landuse." + tags.landuse, { defaultValue: "" }) ||
+    t("natural." + tags.natural, { defaultValue: "" }) ||
+    t("shop." + tags.shop, { defaultValue: "" }) ||
     t("type." + value + ".name", { defaultValue: "" }) ||
     t("def", { defaultValue: "" })
   );
@@ -88,6 +92,7 @@ export function extractOperator(tags: any) {
 export function extractImage(tags: any): string | undefined {
   return (
     toWikimediaCommonsUrl(tags.wikimedia_commons) ||
+    toPanoramaxUrl(tags["panoramax:view"] || tags.panoramax) ||
     toMapillaryUrl(tags.mapillary) ||
     toUrl(tags.flickr) ||
     toWikimediaCommonsUrl(tags.image) ||
