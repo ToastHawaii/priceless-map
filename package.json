@@ -23,7 +23,7 @@
     "leaflet": "1.9.4",
     "leaflet-overpass-layer": "github:ToastHawaii/leaflet-overpass-layer",
     "md5": "2.3.0",
-    "moment": "2.30.1",
+    "moment": "2.31.0",
     "moment-timezone": "0.5.45",
     "opening_hours": "3.8.0",
     "react": "18.3.1",
